@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="../css/style.css">
+		<script src="../js/script.css"></script>
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+		<title>Panier</title>
+	</head>
+	<body>
+
+		<header>
+			<div class="d-md-none div_mobile">
+				<nav class="navbar navbar-dark">
+					<div class="container-fluid">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class=""><img src="../images/burger-menu.png" alt="" width="70px"></span>
+						</button>
+						<div class="mx-auto logo">
+							<img src="../images/cameleon.jpg" alt="cameleon" width="80px">
+						</div>
+						<div class="mx-3">
+							<a href="#" class="logo_search">
+								<i class="fas fa-search fa-3x me-4"></i>
+							</a>
+							<a href="#" class="logo_user">
+								<i class="fas fa-user fa-3x me-4 "></i>
+							</a>
+							<a href="#" class="logo_shopping_cart">
+								<i class="fas fa-shopping-cart fa-3x me-4 "></i>
+							</a>
+						</div>
+					</div>
+				</nav>
+				<div class="collapse col-4" id="navbarToggleExternalContent">
+					<div class="p-4" id="displayClick">
+						<h5 class="text-dark h4">Home</h5>
+
+						<ul>
+							<li>
+								<a href="#Accueil">Catégorie 1</a>
+							</li>
+							<li>
+								<a href="#Apropos">Catégorie 2</a>
+							</li>
+							<li>
+								<a href="#Contact">Catégorie 3</a>
+							</li>
+							<li>
+								<a href="#Contact">Catégorie 4</a>
+							</li>
+						</ul>
+
+
+						<span class="text-muted">Toggleable via the navbar brand.</span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="d-md-block d-none div_desktop">
+				<div class="d-flex justify-content-between">
+					<div class="ps-2 pt-2">
+						<a class="navbar-brand" href="#">
+							<img src="../images/cameleon.jpg" alt="cameleon" width="80px"></a>
+					</div>
+
+					<div class="pt-4">
+						<i class="fas fa-home fa-3x"></i>
+					</div>
+					<div class="py-2 col-6">
+						<div class="d-flex justify-content-center">
+							<form class="d-flex col-12" id="search">
+								<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+								<button class="btn btn-outline-primary" type="submit">
+									<i class="fas fa-search fa-2x"></i>
+								</button>
+							</form>
+						</div>
+						<div class="">
+							<ul class="d-flex" id="liste_categories">
+								<li class="col-3 border border-bottom-0 ps-2" id="category_1">
+									<a href="#Accueil">Catégorie 1</a>
+									<div class="ps-1" id="sub_category_1_appears">
+										<div>
+											<a href="#Accueil">sous-catégorie 1</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 2</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 3</a>
+										</div>
+									</div>
+								</li>
+								<li class="col-3 border border-bottom-0 ps-2" id="category_2">
+									<a href="#Apropos">Catégorie 2</a>
+									<div class="ps-1" id="sub_category_2_appears">
+										<div>
+											<a href="#Accueil">sous-catégorie 1</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 2</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 3</a>
+										</div>
+									</div>
+								</li>
+								<li class="col-3 border border-bottom-0 ps-2" id="category_3">
+									<a href="#Contact">Catégorie 3</a>
+									<div class="ps-1" id="sub_category_3_appears">
+										<div>
+											<a href="#Accueil">sous-catégorie 1</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 2</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 3</a>
+										</div>
+									</div>
+								</li>
+								<li class="col-3 border border-bottom-0 ps-2" id="category_4">
+									<a href="#Contact">Catégorie 4</a>
+									<div class="ps-1" id="sub_category_4_appears">
+										<div>
+											<a href="#Accueil">sous-catégorie 1</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 2</a>
+										</div>
+										<div>
+											<a href="#Accueil">sous-catégorie 3</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="d-flex pt-4">
+						<a href="#" class="">
+							<i class="fas fa-user fa-3x me-4"></i>
+						</a>
+						<i class="fas fa-shopping-cart fa-3x me-4"></i>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+
+		<script src="https://kit.fontawesome.com/74ed2f933d.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	</body>
+</html>
