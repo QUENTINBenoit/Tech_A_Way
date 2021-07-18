@@ -19,7 +19,7 @@ start css HEADER
     height: 100px;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 576px) {
     .logo {
         display: none;
     }
@@ -67,7 +67,6 @@ start css HEADER
 }
 
 
-
 #sub_category_1_appears,
 #sub_category_2_appears,
 #sub_category_3_appears,
@@ -75,7 +74,6 @@ start css HEADER
     display: none;
 
 }
-
 
 
 #category_1:hover #sub_category_1_appears, #category_2:hover #sub_category_2_appears, #category_3:hover #sub_category_3_appears, #category_4:hover #sub_category_4_appears {
@@ -88,9 +86,90 @@ start css HEADER
     text-align: center;
     
 }
+/*************** 
+end css HEADER
+***************/
+
+/*************** 
+start css SHOPPING_CART
+***************/
+@media (max-width: 576px){
+    .picture_product {
+        display:none;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+    main>h1 {
+        text-align: center
+    }
+    #feature_product div {
+        display: none;
+    }
+
+    .quantity, .price,  .button_delete {
+        text-align: end;
+     }
+
+    .button_delete {
+        position: relative;
+        bottom: 210px;
+    }
+
+    .available {
+        position: relative;
+        left: -130px;
+    }
+
+    .name_product, .description_product {
+        height: 45px;
+    }
+
+    .description_product {
+        font-size: 0.8rem;
+    }
+    div.div_price, div.div_quantity{
+        position:relative;
+        top: -25px;
+        right: 250px;
+        font-weight: bold;
+    }
+
+
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+    .description_product {
+        font-size: 0.6rem;
+    }
+    .name_product {
+        font-size: 0.9rem;
+    }
+    div.div_price, div.div_quantity{
+        display:none;
+    }
+}
+
+
+@media (min-width: 1000px) {
+    div.div_price, div.div_quantity{
+        display:none;
+    }
+}
+
+
+
+
+#feature_product {
+   font-weight: bold;
+}.name_product {
+    font-weight: bold;
+}
 
 
 
 /*************** 
-end css HEADER
+end css SHOPPING_CART
 ***************/
