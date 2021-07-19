@@ -5,12 +5,15 @@ i {
     color: #F25528;
 }
 
+
+
 header {
     border-bottom: 1px solid #F25528;
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
     background-color: rgb(254, 254, 254);
+
     
 }
 .product {
@@ -109,7 +112,9 @@ start css HEADER
     border: 1px solid #F25528;
 }
 
-
+.logo_search, .logo_user{
+    color: white;
+}
 /*************** 
 end css HEADER
 ***************/
@@ -231,9 +236,7 @@ main>h1 {
     color: white;
 }
 
-.summary_order button {
 
-}
 
 /*************** 
 end css SHOPPING_CART
