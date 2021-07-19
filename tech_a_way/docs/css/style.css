@@ -9,10 +9,9 @@ header {
     border-bottom: 1px solid #F25528;
 }
 .product {
-    border-top: 1px solid #F25528;
+    border-bottom: 1px solid #F25528;
     border-left: 1px solid #F25528;
     border-right: 1px solid #F25528;
-
 }
 
 /*************** 
@@ -113,14 +112,6 @@ end css HEADER
 /*************** 
 start css SHOPPING_CART
 ***************/
-@media (max-width: 576px){
-    .picture_product {
-        display:none;
-    }
-
-}
-
-
 @media (max-width: 767px) {
     main>h1 {
         text-align: center
@@ -212,8 +203,62 @@ main>h1 {
     font-style: italic;
 }
 
+.delivery, .summary_order {
+    border-bottom: 1px solid #F25528;
+    border-left: 1px solid #F25528;
+    border-right: 1px solid #F25528;
 
+}
+
+.product_1 {
+    border-top: 1px solid #F25528;
+}
+
+.summary_order div, .button_order button {
+    font-weight: bold;
+}
+
+.button_order button,.summary_order button {
+    background-color: #F25528;
+    color: white;
+}
+
+.summary_order button {
+
+}
 
 /*************** 
 end css SHOPPING_CART
+***************/
+
+
+
+/*************** 
+start css FOOTER
+***************/
+
+footer {
+    height: 100px;
+    border-top: 1px solid #F25528;
+}
+
+footer ul li{
+    list-style-type: none;
+
+}
+
+footer a {
+    text-decoration: none;;
+    color: #F25528;
+
+}
+
+
+
+.footer_logo {
+    position: absolute;
+    right: 0px;
+}
+/*************** 
+end css FOOTER
 ***************/
