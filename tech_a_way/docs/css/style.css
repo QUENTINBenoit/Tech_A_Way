@@ -7,6 +7,11 @@ i {
 
 header {
     border-bottom: 1px solid #F25528;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    background-color: rgb(254, 254, 254);
+    
 }
 .product {
     border-bottom: 1px solid #F25528;
@@ -177,6 +182,9 @@ start css SHOPPING_CART
     }
 }
 
+.button_delete i, .delete_icon {
+    z-index: -100;
+}
 
 #feature_product, div.div_price, div.div_quantity{
     color: #F25528;
@@ -236,6 +244,19 @@ end css SHOPPING_CART
 /*************** 
 start css FOOTER
 ***************/
+
+@media (max-width: 767px) {
+    .footer_payments {
+        position: absolute;
+       bottom: -120px;
+       padding-bottom: 5px;
+       padding-left: 20px;
+    }
+    .footer_list_links {
+        margin-left: 150px;
+    }
+}
+
 
 footer {
     height: 100px;
