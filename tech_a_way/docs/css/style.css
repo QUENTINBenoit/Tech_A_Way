@@ -2,7 +2,11 @@
 start css GENERAL
 ***************/
 i {
-    color: black;
+    color: #F25528;
+}
+
+header {
+    border-bottom: 1px solid #F25528;
 }
 
 /*************** 
@@ -15,30 +19,29 @@ start css HEADER
 ***************/
 .div_mobile,
 .div_desktop {
-    background-color: #F25528;
     height: 100px;
 }
 
 @media (max-width: 576px) {
-    .logo {
+    .logo_search {
         display: none;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 395px) {
     .logo_shopping_cart {
         display: none;
     }
 }
 
 @media (max-width: 310px) {
-    .logo_search {
+    .logo {
         display: none;
     }
 }
 
 
-@media (max-width: 225px) {
+@media (max-width: 232px) {
     .logo_user {
         display: none;
     }
@@ -47,8 +50,10 @@ start css HEADER
 
 .div_desktop a {
     text-decoration: none;
-    color: whitesmoke;
+    color: #F25528;
 }
+
+
 
 
 .div_desktop li {
@@ -78,14 +83,23 @@ start css HEADER
 
 #category_1:hover #sub_category_1_appears, #category_2:hover #sub_category_2_appears, #category_3:hover #sub_category_3_appears, #category_4:hover #sub_category_4_appears {
     display: block;
-    background-color: #F25528;
     margin-top: 0.5rem;
     margin-left: -0.5rem;
     width: 25%;
     position: absolute;
     text-align: center;
-    
+    background-color: #F25528;
 }
+
+.header_sub_category a {
+    color:white;
+}
+
+#search input, #search button {
+    border: 1px solid #F25528;
+}
+
+
 /*************** 
 end css HEADER
 ***************/
@@ -101,7 +115,7 @@ start css SHOPPING_CART
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     main>h1 {
         text-align: center
     }
@@ -140,7 +154,7 @@ start css SHOPPING_CART
 
 }
 
-@media (min-width: 769px) and (max-width: 1000px) {
+@media (min-width: 768px) and (max-width: 1000px) {
     .description_product {
         font-size: 0.6rem;
     }
