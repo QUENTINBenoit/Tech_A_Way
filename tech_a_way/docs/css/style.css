@@ -8,6 +8,12 @@ i {
 header {
     border-bottom: 1px solid #F25528;
 }
+.product {
+    border-top: 1px solid #F25528;
+    border-left: 1px solid #F25528;
+    border-right: 1px solid #F25528;
+
+}
 
 /*************** 
 end css GENERAL
@@ -22,26 +28,26 @@ start css HEADER
     height: 100px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 583px) {
     .logo_search {
         display: none;
     }
 }
 
-@media (max-width: 395px) {
+@media (max-width: 500px) {
     .logo_shopping_cart {
         display: none;
     }
 }
 
-@media (max-width: 310px) {
+@media (max-width: 420px) {
     .logo {
         display: none;
     }
 }
 
 
-@media (max-width: 232px) {
+@media (max-width: 240px) {
     .logo_user {
         display: none;
     }
@@ -129,17 +135,16 @@ start css SHOPPING_CART
 
     .button_delete {
         position: relative;
-        bottom: 210px;
+        bottom: 225px;
+        left: 10px;
     }
 
     .available {
         position: relative;
-        left: -130px;
+        left: -128px;
+        top: 40px;
     }
 
-    .name_product, .description_product {
-        height: 45px;
-    }
 
     .description_product {
         font-size: 0.8rem;
@@ -148,9 +153,8 @@ start css SHOPPING_CART
         position:relative;
         top: -25px;
         right: 250px;
-        font-weight: bold;
-    }
 
+    }
 
 }
 
@@ -164,6 +168,11 @@ start css SHOPPING_CART
     div.div_price, div.div_quantity{
         display:none;
     }
+
+    .button_delete {
+        position: relative;
+        left: 15px;
+    }
 }
 
 
@@ -171,15 +180,36 @@ start css SHOPPING_CART
     div.div_price, div.div_quantity{
         display:none;
     }
+    .button_delete {
+        position: relative;
+        left: 15px;
+    }
 }
 
 
-
+#feature_product, div.div_price, div.div_quantity{
+    color: #F25528;
+}
 
 #feature_product {
    font-weight: bold;
-}.name_product {
+   margin-bottom: 8px;
+}
+
+.name_product {
     font-weight: bold;
+}
+
+main>h1 {
+    margin-top : 15px;
+    margin-bottom : 15px;
+    text-decoration: underline;
+    color: #F25528;;
+}
+
+.available {
+    color: green;
+    font-style: italic;
 }
 
 
