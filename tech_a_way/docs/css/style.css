@@ -267,3 +267,29 @@ footer a {
 /*************** 
 end css FOOTER
 ***************/
+
+
+
+/*************** 
+start css PARTIAL BRANDS
+***************/
+
+@media (max-width: 767px) {
+    .partial_brands {
+    display:none;
+
+    }
+}
+
+.partial_brands {
+    justify-content: space-between;
+    align-items: center;
+    margin : 10px;
+    padding: 10px;
+    height: 100px;
+    }
+
+
+/*************** 
+end css PARTIAL BRANDS
+***************/
