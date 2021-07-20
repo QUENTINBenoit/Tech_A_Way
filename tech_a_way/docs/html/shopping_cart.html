@@ -4,8 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/shopping_cart.css">
 		<script src="../js/carousel_brands.js"></script>
+		<script src="../js/shopping_cart.js"></script>
 		<script src="../js/resize.js"></script>
 
 		<!-- Bootstrap CSS -->
@@ -204,7 +205,17 @@
 					<p class="available">Disponible</p>
 				</div>
 
-				<div class="col-md-2 quantity">1</div>
+				<div class="col-md-2 d-flex align-items-baseline quantity">
+
+					<button class="quantity_product_minus_1">
+						<i class="fas fa-minus"></i>
+					</button>
+					<div class="fw-bold mx-2 actual_quantity_product_1">1</div>
+					<button class="quantity_product_plus_1">
+						<i class="fas fa-plus"></i>
+					</button>
+
+				</div>
 
 				<div class="col-md-2 price">845,58 €</div>
 				<div class="col-md-1 button_delete">
@@ -221,7 +232,22 @@
 					<p class="description_product">Kit d'enceintes multimédia 2.0</p>
 					<p class="available">Disponible</p>
 				</div>
-				<div class="col-md-2 quantity">1</div>
+
+
+				
+				<div class="col-md-2 d-flex align-items-baseline quantity">
+
+					<button class="quantity_product_minus_2">
+						<i class="fas fa-minus"></i>
+					</button>
+					<div class="fw-bold mx-2 actual_quantity_product_2">1</div>
+					<button class="quantity_product_plus_2">
+						<i class="fas fa-plus"></i>
+					</button>
+
+				</div>
+
+
 				<div class="col-md-2 price">14,95 €</div>
 				<div class="col-md-1 button_delete">
 					<i class="fas fa-times"></i>
@@ -237,7 +263,20 @@
 					<p class="description_product">3.0 haute vitesse</p>
 					<p class="available">Disponible</p>
 				</div>
-				<div class="col-md-2 quantity">2</div>
+
+		
+				<div class="col-md-2 d-flex align-items-baseline quantity">
+
+					<button class="quantity_product_minus_3">
+						<i class="fas fa-minus"></i>
+					</button>
+					<div class="fw-bold mx-2 actual_quantity_product_3">2</div>
+					<button class="quantity_product_plus_3">
+						<i class="fas fa-plus"></i>
+					</button>
+
+				</div>
+
 				<div class="col-md-2 price">29,95 €</div>
 				<div class="col-md-1 button_delete">
 					<i class="fas fa-times"></i>
@@ -253,8 +292,8 @@
 						<input class="form-control me-2" type="order" placeholder="code PROMO" aria-label="order">
 						<button class="btn btn-outline-secondary" type="submit">OK</button>
 					</form>
-					<div class="col-10 col-md-9">Total commande TTC</div>
-					<div class="col-2 col-md-3">480€</div>
+					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
+					<div class="col-2 col-md-3 fs-5">480€</div>
 				</div>
 				<form action="" class="button_order row">
 					<button type="submit">COMMANDER</button>
