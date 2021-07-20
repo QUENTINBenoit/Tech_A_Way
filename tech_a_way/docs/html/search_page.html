@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Font awesome cdn CSS-->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+          <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+            rel="stylesheet">
+        <!-- Bootstrap CSS -->
+          <link href="../css/bootstrap.min.css" rel="stylesheet" />
+          <link rel="stylesheet" href="../css/searchpage.css"/>
+        <!--load all styles --> 
+          <script defer src="https://kit.fontawesome.com/74ed2f933d.js"></script> 
+          <script src="https://kit.fontawesome.com/cc61b26897.js" crossorigin="anonymous"></script>
+          <script src="https://unpkg.com/feather-icons"></script>
+        
+        <title>maquette tech a way</title>
+    </head>
+<body> 
+  <section class="row p-2 container-fluid" >
+        <div class=" col-2  mobilefirst">
+          <div class="card">
+            <h5 class="card-header h6 p-3">Affinez votre recherche</h5>
+              <div class="card-body">
+                <ul class="nav nav-pills flex-column ">
+                   <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false"> 
+                          Marque
+                      </button>
+                      <div class="collapse" id="brand-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                          <form >
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id="Samsung" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                               Samsung
+                              </label> 
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id="LG" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                                LG
+                              </label> 
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id=" Philips" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                              Philips
+                              </label> 
+                            </div>
+                          </form>
+                        </ul> 
+                      </div>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column ">
+                  <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#height-collapse" aria-expanded="false"> 
+                        Taille de D'Écran
+                      </button>
+                        <div class="collapse" id="height-collapse">
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <form >
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="32p" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    32 pouces
+                                  </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="40p" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      40 pouces
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="43p" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      43 pouces
+                                    </label> 
+                                </div>
+                              </form>
+                            </ul> 
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column ">
+                  <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#standard-collapse" aria-expanded="false"> 
+                        Norme HD
+                      </button>
+                        <div class="collapse" id="standard-collapse">
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <form >
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="4K" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    4k UHD
+                                  </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="8K" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      8k
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="HDTV" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      HDTV
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="HDTV1080" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    HDTV 1080
+                                  </label> 
+                              </div>
+                              </form>
+                            </ul> 
+                        </div>
+                    </li>
+                </ul>    
+              <a href="#" class="btn  btn-sm color  ">Valider</a>
+            </div>
+          </div>              
+        </div> 
+        <div class="col-lg-10">
+            <div class="container row d-flex justify-content-between">
+                  <ul class="pagination col-2 mt-4">
+                    <li class="page-item">
+                      <a class="page-link color" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item "><a class="page-link color " href="#">1</a></li>
+                    <li class="page-item "><a class="page-link color " href="#">2</a></li>
+                    <li class="page-item "><a class="page-link color " href="#">3</a></li>
+                    <li class="page-item ">
+                      <a class="page-link color" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                  <div class="form-group col-3 color mobilefirst">
+                    <label for="filtre" >trier</label>
+                    <select class="form-control form-control-sm" id="filtre" placeholder="name@example.com">
+                      <option ></option>
+                      <option>du - cher au + cher</option>
+                      <option>du + cher au - cher</option>
+                    </select>           
+                  </div>    
+            </div>
+            <div class="container-fluid d-flex flex-row bd-highlight mb-3 shadow-sm p-3 mb-5 bg-white rounded   ">
+              <div class="d-flex align-items-star ">
+                    <div class="col-2 mobilefirst">
+                      <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                    </div>
+                      <p class="p-2 bd-highlight col-6 ">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
+                      </p>
+                    <div class="col-2">
+                      <p>dispo stock</p> 
+                    </div>
+                    <div class="col-2  mx-6">
+                        <p>Prix</p> 
+                        <p>30€</p>  
+                        <a href="#">
+                          <span class="material-icons color">
+                            shopping_cart
+                          </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-row bd-highlight mb-3 shadow-sm p-3 mb-5 bg-white rounded   ">
+              <div class="d-flex align-items-star ">
+                    <div class="col-2 mobilefirst">
+                      <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                    </div>
+                      <p class="p-2 bd-highlight col-6 ">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
+                      </p>
+                    <div class="col-2">
+                      <p>dispo stock</p> 
+                    </div>
+                    <div class="col-2  mx-6">
+                        <p>Prix</p> 
+                        <p>30€</p>  
+                        <a href="#">
+                          <span class="material-icons color">
+                            shopping_cart
+                          </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-row bd-highlight mb-3 shadow-sm p-3 mb-5 bg-white rounded   ">
+              <div class="d-flex align-items-star  ">
+                    <div class="col-2 mobilefirst ">
+                      <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                    </div>               
+                      <p class="p-2 bd-highlight col-6 ">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero quia 
+                        quos mollitia error quas .
+                      </p>
+                    <div class="col-2">
+                        <p>dispo stock</p> 
+                    </div>
+                    <div class="col-2  mx-6">
+                        <p>Prix</p> 
+                        <p>30€</p>        
+                        <a href="#">
+                          <span class="material-icons color">
+                            shopping_cart
+                          </span>
+                        </a>     
+                    </div>
+               </div>          
+             </div>
+        </div>
+    </section> 
+          <!-- Option 1: Bootstrap Bundle with Popper -->
+          <script>
+            feather.replace()
+          </script>
+          <script src="../js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
