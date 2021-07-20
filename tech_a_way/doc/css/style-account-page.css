@@ -1,0 +1,48 @@
+body {
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+@media (min-width: 992px) {
+    .img-height {
+        height: 30%!important;
+        width: 100%!important;
+    }
+
+    .height-img {
+        height: 80%!important;
+    }
+
+    .global-info-height {
+        height: 70%!important;
+    }
+
+    .info-height {
+        height: 70%!important;
+    }
+
+    .disconnect-height {
+        height: 30%!important;
+    }
+
+    .disconnect-text {
+        font-size: 1.5em!important;
+    }
+
+    /**  **/
+    .text-title-info {
+        font-size: 2em!important;
+    }
+
+    .name-info {
+        font-size: 1.8em!important;
+    }
+
+    .client-number {
+        font-size: 1.5em!important;
+    }
+    
+    .position {
+        position: absolute!important;
+    }
+}

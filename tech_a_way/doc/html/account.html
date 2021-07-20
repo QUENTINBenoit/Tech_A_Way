@@ -1,53 +1,88 @@
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Compte client</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style-account-page.css">
+  <title>Compte client</title>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container-lg p-0">
+      <div class="row row-cols-1 row-cols-lg-2 position-relative vh-100">
+        <div class="col-12 col-lg-5 order-1 order-lg-1 h-50 p-0">
+          <div class="d-flex flex-lg-wrap align-items-center h-100 w-100">
+            <div class="d-flex align-items-center justify-content-lg-center align-items-lg-start h-100 w-50 ms-2 img-height">
+              <img src="../images/pngegg.png" class="img-fluid h-50 ms-4 ms-lg-0 mt-lg-3 height-img">
+            </div>
+            <div class="d-flex flex-column h-100 w-100 justify-content-center global-info-height">
+              <div class="d-flex flex-column h-75 w-100 ps-1 mt-4 align-items-start justify-content-center align-items-lg-center info-height">
+                <h5 class="w-100 fs-1 mb-2 fw-bold text-md-center text-title-info">Bonjour</h5>
+                <p class="w-100 fs-1 m-0 mb-2 fst-italic text-md-center name-info">John Doe</p>
+                <p class="w-100 fs-1 m-0 me-1 mb-1 fw-lighter text-md-center text-primary client-number">N° client:123456789</p>
+              </div>
+              <div class="d-flex align-self-center align-items-center justify-content-center justify-content-lg-center border border-danger rounded-pill w-100 h-25 my-5 me-4 disconnect-height">
+                <button type="button" class="btn w-75 h-75 text-center link-danger text-uppercase fw-bold fs-2 p-0 disconnect-text">Me
+                  déconnecter</button>
               </div>
             </div>
-          </nav>
-    </header>
-
-    <main class="w-100 h-100">
-      <section class="container mw-100 p-0">
+          </div>
+        </div>
+        <div class="col-12 col-lg-5 order-2 order-lg-3 position align-self-end h-50 bg-warning">
+        </div>
+        <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 bg-success">
+        </div>
+      </div>
+    </section>
+    <!-- <section class="container mw-100 p-0">
         <div class="container-fluid h-25 p-1">
           <div class="row h-100 p-2">
             <div class="col order-0 h-100 d-flex justify-content-center align-items-center ps-2 pe-0">
@@ -56,7 +91,7 @@
             <div class="col-1 order-1 h-100 w-75 ps-2 d-flex flex-column flex-wrap justify-content-between">
               <div class="row order-0 d-flex flex-column h-50 w-100 mt-2 p-1 align-self-center align-top ">
                 <h5 class="col h5 h-25 fs-6 mb-1 fw-bold text-md-center">Bonjour</h5>
-                <p class="col h-25 fs-6 m-0 mb-1 fst-italic text-md-center">Mickaël Geerardyn</p>
+                <p class="col h-25 fs-6 m-0 mb-1 fst-italic text-md-center">John Doe</p>
                 <p class="col h-25 fs-6 m-0 mb-1 fw-lighter text-primary text-md-center">N° client:123456789</p>
               </div>
               <div class="d-flex order-1 align-items-center align-self-center align-bottom h-25 mb-2 border border-danger rounded-pill">
@@ -66,17 +101,20 @@
           </div>
         </div>
         <nav class="navbar navbar-light bg-primary">
-          <div class="col">
+          <div class="row">
 
           </div>
     
         </nav>
-      </section>
-      </main>
-    
+      </section> -->
+  </main>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
 
 </body>
+
 </html>
