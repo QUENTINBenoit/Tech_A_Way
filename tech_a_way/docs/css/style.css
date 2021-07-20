@@ -139,10 +139,7 @@ start css SHOPPING_CART
     .description_product {
         font-size: 0.8rem;
     }
-    div.div_price, div.div_quantity{
-     text-align: start;
 
-    }
 
 }
 
@@ -153,27 +150,14 @@ start css SHOPPING_CART
     .name_product {
         font-size: 0.9rem;
     }
-    div.div_price, div.div_quantity{
-        display:none;
-    }
+
 
 
 }
 
-
-@media (min-width: 1000px) {
-    div.div_price, div.div_quantity{
-        display:none;
-    }
-
-}
 
 .button_delete i, .delete_icon {
     z-index: -100;
-}
-
-#feature_product, div.div_price, div.div_quantity{
-    color: #F25528;
 }
 
 #feature_product {
@@ -274,12 +258,7 @@ end css FOOTER
 start css PARTIAL BRANDS
 ***************/
 
-@media (max-width: 767px) {
-    .partial_brands {
-    display:none;
 
-    }
-}
 
 .partial_brands {
     justify-content: space-between;
