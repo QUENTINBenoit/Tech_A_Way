@@ -12,10 +12,13 @@
             productEl = pictureProduct.closest(".product");
             // productEl.append(pictureProduct);
            
+            
             // je crée une div
             let divPicturePrice = document.createElement("div");
             // je lui ajoute les classes "d-flex justify-content-between picture_price_product"
             divPicturePrice.classList.add('d-flex', 'justify-content-between', 'picture_price_product');
+            // pictureProduct.setAttribute("width", "200px");
+
             // je lui met dedans l'image
             divPicturePrice.append(pictureProduct);
             productEl.append(divPicturePrice);
@@ -28,9 +31,15 @@
         productEl = pictureProduct.closest(".product");
         productEl.prepend(pictureProduct);
 
-        const allDivEmpty = document.querySelectorAll('picture_price_product');
+        const allDivEmpty = document.querySelectorAll('.picture_price_product');
         for (const divEmpty of allDivEmpty) {
-            divEmpty.remove();
+            
+            if (divEmpty.childElementCount == 0) {
+                divEmpty.remove();
+
+            }
+   
+          
         }
 
     }
