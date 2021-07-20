@@ -3,7 +3,10 @@ body {
     min-width: 100vh;
 }
 
+/** CSS components for screen larger than 992px**/
 @media (min-width: 992px) {
+
+    /** image class **/
     .img-height {
         height: 30%!important;
         width: 100%!important;
@@ -13,23 +16,28 @@ body {
         height: 80%!important;
     }
 
+    /** class for global card with user informations and disconnected button **/
     .global-info-height {
         height: 70%!important;
     }
 
+    /** class for user informations card **/
     .info-height {
         height: 70%!important;
     }
 
+    /** disconnect button class **/
     .disconnect-height {
         height: 30%!important;
+        margin-right: 0%!important;
+        margin-left: 0%!important;
     }
 
     .disconnect-text {
         font-size: 1.5em!important;
     }
 
-    /**  **/
+    /** text class at the user informations card **/
     .text-title-info {
         font-size: 2em!important;
     }
@@ -42,6 +50,7 @@ body {
         font-size: 1.5em!important;
     }
     
+    /** class for displaying position of the menu card **/
     .position {
         position: absolute!important;
     }
