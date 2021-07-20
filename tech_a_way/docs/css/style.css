@@ -35,7 +35,7 @@ start css HEADER
     height: 100px;
 }
 
-@media (max-width: 583px) {
+@media (max-width: 576px) {
     .logo_search {
         display: none;
     }
@@ -45,21 +45,83 @@ start css HEADER
     .logo_shopping_cart {
         display: none;
     }
+    #burger_logo_shopping_cart {
+        display: block;
+        position: absolute;
+        right: 15px;
+        bottom: -220px;
+    
+    }
+}
+
+@media (min-width: 501px) {
+
+    #burger_logo_shopping_cart {
+        display: none;
+    
+    }
+}
+
+
+
+@media (max-width: 280px) {
+
+    #burger_logo_shopping_cart {
+        display: none;
+    }
+    .burger_li_shopping_cart {
+        display: block;
+    }
+    .logo_user {
+        display: none;
+    }
+    .burger_li_user {
+        display: block;
+    }
+}
+
+@media (min-width: 281px) {
+
+    .burger_li_shopping_cart {
+        display: none;
+    }
+    .burger_li_user {
+        display: none;
+    }
 }
 
 @media (max-width: 420px) {
     .logo {
         display: none;
     }
+    .logo_t {
+        display: block;
+    }
 }
 
-
-@media (max-width: 240px) {
-    .logo_user {
+@media (min-width: 421px) {
+    .logo_t {
+        display: none;
+    }
+}
+@media (max-width: 200px) {
+    .logo_t {
         display: none;
     }
 }
 
+
+#displayClick {
+    background-color: #F25528;
+
+}
+
+#displayClick li,  #displayClick li a{
+    text-decoration: none;
+
+    list-style-type: none;
+    color: whitesmoke;
+}
 
 .div_desktop a {
     text-decoration: none;
@@ -115,6 +177,8 @@ start css HEADER
 .logo_search, .logo_user{
     color: white;
 }
+
+
 /*************** 
 end css HEADER
 ***************/
