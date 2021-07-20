@@ -156,9 +156,7 @@ start css SHOPPING_CART
 }
 
 
-.button_delete i, .delete_icon {
-    z-index: -100;
-}
+
 
 #feature_product {
    font-weight: bold;
