@@ -134,26 +134,13 @@ start css SHOPPING_CART
         text-align: end;
      }
 
-    .button_delete {
-        position: relative;
-        bottom: 225px;
-        left: 10px;
-    }
-
-    .available {
-        position: relative;
-        left: -128px;
-        top: 40px;
-    }
 
 
     .description_product {
         font-size: 0.8rem;
     }
     div.div_price, div.div_quantity{
-        position:relative;
-        top: -25px;
-        right: 250px;
+     text-align: start;
 
     }
 
@@ -170,10 +157,7 @@ start css SHOPPING_CART
         display:none;
     }
 
-    .button_delete {
-        position: relative;
-        left: 15px;
-    }
+
 }
 
 
@@ -181,10 +165,7 @@ start css SHOPPING_CART
     div.div_price, div.div_quantity{
         display:none;
     }
-    .button_delete {
-        position: relative;
-        left: 15px;
-    }
+
 }
 
 .button_delete i, .delete_icon {
