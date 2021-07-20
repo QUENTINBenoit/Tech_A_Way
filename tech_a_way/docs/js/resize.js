@@ -30,7 +30,7 @@
 
         const allDivEmpty = document.querySelectorAll('picture_price_product');
         for (const divEmpty of allDivEmpty) {
-            remove(divEmpty);
+            divEmpty.remove();
         }
 
     }
