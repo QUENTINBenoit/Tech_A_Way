@@ -178,7 +178,9 @@ start css HEADER
     color: white;
 }
 
-
+.logo_user_desktop i:hover, .logo_home_desktop i:hover, .logo_shopping_cart_desktop i:hover, .logo_user i:hover, .logo_shopping_cart i:hover, .logo_search i:hover, #header_ul_burger a:hover {
+    color: blue;
+}
 /*************** 
 end css HEADER
 ***************/
@@ -214,12 +216,7 @@ start css SHOPPING_CART
     .name_product {
         font-size: 0.9rem;
     }
-
-
-
 }
-
-
 
 
 #feature_product {
@@ -263,7 +260,9 @@ main>h1 {
     color: white;
 }
 
-
+.button_order button:hover {
+    background-color: blue;
+}
 
 /*************** 
 end css SHOPPING_CART
@@ -309,6 +308,10 @@ footer a {
 .footer_logo {
     position: absolute;
     right: 0px;
+}
+
+.footer_payments>div:hover {
+    transform: rotate(90deg) scale(0.5); 
 }
 /*************** 
 end css FOOTER
