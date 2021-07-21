@@ -56,14 +56,25 @@
   </header>
 
   <main>
-    <section class="container-lg p-0 margin-section">
-      <div class="row row-cols-1 row-cols-lg-2 position-relative vh-100">
+    <!--
+      Section user body
+    -->
+    <section class="container-fluid margin-section">
+
+      <!-- 
+        User informations card
+       -->
+      <div class="row row-cols-1 row-cols-lg-2 position-relative vh-100 padding-container">
         <div class="col-12 col-lg-5 order-1 order-lg-1 h-50 p-0">
+
+          <!-- Image card -->
           <div class="d-flex flex-lg-wrap align-items-center h-100 w-100 shadow">
             <div
               class="d-flex align-items-center justify-content-lg-center align-items-lg-start h-50 w-50 ms-2 img-height">
               <img src="../images/pngegg.png" class="img-fluid h-50 ms-4 ms-lg-0 mt-lg-3 height-img">
             </div>
+
+            <!-- User informations -->
             <div class="d-flex flex-column h-100 w-100 justify-content-center global-info-height">
               <div
                 class="d-flex flex-column h-75 w-100 ps-1 mt-4 align-items-start justify-content-center align-items-lg-center info-height">
@@ -72,6 +83,8 @@
                 <p class="w-100 fs-5 m-0 me-1 mb-1 fw-lighter text-md-center text-primary client-number">N°
                   client:123456789</p>
               </div>
+
+              <!-- Disconnect button -->
               <div
                 class="d-flex align-self-center align-items-center justify-content-center justify-content-lg-center border border-danger rounded-pill w-100 my-3 me-2 disconnect-height">
                 <button type="button"
@@ -81,6 +94,10 @@
             </div>
           </div>
         </div>
+
+        <!--  
+          Menu card
+        -->
         <div class="col-12 col-lg-5 order-2 order-lg-3 position menu-nav-container align-self-end h-25 p-0 d-flex">
 
           <!-- is displayed for screens smaller than 992px -->
@@ -117,8 +134,12 @@
             </div>
           </div>
         </div>
+
+        <!--
+           Informations card 
+        -->
         <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 informations-menu-card shadow p-0">
-          <div class="d-flex flex-wrap h-100">
+          <div class="d-flex flex-wrap h-100 padding-informations-card">
             <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title">Vos informations</p>
             <div class="d-flex flex-column h-75 w-100 ps-5 pe-5">
               <form>
@@ -156,8 +177,6 @@
       </div>
     </section>
   </main>
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
