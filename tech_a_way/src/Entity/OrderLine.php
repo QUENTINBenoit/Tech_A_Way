@@ -52,6 +52,12 @@ class OrderLine
      */
     private $updated_At;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="order_lines")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $anOrder;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +143,18 @@ class OrderLine
     public function setUpdatedAt(?\DateTimeInterface $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    public function getAnOrder(): ?Order
+    {
+        return $this->anOrder;
+    }
+
+    public function setAnOrder(?Order $anOrder): self
+    {
+        $this->anOrder = $anOrder;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -67,6 +69,22 @@ class Order
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_At;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $status;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="anOrder")
+     */
+    private $order_lines;
+
+    public function __construct()
+    {
+        $this->order_lines = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -189,6 +207,48 @@ class Order
     public function setUpdatedAt(?\DateTimeInterface $updated_At): self
     {
         $this->updated_At = $updated_At;
+
+        return $this;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OrderLine[]
+     */
+    public function getOrderLines(): Collection
+    {
+        return $this->order_lines;
+    }
+
+    public function addOrderLine(OrderLine $orderLine): self
+    {
+        if (!$this->order_lines->contains($orderLine)) {
+            $this->order_lines[] = $orderLine;
+            $orderLine->setAnOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderLine(OrderLine $orderLine): self
+    {
+        if ($this->order_lines->removeElement($orderLine)) {
+            // set the owning side to null (unless already changed)
+            if ($orderLine->getAnOrder() === $this) {
+                $orderLine->setAnOrder(null);
+            }
+        }
 
         return $this;
     }
