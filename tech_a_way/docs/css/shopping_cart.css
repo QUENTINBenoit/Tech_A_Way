@@ -264,6 +264,14 @@ main>h1 {
     background-color: blue;
 }
 
+.button_delete_product {
+    border: none;
+}
+
+.button_delete_product i:hover{
+    color: blue;
+}
+
 /*************** 
 end css SHOPPING_CART
 ***************/
