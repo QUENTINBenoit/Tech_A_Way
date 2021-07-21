@@ -1,6 +1,25 @@
 body {
-    min-height: 100vh;
-    min-width: 100vh;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+@media (max-width: 991px) {
+
+    .nav-container {
+        height: 15%!important;
+    }
+
+    .nav-height {
+        height: 100%!important;
+    }
+
+    .disconnect-height {
+        height: 15%;
+    }
+
+    .menu-nav-container {
+        height: 10%!important;
+    }
 }
 
 /** CSS components for screen larger than 992px**/
@@ -29,8 +48,6 @@ body {
     /** disconnect button class **/
     .disconnect-height {
         height: 30%!important;
-        margin-right: 0%!important;
-        margin-left: 0%!important;
     }
 
     .disconnect-text {
@@ -53,5 +70,10 @@ body {
     /** class for displaying position of the menu card **/
     .position {
         position: absolute!important;
+        height: 30%!important;
+    }
+
+    .menu-nav-container {
+        height: 50%!important;
     }
 }
