@@ -88,8 +88,17 @@ CSS components for screen larger than 992px
         width: 70%!important;
     }
 
+    .disconnect-height:hover {
+        background-color: #dc3545;
+        transition-duration: 1s;
+    }
+
     .disconnect-text {
         font-size: 1.5em!important;
+    }
+
+    .disconnect-text:hover {
+        color: white;
     }
 
     /** text class at the user informations card **/
@@ -125,7 +134,7 @@ CSS components for screen larger than 992px
 
     /** Desktop Menu **/
     .menu-container-desktop {
-        width: 90%!important;
+        width: 89.7%!important;
         height: 100%!important;
     }
 
