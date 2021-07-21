@@ -81,6 +81,18 @@ class Order
      */
     private $order_lines;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ModeOfPayment::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $modeOfPayment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->order_lines = new ArrayCollection();
@@ -249,6 +261,30 @@ class Order
                 $orderLine->setAnOrder(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getModeOfPayment(): ?ModeOfPayment
+    {
+        return $this->modeOfPayment;
+    }
+
+    public function setModeOfPayment(?ModeOfPayment $modeOfPayment): self
+    {
+        $this->modeOfPayment = $modeOfPayment;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
