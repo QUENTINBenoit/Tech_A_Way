@@ -3,8 +3,7 @@
 
    function resize() {
        
-
-    /*********************start SHOPPING CART*************************/
+/*********************start SHOPPING CART*************************/
     if (window.matchMedia("(max-width: 576px)").matches) {
 
         const picturesProduct = document.querySelectorAll('.picture_product');
@@ -22,10 +21,17 @@
             // je lui met dedans l'image
             divPicturePrice.append(pictureProduct);
             productEl.append(divPicturePrice);
-        }
-    }
 
- else if (window.matchMedia("(min-width: 577px)").matches) {
+            const allDivEmpty = document.querySelectorAll('.picture_price_product');
+            for (const divEmpty of allDivEmpty) {
+                
+                if (divEmpty.childElementCount == 0) {
+                    divEmpty.remove();
+                }
+            }
+
+        }
+    } else if (window.matchMedia("(min-width: 577px)").matches) {
     const picturesProduct = document.querySelectorAll('.picture_product');
     for (const pictureProduct of picturesProduct) {
         productEl = pictureProduct.closest(".product");
@@ -36,18 +42,15 @@
             
             if (divEmpty.childElementCount == 0) {
                 divEmpty.remove();
-
             }
-   
-          
         }
 
     }
 }
-    /*********************end SHOPPING CART*************************/
+/*********************end SHOPPING CART*************************/
 
 
-    /*********************start PARTIAL_BRANDS*************************/
+/*********************start PARTIAL_BRANDS*************************/
     if (window.matchMedia("(max-width: 767px)").matches) {
         /* La largeur minimum de l'affichage est 768 px inclus */
         const divBrands = document.querySelectorAll('.partial_brands');
