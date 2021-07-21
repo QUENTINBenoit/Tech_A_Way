@@ -1,3 +1,22 @@
+h1 {
+color: #F25528;
+}
+
 h2 {
-color:red
+color: #F25528
+}
+
+.navbar {
+    background-color: #F25528
+}
+
+.card {
+    border-color: #F25528;
+}
+.text {
+    align-items: center;
+    justify-content: center;
+}
+p {
+    font-weight: bold;
 }
