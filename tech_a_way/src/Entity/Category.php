@@ -54,9 +54,15 @@ class Category
      */
     private $subcategories;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="categories")
+     */
+    private $products;
+
     public function __construct()
     {
         $this->subcategories = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,6 +167,33 @@ class Category
             if ($subcategory->getCategory() === $this) {
                 $subcategory->setCategory(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            $product->removeCategory($this);
         }
 
         return $this;
