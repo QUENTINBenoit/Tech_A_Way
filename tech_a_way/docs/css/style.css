@@ -13,10 +13,18 @@ color: #F25528
 .card {
     border-color: #F25528;
 }
-.text {
+.text{
+    
+    color: #F25528;
     align-items: center;
     justify-content: center;
 }
-p {
+.card-body {
     font-weight: bold;
+    color: black;
+}
+.btn {
+    border-color: #F25528;
+    color: black;
+
 }
