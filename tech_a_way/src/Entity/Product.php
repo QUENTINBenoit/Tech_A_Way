@@ -77,6 +77,12 @@ class Product
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $brand;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -222,6 +228,18 @@ class Product
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }
