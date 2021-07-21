@@ -35,12 +35,17 @@ body {
 
     /** menu arrow **/
     .dropdown-toggle::after {
-        margin-left: 25%!important;
+        margin-left: 1em!important;
     }
 
     /** Not displayed menu desktop screens **/
     .menu-container-desktop {
         display: none!important;
+    }
+
+    /** title of the informations card **/
+    .informations-title {
+        height: 10%!important;
     }
 }
 
@@ -69,7 +74,8 @@ body {
 
     /** disconnect button class **/
     .disconnect-height {
-        height: 30%!important;
+        height: 20%!important;
+        width: 70%!important;
     }
 
     .disconnect-text {
