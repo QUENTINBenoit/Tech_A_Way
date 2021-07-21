@@ -18,7 +18,29 @@ body {
     }
 
     .menu-nav-container {
-        height: 10%!important;
+        height: 7%!important;
+    }
+
+    .width-container-title {
+        width: 30%;
+    }
+
+    .background-title-menu {
+        background-color: #F25528;
+    }
+
+    .width-container-dropdown {
+        width: 70%;
+    }
+
+    /** menu arrow **/
+    .dropdown-toggle::after {
+        margin-left: 25%!important;
+    }
+
+    /** Not displayed menu desktop screens **/
+    .menu-container-desktop {
+        display: none!important;
     }
 }
 
@@ -75,5 +97,28 @@ body {
 
     .menu-nav-container {
         height: 50%!important;
+    }
+
+    .informations-menu-card {
+        height: 100%!important;
+    }
+
+    #dropdownMenu2 {
+        display: none!important;
+    }
+
+    /** Desktop Menu **/
+    .menu-container-desktop {
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+    .list-group {
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+    .list-group-item {
+        height: 100%!important;
     }
 }

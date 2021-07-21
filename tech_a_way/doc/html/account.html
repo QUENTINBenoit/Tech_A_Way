@@ -76,37 +76,40 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-5 order-2 order-lg-3 position menu-nav-container align-self-end h-25 bg-warning">
+        <div class="col-12 col-lg-5 order-2 order-lg-3 position menu-nav-container align-self-end h-25 p-0 d-flex">
+
+          <!-- is displayed for screens smaller than 992px -->
+          <div class="d-flex justify-content-center align-items-center d-lg-none h-100 width-container-title background-title-menu">
+            <h2 class="menu-title text-white text-uppercase fw-bold p-0 m-0">menu</h2>
+          </div>
+          <div class="dropdown width-container-dropdown">
+            <button class="btn dropdown-toggle h-100 w-100 text-start fs-4" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Afficher le menu
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button">Mes informations</button></li>
+              <li><button class="dropdown-item" type="button">Mes adresses</button></li>
+              <li><button class="dropdown-item" type="button">Mes commandes</button></li>
+              <li><button class="dropdown-item" type="button">Bons d'achat et Avoirs</button></li>
+            </ul>
+          </div>
+
+          <!-- is displayed for screens bigger than 991px -->
+          <div class="d-flex justify-content-center menu-container-desktop">
+            <div class="list-group">
+              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow" aria-current="true">
+                Mes informations
+              </button>
+              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow"> Mes adresses</button>
+              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow">Men commandes</button>
+              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow">Bons d'achat et Avoirs</button>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 bg-success">
+        <div class="col-12 col-lg-7 order-3 order-lg-2 h-50 informations-menu-card">
         </div>
       </div>
     </section>
-    <!-- <section class="container mw-100 p-0">
-        <div class="container-fluid h-25 p-1">
-          <div class="row h-100 p-2">
-            <div class="col order-0 h-100 d-flex justify-content-center align-items-center ps-2 pe-0">
-                <img src="../images/pngegg.png" class="img-fluid h-50">
-            </div>
-            <div class="col-1 order-1 h-100 w-75 ps-2 d-flex flex-column flex-wrap justify-content-between">
-              <div class="row order-0 d-flex flex-column h-50 w-100 mt-2 p-1 align-self-center align-top ">
-                <h5 class="col h5 h-25 fs-6 mb-1 fw-bold text-md-center">Bonjour</h5>
-                <p class="col h-25 fs-6 m-0 mb-1 fst-italic text-md-center">John Doe</p>
-                <p class="col h-25 fs-6 m-0 mb-1 fw-lighter text-primary text-md-center">N° client:123456789</p>
-              </div>
-              <div class="d-flex order-1 align-items-center align-self-center align-bottom h-25 mb-2 border border-danger rounded-pill">
-                <button type="button" class="btn w-100 h-100 text-center link-danger text-uppercase fw-bold pb-2">Me déconnecter</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav class="navbar navbar-light bg-primary">
-          <div class="row">
-
-          </div>
-    
-        </nav>
-      </section> -->
   </main>
 
 
