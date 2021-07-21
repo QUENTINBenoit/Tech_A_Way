@@ -1,8 +1,3 @@
-body {
-    min-height: 100%;
-    min-width: 100%;
-}
-
 /** 
 CSS components for screen smaller than 991px 
 **/
@@ -19,6 +14,11 @@ CSS components for screen smaller than 991px
     .disconnect-height {
         height: 15%;
     }
+
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none;
+     }
 
     .menu-nav-container {
         height: 7%!important;
@@ -41,7 +41,7 @@ CSS components for screen smaller than 991px
         margin-left: 1em!important;
     }
 
-    /** Not displayed menu desktop screens **/
+    /** Not displayed at this and smaller screens **/
     .menu-container-desktop {
         display: none!important;
     }
@@ -60,6 +60,7 @@ CSS components for screen larger than 992px
     .padding-container {
         padding-right: 5%!important;
         padding-left: 5%!important;
+        background-color: #f0f0f0;
     }
 
     /** image class **/
@@ -77,7 +78,7 @@ CSS components for screen larger than 992px
         height: 70%!important;
     }
 
-    /** class for user informations card **/
+    /** class for client informations card **/
     .info-height {
         height: 70%!important;
     }
@@ -101,6 +102,11 @@ CSS components for screen larger than 992px
         color: white;
     }
 
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none;
+     }
+
     /** text class at the user informations card **/
     .text-title-info {
         font-size: 2em!important;
@@ -114,7 +120,7 @@ CSS components for screen larger than 992px
         font-size: 1.5em!important;
     }
     
-    /** class for displaying position of the menu card **/
+    /** class for displaying position at the menu card **/
     .position {
         position: absolute!important;
         height: 30%!important;
@@ -149,5 +155,10 @@ CSS components for screen larger than 992px
 
     .padding-informations-card {
         padding: 5%!important;
+    }
+
+    /** Title of the global informations card **/
+    .informations-title {
+        height: 10%!important;
     }
 }

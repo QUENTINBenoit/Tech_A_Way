@@ -65,10 +65,10 @@
         User informations card
        -->
       <div class="row row-cols-1 row-cols-lg-2 position-relative vh-100 padding-container">
-        <div class="col-12 col-lg-5 order-1 order-lg-1 h-50 p-0">
+        <div class="col-12 col-lg-5 order-1 order-lg-1 h-50 p-0 ps-1">
 
           <!-- Image card -->
-          <div class="d-flex flex-lg-wrap align-items-center h-100 w-100 shadow">
+          <div class="d-flex flex-lg-wrap align-items-center h-100 w-100 shadow bg-white">
             <div
               class="d-flex align-items-center justify-content-lg-center align-items-lg-start h-50 w-50 ms-2 img-height">
               <img src="../images/pngegg.png" class="img-fluid h-50 ms-4 ms-lg-0 mt-lg-3 height-img">
@@ -121,15 +121,15 @@
           <!-- is displayed for screens bigger than 991px -->
           <div class="d-flex justify-content-center menu-container-desktop">
             <div class="list-group">
-              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow"
+              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow"
                 aria-current="true">
                 Mes informations
               </button>
-              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow"> Mes
+              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow"> Mes
                 adresses</button>
-              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow">Mes
+              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow">Mes
                 commandes</button>
-              <button href="#" class="list-group-item list-group-item-action text-center fs-4 shadow">Bons d'achat et
+              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow">Bons d'achat et
                 Avoirs</button>
             </div>
           </div>
@@ -139,8 +139,16 @@
            Informations card 
         -->
         <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 informations-menu-card shadow p-0">
-          <div class="d-flex flex-wrap h-100 padding-informations-card">
-            <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title">Vos informations</p>
+          <div class="d-flex flex-wrap h-100 padding-informations-card bg-white">
+            <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos commandes</p>
+            <div class="card border-light mb-3">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h5 class="card-title">Light card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+            <!-- <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos informations</p>
             <div class="d-flex flex-column h-75 w-100 ps-5 pe-5">
               <form>
               <p class="w-100 fs-6 mt-2 mb-3">Civilité :</p>
@@ -170,8 +178,9 @@
                 <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
                 <input type="password" class="form-control" id="exampleInputPassword1">
               </div>
+              <button type="submit" class="btn btn-primary">Valider</button>
             </form>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
