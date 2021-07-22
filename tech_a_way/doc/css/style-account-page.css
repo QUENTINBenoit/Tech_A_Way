@@ -50,6 +50,12 @@ CSS components for screen smaller than 991px
     .informations-title {
         height: 10%!important;
     }
+
+    /** Adresses information card **/
+    .card-adress-information {
+        position: static!important;
+        height: 35%!important;
+    }
 }
 
 /** 
@@ -144,12 +150,12 @@ CSS components for screen larger than 992px
         height: 100%!important;
     }
 
-    .list-group {
+    .list-group-menu {
         width: 100%!important;
         height: 100%!important;
     }
 
-    .list-group-item {
+    .list-group-menu-item {
         height: 100%!important;
     }
 

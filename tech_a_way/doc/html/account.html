@@ -120,69 +120,77 @@
 
           <!-- is displayed for screens bigger than 991px -->
           <div class="d-flex justify-content-center menu-container-desktop">
-            <div class="list-group">
-              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow"
+            <div class="list-group list-group-menu">
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item"
                 aria-current="true">
                 Mes informations
               </button>
-              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow"> Mes
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item"> Mes
                 adresses</button>
-              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow">Mes
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item">Mes
                 commandes</button>
-              <button href="#" class="btn list-group-item list-group-item-action text-center fs-4 shadow">Bons d'achat et
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item">Bons
+                d'achat
+                et
                 Avoirs</button>
             </div>
           </div>
         </div>
 
         <!--
-           Informations card 
+           Informations card container
         -->
         <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 informations-menu-card shadow p-0">
           <div class="d-flex flex-wrap h-100 padding-informations-card bg-white">
-            <!-- <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos commandes</p>
-            <div class="card border-light mb-3">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="container d-flex flex-column justify-content-between">
+
+              <!--  informations card content -->
+              <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos
+                informations</p>
+              <div class="d-flex flex-column h-75 w-100 ps-5 pe-5">
+                <form>
+                  <p class="w-100 fs-6 mt-2 mb-3">Civilité :</p>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                      value="option1">
+                    <label class="form-check-label" for="inlineRadio1">M.</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                      value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Mme</label>
+                  </div>
+                  <div class="row-cols-1 mt-3">
+                    <p class="text-body">Prénom :</p>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    </div>
+                    <p class="text-body mt-3">Nom :</p>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label mt-3">Adresse email :</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Valider</button>
+                </form>
               </div>
-            </div> -->
-            <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos informations</p>
-            <div class="d-flex flex-column h-75 w-100 ps-5 pe-5">
-              <form>
-              <p class="w-100 fs-6 mt-2 mb-3">Civilité :</p>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">M.</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">Mme</label>
-              </div>
-              <div class="row-cols-1 mt-3">
-                <p class="text-body">Prénom :</p>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                </div>
-                <p class="text-body mt-3">Nom :</p>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label mt-3">Adresse email :</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-              </div>
-              <button type="submit" class="btn btn-primary">Valider</button>
-            </form>
+              <!-- End of informations card content -->
+              
             </div>
           </div>
         </div>
+        <!-- End of informations card container-->
       </div>
     </section>
   </main>
