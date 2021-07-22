@@ -23,3 +23,20 @@ Pour récupérer la version de mysql (MariaDB), on peut lancer la commande :
 
 ## Création de la BDD
 - `php bin/console doctrine:database:create` ou `php bin/console d:d:c`
+
+## Création des entités
+on utilise la commande maker : 
+- `php bin/console make:entity`
+Ensuite on renseigne les  propriétés (nom, type, null? ...)
+après avoir crée la table et renseigné les propriétés, on retrouve dans src\Entity la classe Product avec les propriétés et getter/setter associés.
+on retrouve également dans src/Repository les méthodes génériques qui pourront être utilisés plus tard (quand la BDD sera opérationnelle) pour faire des requêtes SQL.
+
+## Migration
+
+- `php bin/console make:migration`
+
+La commande va créer un fichier dans le dossier `migration` 
+
+Ensuite, on lance cette migration afin de générer nos tables dans la BDD
+
+- `php bin/console doctrine:migrations:migrate`
