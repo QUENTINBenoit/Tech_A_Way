@@ -1,10 +1,8 @@
-h1 {
+h1, h2, h3 {
 color: #F25528;
 }
 
-h2 {
-color: #F25528
-}
+
 
 .navbar {
     background-color: #F25528
@@ -28,3 +26,4 @@ color: #F25528
     color: black;
 
 }
+
