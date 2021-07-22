@@ -26,12 +26,12 @@ class Picture
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="pictures")
@@ -41,8 +41,8 @@ class Picture
 
     public function __construct()
     {
-        $this->created_At = new DateTime();
-        $this->updated_At = new DateTime();
+        $this->created_at = new DateTime();
+        $this->updated_at = new DateTime();
     }
 
     public function getId(): ?int

@@ -33,12 +33,12 @@ class Brand
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updated_at;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="brand", orphanRemoval=true)
@@ -48,8 +48,8 @@ class Brand
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->created_At = new DateTime();
-        $this->updated_At = new DateTime();
+        $this->created_at = new DateTime();
+        $this->updated_at = new DateTime();
     }
 
     public function getId(): ?int

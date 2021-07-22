@@ -43,7 +43,7 @@ class Category
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="subcategories")
@@ -65,7 +65,7 @@ class Category
         $this->subcategories = new ArrayCollection();
         $this->products = new ArrayCollection();
         $this->created_at = new DateTime();
-        $this->updated_At = new DateTime();
+        $this->updated_at = new DateTime();
     }
 
     public function getId(): ?int
