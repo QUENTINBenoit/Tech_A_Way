@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Brand;
+use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -65,7 +66,25 @@ class AppFixtures extends Fixture
                 $product->setDescription($faker->text());
                 $product->setStock($faker->numberBetween(0, 500));
 
-                $brand->addProduct($product);
+              
+
+                
+
+
+
+                    for ($pictureNumber = 1; $pictureNumber <=5; $pictureNumber++) {
+
+                        $picture = new Picture();
+                        $picture->setName($faker->name() . ".jpg");
+
+                        $product->addPicture($picture);
+                        $manager->persist($picture);
+                    }
+
+                    $brand->addProduct($product);
+
+
+                
                 // Include the data waiting list
                 $manager->persist($product);
             }
