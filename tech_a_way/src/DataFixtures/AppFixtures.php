@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Brand;
+use App\Entity\Category;
 use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\User;
@@ -23,6 +24,77 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
+
+
+        $categoryListName = [
+            'Audio et Hi-Fi',
+            'Vidéo',
+            'Informatique',
+            'Téléphones Portables et Fixes'
+        ];
+        
+
+        for ($i = 0; $i< count($categoryListName); $i++) {
+
+            $category = new Category();
+            $category->setName($categoryListName[$i]);
+
+            $category->setSubtitle("Catégorie : " . $faker->name);
+            $category->setPicture($faker->name() . ".jpg");
+
+
+                for ($subCategoryNumber = 1; $subCategoryNumber <= 5; $subCategoryNumber++) {
+
+                    $subCategory = new Category();
+                    $subCategory->setName($faker->name());
+                    $subCategory->setSubtitle("sous-catégorie ! " . $faker->name);
+                    $subCategory->setPicture($faker->name() . ".jpg");
+
+
+                        for ($subSubCategoryNumber = 1; $subSubCategoryNumber <= 7; $subSubCategoryNumber++) {
+
+                            $subSubCategory = new Category();
+                            $subSubCategory->setName($faker->name());
+                            $subSubCategory->setSubtitle("sous-sous-catégorie ! " . $faker->name);
+                            $subSubCategory->setPicture($faker->name() . ".jpg");
+
+                            $subCategory->addSubcategory($subSubCategory);
+                            $manager->persist($subSubCategory);
+                        }
+
+                        $category->addSubcategory($subCategory);
+
+                    
+                    // Include the data waiting list
+                    $manager->persist($subCategory);
+                }
+
+
+            $manager->persist($category);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $brandList = [
             [
