@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -88,6 +89,8 @@ class User
     {
         $this->orders = new ArrayCollection();
         $this->addresses = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->updated_At = new DateTime();
     }
 
     public function getId(): ?int

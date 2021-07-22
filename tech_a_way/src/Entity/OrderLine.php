@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OrderLineRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=OrderLineRepository::class)
@@ -57,6 +58,12 @@ class OrderLine
      * @ORM\JoinColumn(nullable=false)
      */
     private $anOrder;
+
+    public function __construct()
+    {
+        $this->created_At = new DateTime();
+        $this->updated_At = new DateTime();
+    }
 
     public function getId(): ?int
     {

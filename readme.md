@@ -39,4 +39,16 @@ La commande va créer un fichier dans le dossier `migration`
 
 Ensuite, on lance cette migration afin de générer nos tables dans la BDD
 
-- `php bin/console doctrine:migrations:migrate`
+- `php bin/console doctrine:migrations:migrate` 
+
+## fixtures
+les fixtures permettent de créer en BDD des items aléatoires dans les tables désirées afin de pouvoir travailler avec ces données dans symfony.
+commande : `composer require --dev orm-fixtures`
+
+Then, we load the data in the database with command :
+- `php bin/console doctrine:fixtures:load`
+
+### Faker
+use next command to load Faker : `composer require fzaninotto/faker`
+`use Faker;`
+in the method load, make : `$faker = Faker\Factory::create('fr_FR');`

@@ -6,7 +6,7 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
@@ -96,6 +96,8 @@ class Order
     public function __construct()
     {
         $this->order_lines = new ArrayCollection();
+        $this->created_At = new DateTime();
+        $this->updated_At = new DateTime();
     }
 
     public function getId(): ?int
