@@ -18,16 +18,16 @@
 
     <main>
         <section>
-            <div class="container" id="delivery address selection">
+            <div class="container-fluid mt-4" id="delivery address selection">
                 <div class="row" id="title_adress_selected">
-                    <div class="col d-flex justify-content-center" style="border:1px solid red ">
+                    <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ">
                         <h1 class="">Sélectionner votre adresse de livraison</h1>
                     </div>
                 </div>
             </div>
-            <div class="container" id="selected_adress">
+            <div class="container mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
-                    <div class="col d-flex justify-content-md-center " style="border:1px solid red ">
+                    <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">Adresse 1</h5>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex justify-content-md-center" style="border:1px solid red ">
+                    <div class="col d-flex justify-content-md-center" >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">Adresse 2</h5>
@@ -75,9 +75,16 @@
                     </div>
                 </div>
             </div>
-            <div class="container" id="add an adress">
+            <div class="containe-fluid mt-3">
+                <div class="row">
+                    <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ;">
+                        <h2>Ajouter une nouvelle adresse</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3" id="add an adress">
                 <div class="row" id="form_add_adress">
-                    <div class="col" style="border: 1px solid red;">
+                    <div class="col" style="border-bottom:1px solid #F25528;">
                         <form class="row g-3 needs-validation" novalidate>
                             <div class="col-md-4">
                                 <label for="validationCustom01" class="form-label">Prenom</label>
@@ -127,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary" type="submit">validé</button>
+                                <button class="btn btn-warning mb-2" type="submit">validé</button>
                             </div>
                         </form>
                     </div>
@@ -136,16 +143,16 @@
         </section>
 
         <section>
-            <div class="container" id="selection of payment method">
+            <div class="container mt-3" id="selection of payment method">
                 <div class="row">
-                    <div class="col d-flex justify-content-md-center " style="border: 1px solid red;">
+                    <div class="col d-flex justify-content-md-center " style="border-bottom:1px solid #F25528;">
                         <h2>Selectionner un mode de paiement</h2>
                     </div>
                 </div>
             </div>
-            <div class="container" id="Financing option ">
+            <div class="container mt-3" id="Financing option ">
                 <div class="row">
-                    <div class="col" style="border: 1px solid red;">
+                    <div class="col" style="border-bottom:1px solid #F25528;">
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -200,33 +207,34 @@
                     </div>
                 </div>
             </div>
-            <div class="container" id="other_means_of_payment">
+            <div class="container-fluid mt-3" id="other_means_of_payment">
                 <div class="row">
-                    <div class="col d-flex justify-content-md-center">
+                    <div class="col d-flex justify-content-center" style="border-bottom: 1px solid #F25528 ;">
                         <h2>Plus de moyen de paiement</h2>
                     </div>
                 </div>
 
             </div>
-            <div class="container" id="payment_methods">
+            <div class="container mt-3" id="payment_methods">
                 <div class="row" id="More payment options">
                     <div class="col-12 col-md-4 d-flex justify-content-md-center flex-column"
-                        style="border: 1px solid red;">
-                        <h3>Ajouter un compte bancaire</h3>
+                        style="border-bottom:1px solid #F25528;">
+                        <div class="d-flex align-items-start"></div>
+                        <h3 >Ajouter un compte bancaire</h3>
                         <div>
-                            <button type="button" class="btn btn-warning">Selectionner</button>
+                            <button type="button" class="btn btn-warning mb-1 mt-3 ">Selectionner</button>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 d-flex justify-content-md-center flex-column" style="border: 1px solid red;">
-                        <h3>Carte de crédit</h3>
+                    <div class="col-12 col-md-4 d-flex justify-content-md-center flex-column " style="border-bottom:1px solid #F25528;">
+                        <h3 class="mb-3" >Carte de crédit</h3>
                         <div>
-                            <button type="button" class="btn btn-warning">Selectionner</button>
+                            <button type="button" class="btn btn-warning mb-1 mt-3">Selectionner</button>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 d-flex justify-content-md-center flex-column" style="border: 1px solid red;">
-                        <h3>Cheque cadeau</h3>
+                    <div class="col-12 col-md-4 d-flex justify-content-md-center flex-column" style="border-bottom:1px solid #F25528;">
+                        <h3 class="mb-3">Cheque cadeau</h3>
                         <div>
-                            <button type="button" class="btn btn-warning">Selectionner</button>
+                            <button type="button" class="btn btn-warning mb-1 mt-3">Selectionner</button>
                         </div>
                     </div>
                 </div>
