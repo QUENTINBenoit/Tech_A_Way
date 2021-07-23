@@ -18,7 +18,6 @@ use Faker;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use DateTime;
 
-
 class AppFixtures extends Fixture
 {
      private $passwordHasher; 
@@ -31,6 +30,7 @@ class AppFixtures extends Fixture
         //faker is used to generate fake data.
         $faker = Faker\Factory::create('fr_FR');
 
+/***********************************PART 1: CATEGORY/PRODUCT/BRAND/PICTURE*************************************************************/   
         // List of main Categories
         $categoryListName = [
             'Audio et Hi-Fi',
@@ -40,57 +40,41 @@ class AppFixtures extends Fixture
         ];
         
         // creation of array empty to put object category in order to associate them later with the products 
-        $arrayofObject = [];
-
+        $arrayofObjectCategory = [];
 
         // On boucle d'abord sur le tableau $categoryListName
         for ($i = 0; $i< count($categoryListName); $i++) {
-
             $category = new Category();
             $category->setName($categoryListName[$i]);
-
             $category->setSubtitle("Catégorie : " . $faker->name);
             $category->setPicture($faker->name() . ".jpg");
 
-
                 for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
-
                     $subCategory = new Category();
                     $subCategory->setName($faker->name());
                     $subCategory->setSubtitle("sous-catégorie ! " . $faker->name);
                     $subCategory->setPicture($faker->name() . ".jpg");
 
-
                         for ($subSubCategoryNumber = 0; $subSubCategoryNumber < $faker->numberBetween(2, 5); $subSubCategoryNumber++) {
-
                             $subSubCategory = new Category();
                             $subSubCategory->setName($faker->name());
                             $subSubCategory->setSubtitle("sous-sous-catégorie ! " . $faker->name);
                             $subSubCategory->setPicture($faker->name() . ".jpg");
 
                             $subCategory->addSubcategory($subSubCategory);
-                            $arrayofObject[]= $subSubCategory;
+                            $arrayofObjectCategory[]= $subSubCategory;
                             $manager->persist($subSubCategory);
                         }
-
-                        $category->addSubcategory($subCategory);
-
                     
+                    $category->addSubcategory($subCategory);
                     // Include the data waiting list
                     $manager->persist($subCategory);
                 }
-
-            
             $manager->persist($category);
         }
 
-
-
         $brandList = [
-            [
-                'name' => 'Acer',
-                'picture' => 'acer.png'
-            ],
+            ['name' => 'Acer', 'picture' => 'acer.png'],
             ['name' => 'Apple', 'picture' => 'apple.jpg'],
             ['name' => 'Asus', 'picture' => 'asus.png'],
             ['name' => 'Dell', 'picture' => 'dell.png'],
@@ -103,13 +87,9 @@ class AppFixtures extends Fixture
             ['name' => 'Toshiba', 'picture' => 'toshiba.jpg'],
             ['name' => 'Xiaomi', 'picture' => 'xiaomi.png']
         ];
-
-        // Create 5 brands !!
         foreach ($brandList as $currentBrand) {
-
             $brand = new Brand();
             $brand->setName($currentBrand['name']);
-
             $brand->setLogo($currentBrand['picture']);
 
             for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
@@ -118,8 +98,6 @@ class AppFixtures extends Fixture
 
                 $product = new Product();
                 $product->setName($faker->sentence($nbWords = 1, $variableNbWords = true));
-
-
                 $product->setExclTaxesPrice($faker->numberBetween(0, 1000) . "." . $faker->numberBetween(0, 99));
                 $product->setSalesTax($setSalesTax);
                 $product->setInclTaxesPrice($ExclTaxesPrice + ($ExclTaxesPrice * $setSalesTax));
@@ -127,24 +105,21 @@ class AppFixtures extends Fixture
                 $product->setDescription($faker->text());
                 $product->setStock($faker->numberBetween(0, 500));
 
-              
-
                     for ($pictureNumber = 0; $pictureNumber <=$faker->numberBetween(1, 10); $pictureNumber++) {
-
                         $picture = new Picture();
                         $picture->setName($faker->name() . ".jpg");
 
                         $product->addPicture($picture);
                         $manager->persist($picture);
                     }
-
-                    $brand->addProduct($product);
+                
+                $brand->addProduct($product);
 
                 // we generate randomNumber to link products on category and link the same product with subcategory of category, and link the same product with subsubcategory of subcategory
-                $randomNumber = intval($faker->numberBetween(0, (count($arrayofObject)-1)));
-                $product->addCategory($arrayofObject[$randomNumber]);
-                $product->addCategory($arrayofObject[$randomNumber]->getCategory());
-                $product->addCategory($arrayofObject[$randomNumber]->getCategory()->getCategory());
+                $randomNumber = intval($faker->numberBetween(0, (count($arrayofObjectCategory)-1)));
+                $product->addCategory($arrayofObjectCategory[$randomNumber]);
+                $product->addCategory($arrayofObjectCategory[$randomNumber]->getCategory());
+                $product->addCategory($arrayofObjectCategory[$randomNumber]->getCategory()->getCategory());
                
                 // Include the data waiting list
                 $manager->persist($product);
@@ -153,18 +128,15 @@ class AppFixtures extends Fixture
             $manager->persist($brand);
         }
 
+/***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
-   
             ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway1'],
             ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway2'],
             ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway3'],
             ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway4']
         ];
-
         foreach ($userList as $currentUser) {
-            
             $adminUser = new User();           
-
             $adminUser->setFirstname($currentUser[('firstname')]);
             $adminUser->setLastname($currentUser[('lastname')]);
             $adminUser->setPhoneNumber('06' . $faker->randomNumber(8));
@@ -175,31 +147,11 @@ class AppFixtures extends Fixture
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
             $adminUser->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
-
             //$faker->dateTimeThisCentury->format('Y-m-d')
             // Include the data waiting list
             $manager->persist($adminUser);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PART2 ****************************************************************************
         $statusName = [
             'En cours - non payé',
             'En cours - payé colis non envoyé',
@@ -238,14 +190,8 @@ class AppFixtures extends Fixture
             $manager->persist($modeOfPayment);
         }
 
-
-
-
-
         for ($userNumber = 0; $userNumber < $faker->numberBetween(10, 50); $userNumber++) {
-
             $user = new User();
-
             $user ->setFirstname($faker->firstName());
             $user ->setLastname($faker->lastName());
             $user ->setPhoneNumber('06' . $faker->randomNumber(8));
@@ -262,13 +208,11 @@ class AppFixtures extends Fixture
                 $address->setZipcode('75');
                 $address->setCity('Paris');
 
-
                 $user->addAddress($address);
                 $manager->persist($address);
             }
 
             for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
-
                 $order = new Order();
                 $order->setNumber(50);
                 $order->setTypeDelivery('chronopost');
@@ -278,8 +222,6 @@ class AppFixtures extends Fixture
                 $order->setStreetBill('rue machin facturation');
                 $order->setZipcodeBill('72');
                 $order->setCityBill('Le mans facturation');
-
-
 
                     for ($orderLineNumber = 0; $orderLineNumber < $faker->numberBetween(1, 10); $orderLineNumber++) {
                         $ExclTaxesPrice = $faker->numberBetween(0, 1000);
@@ -292,13 +234,11 @@ class AppFixtures extends Fixture
                         $orderLine->setSalesTax($setSalesTax);
                         $orderLine->setInclTaxesUnitPrice($faker->numberBetween(0, 500));
           
-
                         $order->addOrderLine($orderLine);
                         $manager->persist($orderLine);
                     }
 
                     $user->addOrder($order);
-
   
                 $randomNumber = intval($faker->numberBetween(0, (count($arrayofObjectStatus)-1)));
                 $order->setStatus($arrayofObjectStatus[$randomNumber]);
@@ -306,33 +246,12 @@ class AppFixtures extends Fixture
                 $randomNumber = intval($faker->numberBetween(0, (count($arrayofObjectModeOfPayment)-1)));
                 $order->setModeOfPayment($arrayofObjectModeOfPayment[$randomNumber]);
         
-               
                 // Include the data waiting list
                 $manager->persist($order);
             }
             // Include the data waiting list
             $manager->persist($user);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // We register the products in BDD
         $manager->flush();
     }
