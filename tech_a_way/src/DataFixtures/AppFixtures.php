@@ -206,7 +206,7 @@ class AppFixtures extends Fixture
                 $address = new Address();
                 $address->setType('chronopost');
                 $address->setStreet($faker->streetAddress());
-                $address->setZipcode('75');
+                $address->setZipcode('75015');
                 $address->setCity($faker->city());
 
                 $user->addAddress($address);

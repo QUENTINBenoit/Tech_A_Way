@@ -29,7 +29,7 @@ class Address
     private $street;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $zipcode;
 

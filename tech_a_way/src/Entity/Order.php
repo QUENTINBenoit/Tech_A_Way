@@ -36,7 +36,7 @@ class Order
     private $street_delivery;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $zipcode_delivery;
 
@@ -51,7 +51,7 @@ class Order
     private $street_bill;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $zipcode_bill;
 
