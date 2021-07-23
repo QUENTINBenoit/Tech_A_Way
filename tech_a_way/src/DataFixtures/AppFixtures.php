@@ -53,7 +53,7 @@ class AppFixtures extends Fixture
             $category->setPicture($faker->name() . ".jpg");
 
 
-                for ($subCategoryNumber = 1; $subCategoryNumber <= 5; $subCategoryNumber++) {
+                for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
 
                     $subCategory = new Category();
                     $subCategory->setName($faker->name());
@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
                     $subCategory->setPicture($faker->name() . ".jpg");
 
 
-                        for ($subSubCategoryNumber = 1; $subSubCategoryNumber <= 7; $subSubCategoryNumber++) {
+                        for ($subSubCategoryNumber = 0; $subSubCategoryNumber < $faker->numberBetween(2, 5); $subSubCategoryNumber++) {
 
                             $subSubCategory = new Category();
                             $subSubCategory->setName($faker->name());
@@ -112,8 +112,7 @@ class AppFixtures extends Fixture
 
             $brand->setLogo($currentBrand['picture']);
 
-            // Create 30 products !!
-            for ($productNumber = 0; $productNumber <= 9; $productNumber++) {
+            for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
                 $ExclTaxesPrice = $faker->numberBetween(0, 1000);
                 $setSalesTax = 20;
 
@@ -130,7 +129,7 @@ class AppFixtures extends Fixture
 
               
 
-                    for ($pictureNumber = 1; $pictureNumber <=5; $pictureNumber++) {
+                    for ($pictureNumber = 0; $pictureNumber <=$faker->numberBetween(1, 10); $pictureNumber++) {
 
                         $picture = new Picture();
                         $picture->setName($faker->name() . ".jpg");
@@ -243,7 +242,7 @@ class AppFixtures extends Fixture
 
 
 
-        for ($userNumber = 0; $userNumber <= 19; $userNumber++) {
+        for ($userNumber = 0; $userNumber < $faker->numberBetween(10, 50); $userNumber++) {
 
             $user = new User();
 
@@ -256,7 +255,7 @@ class AppFixtures extends Fixture
             $user ->setStatus(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
-            for ($i = 0; $i <= 9; $i++) {
+            for ($i = 0; $i < $faker->numberBetween(1, 4); $i++) {
                 $address = new Address();
                 $address->setType('chronopost');
                 $address->setStreet('rue machin');
@@ -268,7 +267,7 @@ class AppFixtures extends Fixture
                 $manager->persist($address);
             }
 
-            for ($orderNumber = 0; $orderNumber <= 9; $orderNumber++) {
+            for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
 
                 $order = new Order();
                 $order->setNumber(50);
@@ -282,7 +281,7 @@ class AppFixtures extends Fixture
 
 
 
-                    for ($orderLineNumber = 1; $orderLineNumber <=5; $orderLineNumber++) {
+                    for ($orderLineNumber = 0; $orderLineNumber < $faker->numberBetween(1, 10); $orderLineNumber++) {
                         $ExclTaxesPrice = $faker->numberBetween(0, 1000);
                         $setSalesTax = 20;
 
