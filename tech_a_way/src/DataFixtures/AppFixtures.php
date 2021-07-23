@@ -202,11 +202,18 @@ class AppFixtures extends Fixture
             $user ->setStatus(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
+            $typeDelivery = [
+                'colissimo',
+                'chronopost',
+                'relai colis',
+            ];
+
+
             for ($i = 0; $i < $faker->numberBetween(1, 4); $i++) {
                 $address = new Address();
-                $address->setType('chronopost');
+                $address->setType($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
                 $address->setStreet($faker->streetAddress());
-                $address->setZipcode('75015');
+                $address->setZipcode($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
                 $address->setCity($faker->city());
 
                 $user->addAddress($address);
@@ -216,13 +223,13 @@ class AppFixtures extends Fixture
             for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
                 $order = new Order();
                 $order->setNumber(50);
-                $order->setTypeDelivery('chronopost');
-                $order->setStreetDelivery('rue machin livraison');
-                $order->setZipcodeDelivery('75');
-                $order->setCityDelivery('Paris livraison');
-                $order->setStreetBill('rue machin facturation');
-                $order->setZipcodeBill('72');
-                $order->setCityBill('Le mans facturation');
+                $order->setTypeDelivery($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
+                $order->setStreetDelivery($faker->streetAddress());
+                $order->setZipcodeDelivery($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
+                $order->setCityDelivery($faker->city());
+                $order->setStreetBill($faker->streetAddress());
+                $order->setZipcodeBill($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
+                $order->setCityBill($faker->city());
 
                     for ($orderLineNumber = 0; $orderLineNumber < $faker->numberBetween(1, 10); $orderLineNumber++) {
                         $ExclTaxesPrice = $faker->numberBetween(0, 1000).".".$faker->numberBetween(0, 99);
