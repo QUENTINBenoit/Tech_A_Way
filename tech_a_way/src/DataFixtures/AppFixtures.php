@@ -157,7 +157,7 @@ class AppFixtures extends Fixture
             'En cours - non payé',
             'En cours - payé colis non envoyé',
             'En cours - payé colis envoyé',
-            'terminé',
+            'terminé : colis reçu',
             'abandonné'
         ];
         // creation of array empty to put object category in order to associate them later with the products 
