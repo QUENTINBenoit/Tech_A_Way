@@ -46,20 +46,20 @@ class AppFixtures extends Fixture
         for ($i = 0; $i< count($categoryListName); $i++) {
             $category = new Category();
             $category->setName($categoryListName[$i]);
-            $category->setSubtitle("Catégorie : " . $faker->name);
-            $category->setPicture($faker->name() . ".jpg");
+            $category->setSubtitle("subtitle Catégorie : " . $faker->name);
+            $category->setPicture($faker->firstname() . ".jpg");
 
                 for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
                     $subCategory = new Category();
                     $subCategory->setName($faker->name());
-                    $subCategory->setSubtitle("sous-catégorie ! " . $faker->name);
-                    $subCategory->setPicture($faker->name() . ".jpg");
+                    $subCategory->setSubtitle("subtitle sous-catégorie ! " . $faker->name);
+                    $subCategory->setPicture($faker->firstname() . ".jpg");
 
                         for ($subSubCategoryNumber = 0; $subSubCategoryNumber < $faker->numberBetween(2, 5); $subSubCategoryNumber++) {
                             $subSubCategory = new Category();
                             $subSubCategory->setName($faker->name());
-                            $subSubCategory->setSubtitle("sous-sous-catégorie ! " . $faker->name);
-                            $subSubCategory->setPicture($faker->name() . ".jpg");
+                            $subSubCategory->setSubtitle("subtitle sous-sous-catégorie ! " . $faker->name);
+                            $subSubCategory->setPicture($faker->firstname() . ".jpg");
 
                             $subCategory->addSubcategory($subSubCategory);
                             $arrayofObjectCategory[]= $subSubCategory;
@@ -93,14 +93,15 @@ class AppFixtures extends Fixture
             $brand->setLogo($currentBrand['picture']);
 
             for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
-                $ExclTaxesPrice = $faker->numberBetween(0, 1000);
+                $ExclTaxesPrice = $faker->numberBetween(0, 1000).".".$faker->numberBetween(0, 99);
                 $setSalesTax = 20;
+                $InclTaxesPrice = $ExclTaxesPrice + ($ExclTaxesPrice * ($setSalesTax/100));
 
                 $product = new Product();
                 $product->setName($faker->sentence($nbWords = 1, $variableNbWords = true));
-                $product->setExclTaxesPrice($faker->numberBetween(0, 1000) . "." . $faker->numberBetween(0, 99));
+                $product->setExclTaxesPrice($ExclTaxesPrice);
                 $product->setSalesTax($setSalesTax);
-                $product->setInclTaxesPrice($ExclTaxesPrice + ($ExclTaxesPrice * $setSalesTax));
+                $product->setInclTaxesPrice(round($InclTaxesPrice, 2));
                 $product->setReference($faker->numberBetween(11, 99));
                 $product->setDescription($faker->text());
                 $product->setStock($faker->numberBetween(0, 500));
@@ -224,15 +225,16 @@ class AppFixtures extends Fixture
                 $order->setCityBill('Le mans facturation');
 
                     for ($orderLineNumber = 0; $orderLineNumber < $faker->numberBetween(1, 10); $orderLineNumber++) {
-                        $ExclTaxesPrice = $faker->numberBetween(0, 1000);
+                        $ExclTaxesPrice = $faker->numberBetween(0, 1000).".".$faker->numberBetween(0, 99);
                         $setSalesTax = 20;
+                        $InclTaxesPrice = $ExclTaxesPrice + ($ExclTaxesPrice * ($setSalesTax/100));
 
                         $orderLine = new OrderLine();
                         $orderLine->setProductName($faker->name());
                         $orderLine->setQuantity(25);
-                        $orderLine->setExclTaxesUnitPrice($faker->numberBetween(0, 1000) . "." . $faker->numberBetween(0, 99));
+                        $orderLine->setExclTaxesUnitPrice($ExclTaxesPrice);
                         $orderLine->setSalesTax($setSalesTax);
-                        $orderLine->setInclTaxesUnitPrice($faker->numberBetween(0, 500));
+                        $orderLine->setInclTaxesUnitPrice(round($InclTaxesPrice, 2));
           
                         $order->addOrderLine($orderLine);
                         $manager->persist($orderLine);
