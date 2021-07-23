@@ -23,9 +23,10 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        //faker is used to generate fake data.
         $faker = Faker\Factory::create('fr_FR');
 
-
+        // List of main Categories
         $categoryListName = [
             'Audio et Hi-Fi',
             'Vidéo',
@@ -33,7 +34,11 @@ class AppFixtures extends Fixture
             'Téléphones Portables et Fixes'
         ];
         
+        // creation of array empty to put object category in order to associate them later with the products 
+        $arrayofObject = [];
 
+
+        // On boucle d'abord sur le tableau $categoryListName
         for ($i = 0; $i< count($categoryListName); $i++) {
 
             $category = new Category();
@@ -59,6 +64,7 @@ class AppFixtures extends Fixture
                             $subSubCategory->setPicture($faker->name() . ".jpg");
 
                             $subCategory->addSubcategory($subSubCategory);
+                            $arrayofObject[]= $subSubCategory;
                             $manager->persist($subSubCategory);
                         }
 
@@ -69,30 +75,9 @@ class AppFixtures extends Fixture
                     $manager->persist($subCategory);
                 }
 
-
+            
             $manager->persist($category);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -123,7 +108,7 @@ class AppFixtures extends Fixture
             $brand->setLogo($currentBrand['picture']);
 
             // Create 30 products !!
-            for ($productNumber = 1; $productNumber <= 10; $productNumber++) {
+            for ($productNumber = 0; $productNumber <= 9; $productNumber++) {
                 $ExclTaxesPrice = $faker->numberBetween(0, 1000);
                 $setSalesTax = 20;
 
@@ -140,10 +125,6 @@ class AppFixtures extends Fixture
 
               
 
-                
-
-
-
                     for ($pictureNumber = 1; $pictureNumber <=5; $pictureNumber++) {
 
                         $picture = new Picture();
@@ -155,8 +136,12 @@ class AppFixtures extends Fixture
 
                     $brand->addProduct($product);
 
-
-                
+                // we generate randomNumber to link products on category and link the same product with subcategory of category, and link the same product with subsubcategory of subcategory
+                $randomNumber = intval($faker->numberBetween(0, (count($arrayofObject)-1)));
+                $product->addCategory($arrayofObject[$randomNumber]);
+                $product->addCategory($arrayofObject[$randomNumber]->getCategory());
+                $product->addCategory($arrayofObject[$randomNumber]->getCategory()->getCategory());
+               
                 // Include the data waiting list
                 $manager->persist($product);
             }
