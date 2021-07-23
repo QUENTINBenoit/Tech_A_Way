@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PictureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=PictureRepository::class)
@@ -25,18 +26,24 @@ class Picture
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="pictures")
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
+
+    public function __construct()
+    {
+        $this->created_at = new DateTime();
+        $this->updated_at = new DateTime();
+    }
 
     public function getId(): ?int
     {
