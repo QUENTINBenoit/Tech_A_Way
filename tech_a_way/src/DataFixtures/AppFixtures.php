@@ -108,7 +108,7 @@ class AppFixtures extends Fixture
 
                     for ($pictureNumber = 0; $pictureNumber <=$faker->numberBetween(1, 10); $pictureNumber++) {
                         $picture = new Picture();
-                        $picture->setName($faker->name() . ".jpg");
+                        $picture->setName($faker->firstname() . ".jpg");
 
                         $product->addPicture($picture);
                         $manager->persist($picture);
@@ -196,7 +196,7 @@ class AppFixtures extends Fixture
             $user ->setFirstname($faker->firstName());
             $user ->setLastname($faker->lastName());
             $user ->setPhoneNumber('06' . $faker->randomNumber(8));
-            $user ->setEmail($faker->lastName());
+            $user ->setEmail($faker->email());
             $user ->setRole('["ROLE_USER"]');
             $user ->setPassword($faker->password());
             $user ->setStatus(1);
@@ -205,9 +205,9 @@ class AppFixtures extends Fixture
             for ($i = 0; $i < $faker->numberBetween(1, 4); $i++) {
                 $address = new Address();
                 $address->setType('chronopost');
-                $address->setStreet('rue machin');
+                $address->setStreet($faker->streetAddress());
                 $address->setZipcode('75');
-                $address->setCity('Paris');
+                $address->setCity($faker->city());
 
                 $user->addAddress($address);
                 $manager->persist($address);
