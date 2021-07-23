@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Address;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\ModeOfPayment;
@@ -255,7 +256,17 @@ class AppFixtures extends Fixture
             $user ->setStatus(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
+            for ($i = 0; $i <= 9; $i++) {
+                $address = new Address();
+                $address->setType('chronopost');
+                $address->setStreet('rue machin');
+                $address->setZipcode('75');
+                $address->setCity('Paris');
 
+
+                $user->addAddress($address);
+                $manager->persist($address);
+            }
 
             for ($orderNumber = 0; $orderNumber <= 9; $orderNumber++) {
 
