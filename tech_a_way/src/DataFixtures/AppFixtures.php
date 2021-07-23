@@ -238,7 +238,7 @@ class AppFixtures extends Fixture
 
                         $orderLine = new OrderLine();
                         $orderLine->setProductName($faker->name());
-                        $orderLine->setQuantity(25);
+                        $orderLine->setQuantity($faker->numberBetween(1, 5));
                         $orderLine->setExclTaxesUnitPrice($ExclTaxesPrice);
                         $orderLine->setSalesTax($setSalesTax);
                         $orderLine->setInclTaxesUnitPrice(round($InclTaxesPrice, 2));
