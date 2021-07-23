@@ -4,8 +4,12 @@ namespace App\DataFixtures;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\ModeOfPayment;
+use App\Entity\Order;
+use App\Entity\OrderLine;
 use App\Entity\Picture;
 use App\Entity\Product;
+use App\Entity\Status;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -176,6 +180,149 @@ class AppFixtures extends Fixture
             // Include the data waiting list
             $manager->persist($adminUser);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PART2 ****************************************************************************
+        $statusName = [
+            'En cours - non payé',
+            'En cours - payé colis non envoyé',
+            'En cours - payé colis envoyé',
+            'terminé',
+            'abandonné'
+        ];
+        // creation of array empty to put object category in order to associate them later with the products 
+        $arrayofObjectStatus = [];
+        // On boucle d'abord sur le tableau $categoryListName
+        for ($i = 0; $i< count($statusName); $i++) {
+            $status = new Status();
+            $status->setName($statusName[$i]);
+
+            $arrayofObjectStatus[]= $status;
+            $manager->persist($status);
+        }
+
+        $typeOfPayment = [
+            'American express',
+            'Bitcoin',
+            'CB',
+            'Mastercard',
+            'Paypal',
+            'Visa Electron',
+            'Visa'
+        ];
+        // creation of array empty to put object category in order to associate them later with the products 
+        $arrayofObjectModeOfPayment = [];
+        // On boucle d'abord sur le tableau $categoryListName
+        for ($i = 0; $i< count($typeOfPayment); $i++) {
+            $modeOfPayment = new ModeOfPayment();
+            $modeOfPayment->setType($typeOfPayment[$i]);
+
+            $arrayofObjectModeOfPayment[]= $modeOfPayment;
+            $manager->persist($modeOfPayment);
+        }
+
+
+
+
+
+        for ($userNumber = 0; $userNumber <= 19; $userNumber++) {
+
+            $user = new User();
+
+            $user ->setFirstname($faker->firstName());
+            $user ->setLastname($faker->lastName());
+            $user ->setPhoneNumber('06' . $faker->randomNumber(8));
+            $user ->setEmail($faker->lastName());
+            $user ->setRole('["ROLE_USER"]');
+            $user ->setPassword($faker->password());
+            $user ->setStatus(1);
+            $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
+
+
+
+            for ($orderNumber = 0; $orderNumber <= 9; $orderNumber++) {
+
+                $order = new Order();
+                $order->setNumber(50);
+                $order->setTypeDelivery('chronopost');
+                $order->setStreetDelivery('rue machin livraison');
+                $order->setZipcodeDelivery('75');
+                $order->setCityDelivery('Paris livraison');
+                $order->setStreetBill('rue machin facturation');
+                $order->setZipcodeBill('72');
+                $order->setCityBill('Le mans facturation');
+
+
+
+                    for ($orderLineNumber = 1; $orderLineNumber <=5; $orderLineNumber++) {
+                        $ExclTaxesPrice = $faker->numberBetween(0, 1000);
+                        $setSalesTax = 20;
+
+                        $orderLine = new OrderLine();
+                        $orderLine->setProductName($faker->name());
+                        $orderLine->setQuantity(25);
+                        $orderLine->setExclTaxesUnitPrice($faker->numberBetween(0, 1000) . "." . $faker->numberBetween(0, 99));
+                        $orderLine->setSalesTax($setSalesTax);
+                        $orderLine->setInclTaxesUnitPrice($faker->numberBetween(0, 500));
+          
+
+                        $order->addOrderLine($orderLine);
+                        $manager->persist($orderLine);
+                    }
+
+                    $user->addOrder($order);
+
+  
+                $randomNumber = intval($faker->numberBetween(0, (count($arrayofObjectStatus)-1)));
+                $order->setStatus($arrayofObjectStatus[$randomNumber]);
+
+                $randomNumber = intval($faker->numberBetween(0, (count($arrayofObjectModeOfPayment)-1)));
+                $order->setModeOfPayment($arrayofObjectModeOfPayment[$randomNumber]);
+        
+               
+                // Include the data waiting list
+                $manager->persist($order);
+            }
+            // Include the data waiting list
+            $manager->persist($user);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // We register the products in BDD
         $manager->flush();
     }
