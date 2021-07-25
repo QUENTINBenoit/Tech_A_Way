@@ -6,7 +6,7 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
@@ -36,7 +36,7 @@ class Order
     private $street_delivery;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $zipcode_delivery;
 
@@ -51,7 +51,7 @@ class Order
     private $street_bill;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
     private $zipcode_bill;
 
@@ -63,12 +63,12 @@ class Order
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="orders")
@@ -96,6 +96,8 @@ class Order
     public function __construct()
     {
         $this->order_lines = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->updated_at = new DateTime();
     }
 
     public function getId(): ?int
