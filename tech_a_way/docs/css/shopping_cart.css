@@ -11,13 +11,14 @@ header {
     border-bottom: 1px solid #F25528;
     position: webkit-sticky;
     position:sticky;
-    background: radial-gradient(circle, rgba(246,246,246,1) 0%, rgba(57,57,57,1) 100%);
+    background: radial-gradient(circle,rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%);
     top: 0px;  
 }
 
 section{
     background-color: #e4e4e4;
 }
+
 
 .product {
     border-bottom: 1px solid #F25528;
@@ -303,7 +304,7 @@ start css FOOTER
 footer {
     height: 15em;
     border-top: 1px solid #F25528;
-    background: radial-gradient(circle, rgba(246,246,246,1) 0%, rgba(57,57,57,1) 100%);
+    background: radial-gradient(circle, rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%);
 }
 footer ul li{
     list-style-type: none;
