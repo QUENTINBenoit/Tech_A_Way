@@ -131,10 +131,10 @@ class AppFixtures extends Fixture
 
 /***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
-            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway1'],
-            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway2'],
-            ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway3'],
-            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway4']
+            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway1'],
+            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway2'],
+            ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway3'],
+            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway4']
         ];
         foreach ($userList as $currentUser) {
             $adminUser = new User();           
@@ -142,7 +142,7 @@ class AppFixtures extends Fixture
             $adminUser->setLastname($currentUser[('lastname')]);
             $adminUser->setPhoneNumber('06' . $faker->randomNumber(8));
             $adminUser->setEmail($currentUser[('email')]);
-            $adminUser->setRole($currentUser[('role')]);
+            $adminUser->setRoles($currentUser[('role')]);
             $adminUser->setPassword(($currentUser[('password')]));
             $adminUser->setStatus(1);
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
@@ -197,7 +197,7 @@ class AppFixtures extends Fixture
             $user ->setLastname($faker->lastName());
             $user ->setPhoneNumber('06' . $faker->randomNumber(8));
             $user ->setEmail($faker->email());
-            $user ->setRole('["ROLE_USER"]');
+            $user ->setRoles(["ROLE_USER"]);
             $user ->setPassword($faker->password());
             $user ->setStatus(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));

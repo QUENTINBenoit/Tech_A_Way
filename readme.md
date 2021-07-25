@@ -52,3 +52,16 @@ Then, we load the data in the database with command :
 use next command to load Faker : `composer require fzaninotto/faker`
 `use Faker;`
 in the method load, make : `$faker = Faker\Factory::create('fr_FR');`
+
+
+## User
+before authenticating, we create an User: 
+- `php bin/console make:user` (name of the security user class = UserSecurity)
+In the configuration, I specify that the element that will allow the user to connect is his email. 
+I also choose to hash passwords because it is an obligation for all sites
+
+Then, 2 folders have been created :  src/Entity/UserSecurity.php and src/Repository/UserSecurityRepository.php
+-
+an other folder has been updated : config/packages/security.yaml. Into this folder, we see "algorithm : auto" that does it mean that symfony will automatically encode passwords with the best algorithm.
+
+
