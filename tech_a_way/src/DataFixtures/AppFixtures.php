@@ -131,10 +131,10 @@ class AppFixtures extends Fixture
 
 /***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
-            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway1'],
-            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway2'],
-            ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway3'],
-            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => ["ROLE_SUPER_ADMIN"], 'password' => 'techaway4']
+            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$MNNHnP.FNPpe1sNhxOimze35bMSMN6EfLgUJvqaWVbXks03KAlJ/e  '],
+            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$szDksIURdWo/WeYOZHaFZ.5BjuvrKisrQhrW/cZrOfLu3ndid/owi'],
+            ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$aQBNSzZhvgMGKkSPqcC.o.hXp9iDURIIWVTe52pHE5wLRO1evIauW'],
+            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$.KQimQwaXocdo1KaBXZxrOubrRrNVEGOJ52PTo0VgblWlszqYogLq']
         ];
         foreach ($userList as $currentUser) {
             $adminUser = new User();           
@@ -143,7 +143,7 @@ class AppFixtures extends Fixture
             $adminUser->setPhoneNumber('06' . $faker->randomNumber(8));
             $adminUser->setEmail($currentUser[('email')]);
             $adminUser->setRoles($currentUser[('role')]);
-            $adminUser->setPassword(($currentUser[('password')]));
+            $adminUser->setPassword(($currentUser[('password')])); // same password : "tech a way"
             $adminUser->setStatus(1);
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
             $adminUser->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
@@ -191,14 +191,20 @@ class AppFixtures extends Fixture
             $manager->persist($modeOfPayment);
         }
 
+        $rolesList = [
+            ["ROLE_USER"],
+            ["ROLE_CATALOG_MANAGER"],
+            ["ROLE_ADMIN"]
+        ];
+
         for ($userNumber = 0; $userNumber < $faker->numberBetween(10, 50); $userNumber++) {
             $user = new User();
             $user ->setFirstname($faker->firstName());
             $user ->setLastname($faker->lastName());
             $user ->setPhoneNumber('06' . $faker->randomNumber(8));
             $user ->setEmail($faker->email());
-            $user ->setRoles(["ROLE_USER"]);
-            $user ->setPassword($faker->password());
+            $user ->setRoles($rolesList[$faker->numberBetween(0, (count($rolesList) -1))]);
+            $user ->setPassword('$2y$13$AmMvdO6CynQ8qx197C79b.xJmiv2rS0Or0c4V2pG6TSsp4UlrLhPO'); // same password : "mdp123"
             $user ->setStatus(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
