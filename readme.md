@@ -80,3 +80,13 @@ we call class of the authenticator "LoginFormAuthenticator" and the controller c
 Now, we can access to page /login to authenticate.
 Whatever page we go to, symfony will call the LoginFormAuthenticator to verify that we have the right to access it.
 i finish the redirect "homepage" in the App\Security\LoginFormAuthenticator::onAuthenticationSuccess() method.
+
+### make registration
+
+we create a form so that the customer can register
+- `php bin/console make:registration-form`
+
+ updated: src/Entity/User.php
+ created: src/Form/RegistrationFormType.php
+ created: src/Controller/RegistrationController.php
+ created: templates/registration/register.html.twig
