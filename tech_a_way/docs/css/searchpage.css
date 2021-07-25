@@ -44,10 +44,32 @@
  }
 
 
-.header{
-    background-color: rgb(2,1,61) ;
-    color: rgb(133, 223, 105);
-}
+
+
+/* code css for pagination page search*/
+    ul.pagination {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.pagination li {display: inline;}
+
+    ul.pagination li a {
+      color:#F25528;
+      float: left;
+      padding: 4px 8px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    ul.pagination li a.active {
+      background-color: #F25528;
+      color: white;
+      border-radius: 5px;
+    }
+    ul.pagination li a:hover:not(.active) {background-color:  rgba(57,57,57,0.9192051820728291);}
+
+
 
 
 .color{
