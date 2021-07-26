@@ -4,7 +4,7 @@
 
 {% block body %}
 <pre>
-    {{ dump(order, user) }}
+    {{ dump(order,) }}
 </pre>
 <main>
         <section>
@@ -32,6 +32,8 @@
                                         <p class="font-italic">{{order.streetBill}}</p></li>
                                     <li class="list-group-item">ville :
                                         <p class="font-italic">{{order.cityBill}}</p> </li>
+                                         <li class="list-group-item">Tel: :
+                                        <p class="font-italic">{{user.phonenumber}}</p> </li>
                                     <li class="list-group-item">Pays :
                                         <p class="font-italic"> France</p></li>
                    
@@ -64,6 +66,8 @@
                                     <li class="list-group-item">Pays :
                                     <p>france</p>
                                     </li>
+                                      <li class="list-group-item">Mode de Livraison :
+                                    <p class="font-italic">{{order.typeDelivery}}</p> </li>
                                 </ul>
                                 </p>
                                 <div class="form-check">
