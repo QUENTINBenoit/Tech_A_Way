@@ -1,0 +1,356 @@
+/*************** 
+start css GENERAL
+***************/
+i {
+    color: #F25528;
+}
+
+
+
+header {
+    border-bottom: 1px solid #F25528;
+    position: webkit-sticky;
+    position:sticky;
+    background: radial-gradient(circle,rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%);
+    top: 0px;  
+    z-index: 9999;
+}
+
+section{
+    background-color: #e4e4e4;
+}
+
+
+.product {
+    border-bottom: 1px solid #F25528;
+    border-left: 1px solid #F25528;
+    border-right: 1px solid #F25528;
+}
+
+/*************** 
+end css GENERAL
+***************/
+
+
+/*************** 
+start css HEADER
+***************/
+.div_mobile,
+.div_desktop {
+    height: 100px;
+}
+
+@media (max-width: 576px) {
+    .logo_search {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo_shopping_cart {
+        display: none;
+    }
+    #burger_logo_shopping_cart {
+        display: block;
+        position: absolute;
+        right: 15px;
+        bottom: -220px;
+    
+    }
+}
+
+@media (min-width: 501px) {
+
+    #burger_logo_shopping_cart {
+        display: none;
+    
+    }
+}
+
+
+
+@media (max-width: 280px) {
+
+    #burger_logo_shopping_cart {
+        display: none;
+    }
+    .burger_li_shopping_cart {
+        display: block;
+    }
+    .logo_user {
+        display: none;
+    }
+    .burger_li_user {
+        display: block;
+    }
+}
+
+@media (min-width: 281px) {
+
+    .burger_li_shopping_cart {
+        display: none;
+    }
+    .burger_li_user {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .logo {
+        display: none;
+    }
+    .logo_t {
+        display: block;
+    }
+}
+
+@media (min-width: 421px) {
+    .logo_t {
+        display: none;
+    }
+}
+@media (max-width: 200px) {
+    .logo_t {
+        display: none;
+    }
+}
+
+
+#displayClick {
+    background-color: #F25528;
+
+}
+
+#displayClick li,  #displayClick li a{
+    text-decoration: none;
+
+    list-style-type: none;
+    color: whitesmoke;
+}
+
+.div_desktop a {
+    text-decoration: none;
+    color: #F25528;
+}
+
+
+
+
+.div_desktop li {
+    list-style-type: none;
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+}
+
+#liste_categories {
+    margin-left: -2rem;
+    margin-top: 0.42rem;
+    font-weight: bold;
+    font-size: 0.92rem;
+    position: relative;
+    top: 0.7em;
+    background-color:rgba(57,57,57);
+
+}
+
+
+#sub_category_1_appears,
+#sub_category_2_appears,
+#sub_category_3_appears,
+#sub_category_4_appears {
+    display: none;
+
+}
+
+
+#category_1:hover #sub_category_1_appears, #category_2:hover #sub_category_2_appears, #category_3:hover #sub_category_3_appears, #category_4:hover #sub_category_4_appears {
+    display: block;
+    margin-top: 0.5rem;
+    margin-left: -0.5rem;
+    width: 25%;
+    position: absolute;
+    text-align: center;
+    background-color: #F25528;
+}
+
+.header_sub_category a {
+    color:white;
+    font-size: 12px;
+}
+
+#search input, #search button {
+    border: 1px solid #F25528;
+}
+
+.logo_search, .logo_user{
+    color: #45596d;
+}
+
+
+.logo_user_desktop i:hover, .logo_home_desktop i:hover, .logo_shopping_cart_desktop i:hover, .logo_user i:hover, .logo_shopping_cart i:hover, .logo_search i:hover, #header_ul_burger a:hover {
+    color: blue;
+}
+/*************** 
+end css HEADER
+***************/
+
+/*************** 
+start css SHOPPING_CART
+***************/
+@media (max-width: 767px) {
+    main>h1 {
+        text-align: center
+    }
+    #feature_product div {
+        display: none;
+    }
+
+    .quantity, .price,  .button_delete {
+        text-align: end;
+     }
+
+
+
+    .description_product {
+        font-size: 0.8rem;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .description_product {
+        font-size: 0.6rem;
+    }
+    .name_product {
+        font-size: 0.9rem;
+    }
+}
+
+
+#feature_product {
+   font-weight: bold;
+   margin-bottom: 8px;
+}
+
+.name_product {
+    font-weight: bold;
+}
+
+main>h1 {
+    margin-top : 15px;
+    margin-bottom : 15px;
+    text-decoration: underline;
+    color: #F25528;;
+}
+
+.available {
+    color: green;
+    font-style: italic;
+}
+
+.delivery, .summary_order {
+    border-bottom: 1px solid #F25528;
+    border-left: 1px solid #F25528;
+    border-right: 1px solid #F25528;
+
+}
+
+.product_1 {
+    border-top: 1px solid #F25528;
+}
+
+.summary_order div, .button_order button {
+    font-weight: bold;
+}
+
+.button_order button,.summary_order button {
+    background-color: #F25528;
+    color: white;
+}
+
+.button_order button:hover {
+    background-color: blue;
+}
+
+.button_delete_product {
+    border: none;
+}
+
+.button_delete_product i:hover{
+    color: blue;
+}
+
+/*************** 
+end css SHOPPING_CART
+***************/
+
+
+
+/*************** 
+start css FOOTER
+***************/
+
+@media (max-width: 767px) {
+    .footer_payments {
+        position: absolute;
+       bottom: -120px;
+       padding-bottom: 5px;
+       padding-left: 20px;
+    }
+    .footer_list_links {
+        margin-left: 150px;
+    }
+}
+
+
+footer {
+    height: 100px;
+    border-top: 1px solid #F25528;
+    
+}
+
+footer ul li{
+    list-style-type: none;
+
+}
+
+footer a {
+    text-decoration: none;;
+    color: #F25528;
+
+}
+
+
+
+.footer_logo {
+    position: absolute;
+    right: 0px;
+}
+
+.footer_payments>div:hover {
+    transform: rotate(90deg) scale(0.5); 
+}
+/*************** 
+end css FOOTER
+***************/
+
+
+/*************** 
+start css PARTIAL BRANDS
+***************/
+
+
+
+.partial_brands {
+    justify-content: space-between;
+    align-items: center;
+    margin : 10px;
+    padding: 10px;
+    height: 100px;
+    }
+
+
+/*************** 
+end css PARTIAL BRANDS
+***************/

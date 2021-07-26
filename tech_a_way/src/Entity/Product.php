@@ -28,17 +28,17 @@ class Product
     /**
      * @ORM\Column(type="float")
      */
-    private $excl_taxes_price;
+    private $exclTaxesPrice;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    private $sales_tax;
+    private $salesTax;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $incl_taxes_price;
+    private $inclTaxesPrice;
 
     /**
      * @ORM\Column(type="integer")
@@ -73,12 +73,12 @@ class Product
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_at;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
@@ -100,8 +100,8 @@ class Product
     {
         $this->categories = new ArrayCollection();
         $this->pictures = new ArrayCollection();
-        $this->created_at = new DateTime();
-        $this->updated_at = new DateTime();
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -123,36 +123,36 @@ class Product
 
     public function getExclTaxesPrice(): ?float
     {
-        return $this->excl_taxes_price;
+        return $this->exclTaxesPrice;
     }
 
-    public function setExclTaxesPrice(float $excl_taxes_price): self
+    public function setExclTaxesPrice(float $exclTaxesPrice): self
     {
-        $this->excl_taxes_price = $excl_taxes_price;
+        $this->exclTaxesPrice = $exclTaxesPrice;
 
         return $this;
     }
 
     public function getSalesTax(): ?int
     {
-        return $this->sales_tax;
+        return $this->salesTax;
     }
 
-    public function setSalesTax(int $sales_tax): self
+    public function setSalesTax(int $salesTax): self
     {
-        $this->sales_tax = $sales_tax;
+        $this->salesTax = $salesTax;
 
         return $this;
     }
 
     public function getInclTaxesPrice(): ?float
     {
-        return $this->incl_taxes_price;
+        return $this->inclTaxesPrice;
     }
 
-    public function setInclTaxesPrice(float $incl_taxes_price): self
+    public function setInclTaxesPrice(float $inclTaxesPrice): self
     {
-        $this->incl_taxes_price = $incl_taxes_price;
+        $this->inclTaxesPrice = $inclTaxesPrice;
 
         return $this;
     }
@@ -231,24 +231,24 @@ class Product
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
