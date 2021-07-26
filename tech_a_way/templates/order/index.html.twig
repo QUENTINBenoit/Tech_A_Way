@@ -1,0 +1,275 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de commande{% endblock %}
+
+{% block body %}
+<pre>
+    {{ dump(order, user) }}
+</pre>
+<main>
+        <section>
+            <div class="container-fluid mt-4" id="delivery address selection">
+                <div class="row" id="title_adress_selected">
+                    <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ">
+                        <h1 class="">Sélectionner votre adresse de livraison</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3" id="selected_adress">
+                <div class="row" id="selecte_adress_one">
+                    <div class="col d-flex justify-content-md-center " >
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Adresse De Facturation </h5>
+                                <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                            
+                                    <li class="list-group-item">Nom : 
+                                        <p class="font-italic">{{user.lastname}}</p></li>
+                                    <li class="list-group-item">Prénom : 
+                                        <p class="font-italic">{{user.firstname}}</p></li>
+                                    <li class="list-group-item font-italic">Nom de Rue:
+                                        <p class="font-italic">{{order.streetBill}}</p></li>
+                                    <li class="list-group-item">ville :
+                                        <p class="font-italic">{{order.cityBill}}</p> </li>
+                                    <li class="list-group-item">Pays :
+                                        <p class="font-italic"> France</p></li>
+                   
+                                </ul>
+                                </p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        selectioner
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-md-center" >
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Adresse De Livraison </h5>
+                                <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                                   <li class="list-group-item">Nom :
+                                            <p class="font-italic">{{user.lastname}}</p></li> 
+                                    <li class="list-group-item">Prénom :
+                                            <p class="font-italic">{{user.firstname}}</p></li>
+                                    <li class="list-group-item">Nom de Rue :
+                                    <p class="font-italic">{{order.streetDelivery}}</p></li>
+                                    <li class="list-group-item">ville :
+                                    <p class="font-italic">{{order.cityDelivery}}</p> </li>
+                                    <li class="list-group-item">Pays :
+                                    <p>france</p>
+                                    </li>
+                                </ul>
+                                </p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate2">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        selectioner
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containe-fluid mt-3">
+                <div class="row">
+                    <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ;">
+                        <h2>Ajouter une nouvelle adresse</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3" id="add an adress">
+                <div class="row" id="form_add_adress">
+                    <div class="col" style="border-bottom:1px solid #F25528;">
+                        <form class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-4">
+                                <label for="validationCustom01" class="form-label">Prenom</label>
+                                <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                                <div class="valid-feedback">
+                                    Valide
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom02" class="form-label">Nom de famille</label>
+                                <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                                <div class="valid-feedback">
+                                    Valide
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">Ville</label>
+                                <input type="text" class="form-control" id="validationCustom03" required>
+                                <div class="invalid-feedback">
+                                    Veuillez fournir une ville valide.
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="validationCustom04" class="form-label">Pays</label>
+                                <select class="form-select" id="validationCustom04" required>
+                                    <option selected disabled value="">Choisissez...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Veuillez sélectionner un état valide. </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="validationCustom05" class="form-label">Code postal</label>
+                                <input type="text" class="form-control" id="validationCustom05" required>
+                                <div class="invalid-feedback">
+                                    Veuillez fournir un code postal valide. </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label" for="invalidCheck">
+                                        Accepter les conditions
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Vous devez accepter avant de soumettre.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn mb-2" style="background-color: #F25528;" type="submit">validé</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-3" id="selection of payment method">
+                <div class="row">
+                    <div class="col d-flex justify-content-md-center " style="border-bottom:1px solid #F25528;">
+                        <h2>Selectionner un mode de paiement</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3" id="Financing option ">
+                <div class="row">
+                    <div class="col" style="border-bottom:1px solid #F25528;">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        Payer en 4 fois carte bancaire
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
+                                        Placeholder content for this accordion, which is intended to demonstrate the
+                                        <code>.accordion-flush</code> class. This is the first item's accordion body.
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate3">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Indeterminate checkbox
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        Payer jusqu'a 24X
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
+                                        Placeholder content for this accordion, which is intended to demonstrate the
+                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
+                                        Let's imagine this being filled with some actual content.
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate4">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Indeterminate checkbox
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingthree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapsethree" aria-expanded="false"
+                                        aria-controls="flush-collapsethree">
+                                       Carte bancaire
+                                    </button>
+                                </h2>
+                                <div id="flush-collapsethree" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingthree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
+                                        Placeholder content for this accordion, which is intended to demonstrate the
+                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
+                                        Let's imagine this being filled with some actual content.
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminate4">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Indeterminate checkbox
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingfour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapsefour" aria-expanded="false"
+                                        aria-controls="flush-collapsefour">
+                                        Paypal
+                                    </button>
+                                </h2>
+                                <div id="flush-collapsefour" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingfour" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
+                                        Placeholder content for this accordion, which is intended to demonstrate the
+                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
+                                        Let's imagine this being filled with some actual content.
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        id="flexCheckIndeterminatefour">
+                                    <label class="form-check-label" for="flexCheckIndeterminate">
+                                        Indeterminate checkbox
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3" id="button_validate_method_payment">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn" style="background-color: #F25528;">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+{% endblock %}
