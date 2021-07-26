@@ -6,7 +6,7 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use DateTime;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
@@ -28,47 +28,47 @@ class Order
     /**
      * @ORM\Column(type="string", length=60)
      */
-    private $type_delivery;
+    private $typeDelivery;
 
     /**
      * @ORM\Column(type="string", length=200)
      */
-    private $street_delivery;
+    private $streetDelivery;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
-    private $zipcode_delivery;
+    private $zipcodeDelivery;
 
     /**
      * @ORM\Column(type="string", length=60)
      */
-    private $city_delivery;
+    private $cityDelivery;
 
     /**
      * @ORM\Column(type="string", length=200)
      */
-    private $street_bill;
+    private $streetBill;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="integer")
      */
-    private $zipcode_bill;
+    private $zipcodeBill;
 
     /**
      * @ORM\Column(type="string", length=60)
      */
-    private $city_bill;
+    private $cityBill;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="orders")
@@ -79,7 +79,7 @@ class Order
     /**
      * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="anOrder")
      */
-    private $order_lines;
+    private $orderLines;
 
     /**
      * @ORM\ManyToOne(targetEntity=ModeOfPayment::class, inversedBy="orders")
@@ -95,7 +95,9 @@ class Order
 
     public function __construct()
     {
-        $this->order_lines = new ArrayCollection();
+        $this->orderLines = new ArrayCollection();
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -117,108 +119,108 @@ class Order
 
     public function getTypeDelivery(): ?string
     {
-        return $this->type_delivery;
+        return $this->typeDelivery;
     }
 
-    public function setTypeDelivery(string $type_delivery): self
+    public function setTypeDelivery(string $typeDelivery): self
     {
-        $this->type_delivery = $type_delivery;
+        $this->typeDelivery = $typeDelivery;
 
         return $this;
     }
 
     public function getStreetDelivery(): ?string
     {
-        return $this->street_delivery;
+        return $this->streetDelivery;
     }
 
-    public function setStreetDelivery(string $street_delivery): self
+    public function setStreetDelivery(string $streetDelivery): self
     {
-        $this->street_delivery = $street_delivery;
+        $this->streetDelivery = $streetDelivery;
 
         return $this;
     }
 
     public function getZipcodeDelivery(): ?int
     {
-        return $this->zipcode_delivery;
+        return $this->zipcodeDelivery;
     }
 
-    public function setZipcodeDelivery(int $zipcode_delivery): self
+    public function setZipcodeDelivery(int $zipcodeDelivery): self
     {
-        $this->zipcode_delivery = $zipcode_delivery;
+        $this->zipcodeDelivery = $zipcodeDelivery;
 
         return $this;
     }
 
     public function getCityDelivery(): ?string
     {
-        return $this->city_delivery;
+        return $this->cityDelivery;
     }
 
-    public function setCityDelivery(string $city_delivery): self
+    public function setCityDelivery(string $cityDelivery): self
     {
-        $this->city_delivery = $city_delivery;
+        $this->cityDelivery = $cityDelivery;
 
         return $this;
     }
 
     public function getStreetBill(): ?string
     {
-        return $this->street_bill;
+        return $this->streetBill;
     }
 
-    public function setStreetBill(string $street_bill): self
+    public function setStreetBill(string $streetBill): self
     {
-        $this->street_bill = $street_bill;
+        $this->streetBill = $streetBill;
 
         return $this;
     }
 
     public function getZipcodeBill(): ?int
     {
-        return $this->zipcode_bill;
+        return $this->zipcodeBill;
     }
 
-    public function setZipcodeBill(int $zipcode_bill): self
+    public function setZipcodeBill(int $zipcodeBill): self
     {
-        $this->zipcode_bill = $zipcode_bill;
+        $this->zipcodeBill = $zipcodeBill;
 
         return $this;
     }
 
     public function getCityBill(): ?string
     {
-        return $this->city_bill;
+        return $this->cityBill;
     }
 
-    public function setCityBill(string $city_bill): self
+    public function setCityBill(string $cityBill): self
     {
-        $this->city_bill = $city_bill;
+        $this->cityBill = $cityBill;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_At;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_At): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_At = $created_At;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_At;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_At): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_At = $updated_At;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -240,13 +242,13 @@ class Order
      */
     public function getOrderLines(): Collection
     {
-        return $this->order_lines;
+        return $this->orderLines;
     }
 
     public function addOrderLine(OrderLine $orderLine): self
     {
-        if (!$this->order_lines->contains($orderLine)) {
-            $this->order_lines[] = $orderLine;
+        if (!$this->orderLines->contains($orderLine)) {
+            $this->orderLines[] = $orderLine;
             $orderLine->setAnOrder($this);
         }
 
@@ -255,7 +257,7 @@ class Order
 
     public function removeOrderLine(OrderLine $orderLine): self
     {
-        if ($this->order_lines->removeElement($orderLine)) {
+        if ($this->orderLines->removeElement($orderLine)) {
             // set the owning side to null (unless already changed)
             if ($orderLine->getAnOrder() === $this) {
                 $orderLine->setAnOrder(null);

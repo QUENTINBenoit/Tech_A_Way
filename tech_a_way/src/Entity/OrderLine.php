@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OrderLineRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=OrderLineRepository::class)
@@ -20,7 +21,7 @@ class OrderLine
     /**
      * @ORM\Column(type="string", length=60)
      */
-    private $product_name;
+    private $productName;
 
     /**
      * @ORM\Column(type="integer")
@@ -30,33 +31,39 @@ class OrderLine
     /**
      * @ORM\Column(type="float")
      */
-    private $excl_taxes_unit_price;
+    private $exclTaxesUnitPrice;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    private $sales_tax;
+    private $salesTax;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $incl_taxes_unit_price;
+    private $inclTaxesUnitPrice;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="order_lines")
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderLines")
      * @ORM\JoinColumn(nullable=false)
      */
     private $anOrder;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -65,12 +72,12 @@ class OrderLine
 
     public function getProductName(): ?string
     {
-        return $this->product_name;
+        return $this->productName;
     }
 
-    public function setProductName(string $product_name): self
+    public function setProductName(string $productName): self
     {
-        $this->product_name = $product_name;
+        $this->productName = $productName;
 
         return $this;
     }
@@ -89,60 +96,60 @@ class OrderLine
 
     public function getExclTaxesUnitPrice(): ?float
     {
-        return $this->excl_taxes_unit_price;
+        return $this->exclTaxesUnitPrice;
     }
 
-    public function setExclTaxesUnitPrice(float $excl_taxes_unit_price): self
+    public function setExclTaxesUnitPrice(float $exclTaxesUnitPrice): self
     {
-        $this->excl_taxes_unit_price = $excl_taxes_unit_price;
+        $this->exclTaxesUnitPrice = $exclTaxesUnitPrice;
 
         return $this;
     }
 
     public function getSalesTax(): ?int
     {
-        return $this->sales_tax;
+        return $this->salesTax;
     }
 
-    public function setSalesTax(int $sales_tax): self
+    public function setSalesTax(int $salesTax): self
     {
-        $this->sales_tax = $sales_tax;
+        $this->salesTax = $salesTax;
 
         return $this;
     }
 
     public function getInclTaxesUnitPrice(): ?float
     {
-        return $this->incl_taxes_unit_price;
+        return $this->inclTaxesUnitPrice;
     }
 
-    public function setInclTaxesUnitPrice(float $incl_taxes_unit_price): self
+    public function setInclTaxesUnitPrice(float $inclTaxesUnitPrice): self
     {
-        $this->incl_taxes_unit_price = $incl_taxes_unit_price;
+        $this->inclTaxesUnitPrice = $inclTaxesUnitPrice;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_At;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_At): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_At = $created_At;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_At;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_At): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_At = $updated_At;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

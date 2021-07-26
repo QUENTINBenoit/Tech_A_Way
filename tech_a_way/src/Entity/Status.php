@@ -6,6 +6,7 @@ use App\Repository\StatusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=StatusRepository::class)
@@ -27,12 +28,12 @@ class Status
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_At;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_At;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="status")
@@ -42,6 +43,8 @@ class Status
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -63,24 +66,24 @@ class Status
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_At;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_At): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_At = $created_At;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_At;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_At): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_At = $updated_At;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
