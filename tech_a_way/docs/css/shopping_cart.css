@@ -13,6 +13,7 @@ header {
     position:sticky;
     background: radial-gradient(circle,rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%);
     top: 0px;  
+    z-index: 9999;
 }
 
 section{
@@ -174,6 +175,7 @@ start css HEADER
 
 .header_sub_category a {
     color:white;
+    font-size: 12px;
 }
 
 #search input, #search button {
@@ -181,8 +183,9 @@ start css HEADER
 }
 
 .logo_search, .logo_user{
-    color: white;
+    color: #45596d;
 }
+
 
 .logo_user_desktop i:hover, .logo_home_desktop i:hover, .logo_shopping_cart_desktop i:hover, .logo_user i:hover, .logo_shopping_cart i:hover, .logo_search i:hover, #header_ul_burger a:hover {
     color: blue;
@@ -302,10 +305,10 @@ start css FOOTER
 
 
 footer {
-    height: 15em;
+    height: 100px;
     border-top: 1px solid #F25528;
-    background: radial-gradient(circle, rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%);
 }
+
 footer ul li{
     list-style-type: none;
 
@@ -326,12 +329,10 @@ footer a {
 
 .footer_payments>div:hover {
     transform: rotate(90deg) scale(0.5); 
-
 }
 /*************** 
 end css FOOTER
 ***************/
-
 
 
 /*************** 
