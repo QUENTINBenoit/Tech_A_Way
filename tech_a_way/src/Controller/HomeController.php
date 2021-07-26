@@ -22,7 +22,7 @@ class HomeController extends AbstractController
 
         $productsByPromotionInPercent = $reposPromotionByPercentage->findByPercentagePromotion('40');
 
-        dd($productsPromotion, $productsRecent, $productsByPromotionInPercent);
+       // dd($productsPromotion, $productsRecent, $productsByPromotionInPercent);
         
 
         return $this->render('home/index.html.twig', [
