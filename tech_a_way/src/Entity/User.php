@@ -136,12 +136,12 @@ class User
 
     public function getPhoneNumber(): ?int
     {
-        return $this->phonAumber;
+        return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(int $phonAumber): self
+    public function setPhoneNumber(int $phoneNumber): self
     {
-        $this->phonAumber = $phonAumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
