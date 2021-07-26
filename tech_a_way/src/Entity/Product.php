@@ -58,17 +58,17 @@ class Product
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $status_recent;
+    private $statusRecent;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $status_promotion;
+    private $statusPromotion;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $percentage_promotion;
+    private $percentagePromotion;
 
     /**
      * @ORM\Column(type="datetime")
@@ -195,36 +195,36 @@ class Product
 
     public function getStatusRecent(): ?int
     {
-        return $this->status_recent;
+        return $this->statusRecent;
     }
 
-    public function setStatusRecent(?int $status_recent): self
+    public function setStatusRecent(?int $statusRecent): self
     {
-        $this->status_recent = $status_recent;
+        $this->statusRecent = $statusRecent;
 
         return $this;
     }
 
     public function getStatusPromotion(): ?int
     {
-        return $this->status_promotion;
+        return $this->statusPromotion;
     }
 
-    public function setStatusPromotion(?int $status_promotion): self
+    public function setStatusPromotion(?int $statusPromotion): self
     {
-        $this->status_promotion = $status_promotion;
+        $this->statusPromotion = $statusPromotion;
 
         return $this;
     }
 
     public function getPercentagePromotion(): ?int
     {
-        return $this->percentage_promotion;
+        return $this->percentagePromotion;
     }
 
-    public function setPercentagePromotion(?int $percentage_promotion): self
+    public function setPercentagePromotion(?int $percentagePromotion): self
     {
-        $this->percentage_promotion = $percentage_promotion;
+        $this->percentagePromotion = $percentagePromotion;
 
         return $this;
     }
