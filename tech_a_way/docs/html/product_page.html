@@ -7,42 +7,194 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/jamal_style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="../css/search_page.css" />
+  <link rel="stylesheet" href="../css/shopping_cart.css">
+  <link rel="stylesheet" href="../css/style-account-page.css">
+  <link rel="stylesheet" href="../css/jamal_style.css">
+  <!--load all styles -->
+  <script src="https://kit.fontawesome.com/74ed2f933d.js"></script>
+  <script src="https://kit.fontawesome.com/cc61b26897.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+
+
 
   <title>Page produit</title>
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-md navbar-dark">
-      <a class="navbar-brand" href="#">Tech a way</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <div class="d-md-none div_mobile">
+      <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="burger">
+              <img src="../images/burger_menu/burger-menu.png" alt="" width="70px"></span>
+          </button>
+          <div class="mx-auto logo">
+            <img src="../images/logo/logo-web-transparent.png" alt="logo" width="180px">
+          </div>
+
+          <div class="mx-auto logo_t">
+            <img src="../images/logo/T transparent.png" alt="T" width="45px">
+          </div>
+
+          <div class="mx-3">
+            <a href="" class="logo_search">
+              <i class="fas fa-search fa-2x me-4"></i>
+            </a>
+            <a href="" class="logo_user">
+              <i class="fas fa-user fa-2x me-4"></i>
+            </a>
+            <a href="" class="logo_shopping_cart">
+              <i class="fas fa-shopping-cart fa-2x me-4"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="collapse col-sm-4" id="navbarToggleExternalContent">
+        <div class="p-4" id="displayClick">
+          <div class="d-sm-none d-flex justify-content-center">
+            <form class="d-flex col-12" id="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fas fa-search fa-2x text-light"></i>
+              </button>
+            </form>
+          </div>
+          <a href="" id="burger_logo_shopping_cart">
+            <i class="fas fa-shopping-cart fa-2x me-4 text-light"></i>
+          </a>
+          <a href="" class="logo_user">
+            <i class="d-none fas fa-user fa-1x me-4 text-primary"></i>
+          </a>
+          <ul id="header_ul_burger">
+            <li>
+              <a href="#" class="fs-3 fw-bold">Accueil</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 1</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 2</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 3</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 4</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Marques</a>
+            </li>
+            <li class="burger_li_shopping_cart">
+              <a href="#" class="fs-5">Panier</a>
+            </li>
+            <li class="burger_li_user">
+              <a href="#" class="fs-5">Mon Compte</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </nav>
+    </div>
+    <div class="d-md-block d-none div_desktop">
+      <div class="d-flex justify-content-between">
+        <div class="ps-2 pt-2">
+          <a class="navbar-brand" href="#">
+            <img src="../images/logo_site/logo-web-transparent.png" alt="cameleon" width="180px"></a>
+        </div>
+
+        <div class="pt-4 ">
+          <a href="#" class="logo_home_desktop ">
+            <i class="fas fa-home fa-2x"></i>
+          </a>
+        </div>
+        <div class="py-4 col-6">
+          <div class="d-flex justify-content-center">
+            <form class="d-flex col-12" id="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fas fa-search fa-1x"></i>
+              </button>
+            </form>
+          </div>
+          <div class="">
+            <ul class="d-flex" id="liste_categories">
+              <li class="col-3 ps-2" id="category_1">
+                <a href="#Accueil">Catégorie 1</a>
+                <div class="ps-1 header_sub_category" id="sub_category_1_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_2">
+                <a href="#Apropos">Catégorie 2</a>
+                <div class="ps-1 header_sub_category" id="sub_category_2_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_3">
+                <a href="#Contact">Catégorie 3</a>
+                <div class="ps-1 header_sub_category" id="sub_category_3_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_4">
+                <a href="#Contact">Catégorie 4</a>
+                <div class="ps-1 header_sub_category" id="sub_category_4_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex pt-4 mx-3">
+          <a href="#" class="logo_user_desktop">
+            <i class="fas fa-user fa-2x me-4"></i>
+          </a>
+          <a href="#" class="logo_shopping_cart_desktop">
+            <i class="fas fa-shopping-cart fa-2x me-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
-
-
 
   <main>
     <div class="container">
@@ -102,7 +254,7 @@
                 </p>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -201,7 +353,7 @@
                   <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      FICHE TECHNIQUE 
+                      FICHE TECHNIQUE
                     </button>
                   </h2>
                 </div>
@@ -245,16 +397,145 @@
     </div>
   </main>
 
-  <footer class="footer mt-auto py-3">
-    <div class="container">
-      <span class="text-muted">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">
-            <h1>Placez le contenu du pied de page collant ici.</h1>
-          </font>
-        </font>
-      </span>
+  <div class="d-flex border partial_brands" id="partial_brands_1">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/acer.png" alt="acer" width="70px">
+      </a>
     </div>
+
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/apple.jpg" alt="apple" width="70px">
+      </a>
+    </div>
+
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/dell.png" alt="dell" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/lg.jpg" alt="lg" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+  <div class="d-none border partial_brands" id="partial_brands_2">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/nokia.png" alt="nokia" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/samsung.png" alt="samsung" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/sony.jpg" alt="sony" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/toshiba.jpg" alt="toshiba" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+
+  <div class="d-none border partial_brands" id="partial_brands_3">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/panasonic.png" alt="panasonic" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/philips.png" alt="philips" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/xiaomi.png" alt="xiaomi" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/asus.png" alt="asus" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+
+
+  <footer class="mt-3 pt-3 position-relative">
+
+    <ul class="d-md-flex pt-md-4 pe-md-4 justify-content-md-between footer_list_links">
+      <li>
+        <a href="#">Qui sommes nous ?</a>
+      </li>
+      <li>
+        <a href="#">mentions légales</a>
+      </li>
+      <li>
+        <a href="#">CGU</a>
+      </li>
+      <li>
+        <a href="#">Nous contacter</a>
+      </li>
+      <li>
+        <a href="#">Mode paiement</a>
+      </li>
+      <li>
+        <a href="#">Mode livraison</a>
+      </li>
+    </ul>
+
+    <div class="d-md-flex justify-content-md-around footer_payments">
+      <div><img src="../images/paiements/american-express.jpg" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/bitcoin.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/cb.jpg" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/mastercard.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/paypal.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/visa-electron.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/visa.svg" alt="logo" width="50px"></div>
+    </div>
+    <div class="footer_logo py-3"><img src="../images/logo_site/logo-web-transparent.png" alt="logo" width="180px">
+    </div>
+  </footer>
+
+  <script src="../js/carousel_brands.js"></script>
+  <script src="../js/shopping_cart.js"></script>
+  <script src="../js/resize.js"></script>
+
+  <script src="https://kit.fontawesome.com/74ed2f933d.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
   </footer>
 
 

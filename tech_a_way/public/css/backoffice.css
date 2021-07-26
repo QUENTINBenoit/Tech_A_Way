@@ -1,65 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Redressed&family=Merriweather:wght@300;400;700&display=swap');
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
 
-@media (max-width: 576px) { 
-    .mobilefirst{
-        display: none;
+html {
+  height: -webkit-fill-available;
+}
 
-    }
-   .container{
-       max-width: 540px;
-   }
-        
-    
- }
- @media (max-width: 768px) { 
-    .mobilefirst{
-        display: none;
-
-    }
-   .container{
-       max-width: 720px;
-   }
-        
-    
- }
-
- @media (max-width: 992px) { 
-     .mobilefirst{
-         display: none;
-
-     }
-    .container{
-        max-width: 960px;
-    }
-         
-     
-  }
-  @media (max-width: 1200px) { 
-  
-   .container{
-       max-width: 1140px;
-   }
-        
-    
- }
-
-
-.header{
-    background-color: rgb(2,1,61) ;
-    color: rgb(133, 223, 105);
+main {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 
-.color{
-         
-     color: #F25528;
+
+
+.work-space{
+  flex-shrink: 0;
+  width: 1092px;
+ 
+  height: 100vh;
+  background-color: rgba(66, 142, 230, 0.1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
 
 }
-.card-header{
-        color:#F25528 ;
-        background-color: #fff;
-      
+
+
+.bi {
+  vertical-align: -.125em;
+  pointer-events: none;
+  fill: currentColor;
 }
+
 .dropdown-toggle { outline: 0; }
 
 .nav-flush .nav-link {
@@ -108,11 +87,17 @@
   background-color: #F25528;
 }
 
-#products{
+.scrollarea {
+  overflow-y: scroll;
+}
 
-  height: 10em;
+.fw-semibold { font-weight: 600; }
+.lh-tight { line-height: 1.25; }
+
+#scren{
+  height: 2em;
   margin-right: 0.5em;
   border: 0.1em solid #ff5722;
-
 }
+
 

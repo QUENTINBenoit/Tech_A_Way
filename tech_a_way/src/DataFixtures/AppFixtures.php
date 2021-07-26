@@ -131,10 +131,14 @@ class AppFixtures extends Fixture
 
 /***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
-            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phone_number' => '0669857452', 'email' => 'benquel@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$MNNHnP.FNPpe1sNhxOimze35bMSMN6EfLgUJvqaWVbXks03KAlJ/e  '],
-            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phone_number' => '0685426284', 'email' => 'fred@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$szDksIURdWo/WeYOZHaFZ.5BjuvrKisrQhrW/cZrOfLu3ndid/owi'],
-            ['firstname' => 'Jamal', 'lastname' => 'EL','phone_number' => '0664571245', 'email' => 'jamal@gmail.com','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$aQBNSzZhvgMGKkSPqcC.o.hXp9iDURIIWVTe52pHE5wLRO1evIauW'],
-            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phone_number' => '0685647592', 'email' => 'mick@gmail.comm','role' => ["ROLE_SUPER_ADMIN"], 'password' => '$2y$13$.KQimQwaXocdo1KaBXZxrOubrRrNVEGOJ52PTo0VgblWlszqYogLq']
+            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN', 'email' => 'benquel@gmail.com'],
+            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON', 'email' => 'fred@gmail.com'],
+            ['firstname' => 'Jamal', 'lastname' => 'EL', 'email' => 'jamal@gmail.com'],
+            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN', 'email' => 'mick@gmail.comm']
+        ];
+
+        $rolesListAdmin = [
+            ["ROLE_SUPER_ADMIN"]
         ];
         foreach ($userList as $currentUser) {
             $adminUser = new User();           
@@ -142,8 +146,8 @@ class AppFixtures extends Fixture
             $adminUser->setLastname($currentUser[('lastname')]);
             $adminUser->setPhoneNumber('06' . $faker->randomNumber(8));
             $adminUser->setEmail($currentUser[('email')]);
-            $adminUser->setRoles($currentUser[('role')]);
-            $adminUser->setPassword(($currentUser[('password')])); // same password : "tech a way"
+            $adminUser ->setRoles($rolesListAdmin[0]);
+            $adminUser->setPassword('$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6'); // same password : "tech a way"
             $adminUser->setStatus(1);
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
             $adminUser->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));

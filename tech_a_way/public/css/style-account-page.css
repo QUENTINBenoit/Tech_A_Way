@@ -1,0 +1,170 @@
+/** 
+CSS components for screen smaller than 991px 
+**/
+@media (max-width: 991px) {
+
+    .nav-container {
+        height: 15%!important;
+    }
+
+    .nav-height {
+        height: 100%!important;
+    }
+
+    .disconnect-height {
+        height: 15%;
+    }
+
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none;
+     }
+
+    .menu-nav-container {
+        height: 7%!important;
+    }
+
+    .width-container-title {
+        width: 30%;
+    }
+
+    .background-title-menu {
+        background-color: #F25528;
+    }
+
+    .width-container-dropdown {
+        width: 70%;
+    }
+
+    /** menu arrow **/
+    .dropdown-toggle::after {
+        margin-left: 1em!important;
+    }
+
+    /** Not displayed at this and smaller screens **/
+    .menu-container-desktop {
+        display: none!important;
+    }
+
+    /** title of the informations card **/
+    .informations-title {
+        height: 10%!important;
+    }
+
+    /** Adresses information card **/
+    .card-adress-information {
+        position: static!important;
+        height: 35%!important;
+    }
+}
+
+/** 
+CSS components for screen larger than 992px
+**/
+@media (min-width: 992px) {
+
+    .padding-container {
+        padding-right: 5%!important;
+        padding-left: 5%!important;
+        background-color: #f0f0f0;
+    }
+
+    /** image class **/
+    .img-height {
+        height: 30%!important;
+        width: 100%!important;
+    }
+
+    .height-img {
+        height: 80%!important;
+    }
+
+    /** class for global card with user informations and disconnected button **/
+    .global-info-height {
+        height: 70%!important;
+    }
+
+    /** class for client informations card **/
+    .info-height {
+        height: 70%!important;
+    }
+
+    /** disconnect button class **/
+    .disconnect-height {
+        height: 20%!important;
+        width: 70%!important;
+    }
+
+    .disconnect-height:hover {
+        background-color: #dc3545;
+        transition-duration: 1s;
+    }
+
+    .disconnect-text {
+        font-size: 1.5em!important;
+    }
+
+    .disconnect-text:hover {
+        color: white;
+    }
+
+    .btn:focus,.btn:active {
+        outline: none !important;
+        box-shadow: none;
+     }
+
+    /** text class at the user informations card **/
+    .text-title-info {
+        font-size: 2em!important;
+    }
+
+    .name-info {
+        font-size: 1.8em!important;
+    }
+
+    .client-number {
+        font-size: 1.5em!important;
+    }
+    
+    /** class for displaying position at the menu card **/
+    .position {
+        position: absolute!important;
+        height: 30%!important;
+    }
+
+    .menu-nav-container {
+        height: 50%!important;
+    }
+
+    .informations-menu-card {
+        height: 100%!important;
+    }
+
+    #dropdownMenu2 {
+        display: none!important;
+    }
+
+    /** Desktop Menu **/
+    .menu-container-desktop {
+        width: 89.7%!important;
+        height: 100%!important;
+    }
+
+    .list-group-menu {
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+    .list-group-menu-item {
+        height: 100%!important;
+    }
+
+    .padding-informations-card {
+        padding: 5%!important;
+    }
+
+    /** Title of the global informations card **/
+    .informations-title {
+        height: 10%!important;
+    }
+}
