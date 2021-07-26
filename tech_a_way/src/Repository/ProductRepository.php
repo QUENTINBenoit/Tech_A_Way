@@ -19,6 +19,29 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+
+    /**
+     * Find all details of one product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function findOneByDetails($id)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where('p.id = :id')
+           ->setParameter(':id', $id)
+           ->leftJoin('p.brand', 'brand')
+           ->leftJoin('p.categories', 'categories')
+           ->leftJoin('p.pictures', 'pictures')
+           ->addSelect('brand, categories, pictures');
+
+        $query = $qb->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
