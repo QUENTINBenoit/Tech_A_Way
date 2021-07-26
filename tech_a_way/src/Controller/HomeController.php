@@ -16,20 +16,20 @@ class HomeController extends AbstractController
      */
     public function index(ProductRepository $reposRecent,ProductRepository $reposInPromotion,ProductRepository $reposPromotionByPercentage): Response
     {
-        $productsRecent = $reposRecent->findByStatusRecent(1);
+        $productsRecent = $reposRecent->findByStatusRecent(1, null, 9);
 
-        $productsPromotion = $reposInPromotion->findByStatusPromotion(1);
+        $productsPromotion = $reposInPromotion->findByStatusPromotion(1, null, 9);
 
-        $productsByPromotionInPercent = $reposPromotionByPercentage->findByPercentagePromotion('40');
+        //$productsByPromotionInPercent = $reposPromotionByPercentage->findByPercentagePromotion('40');
 
-       // dd($productsPromotion, $productsRecent, $productsByPromotionInPercent);
+       //dd($productsPromotion, $productsRecent);
         
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'productsRecent'=> $productsRecent,
             'productsPromotion'=> $productsPromotion,
-            'productsByPromotionInPercent'=>$productsByPromotionInPercent
+            //'productsByPromotionInPercent'=>$productsByPromotionInPercent
 
 
         ]);
