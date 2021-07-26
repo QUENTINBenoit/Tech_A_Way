@@ -1,0 +1,45 @@
+#salutation_user {
+    margin-top: 30px;
+    position: absolute;
+    top: 35px;
+    left: 30px;
+    z-index: 9999;
+    color: #F25528;
+    font-weight: bold;
+
+}
+
+
+#connection_user {
+    margin-top: 30px;
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    z-index: 9999;
+    color: #F25528;
+    font-weight: bold;
+
+}
+#connection_user a {
+    text-decoration: none;
+    color:#F25528;
+    font-style: italic;
+    font-weight: normal;
+
+}
+
+#connection_user a:hover {
+    color:blue;
+}
+
+@media (max-width: 767px) {
+    #connection_user, #salutation_user {
+        display: none;
+    }
+}
+
+#spacing {
+ margin-top: 30px;
+}
+
+
