@@ -96,6 +96,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->addresses = new ArrayCollection();
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
+        $this->status = 1;
     }
 
     
