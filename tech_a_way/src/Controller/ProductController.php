@@ -31,13 +31,7 @@ class ProductController extends AbstractController
      * @return Response
      */
     public function show(int $id, ProductRepository $productRepository, CategoryRepository $categoryRepository)
-    {
-        $allCategories = $categoryRepository->findAll();
-        dd($allCategories);
-
-        $product = $productRepository->find($id);
-        dd($product->getCategories());
-       
+    {       
         return $this->render('product/index.html.twig', [
             'product' => $productRepository->findOneByDetails($id),
         ]);
