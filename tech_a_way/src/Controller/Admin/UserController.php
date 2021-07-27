@@ -84,5 +84,37 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/update", name="update", methods={"GET","POST"})
+     */
+    public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
+    {
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $plainPassword = $form->get('password')->getData();
+
+            if ($plainPassword) {
+                $hashedPassword = $passwordHasher->hashPassword(
+                    $user,
+                    $plainPassword
+                );
+
+                $user->setPassword($hashedPassword);
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        return $this->render('admin/user/update.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
 }

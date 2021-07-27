@@ -10,6 +10,7 @@
 
 	<section class="container-fluid mt-5 scrollarea">
 		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+		       <div class="fs-5 position-absolute top-0 end-0"><a  href="{{ path('admin_user_details', {id:user.id}) }}">voir son historique de commande</a></div>
             <h2 class="fs-4">Informations personnelles de {{user.gender}} {{user.firstname}} {{user.lastname}}</h2>
             <table class="table  table-hover">
 				<thead class="table-primary">
@@ -19,6 +20,7 @@
 						<th scope="col">Statut</th>
 						<th scope="col">Rôle(s)</th>
 						<th scope="col">date de naissance</th>
+						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -28,11 +30,18 @@
 							<td>{{ user.statusUser }}</td>
 							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
 							<td>{{ user.birthdate|date('d-m-Y') }}</td>
+							<td>
+								<a href="{{ path('admin_user_update', {id:user.id}) }}">éditer</a>
+								/
+								<a href="#">supprimer</a>
+							</td>
+							
 						</tr>
 				</tbody>
 			</table>
 
-            <h4>Liste des adresses</h4>
+            <h4>Liste des adresses <a class="fs-5" href="#">(Ajouter une adresse)</a></h4>
+			
             <table class="table  table-hover">
 				<thead class="table-primary">
 					<tr>
@@ -52,9 +61,9 @@
 							<td>{{ address.zipcode }}</td>
 							<td>{{ address.city }}</td>
 							<td>
-                                <a href="#">supprimer</a>
+                                <a href="#">éditer</a>
                                  / 
-                                <a href="#">editer</a></td>
+                                <a href="#">supprimer</a></td>
 						</tr>
 					{% endfor %}
 
