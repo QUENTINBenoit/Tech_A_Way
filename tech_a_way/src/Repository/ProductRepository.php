@@ -27,9 +27,11 @@ class ProductRepository extends ServiceEntityRepository
      * @return void
      */
     public function findOneByDetails($id)
-    {
+    {   
+        // Initialized the query builder with alias of the table product
         $qb = $this->createQueryBuilder('p');
 
+        // Search the product which have the primary id get in the parameter
         $qb->where('p.id = :id')
            ->setParameter(':id', $id)
            ->leftJoin('p.brand', 'brand')
@@ -37,8 +39,10 @@ class ProductRepository extends ServiceEntityRepository
            ->leftJoin('p.pictures', 'pictures')
            ->addSelect('brand, categories, pictures');
 
+        // Get the query
         $query = $qb->getQuery();
 
+        // Return the result if it's find or null
         return $query->getOneOrNullResult();
     }
 

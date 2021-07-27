@@ -19,10 +19,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/list", name="list")
      */
-    public function index(): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
+            'category' => $categoryRepository->findCategoriesToDisplay(),
         ]);
     }
 
