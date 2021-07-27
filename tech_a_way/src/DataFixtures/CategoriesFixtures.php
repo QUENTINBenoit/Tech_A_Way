@@ -30,7 +30,7 @@ class CategoriesFixtures extends Fixture
             
         ];
 
-     $underSubCategorySon = [
+        $underSubCategorySon = [
          'Homecinema',
          'Barre de son',
          'Enceintes',
@@ -38,61 +38,70 @@ class CategoriesFixtures extends Fixture
      ];
         
 
-        
+        /************************************************
+         * =========================================
+         * DATA SET FOR THE SOUND AND IMAGE CATEGORY
+         * =========================================
+         * 
+         * here is the 'Image and sound' category, 
+         * I have tried many ways to factor my code but
+         * unfortunately my attempts have failed.
+         * But the code works.
+         *
+         ************************************************/
             
-            $categorySonAndImage = new Category();
-            $categorySonAndImage->setName($majorCategoryList[0]);
-            $categorySonAndImage->setSubtitle('Son or not Son');
+        $categorySonAndImage = new Category();
+        $categorySonAndImage->setName($majorCategoryList[0]);
+        $categorySonAndImage->setSubtitle('Son or not Son');
 
-
-            
-            $subCategorySon = new Category;
-            $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
-            $subCategorySon->setCategory($subCategorySon);
-            $categorySonAndImage->addSubcategory($subCategorySon);
-
-
-            $subCategoryImage = new Category;
-            $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
-            $categorySonAndImage->addSubcategory($subCategoryImage);
-
-
-         
-         
-
-
-
-            $manager->persist($subCategoryImage);
-            $manager->persist($subCategorySon);
-            $manager->persist($categorySonAndImage);
-
-
-            $underSubCategorySonHomeCinema=New Category;
-            $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
-            $subCategorySon->addSubcategory($underSubCategorySonHomeCinema);
-
-
-            $underSubCategorySonSoundBar=New Category;
-            $underSubCategorySonSoundBar->setName($underSubCategorySon[1]);
-            $subCategorySon->addSubcategory($underSubCategorySonSoundBar);
-
-            $underSubCategorySonSpeaker=New Category;
-            $underSubCategorySonSpeaker->setName($underSubCategorySon[2]);
-            $subCategorySon->addSubcategory($underSubCategorySonSpeaker);
-
-            $underSubCategorySonHeadphone=New Category;
-            $underSubCategorySonHeadphone->setName($underSubCategorySon[3]);
-            $subCategorySon->addSubcategory($underSubCategorySonHeadphone);
 
             
+        $subCategorySon = new Category;
+        $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
+        $subCategorySon->setCategory($subCategorySon);
+        $categorySonAndImage->addSubcategory($subCategorySon);
+
+
+        $subCategoryImage = new Category;
+        $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
+        $categorySonAndImage->addSubcategory($subCategoryImage);
+
+        $manager->persist($subCategoryImage);
+        $manager->persist($subCategorySon);
+        $manager->persist($categorySonAndImage);
+
+        // Subcategories of the category Sound
+
+        $underSubCategorySonHomeCinema=new Category;
+        $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
+        $subCategorySon->addSubcategory($underSubCategorySonHomeCinema);
+
+
+        $underSubCategorySonSoundBar=new Category;
+        $underSubCategorySonSoundBar->setName($underSubCategorySon[1]);
+        $subCategorySon->addSubcategory($underSubCategorySonSoundBar);
+
+        $underSubCategorySonSpeaker=new Category;
+        $underSubCategorySonSpeaker->setName($underSubCategorySon[2]);
+        $subCategorySon->addSubcategory($underSubCategorySonSpeaker);
+
+        $underSubCategorySonHeadphone=new Category;
+        $underSubCategorySonHeadphone->setName($underSubCategorySon[3]);
+        $subCategorySon->addSubcategory($underSubCategorySonHeadphone);
+
+
+
+        // Subcategories of the Image category
+
+            
 
 
 
 
-            $manager->persist($underSubCategorySonHomeCinema);
-            $manager->persist($underSubCategorySonSoundBar);
-            $manager->persist($underSubCategorySonSpeaker);
-            $manager->persist($underSubCategorySonHeadphone);
+        $manager->persist($underSubCategorySonHomeCinema);
+        $manager->persist($underSubCategorySonSoundBar);
+        $manager->persist($underSubCategorySonSpeaker);
+        $manager->persist($underSubCategorySonHeadphone);
 
         
 
