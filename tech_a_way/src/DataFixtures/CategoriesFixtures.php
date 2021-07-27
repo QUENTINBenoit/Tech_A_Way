@@ -72,36 +72,53 @@ class CategoriesFixtures extends Fixture
 
         // Subcategories of the category Sound
 
-        $underSubCategorySonHomeCinema=new Category;
-        $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
-        $subCategorySon->addSubcategory($underSubCategorySonHomeCinema);
+        foreach ($underSubCategorySon as $current) 
+        {
+            $under = new Category;
+            $under->setName($current);
+            $subCategorySon->addSubcategory($under);
+            $manager->persist($under);
+
+        }
+
+  
+
+     
+                /*$underSubCategorySonHomeCinema=new Category;
+                $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
+                $subCategorySon->addSubcategory($underSubCategorySonHomeCinema);
 
 
-        $underSubCategorySonSoundBar=new Category;
-        $underSubCategorySonSoundBar->setName($underSubCategorySon[1]);
-        $subCategorySon->addSubcategory($underSubCategorySonSoundBar);
+                $underSubCategorySonSoundBar=new Category;
+                $underSubCategorySonSoundBar->setName($underSubCategorySon[1]);
+                $subCategorySon->addSubcategory($underSubCategorySonSoundBar);
 
-        $underSubCategorySonSpeaker=new Category;
-        $underSubCategorySonSpeaker->setName($underSubCategorySon[2]);
-        $subCategorySon->addSubcategory($underSubCategorySonSpeaker);
+                $underSubCategorySonSpeaker=new Category;
+                $underSubCategorySonSpeaker->setName($underSubCategorySon[2]);
+                $subCategorySon->addSubcategory($underSubCategorySonSpeaker);
 
-        $underSubCategorySonHeadphone=new Category;
-        $underSubCategorySonHeadphone->setName($underSubCategorySon[3]);
-        $subCategorySon->addSubcategory($underSubCategorySonHeadphone);
-
-
-
-        // Subcategories of the Image category
-
-            
-
-
+                $underSubCategorySonHeadphone=new Category;
+                $underSubCategorySonHeadphone->setName($underSubCategorySon[3]);
+                $subCategorySon->addSubcategory($underSubCategorySonHeadphone);
 
 
         $manager->persist($underSubCategorySonHomeCinema);
         $manager->persist($underSubCategorySonSoundBar);
         $manager->persist($underSubCategorySonSpeaker);
         $manager->persist($underSubCategorySonHeadphone);
+
+
+
+*/
+
+
+        // Subcategories of the Image category
+        
+            
+
+
+
+
 
         
 
