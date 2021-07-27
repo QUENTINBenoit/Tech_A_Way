@@ -2,9 +2,13 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -24,7 +28,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="details",methods={"GET"})
+     * @Route("/{id}/details", name="details",methods={"GET"})
      */
     public function details(int $id, UserRepository $userRepository): Response
     {
@@ -42,4 +46,43 @@ class UserController extends AbstractController
             'user' => $userRepository->findWithPersonalDetails($id),
         ]);
     }
+
+    /**
+     * @Route("/create", name="create", methods={"GET","POST"})
+     */
+    public function create(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            // We recover the password in non-hash
+            $plainPassword = $form->get('password')->getData();
+
+            // We hash password
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $plainPassword
+            );
+
+            // we update the password property with the new hash password
+            $user->setPassword($hashedPassword);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        return $this->render('admin/user/create.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
 }
