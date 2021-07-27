@@ -7,21 +7,56 @@ use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-
-
-class CategoriesFixtures extends Fixture 
+class CategoriesFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $majorCategoryList = [
+
+            // I am testing a nested table to link the major categories to the relevant
+            // subcategories
+
+            'Son et images',
+            'Informatiques',
+            'Objet connecté',
+            'Téléphonie',
+
+            
+        ];
+
+        $subCategoriesSonAndImageList = [
+            'Son',
+            'Images'
+            
+        ];
+
+     $underSubCategorySon = [
+         'Homecinema',
+         'Barre de son',
+         'Enceintes',
+         'Casque/Ecouteur'
+     ];
         
 
-       // create 20 products! Bam!
-       for ($i = 0; $i < 4; $i++) {
-        $category = new Category();
-        $category->setName('Son et image '.$i , 'Informatique' .$i , 'Téléphonie' .$i , 'Objet connecté' .$i);
-        $manager->persist($category);
-    }
+        foreach ($majorCategoryList as $currentCategory){
+            
+            $category = new Category();
 
-    $manager->flush();
+            $category->setName($currentCategory);
+            $category->setSubtitle('Son or not Son');
+            $subCategory = new Category;
+            $subCategory->setName('Homecinema') ;
+            $category->addSubcategory($subCategory);
+            $manager->persist($subCategory);
+            $manager->persist($category);
+        }
+
+        
+
+        
+        
+        
+
+        $manager->flush();
     }
 }
