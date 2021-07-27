@@ -232,7 +232,6 @@ class AppFixtures extends Fixture
 
             for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
                 $order = new Order();
-                $order->setNumber(50);
                 $order->setTypeDelivery($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
                 $order->setStreetDelivery($faker->streetAddress());
                 $order->setZipcodeDelivery($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
