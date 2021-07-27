@@ -4,20 +4,24 @@
 {% endblock %}
 
 {% block body %}
-		<h1>informations concernant {{user.firstname}} {{user.lastname}}</h1>
-	<section class="container mt-5 ">
-            <h2>Categories</h2>
-			
+
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid mt-5 scrollarea">
+		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+            <div class="fs-5 position-absolute top-0 end-0"><a  href="{{ path('admin_user_personal_details', {id:user.id}) }}">voir les informations personnelles détaillées</a></div>
+        
+            <h2 class="fs-4">Informations liées aux commandes du client</h2>
             <table class="table  table-hover">
 				<thead class="table-primary">
 					<tr>
-						<th scope="col">N° Commande</th>
-						<th scope="col">Détails commandes</th>
+						<th scope="col">N° de Cde</th>
+						<th scope="col">Détails des cdes</th>
 						<th scope="col">Statut</th>
-						<th scope="col">adresse facturation</th>
-						<th scope="col">adresse livraison</th>
+						<th scope="col">Adresse facturation</th>
+						<th scope="col">Adresse livraison</th>
                         <th scope="col">Mode de paiement</th>
-						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -69,15 +73,17 @@
                                  <div class="container fw-bold text-decoration-underline">Total: {{ totalAmount }}€ TTC</div>
                                 </table>
                             </td>
-							<td>statut de la commande</td>
-							<td>adresse facturation</td>
-							<td>adresse livraison</td>
-                            <td>Mode de paiement</td>
-						    <td>
-                                <a href="#">plus</a>
-                                 / 
-                                <a href="#">editer</a>
+							<td>{{ order.status.name }}</td>
+							<td>
+                            <div>{{ order.streetBill}}</div>
+                            <div>{{ order.zipcodeBill}} {{ order.cityBill}}</div>
                             </td>
+							<td>
+                            <div>Type : {{ order.typeDelivery}}</div>
+                            <div>{{ order.streetDelivery}}</div>
+                            <div>{{ order.zipcodeDelivery}} {{ order.cityDelivery}}</div>
+                            </td>
+                            <td>{{ order.modeOfPayment.type }}</td>
 						</tr>
 					{% else %}
 						<tr>
@@ -86,29 +92,5 @@
 					{% endfor %}
 				</tbody>
 			</table>
-
-
-
-
-
-
-
-            {% for address in user.addresses %}
-                <div>
-                    <p>{{ address.type }}</p>
-                    <p>{{ address.street }}</p>
-                    <p>{{ address.zipcode }}</p>
-                    <p>{{ address.city }}</p>
-                </div>
-            {% endfor %}
-		
-
-
-            	<ul>
-				{% for order in user.orders %}
-					<li>{{ order.modeOfPayment.type }}</li>
-				{% endfor %}
-			</ul>
-		</section>
 	</section>
 {% endblock %}

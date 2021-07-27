@@ -57,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
    /**
      * @ORM\Column(type="smallint")
      */
-    private $status;
+    private $statusUser;
 
     /**
      * @var string The hashed password
@@ -202,14 +202,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStatus(): ?int
+    public function getStatusUser(): ?int
     {
-        return $this->status;
+        return $this->statusUser;
     }
 
-    public function setStatus(int $status): self
+    public function setStatusUser(int $statusUser): self
     {
-        $this->status = $status;
+        $this->statusUser = $statusUser;
 
         return $this;
     }

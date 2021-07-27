@@ -32,9 +32,7 @@
 							<td>{{ user.lastname }}</td>
 							<td>{{ user.gender }}</td>
 						    <td>
-                                <a href="#">plus</a>
-                                 / 
-                                <a href="#">editer</a>
+                                <a href="{{ path('admin_user_details', {id:user.id}) }}">plus</a>
                             </td>
 						</tr>
 					{% else %}

@@ -24,12 +24,22 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show",methods={"GET"})
+     * @Route("/{id}", name="details",methods={"GET"})
      */
     public function details(int $id, UserRepository $userRepository): Response
     {
         return $this->render('admin/user/details.html.twig', [
-            'user' => $userRepository->findWithDetails($id),
+            'user' => $userRepository->findWithAllDetails($id),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/personal", name="personal_details",methods={"GET"})
+     */
+    public function Personaldetails(int $id, UserRepository $userRepository): Response
+    {
+        return $this->render('admin/user/personal.details.html.twig', [
+            'user' => $userRepository->findWithPersonalDetails($id),
         ]);
     }
 }

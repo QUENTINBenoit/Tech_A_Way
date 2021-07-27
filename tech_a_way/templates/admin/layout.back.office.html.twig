@@ -19,6 +19,9 @@
 		{% block javascripts %}
 			<script src="https://kit.fontawesome.com/74ed2f933d.js" crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+			<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+			<script src="{{ asset('js/backoffice.js') }}"></script>
+			<script src="{{ asset('js/back_user_id.js') }}"></script>
 		{% endblock %}
 
 
@@ -43,15 +46,18 @@
 		<link href="sidebars.css" rel="stylesheet">
 	</head>
 	<body>
+	{% block header %}
 		{% include "partials/_header.back.office.html.twig" %}
+		{% endblock %}
+
+		{% block cards %}
 		{% include "partials/_cards.back.office.html.twig" %}
+		{% endblock %}
 
 
 
-			{% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 
-			<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-			<script src="{{ asset('js/backoffice.js') }}"></script>
-			<script src="{{ asset('js/back_user_id.js') }}"></script>
+		
 	</body>
 </html>

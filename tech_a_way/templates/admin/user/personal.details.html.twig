@@ -1,0 +1,64 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Informations personnelles
+{% endblock %}
+
+{% block body %}
+
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid mt-5 scrollarea">
+		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+            <h2 class="fs-4">Informations personnelles de {{user.gender}} {{user.firstname}} {{user.lastname}}</h2>
+            <table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Email</th>
+						<th scope="col">Téléphone</th>
+						<th scope="col">Statut</th>
+						<th scope="col">Rôle(s)</th>
+						<th scope="col">date de naissance</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr>
+							<th scope="row">{{ user.email }}</th>
+                            <td>{{ user.phoneNumber }}</td>
+							<td>{{ user.statusUser }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.birthdate|date('d-m-Y') }}</td>
+						</tr>
+				</tbody>
+			</table>
+
+            <h4>Liste des adresses</h4>
+            <table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Type</th>
+						<th scope="col">Rue</th>
+						<th scope="col">Code postal</th>
+						<th scope="col">Ville</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for address in user.addresses %}
+
+						<tr>
+							<th scope="row">{{ address.type }}</th>
+                            <td>{{ address.street }}</td>
+							<td>{{ address.zipcode }}</td>
+							<td>{{ address.city }}</td>
+							<td>
+                                <a href="#">supprimer</a>
+                                 / 
+                                <a href="#">editer</a></td>
+						</tr>
+					{% endfor %}
+
+				</tbody>
+			</table>
+	</section>
+{% endblock %}
