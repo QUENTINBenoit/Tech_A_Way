@@ -68,7 +68,7 @@
 
 
 					<span class="fs-4">
-						Hello {{ app.user.firstname }}</span>
+						Bonjour {{ app.user.firstname }}</span>
 				</a>
 				<hr>
 				<ul class="nav nav-pills flex-column mb-auto">
@@ -81,13 +81,10 @@
 						<div class="collapse show text " id="home-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
 								<li>
+									<a href="{{ path('admin_user_index') }}" class="text-white rounded">Accueil backoffice</a>
+								</li>
+								<li>
 									<a href="{{ path('home') }}" class="text-white rounded">Accès boutique en ligne</a>
-								</li>
-								<li>
-									<a href="#" class="text-white rounded">Updates</a>
-								</li>
-								<li>
-									<a href="#" class="text-white rounded">Reports</a>
 								</li>
 							</ul>
 						</div>
@@ -101,16 +98,10 @@
 						<div class="collapse" id="dashboard-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li>
-									<a href="{{ path('admin_user_index') }}" class="text-white  rounded">Liste Complète</a>
+									<a href="{{ path('admin_user_index') }}" class="text-white  rounded">Liste complète</a>
 								</li>
 								<li>
-									<a href="#" class="text-white  rounded">Weekly</a>
-								</li>
-								<li>
-									<a href="#" class="text-white rounded">Monthly</a>
-								</li>
-								<li>
-									<a href="#" class="text-white rounded">Annually</a>
+									<a href="#" class="text-white  rounded">Ajouter un nouvel utilisateur</a>
 								</li>
 							</ul>
 						</div>
@@ -118,21 +109,31 @@
 					<li class="mb-1">
 						<button class="btn btn-toggle align-items-center rounded collapsed text-white " data-bs-toggle="collapse" data-bs-target="#products-collapse" aria-expanded="false">
 							<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-							Products
+							Produits
 						</button>
 						<div class="collapse" id="products-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li>
-									<a href="#" class="text-white  rounded">New</a>
+									<a href="#" class="text-white  rounded">Liste complète</a>
 								</li>
 								<li>
-									<a href="#" class="text-white  rounded">Processed</a>
+									<a href="#" class="text-white  rounded">Ajouter un nouveau produit</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed text-white " data-bs-toggle="collapse" data-bs-target="#products-collapse" aria-expanded="false">
+							<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+							Catégories
+						</button>
+						<div class="collapse" id="products-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li>
+									<a href="#" class="text-white  rounded">Liste complète</a>
 								</li>
 								<li>
-									<a href="#" class="text-white  rounded">Shipped</a>
-								</li>
-								<li>
-									<a href="#" class="text-white  rounded">Returned</a>
+									<a href="#" class="text-white  rounded">Ajouter une nouvelle catégorie</a>
 								</li>
 							</ul>
 						</div>
