@@ -33,6 +33,9 @@
 			{% if app.user %}
 				Bonjour
 				{{app.user.firstname}}
+				{% if (app.user.roles[0] == 'ROLE_CATALOG_MANAGER') or (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+				   -  <a href="{{ path('admin_user_index') }}">Accès Back office</a>
+				{% endif %}
                 {% endif %}
 		</div>
         <div id="connection_user">

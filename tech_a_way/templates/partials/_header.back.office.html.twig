@@ -68,7 +68,7 @@
 
 
 					<span class="fs-4">
-						Hello Benoit</span>
+						Hello {{ app.user.firstname }}</span>
 				</a>
 				<hr>
 				<ul class="nav nav-pills flex-column mb-auto">
@@ -81,7 +81,7 @@
 						<div class="collapse show text " id="home-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
 								<li>
-									<a href="#" class="text-white rounded">Overview</a>
+									<a href="{{ path('home') }}" class="text-white rounded">Accès boutique en ligne</a>
 								</li>
 								<li>
 									<a href="#" class="text-white rounded">Updates</a>
