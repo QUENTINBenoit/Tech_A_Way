@@ -148,7 +148,7 @@ class AppFixtures extends Fixture
             $adminUser->setEmail($currentUser[('email')]);
             $adminUser ->setRoles($rolesListAdmin[0]);
             $adminUser->setPassword('$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6'); // same password : "tech a way"
-            $adminUser->setStatus(1);
+            $adminUser->setStatusUser(1);
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
             $adminUser->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
@@ -209,7 +209,7 @@ class AppFixtures extends Fixture
             $user ->setEmail($faker->email());
             $user ->setRoles($rolesList[$faker->numberBetween(0, (count($rolesList) -1))]);
             $user ->setPassword('$2y$13$AmMvdO6CynQ8qx197C79b.xJmiv2rS0Or0c4V2pG6TSsp4UlrLhPO'); // same password : "mdp123"
-            $user ->setStatus(1);
+            $user ->setStatusUser(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
             $typeDelivery = [
