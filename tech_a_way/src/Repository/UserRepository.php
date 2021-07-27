@@ -36,6 +36,44 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    /**
+     * Method that returns user's informations with Query Builders:
+     * - Infos du user : firstname, lastname, phoneNumber ...
+     * - associated addressess
+     * - associated orders
+     * - associated status
+     * - associated modeOfPayment
+     *
+     * @param int $id
+     * @return void
+     */
+    public function findWithDetails($id)
+    {
+        $qb = $this->createQueryBuilder('u'); // SELECT user.*
+
+        $qb->where('u.id = :id'); // request to avoid an injection
+        $qb->setParameter(':id', $id);
+
+        // we will do a join to retrieve information from other entities (tables in database) linked to the user
+        // on utilise la méthode leftjoin car elle est moins stricte que la méthode join : en effet, si l'user n'a pas d'adresses associées, on aura quand même les autres informations du user
+        $qb->leftJoin('u.addresses', 'addresses');
+        $qb->leftJoin('u.orders', 'orders');
+        $qb->leftJoin('orders.status', 'status');
+        $qb->leftJoin('orders.orderLines', 'orderLines');
+        $qb->leftJoin('orders.modeOfPayment', 'modeOfPayment');
+
+        // With the add Select, we ask to retrieve information from other tables
+        $qb->addSelect('addresses, orders, status, orderLines, modeOfPayment');
+
+        // we create the SQL queryL
+        $query = $qb->getQuery();
+
+        // We execute and we return the result in the form of an array objects of the TvShow class
+        // getOneOrNullResult : null if no result or returns 1 object of the User class
+        return $query->getOneOrNullResult();
+    }
+
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

@@ -1,0 +1,23 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des Utilisateurs !
+{% endblock %}
+
+{% block body %}
+		<h1>>{{user.firstname}} {{user.lastname}}</h1>
+	<section class="container mt-5 ">
+            <h2>Categories</h2>
+			<ul>
+				{% for address in user.addresses %}
+					<li>{{ address.type }}</li>
+					<li>{{ address.street }}</li>
+					<li>{{ address.zipcode }}</li>
+					<li>{{ address.city }}</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</section>
+	
+
+
+{% endblock %}
