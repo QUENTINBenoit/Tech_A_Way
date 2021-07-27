@@ -36,7 +36,13 @@ class CategoriesFixtures extends Fixture
          'Enceintes',
          'Casque/Ecouteur'
      ];
-        
+        $underSubCategoryImage = [
+            'Télévision',
+            'Projection',
+            'Camera',
+            'Photo',
+
+        ];
 
         /************************************************
          * =========================================
@@ -114,7 +120,14 @@ class CategoriesFixtures extends Fixture
 
         // Subcategories of the Image category
         
-            
+        foreach ($underSubCategoryImage as $currentImage) 
+        {
+            $under = new Category;
+            $under->setName($currentImage);
+            $subCategoryImage->addSubcategory($under);
+            $manager->persist($under);
+
+        }
 
 
 
