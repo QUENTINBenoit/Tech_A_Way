@@ -57,12 +57,12 @@ class UserRepository extends ServiceEntityRepository
  public function findByUserOder($id)
  {
       // On Instancie le querybuilder
-      $qb = $this->createQueryBuilder('costumer');//  SELECT * FROM order
+      $qb = $this->createQueryBuilder('customer');//  SELECT * FROM order
       // je cible l'utilisateur demander  ( SELECT user.* WEHERE id= $id)
-      $qb->where('costumer.id = :id');
+      $qb->where('customer.id = :id');
       $qb->setParameter(':id', $id);
        // j'utilise une jointure pour ce faire je prend la methodes leftJoin moin strict que Joint
-       $qb->leftJoin('costumer.orders', 'orders');
+       $qb->leftJoin('customer.orders', 'orders');
 
       // je crée un rqueter SQL
       $query = $qb->getQuery();

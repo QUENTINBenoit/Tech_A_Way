@@ -34,7 +34,7 @@ class OrderController extends AbstractController
           
         return $this->render('order/index.html.twig', [
 
-            'order' => $orderRepository->find($id),
+             'order' => $orderRepository->find($id),
              'user' => $userRepository->findByUserOder($id)
 
    ]); 
