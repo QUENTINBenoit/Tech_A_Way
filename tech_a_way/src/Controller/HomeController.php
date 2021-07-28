@@ -12,7 +12,7 @@ use Symfony\Component\VarDumper\VarDumper;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
     public function index(ProductRepository $reposRecent,ProductRepository $reposInPromotion,ProductRepository $reposPromotionByPercentage): Response
     {

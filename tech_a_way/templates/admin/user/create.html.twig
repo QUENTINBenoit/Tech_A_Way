@@ -1,0 +1,68 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Nouvel Utilisateur
+{% endblock %}
+
+{% block body %}
+{% block cards %}{% endblock %}
+
+
+	<section class="container">
+		<h1>Création d'un nouvel Utilisateur</h1>
+		<section class="container-lg">
+			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
+
+
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.email) }}
+							</div> 
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.password, {
+                                    label: 'Password'
+                                }) }}
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3">
+								{{ form_row(form.gender) }}
+							</div>
+							<div class="col-md-3">
+								{{ form_row(form.roles) }}
+							</div>
+							<div class="container">
+								<div class="row gy-3">
+									<div class="col-md-4">
+										{{ form_row(form.firstname) }}
+
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.lastname) }}
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.phoneNumber) }}
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									{{ form_row(form.birthdate) }}
+								</div>
+								<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Créer</button>
+									{{ form_end(form) }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+	</section>
+{% endblock %}
