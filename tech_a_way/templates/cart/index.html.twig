@@ -28,7 +28,11 @@
 						<a href="">{{ item.product.brand.name }} {{ item.product.name }}</a>
 					</p>
 					<p class="description_product">{{ item.product.description }}</p>
+                    {% if item.product.stock > 0 %}
 					<p class="available">Disponible</p>
+                    {% else %}
+                    <p class="btn-warning">Non disponible</p>
+                    {% endif %}
 				</div>
                 
 				<div class="col-md-2 d-flex align-items-baseline quantity">
@@ -43,7 +47,7 @@
 
 				</div>
 
-				<div class="col-md-2 price">{{ item.product.inclTaxesPrice }} €</div>
+				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item['quantity'] }} €</div>
 				<div class="col-md-1 button_delete">
 					<button class="button_delete_product bg-white" id="button_delete_product_1">
 						<i class="fas fa-times"></i>

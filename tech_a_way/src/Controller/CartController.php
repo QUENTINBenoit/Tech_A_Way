@@ -20,6 +20,7 @@ class CartController extends AbstractController
      */
     public function index(SessionInterface $sessionInterface, ProductRepository $productRepository): Response
     {
+        // dd($sessionInterface->get('cart'));
         // Search the session with de 'cart' key if exist otherwise an empty array
         $cart = $sessionInterface->get('cart', []);
 
@@ -67,7 +68,7 @@ class CartController extends AbstractController
 
         $sessionInterface->set('cart', $cart);
 
-        dd($sessionInterface->get('cart'));
+        return $this->redirectToRoute('cart_list');
         
     }
 
