@@ -11,7 +11,7 @@ class CategoriesFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $majorCategoryList = [
+        $majorCategoriesList = [
 
             // I am testing a nested table to link the major categories to the relevant
             // subcategories
@@ -22,6 +22,79 @@ class CategoriesFixtures extends Fixture
             'Téléphonie',
 
             
+        ];
+
+        $subCategoriesInformatiqueList =[
+            'peripherique',
+            'Portable',
+            'Ordinateur Fix'
+        ];
+
+        $underSubCategoryPeripherique =[
+            'Ecran PC',
+            'Clavier/Souris',
+            'Disque dur',
+            'Imprimante/Scanner',
+        ];
+
+        $underSubCategoryPortable =[
+            'Neuf',
+            'Reconditionne',
+            'Sation d\'accueil ',
+            'Sacoches',
+        ];
+
+        $underSubCategoryOrdinateurFix =[
+
+            'Neuf',
+            'Reconditionne',
+            'Tour',
+        ];
+
+        $subCategoriesObjetConnecteList = [
+            'Maison',
+            'Sport',
+            'Sécurité'
+        ];
+
+        $underSubCategoryMaison =[
+            'Ampoule Connecte',
+            'Prise Connecte',
+            'Traitement de l\'aire',
+            'Aspirateur connecte'
+        ];
+
+        $underSubCategorySport = [
+            'Montre connecte',
+            'Drone',
+            'Balance connecte',
+        ];
+
+        $underSubCategorySecurite = [
+            'Camera de surveillance',
+            'Alarme',
+            'Detecteur de fumer',
+            'Interphone Connecté',
+        ];
+
+        $subCategoriesTelephonieList = [
+            'Mobile',
+            'Fix',
+        ];
+
+        $underSubCategoryMobile = [
+            'Smartphone neuf',
+            'Smartphone Reconditione',
+            'Chargeur/Cable',
+            'Protection',
+
+        ];
+        $underSubCategoryFix = [
+            'Sans fil',
+            'Filaire',
+            'Fax',
+
+
         ];
 
         $subCategoriesSonAndImageList = [
@@ -44,6 +117,48 @@ class CategoriesFixtures extends Fixture
 
         ];
 
+
+        // Factorisation tableau 
+        $majorCategoryList1 = [
+
+            // I am testing a nested table to link the major categories to the relevant
+            // subcategories
+
+            'Son/Images'=>[
+                'Son'=>[
+                    'Homecinema',
+                    'Barre de son',
+                    'Enceintes',
+                    'Casque/Ecouteur'
+                ],
+                'Images'=>[
+                    'Télévision',
+                    'Projection',
+                    'Camera',
+                    'Photo',
+        
+                ] 
+            ],
+
+
+
+
+            'Informatiques',
+            'Objet connecté',
+            'Téléphonie',
+
+            
+        ];
+
+        // je veux recuperer la clé son pour lié en categorie et sous categorie
+
+
+        
+
+
+
+
+
         /************************************************
          * =========================================
          * DATA SET FOR THE SOUND AND IMAGE CATEGORY
@@ -55,9 +170,13 @@ class CategoriesFixtures extends Fixture
          * But the code works.
          *
          ************************************************/
+        
+
+
+
             
         $categorySonAndImage = new Category();
-        $categorySonAndImage->setName($majorCategoryList[0]);
+        $categorySonAndImage->setName($majorCategoriesList[0]);
         $categorySonAndImage->setSubtitle('Son or not Son');
 
 
@@ -86,11 +205,9 @@ class CategoriesFixtures extends Fixture
             $manager->persist($under);
 
         }
-
-  
-
-     
-                /*$underSubCategorySonHomeCinema=new Category;
+                /*
+            
+                $underSubCategorySonHomeCinema=new Category;
                 $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
                 $subCategorySon->addSubcategory($underSubCategorySonHomeCinema);
 
@@ -108,14 +225,11 @@ class CategoriesFixtures extends Fixture
                 $subCategorySon->addSubcategory($underSubCategorySonHeadphone);
 
 
-        $manager->persist($underSubCategorySonHomeCinema);
-        $manager->persist($underSubCategorySonSoundBar);
-        $manager->persist($underSubCategorySonSpeaker);
-        $manager->persist($underSubCategorySonHeadphone);
-
-
-
-*/
+                $manager->persist($underSubCategorySonHomeCinema);
+                $manager->persist($underSubCategorySonSoundBar);
+                $manager->persist($underSubCategorySonSpeaker);
+                $manager->persist($underSubCategorySonHeadphone);
+                                                                    */
 
 
         // Subcategories of the Image category
@@ -132,12 +246,6 @@ class CategoriesFixtures extends Fixture
 
 
 
-
-        
-
-        
-
-        
         
         
 
