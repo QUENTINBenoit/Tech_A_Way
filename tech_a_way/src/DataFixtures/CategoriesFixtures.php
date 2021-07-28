@@ -345,6 +345,166 @@ class CategoriesFixtures extends Fixture
 
                         }
     /**============================FIN=========================================== */
+
+
+
+
+
+
+
+
+    /************************************************
+         * =========================================
+         * DATA SET FOR THE Connected object CATEGORY
+         * =========================================
+         * 
+         * Below you will find the data set for the Connected object category
+         * 
+         * 
+         * 
+         * 
+         *
+         ************************************************/
+
+
+    /**================Major Categories "Objet Connecté"================================ */
+    $categoryConnectedObject = new Category();
+    $categoryConnectedObject->setName($majorCategoriesList[2]);
+    $categoryConnectedObject->setSubtitle('Objet connecte or not Objet connecte');
+
+    $manager->persist($categoryConnectedObject); /**Persit la major categorie Informatique */
+/**==============================Fin============================================== */
+
+
+/**========================Sous Categorie Maison ======================= */
+    $subCategoryMaison = new Category();
+    $subCategoryMaison->setName($subCategoriesObjetConnecteList[0]);
+    $subCategoryMaison->setCategory($subCategoryMaison);
+    $categoryConnectedObject->addSubcategory($subCategoryMaison);
+
+    $manager->persist($subCategoryMaison); /**Persit la sous categorie Maison */
+
+
+        // les sous categories de Maison
+        foreach ($underSubCategoryMaisonList as $current) 
+        {
+            $UnderMaison = new Category;
+            $UnderMaison->setName($current);
+            $subCategoryMaison->addSubcategory($UnderMaison);
+            $manager->persist($UnderMaison);
+
+        }
+
+/**===================================FIN=========================================== */
+
+/**=======================Souscategorie Sport============================ */
+    $subCategorySport = new Category();
+    $subCategorySport->setName($subCategoriesObjetConnecteList[1]);
+    $subCategorySport->setCategory($subCategorySport);
+    $categoryConnectedObject->addSubcategory($subCategorySport);
+
+    $manager->persist($subCategorySport);
+
+
+            // les sous-sous categories Sport
+            foreach ($underSubCategorySportList as $current) 
+                    {
+                        $underSport = new Category;
+                        $underSport->setName($current);
+                        $subCategorySport->addSubcategory($underSport);
+                        $manager->persist($underSport);
+
+                    }
+
+/**===========================FIN================================================== */
+  
+
+/**====================Sous sécurité=============================== */
+    $subCategorySecurity = new Category();
+    $subCategorySecurity->setName($subCategoriesObjetConnecteList[2]);
+    $subCategorySecurity->setCategory($subCategorySecurity);
+    $categoryConnectedObject->addSubcategory($subCategorySecurity);
+
+    $manager->persist($subCategorySecurity); /** Ici on persist */
+
+
+    foreach ($underSubCategorySecuriteList as $current) 
+                    {
+                        $underSecurity = new Category;
+                        $underSecurity->setName($current);
+                        $subCategorySecurity->addSubcategory($underSecurity);
+                        $manager->persist($underSecurity);
+
+                    }
+/**============================FIN=========================================== */
+
+
+/************************************************
+         * =========================================
+         * DATA SET FOR THE Telephonie CATEGORY
+         * =========================================
+         * 
+         * Below you will find the data set for the Telephonie category
+         * 
+         * 
+         * 
+         * 
+         *
+         ************************************************/
+
+
+    /**================Major Categories "Telephonie"================================ */
+    $categoryTelephonie = new Category();
+    $categoryTelephonie->setName($majorCategoriesList[3]);
+    $categoryTelephonie->setSubtitle('Telephonie or not telephonie');
+
+    $manager->persist($categoryTelephonie); /**Persit la major categorie Informatique */
+/**==============================Fin============================================== */
+
+
+/**========================Sous Categorie Mobile ======================= */
+    $subCategoryMobile = new Category();
+    $subCategoryMobile->setName($subCategoriesTelephonieList[0]);
+    $subCategoryMobile->setCategory($subCategoryMobile);
+    $categoryTelephonie->addSubcategory($subCategoryMobile);
+
+    $manager->persist($subCategoryMobile); /**Persit la sous categorie Mobile */
+
+
+        // les sous categories de Mobile
+        foreach ($underSubCategoryMobileList as $current) 
+        {
+            $UnderMobile = new Category;
+            $UnderMobile->setName($current);
+            $subCategoryMobile->addSubcategory($UnderMobile);
+            $manager->persist($UnderMobile);
+
+        }
+
+/**===================================FIN=========================================== */
+
+/**=======================Souscategorie telephonie Fix============================ */
+    $subCategoryFix = new Category();
+    $subCategoryFix->setName($subCategoriesObjetConnecteList[1]);
+    $subCategoryFix->setCategory($subCategoryFix);
+    $categoryTelephonie->addSubcategory($subCategoryFix);
+
+    $manager->persist($subCategoryFix);
+
+
+            // les sous-sous categories Fix
+            foreach ($underSubCategoryFixList as $current) 
+                    {
+                        $underFix = new Category;
+                        $underFix->setName($current);
+                        $subCategoryFix->addSubcategory($underFix);
+                        $manager->persist($underFix);
+
+                    }
+
+/**===========================FIN================================================== */
+  
+
        
 
 
