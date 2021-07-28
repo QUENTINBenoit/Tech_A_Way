@@ -19,7 +19,6 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-
     /**
      * Find all details of one product
      *
@@ -42,7 +41,7 @@ class ProductRepository extends ServiceEntityRepository
         // Get the query
         $query = $qb->getQuery();
 
-        // Return the result if it's find or null
+        // Return the result if it's find otherwise null
         return $query->getOneOrNullResult();
     }
 

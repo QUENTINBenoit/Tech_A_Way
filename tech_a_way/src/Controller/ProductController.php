@@ -35,6 +35,5 @@ class ProductController extends AbstractController
         return $this->render('product/index.html.twig', [
             'product' => $productRepository->findOneByDetails($id),
         ]);
-
     }
 }
