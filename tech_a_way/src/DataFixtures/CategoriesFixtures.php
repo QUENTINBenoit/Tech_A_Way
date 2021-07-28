@@ -229,7 +229,7 @@ class CategoriesFixtures extends Fixture
             
         $categorySonAndImage = new Category();
         $categorySonAndImage->setName($majorCategoriesList[0]);
-        $categorySonAndImage->setSubtitle('Son or not Son');
+        $categorySonAndImage->setSubtitle('Catégorie, Son et Image');
 
         /**====================Fin============================ */
 
@@ -242,6 +242,7 @@ class CategoriesFixtures extends Fixture
         /**=======les sous categories de son ============= */
         $subCategorySon = new Category;
         $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
+        $subCategorySon->setSubtitle('Le meilleur de l\'audio');
         $subCategorySon->setCategory($subCategorySon);
         $categorySonAndImage->addSubcategory($subCategorySon);
 
@@ -264,6 +265,7 @@ class CategoriesFixtures extends Fixture
         /**==================Sous categorie Image==================== */
         $subCategoryImage = new Category;
         $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
+        $subCategoryImage->setSubtitle('les dernière definition sont chez nous');
         $categorySonAndImage->addSubcategory($subCategoryImage);
 
         $manager->persist($subCategoryImage); /** Ici on persist la sous categorie Image */
@@ -331,7 +333,7 @@ class CategoriesFixtures extends Fixture
     /**================Major Categories Informatique================================ */
         $categoryInformatique = new Category();
         $categoryInformatique->setName($majorCategoriesList[1]);
-        $categoryInformatique->setSubtitle('Informatique or not informatique');
+        $categoryInformatique->setSubtitle('A la point de la technologie');
 
         $manager->persist($categoryInformatique); /**Persit la major categorie Informatique */
     /**==============================Fin============================================== */
@@ -340,6 +342,7 @@ class CategoriesFixtures extends Fixture
     /**========================Sous Categorie Peripherique ======================= */
         $subCategoryPeripherique = new Category();
         $subCategoryPeripherique->setName($subCategoriesInformatiqueList[0]);
+        $subCategoryPeripherique->setSubtitle('Besoins de pièces de rechange?');
         $subCategoryPeripherique->setCategory($subCategoryPeripherique);
         $categoryInformatique->addSubcategory($subCategoryPeripherique);
 
@@ -361,6 +364,7 @@ class CategoriesFixtures extends Fixture
     /**=======================Sou scategorie OrdiPortable============================ */
         $subCategoryPortable = new Category();
         $subCategoryPortable->setName($subCategoriesInformatiqueList[1]);
+        $subCategoryPortable->setSubtitle('Plus besoins de rester au bureau');
         $subCategoryPortable->setCategory($subCategoryPortable);
         $categoryInformatique->addSubcategory($subCategoryPortable);
 
@@ -383,6 +387,7 @@ class CategoriesFixtures extends Fixture
     /**====================Sous categorie Pc Fix=============================== */
         $subCategoryOrdiFix = new Category();
         $subCategoryOrdiFix->setName($subCategoriesInformatiqueList[2]);
+        $subCategoryOrdiFix->setSubtitle('Obtez pour le confort et la puissance');
         $subCategoryOrdiFix->setCategory($subCategoryOrdiFix);
         $categoryInformatique->addSubcategory($subCategoryOrdiFix);
 
@@ -423,7 +428,7 @@ class CategoriesFixtures extends Fixture
     /**================Major Categories "Objet Connecté"================================ */
     $categoryConnectedObject = new Category();
     $categoryConnectedObject->setName($majorCategoriesList[2]);
-    $categoryConnectedObject->setSubtitle('Objet connecte or not Objet connecte');
+    $categoryConnectedObject->setSubtitle('Rester connecté jusqu\'au bout des prises');
 
     $manager->persist($categoryConnectedObject); /**Persit la major categorie Informatique */
 /**==============================Fin============================================== */
@@ -433,6 +438,7 @@ class CategoriesFixtures extends Fixture
     $subCategoryMaison = new Category();
     $subCategoryMaison->setName($subCategoriesObjetConnecteList[0]);
     $subCategoryMaison->setCategory($subCategoryMaison);
+    $subCategoryMaison->setSubtitle('Enfin un interieur qui vous ressemble, maison intéligente a votre disposition');
     $categoryConnectedObject->addSubcategory($subCategoryMaison);
 
     $manager->persist($subCategoryMaison); /**Persit la sous categorie Maison */
@@ -453,6 +459,7 @@ class CategoriesFixtures extends Fixture
 /**=======================Souscategorie Sport============================ */
     $subCategorySport = new Category();
     $subCategorySport->setName($subCategoriesObjetConnecteList[1]);
+    $subCategorySport->setSubtitle('Retrouver vos produits sport et bien être');
     $subCategorySport->setCategory($subCategorySport);
     $categoryConnectedObject->addSubcategory($subCategorySport);
 
@@ -475,6 +482,7 @@ class CategoriesFixtures extends Fixture
 /**====================Sous sécurité=============================== */
     $subCategorySecurity = new Category();
     $subCategorySecurity->setName($subCategoriesObjetConnecteList[2]);
+    $subCategorySecurity->setSubtitle('Faites de votre interieur un havre de paix');
     $subCategorySecurity->setCategory($subCategorySecurity);
     $categoryConnectedObject->addSubcategory($subCategorySecurity);
 
@@ -509,7 +517,7 @@ class CategoriesFixtures extends Fixture
     /**================Major Categories "Telephonie"================================ */
     $categoryTelephonie = new Category();
     $categoryTelephonie->setName($majorCategoriesList[3]);
-    $categoryTelephonie->setSubtitle('Telephonie or not telephonie');
+    $categoryTelephonie->setSubtitle('Dring, Dring, Dring, \'dernier smartphone a votre écoute\' ');
 
     $manager->persist($categoryTelephonie); /**Persit la major categorie Informatique */
 /**==============================Fin============================================== */
@@ -519,6 +527,7 @@ class CategoriesFixtures extends Fixture
     $subCategoryMobile = new Category();
     $subCategoryMobile->setName($subCategoriesTelephonieList[0]);
     $subCategoryMobile->setCategory($subCategoryMobile);
+    $subCategoryMobile->setSubtitle('Tout les dernier smarthpone sont ici');
     $categoryTelephonie->addSubcategory($subCategoryMobile);
 
     $manager->persist($subCategoryMobile); /**Persit la sous categorie Mobile */
@@ -538,8 +547,9 @@ class CategoriesFixtures extends Fixture
 
 /**=======================Souscategorie telephonie Fix============================ */
     $subCategoryFix = new Category();
-    $subCategoryFix->setName($subCategoriesObjetConnecteList[1]);
+    $subCategoryFix->setName($subCategoriesTelephonieList[1]);
     $subCategoryFix->setCategory($subCategoryFix);
+    $subCategoryFix->setSubtitle('Nos téléphone filaire');
     $categoryTelephonie->addSubcategory($subCategoryFix);
 
     $manager->persist($subCategoryFix);
@@ -557,18 +567,10 @@ class CategoriesFixtures extends Fixture
 
 /**===========================FIN================================================== */
   
-
-       
-
-
-
-
-
-
-
-        
         
 
-        $manager->flush();
+        $manager->flush(); // Flush de tout les éléments
     }
+
 }
+
