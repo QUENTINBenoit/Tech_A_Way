@@ -30,21 +30,21 @@ class CategoriesFixtures extends Fixture
             'Ordinateur Fix'
         ];
 
-        $underSubCategoryPeripherique =[
+        $underSubCategoryPeripheriqueList =[
             'Ecran PC',
             'Clavier/Souris',
             'Disque dur',
             'Imprimante/Scanner',
         ];
 
-        $underSubCategoryPortable =[
+        $underSubCategoryPortableList =[
             'Neuf',
             'Reconditionne',
             'Sation d\'accueil ',
             'Sacoches',
         ];
 
-        $underSubCategoryOrdinateurFix =[
+        $underSubCategoryOrdinateurFixList =[
 
             'Neuf',
             'Reconditionne',
@@ -57,20 +57,20 @@ class CategoriesFixtures extends Fixture
             'Sécurité'
         ];
 
-        $underSubCategoryMaison =[
+        $underSubCategoryMaisonList =[
             'Ampoule Connecte',
             'Prise Connecte',
             'Traitement de l\'aire',
             'Aspirateur connecte'
         ];
 
-        $underSubCategorySport = [
+        $underSubCategorySportList = [
             'Montre connecte',
             'Drone',
             'Balance connecte',
         ];
 
-        $underSubCategorySecurite = [
+        $underSubCategorySecuriteList = [
             'Camera de surveillance',
             'Alarme',
             'Detecteur de fumer',
@@ -82,14 +82,14 @@ class CategoriesFixtures extends Fixture
             'Fix',
         ];
 
-        $underSubCategoryMobile = [
+        $underSubCategoryMobileList = [
             'Smartphone neuf',
             'Smartphone Reconditione',
             'Chargeur/Cable',
             'Protection',
 
         ];
-        $underSubCategoryFix = [
+        $underSubCategoryFixList = [
             'Sans fil',
             'Filaire',
             'Fax',
@@ -103,13 +103,13 @@ class CategoriesFixtures extends Fixture
             
         ];
 
-        $underSubCategorySon = [
+        $underSubCategorySonList = [
          'Homecinema',
          'Barre de son',
          'Enceintes',
          'Casque/Ecouteur'
      ];
-        $underSubCategoryImage = [
+        $underSubCategoryImageList = [
             'Télévision',
             'Projection',
             'Camera',
@@ -170,42 +170,63 @@ class CategoriesFixtures extends Fixture
          * But the code works.
          *
          ************************************************/
-        
 
 
-
+       /**==========major categoy Son et image==============*/  
             
         $categorySonAndImage = new Category();
         $categorySonAndImage->setName($majorCategoriesList[0]);
         $categorySonAndImage->setSubtitle('Son or not Son');
 
+        /**====================Fin============================ */
 
-            
+
+
+        /**=====Ici on persist la major category son et image=== */   
+        $manager->persist($categorySonAndImage);
+        /**====================Fin========================== */   
+
+        /**=======les sous categories de son ============= */
         $subCategorySon = new Category;
         $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
         $subCategorySon->setCategory($subCategorySon);
         $categorySonAndImage->addSubcategory($subCategorySon);
 
 
+        $manager->persist($subCategorySon); /**ici on persist La sous categorie Son */
+
+         /**=====Subcategories of the category Sound======== */
+         foreach ($underSubCategorySonList as $current) 
+         {
+             $under = new Category;
+             $under->setName($current);
+             $subCategorySon->addSubcategory($under);
+             $manager->persist($under);
+ 
+         }
+
+
+        /**==========================Fin============================= */
+
+        /**==================Sous categorie Image==================== */
         $subCategoryImage = new Category;
         $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
         $categorySonAndImage->addSubcategory($subCategoryImage);
 
-        $manager->persist($subCategoryImage);
-        $manager->persist($subCategorySon);
-        $manager->persist($categorySonAndImage);
+        $manager->persist($subCategoryImage); /** Ici on persist la sous categorie Image */
 
-        // Subcategories of the category Sound
 
-        foreach ($underSubCategorySon as $current) 
+        /**========Subcategories of the Image category============*/
+        foreach ($underSubCategoryImageList as $currentImage) 
         {
             $under = new Category;
-            $under->setName($current);
-            $subCategorySon->addSubcategory($under);
+            $under->setName($currentImage);
+            $subCategoryImage->addSubcategory($under);
             $manager->persist($under);
 
         }
-                /*
+
+         /* code obselet 
             
                 $underSubCategorySonHomeCinema=new Category;
                 $underSubCategorySonHomeCinema->setName($underSubCategorySon[0]);
@@ -229,19 +250,105 @@ class CategoriesFixtures extends Fixture
                 $manager->persist($underSubCategorySonSoundBar);
                 $manager->persist($underSubCategorySonSpeaker);
                 $manager->persist($underSubCategorySonHeadphone);
-                                                                    */
+        */
 
 
-        // Subcategories of the Image category
+     
+               
+
+
+
+
+
         
-        foreach ($underSubCategoryImage as $currentImage) 
-        {
-            $under = new Category;
-            $under->setName($currentImage);
-            $subCategoryImage->addSubcategory($under);
-            $manager->persist($under);
+        /************************************************
+         * =========================================
+         * DATA SET FOR THE INFORMATIQUE CATEGORY
+         * =========================================
+         * 
+         * Below you will find the data set for the IT category
+         * 
+         * 
+         * 
+         * 
+         *
+         ************************************************/
 
-        }
+
+    /**================Major Categories Informatique================================ */
+        $categoryInformatique = new Category();
+        $categoryInformatique->setName($majorCategoriesList[1]);
+        $categoryInformatique->setSubtitle('Informatique or not informatique');
+
+        $manager->persist($categoryInformatique); /**Persit la major categorie Informatique */
+    /**==============================Fin============================================== */
+    
+    
+    /**========================Sous Categorie Peripherique ======================= */
+        $subCategoryPeripherique = new Category();
+        $subCategoryPeripherique->setName($subCategoriesInformatiqueList[0]);
+        $subCategoryPeripherique->setCategory($subCategoryPeripherique);
+        $categoryInformatique->addSubcategory($subCategoryPeripherique);
+
+        $manager->persist($subCategoryPeripherique); /**Persit la sous categorie Peripherique */
+
+
+            // les sous categories de peripherique
+            foreach ($underSubCategoryPeripheriqueList as $current) 
+            {
+                $underPeripherique = new Category;
+                $underPeripherique->setName($current);
+                $subCategoryPeripherique->addSubcategory($underPeripherique);
+                $manager->persist($underPeripherique);
+
+            }
+
+    /**===================================FIN=========================================== */
+
+    /**=======================Sou scategorie OrdiPortable============================ */
+        $subCategoryPortable = new Category();
+        $subCategoryPortable->setName($subCategoriesInformatiqueList[1]);
+        $subCategoryPortable->setCategory($subCategoryPortable);
+        $categoryInformatique->addSubcategory($subCategoryPortable);
+
+        $manager->persist($subCategoryPortable);
+
+
+                // les sous-sous categories de ordi portable
+                foreach ($underSubCategoryPortableList as $current) 
+                        {
+                            $underPortable = new Category;
+                            $underPortable->setName($current);
+                            $subCategoryPortable->addSubcategory($underPortable);
+                            $manager->persist($underPortable);
+
+                        }
+
+    /**===========================FIN================================================== */
+      
+
+    /**====================Sous categorie Pc Fix=============================== */
+        $subCategoryOrdiFix = new Category();
+        $subCategoryOrdiFix->setName($subCategoriesInformatiqueList[2]);
+        $subCategoryOrdiFix->setCategory($subCategoryOrdiFix);
+        $categoryInformatique->addSubcategory($subCategoryOrdiFix);
+
+        $manager->persist($subCategoryOrdiFix); /** Ici on persist */
+
+
+        foreach ($underSubCategoryOrdinateurFixList as $current) 
+                        {
+                            $underOrdiFix = new Category;
+                            $underOrdiFix->setName($current);
+                            $subCategoryOrdiFix->addSubcategory($underOrdiFix);
+                            $manager->persist($underOrdiFix);
+
+                        }
+    /**============================FIN=========================================== */
+       
+
+
+
 
 
 
