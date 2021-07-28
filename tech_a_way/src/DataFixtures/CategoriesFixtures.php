@@ -140,12 +140,65 @@ class CategoriesFixtures extends Fixture
                 ] 
             ],
 
+            'Informatiques'=>[
+                'peripherique'=>[
+                    'Ecran PC',
+                    'Clavier/Souris',
+                    'Disque dur',
+                    'Imprimante/Scanner',
+                ],
+                'Portable'=>[
+                    'Neuf',
+                    'Reconditionne',
+                    'Sation d\'accueil ',
+                    'Sacoches',
 
+                ] ,
+                'Ordinateur Fix'=>[
+                    'Neuf',
+                    'Reconditionne',
+                    'Tour',
+                ]
+            ],
 
+            'Objet connecté'=>[
+                'Maison'=>[
+                    'Ampoule Connecte',
+                    'Prise Connecte',
+                    'Traitement de l\'aire',
+                    'Aspirateur connecte'
+                ],
 
-            'Informatiques',
-            'Objet connecté',
-            'Téléphonie',
+                'Sport'=>[
+                    'Montre connecte',
+                    'Drone',
+                    'Balance connecte',
+
+                ],
+
+                'Sécurité'=>[
+                    'Camera de surveillance',
+                    'Alarme',
+                    'Detecteur de fumer',
+                    'Interphone Connecté',
+                ]
+
+            ],
+
+            'Téléphonie'=>[
+                'Mobile'=>[
+                    'Smartphone neuf',
+                    'Smartphone Reconditione',
+                    'Chargeur/Cable',
+                    'Protection',
+                ],
+
+                'Fix'=>[
+                    'Sans fil',
+                    'Filaire',
+                    'Fax',
+                ],
+            ],
 
             
         ];
