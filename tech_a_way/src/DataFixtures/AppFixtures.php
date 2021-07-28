@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
             'Audio et Hi-Fi',
             'Vidéo',
             'Informatique',
-            'Téléphones Portables et Fixes'
+            'Téléphonie'
         ];
         
         // creation of array empty to put object category in order to associate them later with the products 
@@ -131,10 +131,14 @@ class AppFixtures extends Fixture
 
 /***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
-            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN','phoneNumber' => '0669857452', 'email' => 'benquel@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway1'],
-            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON','phoneNumber' => '0685426284', 'email' => 'fred@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway2'],
-            ['firstname' => 'Jamal', 'lastname' => 'EL','phoneNumber' => '0664571245', 'email' => 'jamal@gmail.com','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway3'],
-            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN','phoneNumber' => '0685647592', 'email' => 'mick@gmail.comm','role' => '["ROLE_SUPER_ADMIN"]', 'password' => 'techaway4']
+            ['firstname' => 'Benoit', 'lastname' => 'QUENTIN', 'email' => 'benquel@gmail.com'],
+            ['firstname' => 'Frédéric', 'lastname' => 'GUILLON', 'email' => 'fred@gmail.com'],
+            ['firstname' => 'Jamal', 'lastname' => 'EL', 'email' => 'jamal@gmail.com'],
+            ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN', 'email' => 'mick@gmail.comm']
+        ];
+
+        $rolesListAdmin = [
+            ["ROLE_SUPER_ADMIN"]
         ];
         foreach ($userList as $currentUser) {
             $adminUser = new User();           
@@ -142,9 +146,9 @@ class AppFixtures extends Fixture
             $adminUser->setLastname($currentUser[('lastname')]);
             $adminUser->setPhoneNumber('06' . $faker->randomNumber(8));
             $adminUser->setEmail($currentUser[('email')]);
-            $adminUser->setRole($currentUser[('role')]);
-            $adminUser->setPassword(($currentUser[('password')]));
-            $adminUser->setStatus(1);
+            $adminUser ->setRoles($rolesListAdmin[0]);
+            $adminUser->setPassword('$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6'); // same password : "tech a way"
+            $adminUser->setStatusUser(1);
             // $adminUser->setBirthdate(new DateTime($currentUser[('birthdate')]));
             $adminUser->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
@@ -191,15 +195,21 @@ class AppFixtures extends Fixture
             $manager->persist($modeOfPayment);
         }
 
+        $rolesList = [
+            ["ROLE_USER"],
+            ["ROLE_CATALOG_MANAGER"],
+            ["ROLE_ADMIN"]
+        ];
+
         for ($userNumber = 0; $userNumber < $faker->numberBetween(10, 50); $userNumber++) {
             $user = new User();
             $user ->setFirstname($faker->firstName());
             $user ->setLastname($faker->lastName());
             $user ->setPhoneNumber('06' . $faker->randomNumber(8));
             $user ->setEmail($faker->email());
-            $user ->setRole('["ROLE_USER"]');
-            $user ->setPassword($faker->password());
-            $user ->setStatus(1);
+            $user ->setRoles($rolesList[$faker->numberBetween(0, (count($rolesList) -1))]);
+            $user ->setPassword('$2y$13$AmMvdO6CynQ8qx197C79b.xJmiv2rS0Or0c4V2pG6TSsp4UlrLhPO'); // same password : "mdp123"
+            $user ->setStatusUser(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
             $typeDelivery = [
@@ -222,7 +232,6 @@ class AppFixtures extends Fixture
 
             for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
                 $order = new Order();
-                $order->setNumber(50);
                 $order->setTypeDelivery($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
                 $order->setStreetDelivery($faker->streetAddress());
                 $order->setZipcodeDelivery($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));

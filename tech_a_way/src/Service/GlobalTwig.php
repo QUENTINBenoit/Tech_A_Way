@@ -16,4 +16,9 @@ class GlobalTwig
         );
         return $categories;
     }
+
+
+
+
+    
 }

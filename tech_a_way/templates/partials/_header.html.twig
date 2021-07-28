@@ -94,15 +94,12 @@
 								<a href="#Accueil">{{cat.name}}</a>
 
 								<div class="ps-1 header_sub_category" id="sub_category_1_appears">
-								<div>
-									<a href="#Accueil">sous-catégorie 1</a>
-								</div>
-								<div>
-									<a href="#Accueil">sous-catégorie 2</a>
-								</div>
-								<div>
-									<a href="#Accueil">sous-catégorie 3</a>
-								</div>
+									{% for subcat in cat.subcategories %}
+										<div>
+											<a href="#Accueil">{{subcat.name}}</a>
+										</div>
+									{% endfor %}
+								</div>							
 							</li>
 							{% endfor %}
 					</ul>
