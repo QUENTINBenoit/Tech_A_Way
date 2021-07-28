@@ -49,6 +49,43 @@
 }
 /*********************end SHOPPING CART*************************/
 
+/*********************start ACCOUNT PAGE*************************/
+
+if (window.matchMedia("(max-width: 767px)").matches) {
+    const mainEl = document.querySelector('#account-page-main');
+    mainEl.classList.remove('row');
+    console.log('coucou');
+
+    const userInsertEl = document.querySelector('#compte_user_insert');
+    userInsertEl.classList.remove('d-flex');
+    userInsertEl.classList.add('row');
+   
+
+   
+
+} else if (window.matchMedia("(min-width: 768px)").matches) {
+    console.log('Hello');
+    const mainEl = document.querySelector('#account-page-main');
+    mainEl.classList.add('row');
+
+    const userInsertEl = document.querySelector('#compte_user_insert');
+    userInsertEl.classList.remove('d-flex');
+    userInsertEl.classList.remove('row');
+   
+
+}
+
+
+
+
+
+
+
+
+
+/*********************end ACCOUNT PAGE*************************/
+
+
 
 /*********************start PARTIAL_BRANDS*************************/
     if (window.matchMedia("(max-width: 767px)").matches) {
