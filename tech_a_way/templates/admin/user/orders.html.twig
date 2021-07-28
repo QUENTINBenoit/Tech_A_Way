@@ -1,0 +1,96 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des Utilisateurs !
+{% endblock %}
+
+{% block body %}
+
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid mt-5 scrollarea">
+		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+            <div class="fs-5 position-absolute top-0 end-0"><a  href="{{ path('admin_user_personal_details', {id:user.id}) }}">voir les informations personnelles détaillées</a></div>
+        
+            <h2 class="fs-4">Informations liées aux commandes du client</h2>
+            <table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">N° de Cde</th>
+						<th scope="col">Détails des cdes</th>
+						<th scope="col">Statut</th>
+						<th scope="col">Adresse facturation</th>
+						<th scope="col">Adresse livraison</th>
+                        <th scope="col">Mode de paiement</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for order in user.orders %}
+						<tr>
+							<th scope="row">{{ order.id }}</th>
+                            <td>
+                                <div class="d-block" class="summary_number_orderlines" id="summary_number_orderlines_{{ order.id }}">
+                                {{ order.orderLines|length }} produits achetés
+                                <button class="button_orderLines_infos" data-id="{{ order.id }}">plus d'infos</button>
+                                </div>
+
+                                <table class="d-none table  table-hover" class="orderLines_infos" id="orderLines_infos_{{ order.id }}">
+				                    <thead class="table-primary">
+                                        <tr>
+                                            <th scope="col">Ligne Cde</th>
+                                            <th scope="col">Nom produit</th>
+                                            <th scope="col">Nb</th>
+                                            <th scope="col">HT</th>
+                                            <th scope="col">TVA</th>
+                                            <th scope="col">prix TTC</th>
+                                            <th scope="col"> <button class="button_hide_orderLines_infos" data-id="{{ order.id }}">Masquer</button></th>
+                                        </tr>
+				                    </thead>
+                                
+                                    {% set results = [] %}
+							        {% for orderLine in order.orderLines %}
+                             
+                                    {% set results = results|merge([orderLine.inclTaxesUnitPrice]) %}
+
+				                    <tbody>
+                                            <tr>
+                                                <th scope="row">{{ orderLine.id }}</th>
+                                                <td>{{ orderLine.productName }}</td>
+                                                <td>{{ orderLine.quantity }}</td>
+                                                <td>{{ orderLine.exclTaxesUnitPrice }}€</td>
+                                                <td>{{ orderLine.salesTax }}%</td>
+                                                <td>{{ orderLine.inclTaxesUnitPrice }}€</td>
+                                                <td>
+                                                    <a href="#">éditer</a>
+                                                </td>
+                                            </tr>
+                                    </tbody>
+                                 {% endfor %}
+                                {% set totalAmount = 0 %}
+                                {% for result in results %}
+                                {% set totalAmount = totalAmount + result %}
+                                {% endfor %}
+                                 <div class="container fw-bold text-decoration-underline">Total: {{ totalAmount }}€ TTC</div>
+                                </table>
+                            </td>
+							<td>{{ order.status.name }}</td>
+							<td>
+                            <div>{{ order.streetBill}}</div>
+                            <div>{{ order.zipcodeBill}} {{ order.cityBill}}</div>
+                            </td>
+							<td>
+                            <div>Type : {{ order.typeDelivery}}</div>
+                            <div>{{ order.streetDelivery}}</div>
+                            <div>{{ order.zipcodeDelivery}} {{ order.cityDelivery}}</div>
+                            </td>
+                            <td>{{ order.modeOfPayment.type }}</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucunes données trouvées</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+	</section>
+{% endblock %}
