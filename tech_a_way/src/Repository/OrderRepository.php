@@ -19,6 +19,24 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+
+    public function findOrderWithAllDetails($id)
+    {
+        $qb = $this->createQueryBuilder('ord');
+
+        $qb->where('ord.id = :id');
+        $qb->setParameter(':id', $id);
+
+        $qb->leftJoin('ord.orderLines', 'orderLines');
+        $qb->leftJoin('ord.modeOfPayment', 'modeOfPayment');
+        $qb->leftJoin('ord.user', 'user');
+
+        $qb->addSelect('orderLines, modeOfPayment, user');
+
+        $query = $qb->getQuery();
+        return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Order[] Returns an array of Order objects
     //  */

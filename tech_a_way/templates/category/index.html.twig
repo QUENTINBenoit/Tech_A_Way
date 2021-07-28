@@ -3,9 +3,7 @@
 {% block title %}Hello CategoryController!{% endblock %}
 
 {% block body %}
-<pre>
-  {{ dump(listCategoryParent) }}
-</pre>
+
  <section class="row p-2 m-0 container-fluid" >             
         <div class="col-lg-10">
             <div class="container-fluid row d-flex justify-content-between py-3">
@@ -21,36 +19,37 @@
                 <li><a href="#">»</a></li>
               </ul>              
             </div>
-         {% for categories in listCategoryParent %}
-            <h3 class="p-3 mb-2 bg-info text-dark"></h3>
-            <div class="container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
-             
-              <div class="d-flex align-items-star ">
-                    <div class="col-2">
-                        <div class="mobilefirst">
+         {% for cat in categotype1 %}
+               {% for subcat in cat.subcategories %}
+                  <h3 class="p-3 mb-2 bg-info text-dark"> {{subcat.name}}  </h3>
+                    <div class="container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
+                      <div class="d-flex align-items-star ">
+                          <div class="col-2">
+                              <div class="mobilefirst">
                                 <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
-                        </div>
+                              </div>
+                          </div>
+                          <div class="p-2 bd-highlight col-6 ">
+                              <p>
+                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
+                              </p>
+                          </div>
+                          <div class="col-2">
+                              <p>dispo stock</p> 
+                          </div>
+                          <div class="col-2  mx-6">
+                              <p>Prix</p> 
+                              <p>30€</p>  
+                              <a href="#">
+                              <span class="material-icons color">
+                                  shopping_cart
+                              </span>
+                              </a>
+                          </div>
+                       </div>
                     </div>
-                    <div class="p-2 bd-highlight col-6 ">
-                            <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
-                            </p>
-                    </div>
-                    <div class="col-2">
-                        <p>dispo stock</p> 
-                    </div>
-                    <div class="col-2  mx-6">
-                            <p>Prix</p> 
-                            <p>30€</p>  
-                            <a href="#">
-                            <span class="material-icons color">
-                                shopping_cart
-                            </span>
-                         </a>
-                    </div>
-                </div>
-            </div>
-          {% endfor %}
+                    {% endfor %}
+            {% endfor %}
         
     </section> 
 

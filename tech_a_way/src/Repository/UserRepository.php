@@ -144,7 +144,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     
       $qb->where('customer.id = :id');
       $qb->setParameter(':id', $id);
-       $qb->leftJoin('customer.orders', 'orders');
+       $qb->leftJoin('customer.orders', 'user');
 
       $query = $qb->getQuery();
       return $query->getOneOrNullResult(); 

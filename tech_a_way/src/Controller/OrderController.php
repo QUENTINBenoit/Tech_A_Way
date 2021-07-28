@@ -18,15 +18,15 @@ class OrderController extends AbstractController
      */
     public function customerOrder(int $id, OrderRepository $orderRepository,  UserRepository $userRepository): Response
     {
-           //$orders= $orderRepository->find($id); 
-           //$userOrder= $userRepository->findByUserOder($id); 
-            //dd($orders, $userOrder); 
+          // $orders= $orderRepository->find($id); 
+         // $userOrder= $userRepository->findByUserOder($id); 
+           // dd($userOrder,); 
            
           
         return $this->render('order/index.html.twig', [
 
              'order' => $orderRepository->find($id),
-             'user' => $userRepository->findByUserOder($id)
+             //'user' => $userRepository->findByUserOder($id)
 
             ]); 
           
