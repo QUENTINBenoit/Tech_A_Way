@@ -52,3 +52,43 @@ Then, we load the data in the database with command :
 use next command to load Faker : `composer require fzaninotto/faker`
 `use Faker;`
 in the method load, make : `$faker = Faker\Factory::create('fr_FR');`
+
+
+## User
+### make user
+Before authenticating, we create an User: 
+- `php bin/console make:user` (name of the security user class = UserSecurity)
+
+In the configuration, I specify that the element that will allow the user to connect is his email. 
+I also choose to hash passwords because it is an obligation for all sites
+Then, 2 folders have been created :  src/Entity/UserSecurity.php (automatically generated some methods of Userinterface in it like the getUserIdentifier method that returns the email) and src/Repository/UserSecurityRepository.php
+
+An other folder has been updated : config/packages/security.yaml. Into this folder, we see "algorithm : auto" that does it mean that symfony will automatically encode passwords with the best algorithm.
+
+Then we can add property in entity User to complete before to do nex commands :
+- `php bin/console make:migration`
+- `php bin/console doctrine:migrations:migrate` 
+### set up authentication
+we are going to set up a guard authenticator
+- `php bin/console make:auth`
+we call class of the authenticator "LoginFormAuthenticator" and the controller class "SecurityController"
+- created: `src/Security/LoginFormAuthenticator.php`
+- updated: `config/packages/security.yaml`
+- created: `src/Controller/SecurityController.php`
+- created: `templates/security/login.html.twig`
+
+Now, we can access to page /login to authenticate.
+Whatever page we go to, symfony will call the LoginFormAuthenticator to verify that we have the right to access it.
+i finish the redirect "homepage" in the App\Security\LoginFormAuthenticator::onAuthenticationSuccess() method.
+
+### make registration
+
+we create a form so that the customer can register
+- `php bin/console make:registration-form`
+
+ updated: src/Entity/User.php
+ created: src/Form/RegistrationFormType.php
+ created: src/Controller/RegistrationController.php
+ created: templates/registration/register.html.twig
+
+ - `composer require symfony/rate-limiter` Then, configure so that the user has to wait 15 minutes after 3 connection attempts.
