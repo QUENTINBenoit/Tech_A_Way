@@ -47,29 +47,5 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
     */
-      /*
-       * Méthode permettant de retourner les infos de l'utilisateur en fonction de sa commande
-       * query builder
-       * @param int $id
-       * @return void
-       
-
- public function findByUserOder($id)
- {
-      // On Instancie le querybuilder
-      $qb = $this->createQueryBuilder('costumer');//  SELECT * FROM order
-      // je cible l'utilisateur demander  ( SELECT user.* WEHERE id= $id)
-      $qb->where('costumer.id = :id');
-      $qb->setParameter(':id', $id);
-       // j'utilise une jointure pour ce faire je prend la methodes leftJoin moin strict que Joint
-       $qb->leftJoin('costumer.user', 'users');
-
-      // je crée un rqueter SQL
-      $query = $qb->getQuery();
-       // On execute et on retourne le résultat sous lea forme de tableau
-       // d'abjet des class User 
-      return $query->getOneOrNullResult(); 
- }
-*/
-
+      
 }

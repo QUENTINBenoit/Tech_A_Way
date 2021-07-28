@@ -11,16 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
-    /**
-     * @Route("/order", name="order")
-     */
-    public function index(): Response
-    {
-        return $this->render('order/index.html.twig', [
-            'controller_name' => 'OrderController',
-        ]);
-    }
-
+ 
     /**
      * @Route("/order/{id}", name="order_list", requirements={"id" = "\d+"})
      * 
@@ -37,7 +28,7 @@ class OrderController extends AbstractController
              'order' => $orderRepository->find($id),
              'user' => $userRepository->findByUserOder($id)
 
-   ]); 
+            ]); 
           
     
         
