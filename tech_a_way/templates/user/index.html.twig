@@ -1,20 +1,151 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Mon Compte{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/APOTHEOSE/E-Commerce/tech_a_way/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/APOTHEOSE/E-Commerce/tech_a_way/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
-</div>
+  <main>
+    <!--
+      Section user body
+    -->
+    <section class="container-fluid margin-section">
+
+      <!-- 
+        User informations card
+       -->
+      <div class="row row-cols-1 row-cols-lg-2 vh-100 padding-container">
+        <div class="col-12 col-lg-5 order-1 order-lg-1 h-50 p-0 ps-1">
+
+          <!-- Image card -->
+          <div class="d-flex flex-lg-wrap align-items-center h-100 w-100 shadow bg-white">
+            <div
+              class="d-flex align-items-center justify-content-lg-center align-items-lg-start h-50 w-50 ms-2 img-height">
+              <img src="../images/icon_account.png" class="img-fluid h-50 ms-4 ms-lg-0 mt-lg-3 height-img" alt="image générique de représentation du compte client">
+            </div>
+
+            <!-- User informations -->
+            <div class="d-flex flex-column h-100 w-100 justify-content-center global-info-height">
+              <div
+                class="d-flex flex-column h-75 w-100 ps-1 mt-4 align-items-start justify-content-center align-items-lg-center info-height">
+                <h5 class="w-100 fs-4 mb-2 fw-bold text-md-center text-title-info">Bonjour</h5>
+                <p class="w-100 fs-4 m-0 mb-2 fst-italic text-md-center name-info">John Doe</p>
+                <p class="w-100 fs-5 m-0 me-1 mb-1 fw-lighter text-md-center text-primary client-number">N°
+                  client:123456789</p>
+              </div>
+
+              <!-- Disconnect button -->
+              <div
+                class="d-flex align-self-center align-items-center justify-content-center justify-content-lg-center border border-danger rounded-pill w-100 my-3 me-2 disconnect-height">
+                <button type="button"
+                  class="btn w-100 h-75 text-center link-danger text-uppercase fw-bold fs-6 p-0 disconnect-text">Me
+                  déconnecter</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--  
+          Menu card
+        -->
+        <div class="col-12 col-lg-5 order-2 order-lg-3 position menu-nav-container align-self-end h-25 p-0 d-flex">
+
+          <!-- is displayed for screens smaller than 992px -->
+          <div
+            class="d-flex justify-content-center align-items-center d-lg-none h-100 width-container-title background-title-menu">
+            <h2 class="menu-title text-white text-uppercase fw-bold p-0 m-0 fs-3">menu</h2>
+          </div>
+          <div class="dropdown width-container-dropdown border">
+            <button class="btn dropdown-toggle h-100 w-100 text-start fs-4" type="button" id="dropdownMenu2"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Afficher le menu
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button">Mes informations</button></li>
+              <li><button class="dropdown-item" type="button">Mes adresses</button></li>
+              <li><button class="dropdown-item" type="button">Mes commandes</button></li>
+              <li><button class="dropdown-item" type="button">Bons d'achat et Avoirs</button></li>
+            </ul>
+          </div>
+
+          <!-- is displayed for screens bigger than 991px -->
+          <div class="d-flex justify-content-center menu-container-desktop">
+            <div class="list-group list-group-menu">
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item"
+                aria-current="true">
+                Mes informations
+              </button>
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item"> Mes
+                adresses</button>
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item">Mes
+                commandes</button>
+              <button href="#"
+                class="btn list-group-item list-group-item-action text-center fs-4 shadow list-group-menu-item">Bons
+                d'achat
+                et
+                Avoirs</button>
+            </div>
+          </div>
+        </div>
+
+        <!--
+           Informations card container
+        -->
+        <div class="col-12 col-lg-7 order-3 order-lg-2 h-100 informations-menu-card shadow p-0">
+          <div class="d-flex flex-wrap h-100 padding-informations-card bg-white">
+
+            <!--  informations card content -->
+
+            <div class="container d-flex flex-column justify-content-between">
+              <p class="text-center fs-3 pt-5 m-0 fw-bold text-secondary w-100 informations-title bg-white">Vos
+                informations</p>
+              <div class="d-flex flex-column h-75 w-100 ps-5 pe-5">
+                <form>
+                  <p class="w-100 fs-6 mt-2 mb-3">Civilité :</p>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                      value="option1">
+                    <label class="form-check-label" for="inlineRadio1">M.</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                      value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Mme</label>
+                  </div>
+                  <div class="row-cols-1 mt-3">
+                    <p class="text-body">Prénom :</p>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    </div>
+                    <p class="text-body mt-3">Nom :</p>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label mt-3">Adresse email :</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Valider</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- End of informations card content -->
+
+          </div>
+        </div>
+      </div>
+      <!-- End of informations card container-->
+    </section>
+  </main>
+
+
 {% endblock %}
