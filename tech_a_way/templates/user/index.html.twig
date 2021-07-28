@@ -42,7 +42,43 @@
 				</div>
 			</div>
 		</section>
-		<section class="row bg-success col" id="compte_user_informations">INFORMATIONS</section>
+		<section class="row col mb-3 p-2" id="compte_user_informations">
+			<h1 style="color: black;"class="text-center mb-3">Vos informations personnelles</h1>
+			<form action="">
+				<div class="row justify-content-start mb-3">
+				<span style="color: black;"class="fs-6">Civilité :</span>
+                    <div class="col-3">
+                        <label class="" for="radio">M.</label>
+                        <input class="" type="radio" name="radio" id="radio" value="option1">
+                    </div>
+                    <div class="col-3">
+                        <label class="" for="radio2">Mme</label>
+                        <input class="" type="radio" name="radio2" id="radio2" value="option2">
+                    </div>
+                </div>
+				<div class="mb-3">
+				<span style="color: black;"class="fs-6">Prénom :</span>
+					<label class="" for="firstname"></label>
+					<input class="form-control" type="text" name="fistname" id="firstname" required>
+				</div>
+				<div class="mb-3">
+				<span style="color: black;"class="fs-6">Nom :</span>
+					<label class="" for="lastname"></label>
+					<input class="form-control" type="text" name="lastname" id="lastname" required>
+				</div>
+				<div class="mb-3">
+				<span style="color: black;"class="fs-6">Adresse email :</span>
+					<label for="email"></label>
+					<input class="form-control" type="email" name="email" id="email">
+				</div>
+				<div class="mb-3">
+				<span style="color: black;"class="fs-6">Mot de passe :</span>
+					<label for="password"></label>
+					<input class="form-control" type="email" name="password" id="password">
+				</div class="">
+				<button type="submit" class="btn btn-primary">Valider</button>
+			</form>
+		</section>
 
 	</main>
 
