@@ -35,6 +35,7 @@ class UserType extends AbstractType
 
                     'Administrateur' => 'ROLE_ADMIN',
                     'Catalog manager' => 'ROLE_CATALOG_MANAGER',
+                    'désactiver profil admin' =>'ROLE_DEACTIVATE_ADMIN'
                 ],
                 'expanded' => true,
                 'multiple'  => true,

@@ -28,11 +28,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/details", name="details",methods={"GET"})
+     * @Route("/{id}/orders", name="orders",methods={"GET"})
      */
-    public function details(int $id, UserRepository $userRepository): Response
+    public function orders(int $id, UserRepository $userRepository): Response
     {
-        return $this->render('admin/user/details.html.twig', [
+        return $this->render('admin/user/orders.html.twig', [
             'user' => $userRepository->findWithAllDetails($id),
         ]);
     }
@@ -116,5 +116,7 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
 
 }
