@@ -38,6 +38,7 @@ security:
     access_control:
         - { path: ^/admin/*, roles: ROLE_CATALOG_MANAGER }
         - { path: ^/order/*, roles: ROLE_USER }
+        - { path: ^/my-account/*, roles: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }
 
     role_hierarchy:
