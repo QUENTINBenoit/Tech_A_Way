@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Form\AddressType;
 use App\Form\CustomerType;
 use App\Repository\AddressRepository;
@@ -43,7 +44,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{userId}/address/{addressId}", name="update_address", methods={"GET","POST"})
+     * @Route("/{userId}/address/{addressId}/update", name="update_address", methods={"GET","POST"})
      */
     public function updateAddress($userId, $addressId, AddressRepository $addressRepository, Request $request): Response
     {
@@ -62,6 +63,35 @@ class UserController extends AbstractController
         return $this->render('user/updateAddress.html.twig', [
             'address' => $address,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{userId}/address/create", name="create_address")
+     */
+    public function add(Request $request, $userId)
+    {
+        $address = new Address();
+        // dd($this->getUser());
+        $address->setUser($this->getUser());
+        $form = $this->createForm(AddressType::class, $address);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($address);
+            $em->flush();
+
+            $this->addFlash('success', 'L\'adresse ' . $address->getid() . ' de l\'utilisateur numéro ' . $userId .' a bien été ajoutée');
+
+            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            
+        }
+
+        return $this->render('user/createAddress.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

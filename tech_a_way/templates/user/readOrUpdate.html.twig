@@ -124,6 +124,7 @@
 				<div class="ms-5 mb-4">
 					<a href="{{ path('acount_user_update_address', {userId:user.id, addressId:address.id}) }}" class="btn btn-primary">Editer</a>
 					<a href="" class="btn btn-primary">Supprimer</a>
+					<a href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="btn btn-primary">Ajouter une nouvelle adresse</a>
 				</div>
 			{% set i = i + 1 %}
 		{% endfor %}
