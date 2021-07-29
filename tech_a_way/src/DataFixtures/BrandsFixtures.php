@@ -15,27 +15,29 @@ class BrandsFixtures extends Fixture
     
     {
         $brandList = [
-                        ['name' => 'Acer', 'picture' => 'acer.png'],
-                        ['name' => 'Apple', 'picture' => 'apple.jpg'],
-                        ['name' => 'Asus', 'picture' => 'asus.png'],
-                        ['name' => 'Dell', 'picture' => 'dell.png'],
-                        ['name' => 'Lg', 'picture' => 'lg.jpg'],
-                        ['name' => 'Nokia', 'picture' => 'nokia.png'],
-                        ['name' => 'Panasonic', 'picture' => 'panasonic.png'],
-                        ['name' => 'Philips', 'picture' => 'philips.png'],
-                        ['name' => 'Samsung', 'picture' => 'samsung.png'],
-                        ['name' => 'Sony', 'picture' => 'sony.jpg'],
-                        ['name' => 'Toshiba', 'picture' => 'toshiba.jpg'],
-                        ['name' => 'Xiaomi', 'picture' => 'xiaomi.png']
+                       1=> ['name' => 'Acer', 'picture' => 'acer.png'],
+                       2=> ['name' => 'Apple', 'picture' => 'apple.jpg'],
+                       3=> ['name' => 'Asus', 'picture' => 'asus.png'],
+                       4=> ['name' => 'Dell', 'picture' => 'dell.png'],
+                       5=> ['name' => 'Lg', 'picture' => 'lg.jpg'],
+                       6=> ['name' => 'Nokia', 'picture' => 'nokia.png'],
+                       7=> ['name' => 'Panasonic', 'picture' => 'panasonic.png'],
+                       8=> ['name' => 'Philips', 'picture' => 'philips.png'],
+                       9=> ['name' => 'Samsung', 'picture' => 'samsung.png'],
+                       10=> ['name' => 'Sony', 'picture' => 'sony.jpg'],
+                       11=> ['name' => 'Toshiba', 'picture' => 'toshiba.jpg'],
+                       12=> ['name' => 'Xiaomi', 'picture' => 'xiaomi.png']
                     ];
-                    foreach ($brandList as $currentBrand) {
+                    
+                    foreach ($brandList as $key => $value) {
                         $brand = new Brand();
-                        $brand->setName($currentBrand['name']);
-                        $brand->setLogo($currentBrand['picture']);
+                        $brand->setName($value['name']);
+                        $brand->setLogo($value['picture']);
                         $manager->persist($brand);
+                        $this->setReference('brand_'.$key, $brand);
                     }
 
-                    $this->setReference(self::BRAND_REFERENCE, $brand);
+                   
                     $manager->flush();
 
     }

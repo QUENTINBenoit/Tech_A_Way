@@ -91,16 +91,21 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryMobileList = [
-            'Smartphone neuf',
-            'Smartphone Reconditione',
-            'Chargeur/Cable',
-            'Protection',
+            1=>['under'=>'Smartphone neuf'],
+            2=>['under'=>'Smartphone Reconditione'],
+            3=>['under'=>'Protection'],
+            4=>['under'=>'Chargeur/Cable'],
+            
+            
+            
 
         ];
         $underSubCategoryFixList = [
-            'Sans fil',
-            'Filaire',
-            'Fax',
+            1=>['under'=>'Sans fil'],
+            2=>['under'=>'Fax'],
+            3=>['under'=>'Filaire'],
+            
+            
 
 
         ];
@@ -527,11 +532,13 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous categories de Mobile
-        foreach ($underSubCategoryMobileList as $current) {
-            $UnderMobile = new Category;
-            $UnderMobile->setName($current);
-            $subCategoryMobile->addSubcategory($UnderMobile);
-            $manager->persist($UnderMobile);
+        foreach ($underSubCategoryMobileList as $key => $value) {
+            $underMobile = new Category;
+            $underMobile->setName($value['under']);
+            $subCategoryMobile->addSubcategory($underMobile);
+            $manager->persist($underMobile);
+            $this->setReference('category_'.$key,$underMobile);
+           
         }
 
         /**===================================FIN=========================================== */
@@ -547,17 +554,18 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous-sous categories Fix
-        foreach ($underSubCategoryFixList as $current) {
+        foreach ($underSubCategoryFixList as $key => $value) {
             $underFix = new Category;
-            $underFix->setName($current);
+            $underFix->setName($value['under']);
             $subCategoryFix->addSubcategory($underFix);
             $manager->persist($underFix);
+            $this->setReference('category_'.$key,$underFix);
         }
 
         /**===========================FIN================================================== */
   
         
-        $this->setReference(self::CATEGORY_REFERENCE, $subCategoryImage);
+        
         $manager->flush(); // Flush de tout les éléments
     }
 

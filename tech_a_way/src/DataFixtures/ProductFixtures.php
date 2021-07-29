@@ -14,16 +14,23 @@ class ProductFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $productList = [
-            'name'=>'Iphone12',
-            'name'=>'Note 10',
-            'name'=>'Ipad 5',
+            1=> ['model'=>'produit1'],
+            2=> ['model'=>'produit2'],
+            3=> ['model'=>'produit3'],
+            4=> ['model'=>'produit4'],
+            5=> ['model'=>'produit5'],
+            6=> ['model'=>'produit6'],
+            7=> ['model'=>'produit7'],
+            8=> ['model'=>'produit8'],
+            9=> ['model'=>'produit9'],
+          
         ];
 
 
         $faker = Faker\Factory::create('fr_FR');
         
 
-        for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
+       // for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
             $ExclTaxesPrice = $faker->numberBetween(0, 1000).".".$faker->numberBetween(0, 99);
             $setSalesTax = 20;
             $InclTaxesPrice = $ExclTaxesPrice + ($ExclTaxesPrice * ($setSalesTax/100));
@@ -32,22 +39,25 @@ class ProductFixtures extends Fixture
         
 
 
-            foreach ($productList   as $current) {
+            foreach ($productList as $key=> $value) {
                 $product = new Product;
-                $product->setName($current);
+                $product->setName($value['model']);
                 $product->setExclTaxesPrice($ExclTaxesPrice);
                 $product->setSalesTax($setSalesTax);
                 $product->setInclTaxesPrice(round($InclTaxesPrice, 2));
                 $product->setReference($faker->numberBetween(11, 99));
-                $product->setDescription($faker->text($baseText = 200));
+                $product->setDescription($faker->text(150));
                 $product->setStock($faker->numberBetween(0, 500));
-                $product->setBrand($this->getReference(BrandsFixtures::BRAND_REFERENCE));
-                $product->addCategory($this->getReference((CategoriesFixtures::CATEGORY_REFERENCE)));
             
+                    
+                    $product->setBrand($this->getReference('brand_'.$faker->numberBetween(1, 11)));
+                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
+                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
+                
 
                 $manager->persist($product);
             }
-        }
+       // }
 
         $manager->flush();
     }
