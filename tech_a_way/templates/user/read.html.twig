@@ -64,7 +64,7 @@
 							</div> 
 							<div class="col-md-6 mb-3">
 								{{ form_row(form.password, {
-                                    label: 'Password'
+                                    label: 'Mot de passe'
                                 }) }}
 							</div>
 						</div>
@@ -72,24 +72,24 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-3">
-								{{ form_row(form.gender) }}
+								{{ form_row(form.gender, { 'label': 'Sexe' }) }}
 							</div>
 							<div class="container">
 								<div class="row gy-3">
 									<div class="col-md-4">
-										{{ form_row(form.firstname) }}
+										{{ form_row(form.firstname, { 'label': 'Prénom' }) }}
 
 									</div>
 									<div class="col-md-4">
-										{{ form_row(form.lastname) }}
+										{{ form_row(form.lastname, { 'label': 'Nom' }) }}
 									</div>
 									<div class="col-md-4">
-										{{ form_row(form.phoneNumber) }}
+										{{ form_row(form.phoneNumber, { 'label': 'Téléphone' }) }}
 									</div>
 
 								</div>
 								<div class="col-md-6">
-									{{ form_row(form.birthdate) }}
+									{{ form_row(form.birthdate, { 'label': 'Date de naissance' }) }}
 								</div>
 								<div class="col-12">
 									<button type="submit" class="btn btn-lg btn-primary">Editer</button>
