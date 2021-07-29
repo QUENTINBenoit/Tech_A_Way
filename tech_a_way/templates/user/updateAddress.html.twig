@@ -5,7 +5,7 @@
 
 {% block body %}
 	<main class="row container justify-content-md-between" id="account-page-main">
-<h4><a href="#">retour à mon espace personnel</a></h4>
+<h4><a href="{{ path('acount_user_read_or_update', {id:app.user.id}) }}">retour à mon espace personnel</a></h4>
 		{% for label, messages in app.flashes %}
 			{% for message in messages %}
 				<div class="alert alert-{{ label }}">

@@ -56,7 +56,7 @@ class UserController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Cette adresse a bien été mise à jour');
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
         }
 
         return $this->render('user/updateAddress.html.twig', [
