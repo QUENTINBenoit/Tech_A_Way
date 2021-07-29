@@ -32,10 +32,21 @@ class OrderController extends AbstractController
              'user' => $userRepository->findByUserOrder($id),
              'cart' => $cart,
 
-   ]); 
-          
-    
+   ]);
+
+    }
+
+    /**
+     * Method to redirect the cart page at the order page to finalize the order
+     *
+     * @Route("/order/list", name="order_payement")
+     * 
+     * @return void
+     */
+    public function orderPage(SessionInterface $sessionInterface)
+    {
         
+        $cart = $sessionInterface->get('cart', []);
     }
 
 
