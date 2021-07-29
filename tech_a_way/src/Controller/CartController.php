@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -83,7 +84,7 @@ class CartController extends AbstractController
 
 
     /**
-     * Method that allows to remove an item to the shopping cart
+     * Method that allows to remove one quantity item to the shopping cart
      *
      * @Route("/remove/{id}", name="remove_one_quantity", requirements={"id" ="\d+"})
      * 
@@ -111,7 +112,7 @@ class CartController extends AbstractController
     /**
      * Method that allows to remove an item to the shopping cart
      *
-     * @Route("/remove/{id}", name="remove_all_one_product", requirements={"id" ="\d+"})
+     * @Route("/remove/all/{id}", name="remove_all_one_product", requirements={"id" ="\d+"})
      * 
      * @param integer $id
      * @return Response
@@ -121,7 +122,7 @@ class CartController extends AbstractController
         $cart = $sessionInterface->get('cart', []);
 
         if (!empty($cart[$id])) {
-            
+
             unset($cart[$id]);
         }
 

@@ -57,8 +57,8 @@
 							<p class="card-text d-flex align-items-start">{{newProduct.description}}</p>
 							<div class="d-flex justify-content-between">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Panier</button>
+									<a href="{{ path('product_details', {id: newProduct.id}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+									<a href=" {{path('cart_add', {id: newProduct.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Panier</a>
 								</div>
 								<small class="text-muted">New</small>
 							</div>
@@ -90,8 +90,8 @@
 							<p class="card-text d-flex align-items-start">{{promotionalProduct.description}}</p>
 							<div class="d-flex justify-content-between">
 								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Panier</button>
+									<a href="{{ path('product_details', {id: promotionalProduct.id}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+									<a href=" {{path('cart_add', {id: promotionalProduct.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Panier</a>
 								</div>
 								<small class="text-muted" >Promo</small>
 							</div>
