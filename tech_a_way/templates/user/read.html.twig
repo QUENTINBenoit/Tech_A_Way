@@ -13,7 +13,8 @@
 			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
 				<div>
 					<div class="fw-bold">Bonjour</div>
-					<div class="">{{ user.firstname }} {{ user.lastname }}</div>
+					<div class="">{{ user.firstname }}
+						{{ user.lastname }}</div>
 				</div>
 				<div class="text-primary">client N°{{ user.id }}</div>
 				<a href="{{ path('app_logout') }}" class="btn border border-danger rounded-pill link-danger fw-bold fs-6">Me déconnecter</a>
@@ -29,13 +30,13 @@
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<li>
-							<button class="dropdown-item" type="button">Mes informations</button>
+							<button class="dropdown-item" id="menu-page-acount-informations" type="button">Mes informations</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">Mes adresses</button>
+							<button class="dropdown-item" id="menu-page-acount-addresses" type="button">Mes adresses</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">Mes commandes</button>
+							<button class="dropdown-item" id="menu-page-acount-orders" type="button">Mes commandes</button>
 						</li>
 					</ul>
 				</div>
@@ -43,15 +44,15 @@
 		</section>
 
 		<section style="background-color: white;" class="order-md-1 d-none d-md-flex flex-column col-lg-3 mx-5">
-		
-				<button class="button-page-acount fw-bold mb-5">Mes informations</button>
-				<button class="button-page-acount fw-bold mb-5">Mes adresses</button>
-				<button class="button-page-acount fw-bold mb-5">Mes commandes</button>
-		
+
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-informations">Mes informations</button>
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-addresses">Mes adresses</button>
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-orders">Mes commandes</button>
+
 		</section>
 
 
-		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations_1">
+		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations">
 			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
 			<form action="">
 				<div class="row justify-content-start mb-3">
@@ -68,35 +69,93 @@
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Prénom :</span>
 					<label class="" for="firstname"></label>
-					<input placeholder="{{ user.firstname }}" class="form-control" type="text" name="fistname" id="firstname" required>
+					<input value="{{ user.firstname }}" class="form-control" type="text" name="fistname" id="firstname" required>
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Nom :</span>
 					<label class="" for="lastname"></label>
-					<input placeholder="{{ user.lastname }}" class="form-control" type="text" name="lastname" id="lastname" required>
+					<input value="{{ user.lastname }}" class="form-control" type="text" name="lastname" id="lastname" required>
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Adresse email :</span>
 					<label for="email"></label>
-					<input placeholder="{{ user.email }}" class="form-control" type="email" name="email" id="email">
+					<input value="{{ user.email }}" class="form-control" type="email" name="email" id="email">
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">N° de Téléphone :</span>
 					<label for="number"></label>
-					<input placeholder="{{ user.phoneNumber }}" class="form-control" type="number" name="number" id="number">
+					<input value="{{ user.phoneNumber }}" class="form-control" type="number" name="number" id="number">
 				</div>
 				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Date de naissance : {{ user.birthdate |date('d-m-Y') }}</span>
+					<span style="color: black;" class="fs-6">Date de naissance :
+						{{ user.birthdate |date('d-m-Y') }}</span>
 					<label for="date"></label>
 					<input class="form-control" type="date" name="date" id="date">
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Mot de passe :</span>
 					<label for="password"></label>
-					<input class="form-control" type="email" name="password" id="password">
+					<input class="form-control" type="password" name="password" id="password">
 				</div>
-				<button type="submit" class="btn btn-primary">Valider</button>
+				<button type="submit" class="btn btn-primary">Editer</button>
 			</form>
+		</section>
+
+		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
+			{% set i = 1 %}
+			{% for address in user.addresses %}
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Votre adresse {{ i }}</h1>
+			<form action="">
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Adresse utilisée pour :</span>
+					<label class="" for="type"></label>
+					<input value="{{ address.type }}" class="form-control" type="text" name="type" id="type" required>
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Rue :</span>
+					<label class="" for="street"></label>
+					<input value="{{ address.street }}" class="form-control" type="text" name="street" id="street" required>
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Code postal :</span>
+					<label for="zipcode"></label>
+					<input value="{{ address.zipcode }}" class="form-control" type="number" name="zipcode" id="zipcode">
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Ville :</span>
+					<label for="city"></label>
+					<input value="{{ address.city }}" class="form-control" type="text" name="city" id="city">
+				</div>
+				<button type="submit" class="btn btn-primary">editer</button>
+			</form>
+			{% set i = i + 1 %}
+		{% endfor %}
+		</section>
+
+		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_orders">
+			{% for order in user.orders|reverse %}
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Votre commande {{ order.id }}</h1>
+			<div class="ms-5 fst-italic">commande effectuée le {{ order.createdAt|date('d-m-Y') }}</div>
+			{% set results = [] %}
+			{% for orderLine in order.orderLines %}
+			{% set results = results|merge([orderLine.inclTaxesUnitPrice]) %}
+		
+				<div class="ms-5">
+			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">Ligne de commande {{ orderLine.id }}</h1>
+					<p>Nom du produit : {{ orderLine.productName }}</p>
+					<p>Quantité : {{ orderLine.quantity }}</p>
+					<p>Prix unitaire HT : {{ orderLine.exclTaxesUnitPrice }} € HT</p>
+					<p>TVA : {{ orderLine.salesTax }} %</p>
+					<p>Prix unitaire TTC : {{ orderLine.inclTaxesUnitPrice }} € TTC</p>
+				</div>
+	
+		{% endfor %}
+		    {% set totalAmount = 0 %}
+            {% for result in results %}
+            {% set totalAmount = totalAmount + result %}
+            {% endfor %}
+				<div class="fw-bold mb-4">Total général de la commande : {{ totalAmount }}€ TTC</div>
+		{% endfor %}
 		</section>
 
 	</main>
