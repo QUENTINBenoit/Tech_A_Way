@@ -39,25 +39,25 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryPeripheriqueList =[
-            1=>['under'=>'Ecran PC'],
-            1=>['under'=>'Clavier/Souris'],
-            1=>['under'=>'Disque dur'],
-            1=>['under'=>'Imprimante/Scanner'],
+            37=>['under'=>'Ecran PC'],
+            36=>['under'=>'Clavier/Souris'],
+            35=>['under'=>'Disque dur'],
+            34=>['under'=>'Imprimante/Scanner'],
            
         ];
 
         $underSubCategoryPortableList =[
-            1=>['under'=>'Neuf'],
-            1=>['under'=>'Reconditionne'],
-            1=>['under'=>'Sation d\'accueil'],
-            1=>['under'=>'Sacoches'],
+            33=>['under'=>'Neuf'],
+            32=>['under'=>'Reconditionne'],
+            31=>['under'=>'Sation d\'accueil'],
+            30=>['under'=>'Sacoches'],
             
         ];
 
         $underSubCategoryOrdinateurFixList =[
-            1=>['under'=>'Neuf'],
-            2=>['under'=>'Reconditionne'],
-            3=>['under'=>'Tour'],
+            29=>['under'=>'Neuf'],
+            28=>['under'=>'Reconditionne'],
+            27=>['under'=>'Tour'],
 
         ];
 
@@ -68,24 +68,24 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryMaisonList =[
-            1=>['under'=>'Ampoule Connecte'],
-            2=>['under'=>'Prise Connecte'],
-            3=>['under'=>'Traitement de l\'aire'],
-            4=>['under'=>'Aspirateur connecte'],
+            26=>['under'=>'Ampoule Connecte'],
+            25=>['under'=>'Prise Connecte'],
+            24=>['under'=>'Traitement de l\'aire'],
+            23=>['under'=>'Aspirateur connecte'],
         ];
 
         $underSubCategorySportList = [
-            1=>['under'=>'Montre connecte'],
-            2=>['under'=>'Drone'],
-            3=>['under'=>'Balance connecte'],
+            22=>['under'=>'Montre connecte'],
+            21=>['under'=>'Drone'],
+            20=>['under'=>'Balance connecte'],
            
         ];
 
         $underSubCategorySecuriteList = [
-            1=>['under'=>'Camera de surveillance'],
-            2=>['under'=>'Alarme'],
-            3=>['under'=>'Detecteur de fumer'],
-            4=>['under'=>'Interphone Connecté'],
+            19=>['under'=>'Camera de surveillance'],
+            18=>['under'=>'Alarme'],
+            17=>['under'=>'Detecteur de fumer'],
+            16=>['under'=>'Interphone Connecté'],
             
         ];
 
@@ -95,19 +95,19 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryMobileList = [
-            1=>['under'=>'Smartphone neuf'],
-            2=>['under'=>'Smartphone Reconditione'],
-            3=>['under'=>'Protection'],
-            4=>['under'=>'Chargeur/Cable'],
+            15=>['under'=>'Smartphone neuf'],
+            14=>['under'=>'Smartphone Reconditione'],
+            13=>['under'=>'Protection'],
+            12=>['under'=>'Chargeur/Cable'],
             
             
             
 
         ];
         $underSubCategoryFixList = [
-            1=>['under'=>'Sans fil'],
-            2=>['under'=>'Fax'],
-            3=>['under'=>'Filaire'],
+            11=>['under'=>'Sans fil'],
+            10=>['under'=>'Fax'],
+            9=>['under'=>'Filaire'],
             
             
 
@@ -121,19 +121,19 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategorySonList = [
-            1=>['under'=>'Homecinema'],
-            2=>['under'=>'Barre de son'],
-            3=>['under'=>'Enceintes'],
-            4=>['under'=>'Casque/Ecouteur'],
+            8=>['under'=>'Homecinema'],
+            7=>['under'=>'Barre de son'],
+            6=>['under'=>'Enceintes'],
+            5=>['under'=>'Casque/Ecouteur'],
          
          
          
      ];
         $underSubCategoryImageList = [
-            1=>['under'=>'Télévision'],
-            2=>['under'=>'Projection'],
-            3=>['under'=>'Camera'],
-            4=>['under'=>'Photo'],
+            4=>['under'=>'Télévision'],
+            3=>['under'=>'Projection'],
+            2=>['under'=>'Camera'],
+            1=>['under'=>'Photo'],
             
 
         ];
@@ -248,55 +248,55 @@ class CategoriesFixtures extends Fixture
 
         /**==========major categoy Son et image==============*/
             
-        $categorySonAndImage = new Category();
-        $categorySonAndImage->setName($majorCategoriesList[0]);
-        $categorySonAndImage->setSubtitle('Catégorie, Son et Image');
+        // $categorySonAndImage = new Category();
+        // $categorySonAndImage->setName($majorCategoriesList[0]);
+        // $categorySonAndImage->setSubtitle('Catégorie, Son et Image');
 
-        $manager->persist($categorySonAndImage);
+        // $manager->persist($categorySonAndImage);
 
-        /**====================Fin========================== */
+        // /**====================Fin========================== */
 
-        /**=======les sous categories de son ============= */
+        // /**=======les sous categories de son ============= */
 
-        $subCategorySon = new Category;
-        $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
-        $subCategorySon->setSubtitle('Le meilleur de l\'audio');
-        $subCategorySon->setCategory($subCategorySon);
-        $categorySonAndImage->addSubcategory($subCategorySon);
-
-
-        $manager->persist($subCategorySon);
-
-        /**=====Subcategories of the category Sound======== */
-
-        foreach ($underSubCategorySonList as $key => $value) {
-            $underSon = new Category;
-            $underSon->setName($value['under']);
-            $subCategorySon->addSubcategory($underSon);
-            $manager->persist($underSon);
-            $this->setReference('category_'.$key,$underSon);
-        }
+        // $subCategorySon = new Category;
+        // $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
+        // $subCategorySon->setSubtitle('Le meilleur de l\'audio');
+        // $subCategorySon->setCategory($subCategorySon);
+        // $categorySonAndImage->addSubcategory($subCategorySon);
 
 
-        /**==========================Fin============================= */
+        // $manager->persist($subCategorySon);
 
-        /**==================Sous categorie Image==================== */
-        $subCategoryImage = new Category;
-        $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
-        $subCategoryImage->setSubtitle('les dernière definition sont chez nous');
-        $categorySonAndImage->addSubcategory($subCategoryImage);
+        // /**=====Subcategories of the category Sound======== */
 
-        $manager->persist($subCategoryImage); /** Ici on persist la sous categorie Image */
+        // foreach ($underSubCategorySonList as $key => $value) {
+        //     $underSon = new Category;
+        //     $underSon->setName($value['under']);
+        //     $subCategorySon->addSubcategory($underSon);
+        //     $manager->persist($underSon);
+        //     $this->setReference('category_'.$key,$underSon);
+        // }
 
 
-        /**========Subcategories of the Image category============*/
-        foreach ($underSubCategoryImageList as $key => $value) {
-            $underImage = new Category;
-            $underImage->setName($value['under']);
-            $subCategoryImage->addSubcategory($underImage);
-            $manager->persist($underImage);
-            $this->setReference('category_'.$key,$underImage);
-        }
+        // /**==========================Fin============================= */
+
+        // /**==================Sous categorie Image==================== */
+        // $subCategoryImage = new Category;
+        // $subCategoryImage->setName($subCategoriesSonAndImageList[1]);
+        // $subCategoryImage->setSubtitle('les dernière definition sont chez nous');
+        // $categorySonAndImage->addSubcategory($subCategoryImage);
+
+        // $manager->persist($subCategoryImage); /** Ici on persist la sous categorie Image */
+
+
+        // /**========Subcategories of the Image category============*/
+        // foreach ($underSubCategoryImageList as $key => $value) {
+        //     $underImage = new Category;
+        //     $underImage->setName($value['under']);
+        //     $subCategoryImage->addSubcategory($underImage);
+        //     $manager->persist($underImage);
+        //     $this->setReference('category_'.$key,$underImage);
+        // }
 
         /* code obselet
 

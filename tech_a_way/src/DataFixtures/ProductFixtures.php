@@ -30,13 +30,10 @@ class ProductFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
         
 
-       // for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
+       for ($productNumber = 0; $productNumber < $faker->numberBetween(15, 70); $productNumber++) {
             $ExclTaxesPrice = $faker->numberBetween(0, 1000).".".$faker->numberBetween(0, 99);
             $setSalesTax = 20;
             $InclTaxesPrice = $ExclTaxesPrice + ($ExclTaxesPrice * ($setSalesTax/100));
-            // $brand = $this->getReference('brand_'. $faker->numberBetween(1,50));
-
-        
 
 
             foreach ($productList as $key=> $value) {
@@ -50,14 +47,13 @@ class ProductFixtures extends Fixture
                 $product->setStock($faker->numberBetween(0, 500));
             
                     
-                    $product->setBrand($this->getReference('brand_'.$faker->numberBetween(1, 11)));
-                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,5)));
-                    //$product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
+                    $product->setBrand($this->getReference('brand_'.$faker->numberBetween(1, 12)));
+                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,37)));
                 
 
                 $manager->persist($product);
             }
-       // }
+       }
 
         $manager->flush();
     }
