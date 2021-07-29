@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\UserType;
+use App\Form\CustomerType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,21 +25,11 @@ class UserController extends AbstractController
     {
         $user= $userRepository->findWithAllDetails($id);
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(CustomerType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $plainPassword = $form->get('password')->getData();
-
-            if ($plainPassword) {
-                $hashedPassword = $passwordHasher->hashPassword(
-                    $user,
-                    $plainPassword
-                );
-
-                $user->setPassword($hashedPassword);
-            }
 
             $this->getDoctrine()->getManager()->flush();
 
