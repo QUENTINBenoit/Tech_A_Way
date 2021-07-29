@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +17,8 @@ class HomeController extends AbstractController
      */
     public function index(ProductRepository $reposRecent,ProductRepository $reposInPromotion,ProductRepository $reposPromotionByPercentage): Response
     {
+        
+
         $productsRecent = $reposRecent->findByStatusRecent(1, null, 9);
 
         $productsPromotion = $reposInPromotion->findByStatusPromotion(1, null, 9);
@@ -34,6 +37,7 @@ class HomeController extends AbstractController
 
         ]);
     }
-
-  
+   
 }
+
+

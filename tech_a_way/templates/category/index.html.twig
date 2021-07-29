@@ -19,11 +19,17 @@
                 <li><a href="#">»</a></li>
               </ul>              
             </div>
-         {% for cat in categotype1 %}
-               {% for subcat in cat.subcategories %}
-                  <h3 class="p-3 mb-2 bg-info text-dark"> {{subcat.name}}  </h3>
-                    <div class="container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
-                      <div class="d-flex align-items-star ">
+           
+         {% for currentcat in categotype1 %}
+               {% for subcat in currentcat.subcategories %}
+       
+                  <h3 class="p-3 mb-2 bg-info bkgcatego text-dark"> {{subcat.name}}  </h3>
+                      {% for subproduct in subcat.products %}
+                    
+                      <div class="p-3 mb-2  bkgporduct"> 
+                        <p id="text">{{subproduct.name}} <p>
+                        <div class=" text-dark container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
+                        <div class="d-flex align-items-star ">
                           <div class="col-2">
                               <div class="mobilefirst">
                                 <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
@@ -45,9 +51,11 @@
                                   shopping_cart
                               </span>
                               </a>
-                          </div>
+                          </div>                    
                        </div>
+                       </div>                        
                     </div>
+                      {% endfor %}
                     {% endfor %}
             {% endfor %}
         

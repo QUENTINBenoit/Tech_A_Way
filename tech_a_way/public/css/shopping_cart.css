@@ -149,7 +149,9 @@ start css HEADER
     font-size: 0.92rem;
     position: relative;
     top: 0.7em;
-    background-color:rgba(57,57,57);
+    /*background-color:rgba(57,57,57);*/
+   /* background: linear-gradient(114deg, rgba(48,48,48,1) 0%, rgba(9,8,122,1) 99%);*/
+
 
 }
 
@@ -161,7 +163,16 @@ start css HEADER
     display: none;
 
 }
-
+#category_1{
+  /*  width:15em;
+	height:2em;
+	
+	/*-webkit-transform:skew(30deg);
+	/*-moz-transform:skew(30deg);*/
+	/*-o-transform:skew(30deg);*/
+	/*tranform:skew(30deg);*/
+    background: linear-gradient(39deg, rgba(48,48,48,1) 0%, rgba(9,8,122,1) 100%);
+}
 
 #category_1:hover #sub_category_1_appears, #category_2:hover #sub_category_2_appears, #category_3:hover #sub_category_3_appears, #category_4:hover #sub_category_4_appears {
     display: block;

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,17 +22,24 @@ class CategoryController extends AbstractController
      * display of products according to categories
      * @Route("/{id}", name="parent")
      **/
-    public function displayParent(int $id,  CategoryRepository $categoryRepository ): Response
+    public function displayParent(int $id,  CategoryRepository $categoryRepository, ProductRepository $productRepository ): Response
     {
-        // récupération de liste des categories
-        $categoparent = $categoryRepository->findBy(
-            ['id' => $id]
+        // récupération de liste des categories par leur id 
+            $categoparent = $categoryRepository->findBy(
+            ['id' => $id] );
 
-        );
-     //  dd( $categoparent);
+          
+               
+          
+               
+       
         return $this->render('category/index.html.twig', [
             'categotype1' => $categoparent, 
+            //'product'  =>    $product, 
         ]);
     }
-    
+
+
+
+
 }

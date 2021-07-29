@@ -1,34 +1,34 @@
 <?php
 
-namespace App\DataFixtures;
+ namespace App\DataFixtures;
 
-use App\Entity\Address;
-use App\Entity\Brand;
-use App\Entity\Category;
-use App\Entity\ModeOfPayment;
-use App\Entity\Order;
-use App\Entity\OrderLine;
-use App\Entity\Picture;
-use App\Entity\Product;
-use App\Entity\Status;
-use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-use Faker;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use DateTime;
+ use App\Entity\Address;
+ use App\Entity\Brand;
+ use App\Entity\Category;
+ use App\Entity\ModeOfPayment;
+ use App\Entity\Order;
+ use App\Entity\OrderLine;
+ use App\Entity\Picture;
+ use App\Entity\Product;
+ use App\Entity\Status;
+ use App\Entity\User;
+ use Doctrine\Bundle\FixturesBundle\Fixture;
+ use Doctrine\Persistence\ObjectManager;
+ use Faker;
+ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+ use DateTime;
 
-class AppFixtures extends Fixture
-{
-     private $passwordHasher; 
-     public function __construct(UserPasswordHasherInterface $passwordHasher){
-         $this->passwordHasher = $passwordHasher; 
-     }
+ class AppFixtures extends Fixture
+ {
+      private $passwordHasher; 
+      public function __construct(UserPasswordHasherInterface $passwordHasher){
+          $this->passwordHasher = $passwordHasher; 
+      }
 
-    public function load(ObjectManager $manager)
-    {
-        //faker is used to generate fake data.
-        $faker = Faker\Factory::create('fr_FR');
+     public function load(ObjectManager $manager)
+     {
+         //faker is used to generate fake data.
+         $faker = Faker\Factory::create('fr_FR');
 
 /***********************************PART 1: CATEGORY/PRODUCT/BRAND/PICTURE*************************************************************/   
         // List of main Categories
@@ -39,18 +39,18 @@ class AppFixtures extends Fixture
             'Téléphonie'
         ];
         
-        // creation of array empty to put object category in order to associate them later with the products 
-        $arrayofObjectCategory = [];
+//         // creation of array empty to put object category in order to associate them later with the products 
+         $arrayofObjectCategory = [];
 
-        // On boucle d'abord sur le tableau $categoryListName
-        for ($i = 0; $i< count($categoryListName); $i++) {
-            $category = new Category();
-            $category->setName($categoryListName[$i]);
-            $category->setSubtitle("subtitle Catégorie : " . $faker->name);
-            $category->setPicture($faker->firstname() . ".jpg");
+//         // On boucle d'abord sur le tableau $categoryListName
+         for ($i = 0; $i< count($categoryListName); $i++) {
+             $category = new Category();
+             $category->setName($categoryListName[$i]);
+             $category->setSubtitle("subtitle Catégorie : " . $faker->name);
+             $category->setPicture($faker->firstname() . ".jpg");
 
-                for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
-                    $subCategory = new Category();
+                 for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
+                     $subCategory = new Category();
                     $subCategory->setName($faker->name());
                     $subCategory->setSubtitle("subtitle sous-catégorie ! " . $faker->name);
                     $subCategory->setPicture($faker->firstname() . ".jpg");
