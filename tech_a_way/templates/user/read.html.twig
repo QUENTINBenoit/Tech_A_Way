@@ -54,51 +54,53 @@
 
 		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations">
 			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
-			<form action="">
-				<div class="row justify-content-start mb-3">
-					<span style="color: black;" class="fs-6">Civilité :</span>
-					<div class="col-3">
-						<label class="" for="radio">M.</label>
-						<input class="" {{ user.gender == 'Monsieur' ? 'checked' : '' }} type="radio" name="radio" id="radio" value="option1">
+			
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.email) }}
+							</div> 
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.password, {
+                                    label: 'Password'
+                                }) }}
+							</div>
+						</div>
 					</div>
-					<div class="col-3">
-						<label class="" for="radio2">Mme</label>
-						<input class="" {{ user.gender == 'Madame' ? 'checked' : '' }} type="radio" name="radio" id="radio2" value="option2">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-3">
+								{{ form_row(form.gender) }}
+							</div>
+							<div class="container">
+								<div class="row gy-3">
+									<div class="col-md-4">
+										{{ form_row(form.firstname) }}
+
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.lastname) }}
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.phoneNumber) }}
+									</div>
+
+								</div>
+								<div class="col-md-6">
+									{{ form_row(form.birthdate) }}
+								</div>
+								<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Editer</button>
+									{{ form_end(form) }}
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Prénom :</span>
-					<label class="" for="firstname"></label>
-					<input value="{{ user.firstname }}" class="form-control" type="text" name="fistname" id="firstname" required>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Nom :</span>
-					<label class="" for="lastname"></label>
-					<input value="{{ user.lastname }}" class="form-control" type="text" name="lastname" id="lastname" required>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Adresse email :</span>
-					<label for="email"></label>
-					<input value="{{ user.email }}" class="form-control" type="email" name="email" id="email">
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">N° de Téléphone :</span>
-					<label for="number"></label>
-					<input value="{{ user.phoneNumber }}" class="form-control" type="number" name="number" id="number">
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Date de naissance :
-						{{ user.birthdate |date('d-m-Y') }}</span>
-					<label for="date"></label>
-					<input class="form-control" type="date" name="date" id="date">
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Mot de passe :</span>
-					<label for="password"></label>
-					<input class="form-control" type="password" name="password" id="password">
-				</div>
-				<button type="submit" class="btn btn-primary">Editer</button>
-			</form>
+
+
 		</section>
 
 		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
