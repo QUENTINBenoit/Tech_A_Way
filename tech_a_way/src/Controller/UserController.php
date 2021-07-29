@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\CustomerType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +19,13 @@ class UserController extends AbstractController
 {
 
         /**
-     * @Route("/{id}", name="read", methods={"GET","POST"})
+     * @Route("/{id}", name="read_or_update", methods={"GET","POST"})
      */
-    public function read($id, UserRepository $userRepository, Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function readorUpdate($id, UserRepository $userRepository, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user= $userRepository->findWithAllDetails($id);
 
-        $form = $this->createForm(CustomerType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,13 +43,13 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('acount_user_read', ['id' => $user->getId()], 301);
+            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $user->getId()], 301);
         }
 
 
 
         
-        return $this->render('user/read.html.twig', [
+        return $this->render('user/readOrUpdate.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
