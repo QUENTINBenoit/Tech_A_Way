@@ -1,7 +1,19 @@
 let acountPage = {
 
     init: function() {
-       
+      if(window.innerWidth <= 767) {
+   const mainEl = document.querySelector('#account-page-main');
+mainEl.classList.remove('row')
+
+      }
+      if(window.innerWidth >= 768) {
+        const mainEl = document.querySelector('#account-page-main');
+     mainEl.classList.add('row')
+     const userInsertEl = document.querySelector('#compte_user_insert');
+     userInsertEl.classList.remove('d-flex');
+ 
+           }
+
       const buttonAddressesEl = document.querySelector('#button-page-acount-addresses');
       buttonAddressesEl.addEventListener('click', acountPage.handleButtonAdressesClick);
       const buttonMenuAddressesEl = document.querySelector('#menu-page-acount-addresses');
