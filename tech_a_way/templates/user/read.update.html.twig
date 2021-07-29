@@ -13,10 +13,10 @@
 			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
 				<div>
 					<div class="fw-bold">Bonjour</div>
-					<div class="">John Doe</div>
+					<div class="">{{ user.firstname }} {{ user.lastname }}</div>
 				</div>
-				<div class="text-primary">client N°3004</div>
-				<a href="" class="btn border border-danger rounded-pill link-danger fw-bold fs-6">Me déconnecter</a>
+				<div class="text-primary">client N°{{ user.id }}</div>
+				<a href="{{ path('app_logout') }}" class="btn border border-danger rounded-pill link-danger fw-bold fs-6">Me déconnecter</a>
 			</div>
 		</section>
 
@@ -51,7 +51,7 @@
 		</section>
 
 
-		<section class="row col col-lg-5 mb-3 p-2 compte_user_informations">
+		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations_1">
 			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
 			<form action="">
 				<div class="row justify-content-start mb-3">
@@ -90,6 +90,47 @@
 		</section>
 
 	</main>
+
+
+
+
+	<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_informations_2">
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
+			<form action="">
+				<div class="row justify-content-start mb-3">
+					<span style="color: black;" class="fs-6">Civilité :</span>
+					<div class="col-3">
+						<label class="" for="radio">M.</label>
+						<input class="" type="radio" name="radio" id="radio" value="option1">
+					</div>
+					<div class="col-3">
+						<label class="" for="radio2">Mme</label>
+						<input class="" type="radio" name="radio2" id="radio2" value="option2">
+					</div>
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Prénom :</span>
+					<label class="" for="firstname"></label>
+					<input class="form-control" type="text" name="fistname" id="firstname" required>
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Nom :</span>
+					<label class="" for="lastname"></label>
+					<input class="form-control" type="text" name="lastname" id="lastname" required>
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Adresse email :</span>
+					<label for="email"></label>
+					<input class="form-control" type="email" name="email" id="email">
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Mot de passe :</span>
+					<label for="password"></label>
+					<input class="form-control" type="email" name="password" id="password">
+				</div>
+				<button type="submit" class="btn btn-primary">Valider</button>
+			</form>
+		</section>
 
 
 {% endblock %}
