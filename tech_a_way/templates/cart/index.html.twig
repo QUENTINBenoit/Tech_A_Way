@@ -34,24 +34,24 @@
                     <p class="btn-warning">Non disponible</p>
                     {% endif %}
 				</div>
-                
+                {{ dump(item) }}
 				<div class="col-md-2 d-flex align-items-baseline quantity">
 
-					<button class="quantity_product_minus" id="quantity_product_minus_1">
+					<a href="{{ path('cart_remove_one_quantity', {id: item.product.id}) }}" class="btn btn-light btn-sm quantity_product_minus" id="quantity_product_minus_1">
 						<i class="fas fa-minus"></i>
-					</button>
+					</a>
 					<div class="fw-bold mx-2" id="actual_quantity_product_1">{{ item.quantity }}</div>
-					<button class="quantity_product_plus" id="quantity_product_plus_1">
+					<a href="{{ path('cart_add', {id: item.product.id}) }}" class="btn btn-light btn-sm quantity_product_plus" id="quantity_product_plus_1">
 						<i class="fas fa-plus"></i>
-					</button>
+					</a>
 
 				</div>
 
 				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item['quantity'] }} €</div>
 				<div class="col-md-1 button_delete">
-					<button class="button_delete_product bg-white" id="button_delete_product_1">
+					<a href="{{ path('cart_remove_all_one_product', {id: item.product.id}) }}"class="btn btn-light btn-sm button_delete_product" id="button_delete_product_1">
 						<i class="fas fa-times"></i>
-					</button>
+					</a>
 				</div>
 			</div>
         {% endfor %}
