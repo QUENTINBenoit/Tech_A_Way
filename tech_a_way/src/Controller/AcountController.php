@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/acount/user", name="acount_user_", requirements={"adressId" = "\d+"}, requirements={"userId" = "\d+"}, requirements={"id" = "\d+"})
  */
-class UserController extends AbstractController
+class AcountController extends AbstractController
 {
 
     /**
