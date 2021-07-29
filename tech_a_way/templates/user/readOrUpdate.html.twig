@@ -115,30 +115,16 @@
 		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
 			{% set i = 1 %}
 			{% for address in user.addresses %}
+		
 			<h1 style="color: black;" class="text-center mb-3 fs-2">Votre adresse {{ i }}</h1>
-			<form action="">
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Adresse utilisée pour :</span>
-					<label class="" for="type"></label>
-					<input value="{{ address.type }}" class="form-control" type="text" name="type" id="type" required>
+				<p class="ms-5"> <span class="fw-bold">Type : </span>{{ address.type }}</p>
+				<p class="ms-5"> <span class="fw-bold">Rue : </span>{{ address.street }} </p>
+				<p class="ms-5"> <span class="fw-bold">Code Postal : </span>{{ address.zipcode }} </p>
+				<p class="ms-5"> <span class="fw-bold">Ville : </span>{{ address.city }} </p>
+				<div class="ms-5 mb-4">
+					<a href="{{ path('acount_user_update_address', {userId:user.id, addressId:address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="" class="btn btn-primary">Supprimer</a>
 				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Rue :</span>
-					<label class="" for="street"></label>
-					<input value="{{ address.street }}" class="form-control" type="text" name="street" id="street" required>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Code postal :</span>
-					<label for="zipcode"></label>
-					<input value="{{ address.zipcode }}" class="form-control" type="number" name="zipcode" id="zipcode">
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Ville :</span>
-					<label for="city"></label>
-					<input value="{{ address.city }}" class="form-control" type="text" name="city" id="city">
-				</div>
-				<button type="submit" class="btn btn-primary">editer</button>
-			</form>
 			{% set i = i + 1 %}
 		{% endfor %}
 		</section>

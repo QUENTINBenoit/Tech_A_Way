@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une Adresse
+{% endblock %}
+
+{% block body %}
+	<main class="row container justify-content-md-between" id="account-page-main">
+<h4><a href="#">retour à mon espace personnel</a></h4>
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+		<section style="height: 200px; background-color: white;" class="d-flex col align-items-center justify-content-around" id="compte_user_insert">
+			<div style="min-width: 140px; max-width: 200px;" class="col" id="picture">
+				<img src="{{ asset('images/icon_account.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			</div>
+			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
+				<div>
+					<div class="fw-bold">Bonjour</div>
+					<div class="">{{ app.user.firstname }}
+						{{ app.user.lastname }}</div>
+				</div>
+				<div class="text-primary">client N°{{ app.user.id }}</div>
+				<a href="{{ path('app_logout') }}" class="btn border border-danger rounded-pill link-danger fw-bold fs-6">Me déconnecter</a>
+			</div>
+		</section>
+
+
+		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations">
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Modifier votre adresse</h1>
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.type, { 'label': 'Type' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.street, { 'label': 'Rue' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.zipcode, { 'label': 'Code Postal' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.city, { 'label': 'Ville' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Editer</button>
+									{{ form_end(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+
+
+	</main>
+
+{% endblock %}
