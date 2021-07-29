@@ -67,9 +67,32 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/{userId}/address/{addressId}/delete", name="delete_address")
+     */
+    public function deleteAddress($userId, $addressId, AddressRepository $addressRepository, Request $request)
+    {
+        $address= $addressRepository->find($addressId);
+
+        $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+
+        // 'delete-item' est la même clé utilisée dans le template pour générer le token
+        if ($this->isCsrfTokenValid('delete-address', $submitedToken)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($address);
+            $em->flush();
+
+            $this->addFlash('success', 'Adresse supprimée avec succes');
+
+            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+        } else {
+            return new Response('Action interdite', 403);
+        }
+    }
+
+    /**
      * @Route("/{userId}/address/create", name="create_address")
      */
-    public function add(Request $request, $userId)
+    public function addNewAddress(Request $request, $userId)
     {
         $address = new Address();
         // dd($this->getUser());

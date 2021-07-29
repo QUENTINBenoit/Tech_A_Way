@@ -34,3 +34,9 @@
     margin-left: 50px;
     margin-right: 50px;
 }
+
+#compte_user_addresses>a {
+    background-color: #F25528;
+    color:white;
+
+}

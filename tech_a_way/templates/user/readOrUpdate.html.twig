@@ -113,6 +113,8 @@
 		</section>
 
 		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
+			<a href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="fw-bold col-3 btn">Nouvelle adresse</a>
+
 			{% set i = 1 %}
 			{% for address in user.addresses %}
 		
@@ -123,8 +125,7 @@
 				<p class="ms-5"> <span class="fw-bold">Ville : </span>{{ address.city }} </p>
 				<div class="ms-5 mb-4">
 					<a href="{{ path('acount_user_update_address', {userId:user.id, addressId:address.id}) }}" class="btn btn-primary">Editer</a>
-					<a href="" class="btn btn-primary">Supprimer</a>
-					<a href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="btn btn-primary">Ajouter une nouvelle adresse</a>
+					<a href="{{ path('acount_user_delete_address', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}" class="btn btn-primary">Supprimer</a>
 				</div>
 			{% set i = i + 1 %}
 		{% endfor %}
