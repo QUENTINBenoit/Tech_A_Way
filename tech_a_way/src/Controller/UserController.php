@@ -32,6 +32,7 @@ class UserController extends AbstractController
 
 
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Les données personnelles de  ' . $user->getFirstname(). ' ' . $user->getLastname() . ' ont bien été mises à jour');
 
             return $this->redirectToRoute('acount_user_read_or_update', ['id' => $user->getId()], 301);
         }

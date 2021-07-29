@@ -6,6 +6,13 @@
 {% block body %}
 
 	<main class="row container justify-content-md-between" id="account-page-main">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
 		<section style="height: 200px; background-color: white;" class="d-flex col align-items-center justify-content-around" id="compte_user_insert">
 			<div style="min-width: 140px; max-width: 200px;" class="col" id="picture">
 				<img src="{{ asset('images/icon_account.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
