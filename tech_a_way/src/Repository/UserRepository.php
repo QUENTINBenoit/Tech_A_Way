@@ -137,7 +137,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     */
 
 
- public function findByUserOder($id)
+ public function findByUserOrder($id)
  {
 
       $qb = $this->createQueryBuilder('customer');

@@ -45,7 +45,7 @@
 				  </a>
 				  <ul id="header_ul_burger">
 					<li>
-					  <a href="#" class="fs-3 fw-bold">Accueil</a>
+					  <a href="{{ path('home') }}" class="fs-3 fw-bold">Accueil</a>
 					</li>
 					<li>
 					  <a href="#" class="fs-6 fst-italic">- Catégorie 1</a>
@@ -63,7 +63,7 @@
 					  <a href="#" class="fs-6 fst-italic">- Marques</a>
 					</li>
 					<li class="burger_li_shopping_cart">
-					  <a href="#" class="fs-5">Panier</a>
+					  <a href="{{ path('cart_list') }}" class="fs-5">Panier</a>
 					</li>
 					<li class="burger_li_user">
 					  <a href="#" class="fs-5">Mon Compte</a>
@@ -75,12 +75,12 @@
 			<div class="d-md-block d-none div_desktop">
 			  <div class="d-flex justify-content-between">
 				<div class="ps-2 pt-2">
-				  <a class="navbar-brand" href="#">
+				  <a class="navbar-brand" href="{{ path('home') }}">
 					<img src="../images/logo_site/logo-web-transparent.png" alt="cameleon" width="180px"></a>
 				</div>
 		
 				<div class="pt-4 ">
-				  <a href="#" class="logo_home_desktop ">
+				  <a href="{{ path('home') }}" class="logo_home_desktop ">
 					<i class="fas fa-home fa-2x"></i>
 				  </a>
 				</div>
@@ -158,7 +158,7 @@
 				  <a href="#" class="logo_user_desktop">
 					<i class="fas fa-user fa-2x me-4"></i>
 				  </a>
-				  <a href="#" class="logo_shopping_cart_desktop">
+				  <a href="{{ path('cart_list') }}" class="logo_shopping_cart_desktop">
 					<i class="fas fa-shopping-cart fa-2x me-4"></i>
 				  </a>
 				</div>
