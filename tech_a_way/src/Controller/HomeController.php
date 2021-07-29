@@ -14,13 +14,13 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProductRepository $reposRecent, ProductRepository $reposInPromotion, ProductRepository $reposPromotionByPercentage): Response
+    public function index(ProductRepository $productRepository): Response
     {
-        $productsRecent = $reposRecent->findBy([
+        $productsRecent = $productRepository->findBy([
             'statusRecent' => null,
         ], null, 6);
 
-        $productsPromotion = $reposInPromotion->findBy([
+        $productsPromotion = $productRepository->findBy([
             'statusPromotion' => null,
         ], null, 6);
 
