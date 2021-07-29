@@ -12,8 +12,13 @@ use Doctrine\Persistence\ObjectManager;
 
 class CategoriesFixtures extends Fixture
 {
+    public const CATEGORY_REFERENCE = 'category_';
+
     public function load(ObjectManager $manager)
     {
+
+        
+
         $majorCategoriesList = [
 
             // I am testing a nested table to link the major categories to the relevant
@@ -552,7 +557,7 @@ class CategoriesFixtures extends Fixture
         /**===========================FIN================================================== */
   
         
-
+        $this->setReference(self::CATEGORY_REFERENCE, $subCategoryImage);
         $manager->flush(); // Flush de tout les éléments
     }
 

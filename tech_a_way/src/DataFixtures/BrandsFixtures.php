@@ -9,7 +9,10 @@ use Laminas\Code\Reflection\FunctionReflection;
 
 class BrandsFixtures extends Fixture
 {
+
+    public const BRAND_REFERENCE = 'brand_';
     public function load(ObjectManager $manager)
+    
     {
         $brandList = [
                         ['name' => 'Acer', 'picture' => 'acer.png'],
@@ -31,6 +34,8 @@ class BrandsFixtures extends Fixture
                         $brand->setLogo($currentBrand['picture']);
                         $manager->persist($brand);
                     }
+
+                    $this->setReference(self::BRAND_REFERENCE, $brand);
                     $manager->flush();
 
     }
