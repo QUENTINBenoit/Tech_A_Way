@@ -51,8 +51,8 @@ class ProductFixtures extends Fixture
             
                     
                     $product->setBrand($this->getReference('brand_'.$faker->numberBetween(1, 11)));
-                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
-                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
+                    $product->addCategory($this->getReference('category_'.$faker->numberBetween(1,5)));
+                    //$product->addCategory($this->getReference('category_'.$faker->numberBetween(1,4)));
                 
 
                 $manager->persist($product);

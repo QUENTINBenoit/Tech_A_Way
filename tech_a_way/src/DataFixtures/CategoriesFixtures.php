@@ -39,24 +39,26 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryPeripheriqueList =[
-            'Ecran PC',
-            'Clavier/Souris',
-            'Disque dur',
-            'Imprimante/Scanner',
+            1=>['under'=>'Ecran PC'],
+            1=>['under'=>'Clavier/Souris'],
+            1=>['under'=>'Disque dur'],
+            1=>['under'=>'Imprimante/Scanner'],
+           
         ];
 
         $underSubCategoryPortableList =[
-            'Neuf',
-            'Reconditionne',
-            'Sation d\'accueil ',
-            'Sacoches',
+            1=>['under'=>'Neuf'],
+            1=>['under'=>'Reconditionne'],
+            1=>['under'=>'Sation d\'accueil'],
+            1=>['under'=>'Sacoches'],
+            
         ];
 
         $underSubCategoryOrdinateurFixList =[
+            1=>['under'=>'Neuf'],
+            2=>['under'=>'Reconditionne'],
+            3=>['under'=>'Tour'],
 
-            'Neuf',
-            'Reconditionne',
-            'Tour',
         ];
 
         $subCategoriesObjetConnecteList = [
@@ -66,23 +68,25 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategoryMaisonList =[
-            'Ampoule Connecte',
-            'Prise Connecte',
-            'Traitement de l\'aire',
-            'Aspirateur connecte'
+            1=>['under'=>'Ampoule Connecte'],
+            2=>['under'=>'Prise Connecte'],
+            3=>['under'=>'Traitement de l\'aire'],
+            4=>['under'=>'Aspirateur connecte'],
         ];
 
         $underSubCategorySportList = [
-            'Montre connecte',
-            'Drone',
-            'Balance connecte',
+            1=>['under'=>'Montre connecte'],
+            2=>['under'=>'Drone'],
+            3=>['under'=>'Balance connecte'],
+           
         ];
 
         $underSubCategorySecuriteList = [
-            'Camera de surveillance',
-            'Alarme',
-            'Detecteur de fumer',
-            'Interphone Connecté',
+            1=>['under'=>'Camera de surveillance'],
+            2=>['under'=>'Alarme'],
+            3=>['under'=>'Detecteur de fumer'],
+            4=>['under'=>'Interphone Connecté'],
+            
         ];
 
         $subCategoriesTelephonieList = [
@@ -117,16 +121,20 @@ class CategoriesFixtures extends Fixture
         ];
 
         $underSubCategorySonList = [
-         'Homecinema',
-         'Barre de son',
-         'Enceintes',
-         'Casque/Ecouteur'
+            1=>['under'=>'Homecinema'],
+            2=>['under'=>'Barre de son'],
+            3=>['under'=>'Enceintes'],
+            4=>['under'=>'Casque/Ecouteur'],
+         
+         
+         
      ];
         $underSubCategoryImageList = [
-            'Télévision',
-            'Projection',
-            'Camera',
-            'Photo',
+            1=>['under'=>'Télévision'],
+            2=>['under'=>'Projection'],
+            3=>['under'=>'Camera'],
+            4=>['under'=>'Photo'],
+            
 
         ];
 
@@ -244,15 +252,12 @@ class CategoriesFixtures extends Fixture
         $categorySonAndImage->setName($majorCategoriesList[0]);
         $categorySonAndImage->setSubtitle('Catégorie, Son et Image');
 
-        /**====================Fin============================ */
-
-
-
-        /**=====Ici on persist la major category son et image=== */
         $manager->persist($categorySonAndImage);
+
         /**====================Fin========================== */
 
         /**=======les sous categories de son ============= */
+
         $subCategorySon = new Category;
         $subCategorySon->setName($subCategoriesSonAndImageList[0]) ;
         $subCategorySon->setSubtitle('Le meilleur de l\'audio');
@@ -260,15 +265,16 @@ class CategoriesFixtures extends Fixture
         $categorySonAndImage->addSubcategory($subCategorySon);
 
 
-        $manager->persist($subCategorySon); /**ici on persist La sous categorie Son */
+        $manager->persist($subCategorySon);
 
         /**=====Subcategories of the category Sound======== */
-        foreach ($underSubCategorySonList as $current) {
-            $under = new Category;
-            $under->setName($current);
-            $subCategorySon->addSubcategory($under);
-            //$under->addProduct($this->getReference(ProductsFixtures::PRODUCTS_FIXTURES_REFERENCE));
-            $manager->persist($under);
+
+        foreach ($underSubCategorySonList as $key => $value) {
+            $underSon = new Category;
+            $underSon->setName($value['under']);
+            $subCategorySon->addSubcategory($underSon);
+            $manager->persist($underSon);
+            $this->setReference('category_'.$key,$underSon);
         }
 
 
@@ -284,11 +290,12 @@ class CategoriesFixtures extends Fixture
 
 
         /**========Subcategories of the Image category============*/
-        foreach ($underSubCategoryImageList as $currentImage) {
-            $under = new Category;
-            $under->setName($currentImage);
-            $subCategoryImage->addSubcategory($under);
-            $manager->persist($under);
+        foreach ($underSubCategoryImageList as $key => $value) {
+            $underImage = new Category;
+            $underImage->setName($value['under']);
+            $subCategoryImage->addSubcategory($underImage);
+            $manager->persist($underImage);
+            $this->setReference('category_'.$key,$underImage);
         }
 
         /* code obselet
@@ -360,11 +367,13 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous categories de peripherique
-        foreach ($underSubCategoryPeripheriqueList as $current) {
+        foreach ($underSubCategoryPeripheriqueList as $key => $value) {
             $underPeripherique = new Category;
-            $underPeripherique->setName($current);
+            $underPeripherique->setName($value['under']);
             $subCategoryPeripherique->addSubcategory($underPeripherique);
             $manager->persist($underPeripherique);
+            $this->setReference('category_'.$key,$underPeripherique);
+
         }
 
         /**===================================FIN=========================================== */
@@ -380,11 +389,12 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous-sous categories de ordi portable
-        foreach ($underSubCategoryPortableList as $current) {
+        foreach ($underSubCategoryPortableList as $key => $value) {
             $underPortable = new Category;
-            $underPortable->setName($current);
+            $underPortable->setName($value['under']);
             $subCategoryPortable->addSubcategory($underPortable);
             $manager->persist($underPortable);
+            $this->setReference('category_'.$key,$underPortable);
         }
 
         /**===========================FIN================================================== */
@@ -400,11 +410,12 @@ class CategoriesFixtures extends Fixture
         $manager->persist($subCategoryOrdiFix); /** Ici on persist */
 
 
-        foreach ($underSubCategoryOrdinateurFixList as $current) {
+        foreach ($underSubCategoryOrdinateurFixList as $key => $value) {
             $underOrdiFix = new Category;
-            $underOrdiFix->setName($current);
+            $underOrdiFix->setName($value['under']);
             $subCategoryOrdiFix->addSubcategory($underOrdiFix);
             $manager->persist($underOrdiFix);
+            $this->setReference('category_'.$key,$underOrdiFix);
         }
         /**============================FIN=========================================== */
 
@@ -449,11 +460,12 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous categories de Maison
-        foreach ($underSubCategoryMaisonList as $current) {
+        foreach ($underSubCategoryMaisonList as $key => $value) {
             $UnderMaison = new Category;
-            $UnderMaison->setName($current);
+            $UnderMaison->setName($value['under']);
             $subCategoryMaison->addSubcategory($UnderMaison);
             $manager->persist($UnderMaison);
+            $this->setReference('category_'.$key,$UnderMaison);
         }
 
         /**===================================FIN=========================================== */
@@ -469,11 +481,13 @@ class CategoriesFixtures extends Fixture
 
 
         // les sous-sous categories Sport
-        foreach ($underSubCategorySportList as $current) {
+        foreach ($underSubCategorySportList as $key => $value) {
             $underSport = new Category;
-            $underSport->setName($current);
+            $underSport->setName($value['under']);
             $subCategorySport->addSubcategory($underSport);
             $manager->persist($underSport);
+            $this->setReference('category_'.$key,$underSport);
+
         }
 
         /**===========================FIN================================================== */
@@ -489,11 +503,12 @@ class CategoriesFixtures extends Fixture
         $manager->persist($subCategorySecurity); /** Ici on persist */
 
 
-        foreach ($underSubCategorySecuriteList as $current) {
+        foreach ($underSubCategorySecuriteList as $key => $value) {
             $underSecurity = new Category;
-            $underSecurity->setName($current);
+            $underSecurity->setName($value['under']);
             $subCategorySecurity->addSubcategory($underSecurity);
             $manager->persist($underSecurity);
+            $this->setReference('category_'.$key,$underSecurity);
         }
         /**============================FIN=========================================== */
 
