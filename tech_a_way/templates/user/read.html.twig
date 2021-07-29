@@ -58,27 +58,37 @@
 					<span style="color: black;" class="fs-6">Civilité :</span>
 					<div class="col-3">
 						<label class="" for="radio">M.</label>
-						<input class="" type="radio" name="radio" id="radio" value="option1">
+						<input class="" {{ user.gender == 'Monsieur' ? 'checked' : '' }} type="radio" name="radio" id="radio" value="option1">
 					</div>
 					<div class="col-3">
 						<label class="" for="radio2">Mme</label>
-						<input class="" type="radio" name="radio2" id="radio2" value="option2">
+						<input class="" {{ user.gender == 'Madame' ? 'checked' : '' }} type="radio" name="radio" id="radio2" value="option2">
 					</div>
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Prénom :</span>
 					<label class="" for="firstname"></label>
-					<input class="form-control" type="text" name="fistname" id="firstname" required>
+					<input placeholder="{{ user.firstname }}" class="form-control" type="text" name="fistname" id="firstname" required>
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Nom :</span>
 					<label class="" for="lastname"></label>
-					<input class="form-control" type="text" name="lastname" id="lastname" required>
+					<input placeholder="{{ user.lastname }}" class="form-control" type="text" name="lastname" id="lastname" required>
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Adresse email :</span>
 					<label for="email"></label>
-					<input class="form-control" type="email" name="email" id="email">
+					<input placeholder="{{ user.email }}" class="form-control" type="email" name="email" id="email">
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">N° de Téléphone :</span>
+					<label for="number"></label>
+					<input placeholder="{{ user.phoneNumber }}" class="form-control" type="number" name="number" id="number">
+				</div>
+				<div class="mb-3">
+					<span style="color: black;" class="fs-6">Date de naissance : {{ user.birthdate |date('d-m-Y') }}</span>
+					<label for="date"></label>
+					<input class="form-control" type="date" name="date" id="date">
 				</div>
 				<div class="mb-3">
 					<span style="color: black;" class="fs-6">Mot de passe :</span>
@@ -90,47 +100,5 @@
 		</section>
 
 	</main>
-
-
-
-
-	<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_informations_2">
-			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
-			<form action="">
-				<div class="row justify-content-start mb-3">
-					<span style="color: black;" class="fs-6">Civilité :</span>
-					<div class="col-3">
-						<label class="" for="radio">M.</label>
-						<input class="" type="radio" name="radio" id="radio" value="option1">
-					</div>
-					<div class="col-3">
-						<label class="" for="radio2">Mme</label>
-						<input class="" type="radio" name="radio2" id="radio2" value="option2">
-					</div>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Prénom :</span>
-					<label class="" for="firstname"></label>
-					<input class="form-control" type="text" name="fistname" id="firstname" required>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Nom :</span>
-					<label class="" for="lastname"></label>
-					<input class="form-control" type="text" name="lastname" id="lastname" required>
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Adresse email :</span>
-					<label for="email"></label>
-					<input class="form-control" type="email" name="email" id="email">
-				</div>
-				<div class="mb-3">
-					<span style="color: black;" class="fs-6">Mot de passe :</span>
-					<label for="password"></label>
-					<input class="form-control" type="email" name="password" id="password">
-				</div>
-				<button type="submit" class="btn btn-primary">Valider</button>
-			</form>
-		</section>
-
 
 {% endblock %}

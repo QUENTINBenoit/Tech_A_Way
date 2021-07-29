@@ -20,35 +20,12 @@ class UserController extends AbstractController
 {
 
         /**
-     * @Route("/{id}", name="update", methods={"GET","POST"})
+     * @Route("/{id}", name="read", methods={"GET","POST"})
      */
-    public function update(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
+    public function read($id, UserRepository $userRepository): Response
     {
-
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $plainPassword = $form->get('password')->getData();
-
-            if ($plainPassword) {
-                $hashedPassword = $passwordHasher->hashPassword(
-                    $user,
-                    $plainPassword
-                );
-
-                $user->setPassword($hashedPassword);
-            }
-
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('acount_user_update');
-        }
-
-        return $this->render('user/read.update.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
+        return $this->render('user/read.html.twig', [
+            'user' => $userRepository->findWithAllDetails($id),
         ]);
     }
 }
