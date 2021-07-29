@@ -51,7 +51,7 @@
 
 /*********************start ACCOUNT PAGE*************************/
 
-if (window.matchMedia("(max-width: 767px)").matches) {
+if (window.matchMedia("(max-width: 991px)").matches) {
     const mainEl = document.querySelector('#account-page-main');
     mainEl.classList.remove('row');
     console.log('coucou');
@@ -63,7 +63,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
    
 
-} else if (window.matchMedia("(min-width: 768px)").matches) {
+} else if (window.matchMedia("(min-width: 992px)").matches) {
     console.log('Hello');
     const mainEl = document.querySelector('#account-page-main');
     mainEl.classList.add('row');

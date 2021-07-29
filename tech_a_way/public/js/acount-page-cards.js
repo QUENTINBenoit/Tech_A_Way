@@ -1,12 +1,12 @@
 let acountPage = {
 
     init: function() {
-      if(window.innerWidth <= 767) {
+      if(window.innerWidth <= 991) {
    const mainEl = document.querySelector('#account-page-main');
 mainEl.classList.remove('row')
 
       }
-      if(window.innerWidth >= 768) {
+      if(window.innerWidth >= 992) {
         const mainEl = document.querySelector('#account-page-main');
      mainEl.classList.add('row')
      const userInsertEl = document.querySelector('#compte_user_insert');
