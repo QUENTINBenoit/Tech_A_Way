@@ -47,4 +47,19 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+//  public function findByProcductOfCategories($id)
+//  {
+
+//       $qb = $this->createQueryBuilder('c');
+    
+    
+//      $qb->where('c.id = :id');
+//      $qb->setParameter(':id', $id);
+    
+//      $qb->leftJoin('c.cater', 'p'); 
+     
+//       $query = $qb->getQuery();
+//       return $query->getOneOrNullResult(); 
+//  }
 }

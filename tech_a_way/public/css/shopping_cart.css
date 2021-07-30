@@ -149,7 +149,9 @@ start css HEADER
     font-size: 0.92rem;
     position: relative;
     top: 0.7em;
-    background-color:rgba(57,57,57);
+    /*background-color:rgba(57,57,57);*/
+   background: linear-gradient(114deg, rgba(48,48,48,1) 0%, rgba(9,8,122,1) 99%);*/
+
 
 }
 
@@ -161,7 +163,16 @@ start css HEADER
     display: none;
 
 }
-
+#category_1{
+  /*  width:15em;
+	height:2em;
+	
+	/*-webkit-transform:skew(30deg);
+	/*-moz-transform:skew(30deg);*/
+	/*-o-transform:skew(30deg);*/
+	/*tranform:skew(30deg);*/
+  /*  background: linear-gradient(39deg, rgba(48,48,48,1) 0%, rgba(9,8,122,1) 100%);*/
+}
 
 #category_1:hover #sub_category_1_appears, #category_2:hover #sub_category_2_appears, #category_3:hover #sub_category_3_appears, #category_4:hover #sub_category_4_appears {
     display: block;
@@ -292,7 +303,7 @@ start css FOOTER
 ***************/
 
 @media (max-width: 767px) {
-    .footer_payments {
+   /* .footer_payments {
         position: absolute;
        bottom: -120px;
        padding-bottom: 5px;
@@ -301,13 +312,39 @@ start css FOOTER
     .footer_list_links {
         margin-left: 150px;
     }
+    */
 }
 
 
 footer {
-    height: 100px;
     border-top: 1px solid #F25528;
+    background: radial-gradient(circle,rgba(152,150,150,1) 0%, rgba(57,57,57,1) 100%); 
+}
+
+@media (max-width: 767px) {
+    footer {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .footer_payments {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer_payments div {
+        padding: 0 10px;
+    }
     
+    .footer_list_links {
+        width: 50%;
+    }
+    
+    .footer_logo {
+       
+        width: 100%;
+    }
 }
 
 footer ul li{
@@ -321,15 +358,15 @@ footer a {
 
 }
 
+.footer_payments>div:hover {
+    transform: rotate(90deg) scale(0.5); 
+}
 
 
 .footer_logo {
-    position: absolute;
-    right: 0px;
-}
-
-.footer_payments>div:hover {
-    transform: rotate(90deg) scale(0.5); 
+    margin-top: 40px;
+    text-align: center;
+    padding: 40px 0;
 }
 /*************** 
 end css FOOTER

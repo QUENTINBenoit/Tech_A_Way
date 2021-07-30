@@ -22,7 +22,7 @@ class ProductController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('product/index.html.twig', [
-            'category' => $categoryRepository->findCategoriesToDisplay(),
+            'category' => $categoryRepository->findCategoriesToDisplay(), // display hs  
         ]);
     }
 

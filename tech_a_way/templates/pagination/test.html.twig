@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PAGINATION {% endblock %}
+
+
+
+{% block body %}
+ <h1>Demo</h1>
+
+    <table>
+        <tr>
+            {# sorting of properties based on query components #}
+            <th>base name</th>
+            <th>path</th>
+        </tr>
+    
+        {# table body #}
+        {% for file in produits %}
+            <tr{% if loop.index is odd %} class="color"{% endif %}>
+                <td>{{ file.name }}</td>
+              
+            </tr>
+        {% endfor %}
+    </table>
+    {# display navigation #}
+    <div id="navigation">
+        {{ knp_pagination_render(produits) }}
+    </div>
+
+{% endblock %}

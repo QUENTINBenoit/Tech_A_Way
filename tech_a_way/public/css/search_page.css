@@ -47,30 +47,45 @@
 
 
 /* code css for pagination page search*/
-    ul.pagination {
+    pagination {
       display: inline-block;
       padding: 0;
       margin: 0;
     }
 
-    ul.pagination li {display: inline;}
+    pagination li {display: inline;}
 
-    ul.pagination li a {
+    pagination li a {
       color:#F25528;
       float: left;
       padding: 4px 8px;
       text-decoration: none;
       border-radius: 8px;
     }
-    ul.pagination li a.active {
+    pagination li a.active {
       background-color: #F25528;
       color: white;
       border-radius: 5px;
     }
-    ul.pagination li a:hover:not(.active) {background-color:  rgba(57,57,57,0.9192051820728291);}
+    pagination li a:hover:not(.active) {background-color:  rgba(57,57,57,0.9192051820728291);}
 
 
-
+.bkgporduct{
+  background: linear-gradient(39deg, rgba(244,244,249,1) 65%, rgba(242,85,40,1) 100%);
+  color:black ;
+  border-bottom-right-radius: 80px 80px;
+}
+#text{
+  font-size: 1em;
+  font-weight: bold;
+  
+ 
+}
+.bkgcatego{
+  background: linear-gradient(39deg, rgba(242,85,40,1) 0%, rgba(244,244,249,1) 52%);
+  text-align: center;
+  font-weight: bold;
+}
 
 .color{
          

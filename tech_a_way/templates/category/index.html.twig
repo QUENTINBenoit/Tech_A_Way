@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+
+ <section class="row p-2 m-0 container-fluid" >             
+        <div class="col-lg-10">
+         {% for currentcat in categotype1 %}
+               {% for subcat in currentcat.subcategories %}
+                    <a href=" {{path('category_pagination', {id: subcat.id})}}" >
+                    <h3 class="p-3 mb-2 bg-info bkgcatego text-dark"> {{subcat.name}}  </h3>
+                    </a>
+                    {% endfor %}
+            {% endfor %}
+          <div id="navigation">        
+          </div>
+
+    </section> 
+s
+{% endblock %}

@@ -53,18 +53,12 @@
 					<li>
 					  <a href="{{ path('home') }}" class="fs-3 fw-bold">Accueil</a>
 					</li>
+			
+					{% for cat in global.categories %}
 					<li>
-					  <a href="#" class="fs-6 fst-italic">- Catégorie 1</a>
+					  <a href="#" class="fs-6 fst-italic"> {{ cat.name }} </a>
 					</li>
-					<li>
-					  <a href="#" class="fs-6 fst-italic">- Catégorie 2</a>
-					</li>
-					<li>
-					  <a href="#" class="fs-6 fst-italic">- Catégorie 3</a>
-					</li>
-					<li>
-					  <a href="#" class="fs-6 fst-italic">- Catégorie 4</a>
-					</li>
+					{% endfor %}
 					<li>
 					  <a href="#" class="fs-6 fst-italic">- Marques</a>
 					</li>
@@ -108,62 +102,18 @@
 				  </div>
 				  <div class="">
 					<ul class="d-flex" id="liste_categories">
-					  <li class="col-3 ps-2" id="category_1">
-						<a href="#Accueil">Catégorie 1</a>
-						<div class="ps-1 header_sub_category" id="sub_category_1_appears">
-						  <div>
-							<a href="#Accueil">sous-catégorie 1</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 2</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 3</a>
-						  </div>
-						</div>
-					  </li>
-					  <li class="col-3 ps-2" id="category_2">
-						<a href="#Apropos">Catégorie 2</a>
-						<div class="ps-1 header_sub_category" id="sub_category_2_appears">
-						  <div>
-							<a href="#Accueil">sous-catégorie 1</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 2</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 3</a>
-						  </div>
-						</div>
-					  </li>
-					  <li class="col-3 ps-2" id="category_3">
-						<a href="#Contact">Catégorie 3</a>
-						<div class="ps-1 header_sub_category" id="sub_category_3_appears">
-						  <div>
-							<a href="#Accueil">sous-catégorie 1</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 2</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 3</a>
-						  </div>
-						</div>
-					  </li>
-					  <li class="col-3 ps-2" id="category_4">
-						<a href="#Contact">Catégorie 4</a>
-						<div class="ps-1 header_sub_category" id="sub_category_4_appears">
-						  <div>
-							<a href="#Accueil">sous-catégorie 1</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 2</a>
-						  </div>
-						  <div>
-							<a href="#Accueil">sous-catégorie 3</a>
-						  </div>
-						</div>
-					  </li>
+						{% for cat in global.categories %}
+							<li class="col-3 ps-2" id="category_1">
+								<a href="{{ path('category_parent', {id:cat.id}) }}">{{cat.name}}</a>
+								<div class="ps-1 header_sub_category" id="sub_category_1_appears">
+									{% for subcat in cat.subcategories %}
+										<div>
+											<a href="{{ path('category_parent', {id:subcat.id}) }}">{{subcat.name}}</a>
+										</div>
+									{% endfor %}
+								</div>							
+							</li>
+							{% endfor %}
 					</ul>
 				  </div>
 				</div>
