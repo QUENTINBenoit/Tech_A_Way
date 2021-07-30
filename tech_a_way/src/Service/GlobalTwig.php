@@ -14,6 +14,10 @@ class GlobalTwig
         $categories = $this->categoryRepository->findBy(
             ['category' => null]
         );
+
+         
+
+
         return $categories;
     }
      

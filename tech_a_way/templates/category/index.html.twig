@@ -6,26 +6,14 @@
 
  <section class="row p-2 m-0 container-fluid" >             
         <div class="col-lg-10">
-            <div class="container-fluid row d-flex justify-content-between py-3">
-              <ul class="pagination col-lg-6 py-3">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a class="active" href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">»</a></li>
-              </ul>              
-            </div>
+            
            
          {% for currentcat in categotype1 %}
+      
                {% for subcat in currentcat.subcategories %}
        
                   <h3 class="p-3 mb-2 bg-info bkgcatego text-dark"> {{subcat.name}}  </h3>
                       {% for subproduct in subcat.products %}
-                    
                       <div class="p-3 mb-2  bkgporduct"> 
                         <p id="text">{{subproduct.name}} <p>
                         <div class=" text-dark container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
