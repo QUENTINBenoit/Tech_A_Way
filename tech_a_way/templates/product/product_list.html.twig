@@ -1,0 +1,40 @@
+  {% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %} 
+        {% for subproduct in produits %} 
+                <div class="p-3 mb-2  bkgporduct"> 
+                  <p id="text">{{subproduct.name}} <p>
+                        <div class=" text-dark container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
+                        <div class="d-flex align-items-star ">
+                          <div class="col-2">
+                              <div class="mobilefirst">
+                                <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                              </div>
+                          </div>
+                          <div class="p-2 bd-highlight col-6 ">
+                              <p>
+                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
+                              </p>
+                          </div>
+                          <div class="col-2">
+                              <p>dispo stock</p> 
+                          </div>
+                          <div class="col-2  mx-6">
+                              <p>Prix</p> 
+                              <p>30€</p>  
+                              <a href="#">
+                              <span class="material-icons color">
+                                  shopping_cart
+                              </span>
+                              </a>
+                          </div>                    
+                       </div>
+                       </div>                        
+                    </div>
+            {% endfor %}
+              <div id="navigation">
+        {{ knp_pagination_render(produits) }}
+    </div>
+{% endblock %}
