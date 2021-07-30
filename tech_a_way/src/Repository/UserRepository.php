@@ -136,21 +136,5 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
     */
 
-
- public function findByUserOrder($id)
- {
-
-      $qb = $this->createQueryBuilder('customer');
-    
-      $qb->where('customer.id = :id');
-      $qb->setParameter(':id', $id);
-       $qb->leftJoin('customer.orders', 'user');
-
-      $query = $qb->getQuery();
-      return $query->getOneOrNullResult(); 
- }
-
-
-
     
 }

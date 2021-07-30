@@ -19,7 +19,12 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
-
+    /**
+     * Undocumented function
+     *
+     * @param integer $id
+     * @return void
+     */
     public function findOrderWithAllDetails($id)
     {
         $qb = $this->createQueryBuilder('ord');
