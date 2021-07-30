@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte
+{% endblock %}
+
+{% block body %}
+
+	<main class="row container justify-content-md-between" id="account-page-main">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+		<section style="height: 200px; background-color: white;" class="d-flex col align-items-center justify-content-around" id="compte_user_insert">
+			<div style="min-width: 140px; max-width: 200px;" class="col" id="picture">
+				<img src="{{ asset('images/icon_account.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			</div>
+			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
+				<div>
+					<div class="fw-bold">Bonjour</div>
+					<div class="">{{ user.firstname }}
+						{{ user.lastname }}</div>
+				</div>
+				<div class="text-primary">client N°{{ user.id }}</div>
+				<a href="{{ path('app_logout') }}" class="btn border border-danger rounded-pill link-danger fw-bold fs-6">Me déconnecter</a>
+			</div>
+		</section>
+
+		<section style="height: 80px; background-color: white;" class="row align-items-center justify-content-start d-lg-none col">
+			<div style="background-color: #F25528; height: 40px;" class="text-center menu-title text-white text-uppercase fw-bold fs-3 col">Menu</div>
+			<div class="col p-0">
+				<div class="dropdown ">
+					<button class="fw-bold btn dropdown-toggle width-container-dropdown rounded-0 border button-menu-acount" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+						Afficher le menu
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+						<li>
+							<button class="dropdown-item" id="menu-page-acount-informations" type="button">Mes informations</button>
+						</li>
+						<li>
+							<button class="dropdown-item" id="menu-page-acount-addresses" type="button">Mes adresses</button>
+						</li>
+						<li>
+							<button class="dropdown-item" id="menu-page-acount-orders" type="button">Mes commandes</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section style="background-color: white;" class="order-md-1 d-none d-lg-flex flex-column col-lg-3 mx-5">
+
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-informations">Mes informations</button>
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-addresses">Mes adresses</button>
+			<button class="button-page-acount fw-bold mb-5" id="button-page-acount-orders">Mes commandes</button>
+
+		</section>
+
+
+		<section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations">
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Vos informations personnelles</h1>
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.gender, { 'label': 'Sexe' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row gy-3">
+							<div class="col-md-6">
+										{{ form_row(form.firstname, { 'label': 'Prénom' }) }}
+							</div>
+							<div class="col-md-6">
+										{{ form_row(form.lastname, { 'label': 'Nom' }) }}
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.email, { 'label': 'Email' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.phoneNumber, { 'label': 'Téléphone' }) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(form.birthdate) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Editer</button>
+									{{ form_end(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+
+		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
+			<a href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="fw-bold col-3 btn">Nouvelle adresse</a>
+
+			{% set i = 1 %}
+			{% for address in user.addresses %}
+		
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Votre adresse {{ i }}</h1>
+				<p class="ms-5"> <span class="fw-bold">Type : </span>{{ address.type }}</p>
+				<p class="ms-5"> <span class="fw-bold">Rue : </span>{{ address.street }} </p>
+				<p class="ms-5"> <span class="fw-bold">Code Postal : </span>{{ address.zipcode }} </p>
+				<p class="ms-5"> <span class="fw-bold">Ville : </span>{{ address.city }} </p>
+				<div class="ms-5 mb-4">
+					<a href="{{ path('acount_user_update_address', {userId:user.id, addressId:address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="{{ path('acount_user_delete_address', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}" class="btn btn-primary">Supprimer</a>
+				</div>
+			{% set i = i + 1 %}
+		{% endfor %}
+		</section>
+
+		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_orders">
+			{% for order in user.orders|reverse %}
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Votre commande {{ order.id }}</h1>
+			<div class="ms-5 fst-italic">commande effectuée le {{ order.createdAt|date('d-m-Y') }}</div>
+			{% set results = [] %}
+			{% for orderLine in order.orderLines %}
+			{% set results = results|merge([orderLine.inclTaxesUnitPrice]) %}
+		
+				<div class="ms-5">
+			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">Ligne de commande {{ orderLine.id }}</h1>
+					<p>Nom du produit : {{ orderLine.productName }}</p>
+					<p>Quantité : {{ orderLine.quantity }}</p>
+					<p>Prix unitaire HT : {{ orderLine.exclTaxesUnitPrice }} € HT</p>
+					<p>TVA : {{ orderLine.salesTax }} %</p>
+					<p>Prix unitaire TTC : {{ orderLine.inclTaxesUnitPrice }} € TTC</p>
+				</div>
+	
+		{% endfor %}
+		    {% set totalAmount = 0 %}
+            {% for result in results %}
+            {% set totalAmount = totalAmount + result %}
+            {% endfor %}
+				<div class="fw-bold mb-4">Total général de la commande : {{ totalAmount }}€ TTC</div>
+		{% endfor %}
+		</section>
+
+	</main>
+
+{% endblock %}

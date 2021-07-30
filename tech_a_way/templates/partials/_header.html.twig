@@ -4,23 +4,29 @@
 				<div class="container-fluid">
 				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="burger">
-					  <img src="../images/burger_menu/burger-menu.png" alt="" width="70px"></span>
+					  <img src="{{ asset('images/burger_menu/burger-menu.png')}}" alt="" width="70px"></span>
 				  </button>
 				  <div class="mx-auto logo">
-					<img src="../images/logo/logo-web-transparent.png" alt="logo" width="180px">
+					<img src="{{ asset('images/logo/logo-web-transparent.png')}}" alt="logo" width="180px">
 				  </div>
 		
 				  <div class="mx-auto logo_t">
-					<img src="../images/logo/T transparent.png" alt="T" width="45px">
+					<img src="{{ asset('images/logo/T transparent.png')}}" alt="T" width="45px">
 				  </div>
 		
 				  <div class="mx-3">
 					<a href="" class="logo_search">
 					  <i class="fas fa-search fa-2x me-4"></i>
 					</a>
-					<a href="" class="logo_user">
+					{% if app.user.id is defined %}
+					<a href="{{ path('acount_user_read_or_update', {id:app.user.id}) }}" class="logo_user">
 					  <i class="fas fa-user fa-2x me-4"></i>
 					</a>
+					{% else %}
+					<a href="{{ path('app_login') }}" class="logo_user">
+					  <i class="fas fa-user fa-2x me-4"></i>
+					</a>
+					{% endif %}
 					<a href="" class="logo_shopping_cart">
 					  <i class="fas fa-shopping-cart fa-2x me-4"></i>
 					</a>
@@ -66,7 +72,14 @@
 					  <a href="{{ path('cart_list') }}" class="fs-5">Panier</a>
 					</li>
 					<li class="burger_li_user">
-					  <a href="#" class="fs-5">Mon Compte</a>
+
+					{% if app.user.id is defined %}
+					  <a href="{{ path('acount_user_read_or_update', {id:app.user.id}) }}" class="fs-5">Mon Compte</a>
+				  {% else %}
+				  <a href="{{ path('app_login') }}" class="fs-5">Mon Compte</a>
+				{% endif %}
+
+
 					</li>
 				  </ul>
 				</div>
@@ -76,7 +89,7 @@
 			  <div class="d-flex justify-content-between">
 				<div class="ps-2 pt-2">
 				  <a class="navbar-brand" href="{{ path('home') }}">
-					<img src="../images/logo_site/logo-web-transparent.png" alt="cameleon" width="180px"></a>
+					<img src="{{ asset('images/logo_site/logo-web-transparent.png')}}" alt="cameleon" width="180px"></a>
 				</div>
 		
 				<div class="pt-4 ">
@@ -155,9 +168,15 @@
 				  </div>
 				</div>
 				<div class="d-flex pt-4 mx-3">
-				  <a href="#" class="logo_user_desktop">
+				{% if app.user.id is defined %}
+				  <a href="{{ path('acount_user_read_or_update', {id:app.user.id}) }}" class="logo_user_desktop">
 					<i class="fas fa-user fa-2x me-4"></i>
 				  </a>
+				  {% else %}
+				  <a href="{{ path('app_login') }}" class="logo_user_desktop">
+					<i class="fas fa-user fa-2x me-4"></i>
+				  </a>
+				    {% endif %}
 				  <a href="{{ path('cart_list') }}" class="logo_shopping_cart_desktop">
 					<i class="fas fa-shopping-cart fa-2x me-4"></i>
 				  </a>
