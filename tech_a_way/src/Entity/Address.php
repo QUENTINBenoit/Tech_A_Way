@@ -54,6 +54,11 @@ class Address
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=80, nullable=true)
+     */
+    private $delivery;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
@@ -145,6 +150,18 @@ class Address
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDelivery(): ?string
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(?string $delivery): self
+    {
+        $this->delivery = $delivery;
 
         return $this;
     }

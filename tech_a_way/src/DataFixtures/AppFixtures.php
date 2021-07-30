@@ -115,19 +115,25 @@ class AppFixtures extends Fixture
             $user ->setStatusUser(1);
             $user ->setBirthdate(new Datetime($faker->dateTimeThisCentury->format('Y-m-d')));
 
-            $typeDelivery = [
+            $delivery = [
                 'colissimo',
                 'chronopost',
                 'relai colis',
             ];
 
+            $type = [
+                'facturation',
+                'livraison',
+            ];
+
 
             for ($i = 0; $i < $faker->numberBetween(1, 4); $i++) {
                 $address = new Address();
-                $address->setType($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
+                $address->setType($type[$faker->numberBetween(0, (count($type)-1))]);
                 $address->setStreet($faker->streetAddress());
                 $address->setZipcode($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
                 $address->setCity($faker->city());
+                $address->setDelivery($delivery[$faker->numberBetween(0, (count($delivery)-1))]);
 
                 $user->addAddress($address);
                 $manager->persist($address);
@@ -135,7 +141,7 @@ class AppFixtures extends Fixture
 
             for ($orderNumber = 0; $orderNumber < $faker->numberBetween(1, 20); $orderNumber++) {
                 $order = new Order();
-                $order->setTypeDelivery($typeDelivery[$faker->numberBetween(0, (count($typeDelivery)-1))]);
+                $order->setTypeDelivery($delivery[$faker->numberBetween(0, (count($delivery)-1))]);
                 $order->setStreetDelivery($faker->streetAddress());
                 $order->setZipcodeDelivery($faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9).$faker->numberBetween(1, 9));
                 $order->setCityDelivery($faker->city());
