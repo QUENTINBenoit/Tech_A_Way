@@ -44,6 +44,7 @@ class CategoryController extends AbstractController
                 $query, 
                 $request->query->getInt('page', 1), 
                 10
+
             ); 
          
       dump($produits);
@@ -56,19 +57,21 @@ class CategoryController extends AbstractController
     /**
     * @Route("/pagination ", name="pagination")
     */
-    public function pagination(ProductRepository $productRepository, PaginatorInterface $paginator, Request $request): Response
+    public function pagination( CategoryRepository $categoryRepository, ProductRepository $productRepository, PaginatorInterface $paginator, Request $request): Response
 
 
     {
-          $produits = $productRepository->findAll(); 
+        
+                
+         $query = $productRepository->findAll(); 
 
-                $produits = $paginator->paginate(
-                    $produits, 
+      $produits= $paginator->paginate(
+            $query, 
                     $request->query->getInt('page', 1), 
-                    10
+                    4
                 ); 
              
-
+ 
           return $this->render('pagination/test.html.twig',[
               'produits' => $produits,
           ]);
