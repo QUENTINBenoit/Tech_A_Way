@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -39,25 +40,22 @@ class CategoryController extends AbstractController
     }
 
             /**
-            * @Route("/pagination ", name="pagination")
+            * @Route("/{id}/pagination ", name="pagination")
             */
-            public function pagination( 
-                                    
-                                        ProductRepository $productRepository, 
-                                        PaginatorInterface $paginator, 
-                                        Request $request
-                                            ): Response
+            public function pagination(Category $category, PaginatorInterface $paginator, Request $request): Response
+                        {      
+                            $productsbyCategory = $category->getProducts();   
+                      
 
-                        {           
-                            $query = $productRepository->findAll(); 
+                            $query = $productsbyCategory; 
 
-                            $produits= $paginator->paginate(
+                            $products= $paginator->paginate(
                             $query, 
                                     $request->query->getInt('page', 1), 
-                                4
+                                6
                                 ); 
                             return $this->render('/product/product_list.html.twig',[
-                            'produits' => $produits,
+                            'products' => $products,
                     ]);        
                     } 
         

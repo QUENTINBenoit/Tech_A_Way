@@ -45,6 +45,8 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getOneOrNullResult();
     }
 
+
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
