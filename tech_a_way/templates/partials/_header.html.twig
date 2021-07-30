@@ -104,11 +104,11 @@
 					<ul class="d-flex" id="liste_categories">
 						{% for cat in global.categories %}
 							<li class="col-3 ps-2" id="category_1">
-								<a href="{{ path('category_parent', {id:cat.id}) }}">{{cat.name}}</a>
+								<a href="{{path('category_pagination', {id: cat.id})}}">{{cat.name}}</a>
 								<div class="ps-1 header_sub_category" id="sub_category_1_appears">
 									{% for subcat in cat.subcategories %}
 										<div>
-											<a href="{{ path('category_parent', {id:subcat.id}) }}">{{subcat.name}}</a>
+											<a href="{{ path('category_pagination', {id:subcat.id}) }}">{{subcat.name}}</a>
 										</div>
 									{% endfor %}
 								</div>							
