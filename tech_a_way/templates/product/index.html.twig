@@ -94,7 +94,7 @@
               <div class="card-body">
                 <h5 class="card-title">N'hésitez plus</h5>
                 <p class="card-text">faites vous plaisir.</p>
-                <a href="#" class="btn btn-primary">panier</a>
+                <a href=" {{path('cart_add', {id: product.id})}}" class="btn btn-primary">panier</a>
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@
               <div class="card-body">
                 <h5 class="card-title">Cadeau pour votre entourage</h5>
                 <p class="card-text">Offrez aux personnes que vous aimez.</p>
-                <a href="#" class="btn btn-primary">Acheter</a>
+                <a href=" {{path('cart_add', {id: product.id})}}" class="btn btn-primary">Acheter</a>
               </div>
             </div>
           </div>
