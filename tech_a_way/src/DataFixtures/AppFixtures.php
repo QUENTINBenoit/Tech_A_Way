@@ -51,7 +51,7 @@
 
 //                 for ($subCategoryNumber = 0; $subCategoryNumber < $faker->numberBetween(2, 4); $subCategoryNumber++) {
 //                     $subCategory = new Category();
-//                     $subCategory->setName($faker->name());
+  //                $subCategory->setName($faker->name());
 //                     $subCategory->setSubtitle("subtitle sous-catégorie ! " . $faker->name);
 //                     $subCategory->setPicture($faker->firstname() . ".jpg");
 
