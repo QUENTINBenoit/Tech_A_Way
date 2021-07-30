@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-8 col-md-4 product_characteristics">
 					<p class="name_product">
-						<a href="">{{ item.product.brand.name }} {{ item.product.name }}</a>
+						<a href="{{ path('product_details', {id: item.product.id}) }}">{{ item.product.brand.name }} {{ item.product.name }}</a>
 					</p>
 					<p class="description_product">{{ item.product.description }}</p>
                     {% if item.product.stock > 0 %}

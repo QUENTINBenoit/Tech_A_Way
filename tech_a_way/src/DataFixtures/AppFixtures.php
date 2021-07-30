@@ -31,7 +31,6 @@ class AppFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
 
 
-
 /***********************************PART 2: USER/ORDER/STATUS/ORDERLINE/MODEOFPAYMENT/ADDRESS*************************************************************/   
         $userList = [
             ['firstname' => 'Benoit', 'lastname' => 'QUENTIN', 'email' => 'benquel@gmail.com'],
