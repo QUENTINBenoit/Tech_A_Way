@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Brand;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -47,6 +49,12 @@ class ProductType extends AbstractType
                     '40' => 40
                 ],
                 ])
+
+                ->add('brand', EntityType::class, [
+                    'class' => Brand::class,
+                    'choice_label' => 'name'
+                ])
+
         ;
     }
 
