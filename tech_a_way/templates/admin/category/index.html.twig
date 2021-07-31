@@ -17,8 +17,8 @@
 						<th scope="col">Nom</th>
 						<th scope="col">Slogan</th>
 						<th scope="col">Image</th>
-						<th scope="col">Sa grande catégorie</th>
-						<th scope="col">Sa sous-catégorie</th>
+						<th scope="col"><div>sa catégorie</div> <div>juste au-dessus</div></th>
+						<th scope="col"><div>sa ou ses sous-</div> <div>catégorie(s) directes</div></th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -26,20 +26,26 @@
 					{% for category in categories %}
 						<tr>
 							<th scope="row">{{ category.id }}</th>
-							<td>{{ category.name }}</td>
+							<td class="{{ category.getCategory == false ? 'fw-bold' : '' }}">{{ category.name }}</td>
 							<td>{{ category.subtitle }}</td>
 							<td>{{ category.picture }}</td>
 
 							{% if category.getCategory %}
-							<td class="fw-bold">{{ category.getCategory.name}}</td>
+							<td class="">{{ category.getCategory.name}}</td>
 							{% else %}
 							<td></td>
 							{% endif %}
 
 							{% if category.getSubcategories %}
-							<td>{% for subcategories in category.getSubcategories %}
+							<td>
+							<ul>
+							{% for subcategories in category.getSubcategories %}
+							<li>
 							{{ subcategories.name }}
-							{% endfor %}</td>
+							</li>
+							{% endfor %}
+							</ul>
+							</td>
 							{% else %}
 							<td></td>
 							{% endif %}

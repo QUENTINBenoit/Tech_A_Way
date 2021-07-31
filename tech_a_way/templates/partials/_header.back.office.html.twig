@@ -61,7 +61,7 @@
 		<main>
 			<h1 class="visually-hidden matchMediaJs">Benoit</h1>
 
-			<div class="matchMediaJs d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+			<div class="matchMediaJs d-md-flex d-none flex-column flex-shrink-0 p-3 text-white bg-dark" id"nav_backoffice" style="width: 280px;">
 				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
 					<img id="scren" src="{{ asset('images/logo/T.png') }}" alt="logo">
@@ -81,7 +81,7 @@
 						<div class="collapse show text " id="home-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
 								<li>
-									<a href="{{ path('admin_user_index') }}" class="text-white rounded">Accueil backoffice</a>
+									<a href="{{ path('admin_home_index') }}" class="text-white rounded">Accueil backoffice</a>
 								</li>
 								<li>
 									<a href="{{ path('home') }}" class="text-white rounded">Accès boutique en ligne</a>
