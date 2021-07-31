@@ -1,0 +1,62 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des catégories !
+{% endblock %}
+
+{% block body %}
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<h1>Liste des catégories</h1>
+		<div class="container">
+			<table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Slogan</th>
+						<th scope="col">Image</th>
+						<th scope="col">Sa grande catégorie</th>
+						<th scope="col">Sa sous-catégorie</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for category in categories %}
+						<tr>
+							<th scope="row">{{ category.id }}</th>
+							<td>{{ category.name }}</td>
+							<td>{{ category.subtitle }}</td>
+							<td>{{ category.picture }}</td>
+
+							{% if category.getCategory %}
+							<td class="fw-bold">{{ category.getCategory.name}}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+
+							{% if category.getSubcategories %}
+							<td>{% for subcategories in category.getSubcategories %}
+							{{ subcategories.name }}
+							{% endfor %}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+
+						    <td>
+                                <a href="#">éditer</a>
+                            </td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucunes données trouvées</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+</div></main>{% endblock %}

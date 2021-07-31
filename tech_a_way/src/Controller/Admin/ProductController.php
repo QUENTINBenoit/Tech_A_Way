@@ -30,7 +30,7 @@ class ProductController extends AbstractController
      /**
      * @Route("/create", name="create")
      */
-    public function add(Request $request)
+    public function create(Request $request)
     {
         $product = new Product();
 
