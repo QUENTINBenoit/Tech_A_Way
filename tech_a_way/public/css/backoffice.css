@@ -105,4 +105,20 @@ main {
 
 }
 
+@media (max-width: 767px) {
+  #message_flash {
+    position: absolute;
+    top: 0;
+    left: 5em;
+  }
+}
+
+@media (min-width: 768px) {
+  #message_flash {
+    position: absolute;
+    top: 0;
+    left: 500px;
+  }
+}
+
 
