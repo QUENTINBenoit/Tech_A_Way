@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Brand;
+use App\Entity\Category;
 use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -53,6 +54,11 @@ class ProductType extends AbstractType
                 ->add('brand', EntityType::class, [
                     'class' => Brand::class,
                     'choice_label' => 'name'
+                ])
+                ->add('categories', EntityType::class, [
+                    'class' => Category::class,
+                    'choice_label' => 'name',
+                    'multiple' => true,
                 ])
 
         ;

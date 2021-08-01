@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,20 +31,48 @@ class ProductController extends AbstractController
      /**
      * @Route("/create", name="create")
      */
-    public function create(Request $request)
+    public function create(Request $request, ProductRepository $productRepository ,CategoryRepository $categoryRepository)
     {
         $product = new Product();
-
+        
         $form = $this->createForm(ProductType::class, $product);
-
+        
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
+            
+            // procedure to link the product directly to the parents of the chosen category
+            $arrayofObjectCategory = [];
+            foreach ($product->getCategories() as $value ){
+                $arrayofObjectCategory[] = $value->getCategory()->getId();
+                if($value->getCategory()->getCategory()) {
+                    $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getId();
+                    if($value->getCategory()->getCategory()->getCategory()) {
+                        $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getId();
+                        if($value->getCategory()->getCategory()->getCategory()->getCategory()) {
+                            $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getCategory()->getId();
+                        }
+                    }
+                }
 
+            }
+
+
+            foreach ($arrayofObjectCategory as $index) {
+                $product->addCategory($categoryRepository->find(intval($index)));
+            }
+            
+
+            $em->persist($product);
+            
+            $em->flush();
+            
+        
+
+
+            
             $this->addFlash('success', 'Le produit ' . $product->getName() . ' a bien été ajouté');
 
             return $this->redirectToRoute('admin_product_index');
