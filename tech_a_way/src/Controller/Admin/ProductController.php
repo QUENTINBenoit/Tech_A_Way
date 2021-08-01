@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Service\LinkProductDirectlyWithParentsCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +31,7 @@ class ProductController extends AbstractController
      /**
      * @Route("/create", name="create")
      */
-    public function create(Request $request, ProductRepository $productRepository ,CategoryRepository $categoryRepository)
+    public function create(Request $request, ProductRepository $productRepository ,CategoryRepository $categoryRepository, LinkProductDirectlyWithParentsCategory $linkProductDirectlyWithParentsCategory)
     {
         $product = new Product();
         
@@ -42,21 +43,8 @@ class ProductController extends AbstractController
             
             $em = $this->getDoctrine()->getManager();
             
-            // procedure to link the product directly to the parents of the chosen category
-            $arrayofObjectCategory = [];
-            foreach ($product->getCategories() as $value ){
-                $arrayofObjectCategory[] = $value->getCategory()->getId();
-                if($value->getCategory()->getCategory()) {
-                    $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getId();
-                    if($value->getCategory()->getCategory()->getCategory()) {
-                        $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getId();
-                        if($value->getCategory()->getCategory()->getCategory()->getCategory()) {
-                            $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getCategory()->getId();
-                        }
-                    }
-                }
+            $arrayofObjectCategory = $linkProductDirectlyWithParentsCategory->link($product, $categoryRepository);
 
-            }
 
 
             foreach ($arrayofObjectCategory as $index) {
@@ -85,7 +73,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}/update", name="update")
      */
-    public function update(Product $product, Request $request, CategoryRepository $categoryRepository)
+    public function update(Product $product, Request $request, CategoryRepository $categoryRepository, LinkProductDirectlyWithParentsCategory $linkProductDirectlyWithParentsCategory)
     {
         $form = $this->createForm(ProductType::class, $product);
 
@@ -96,26 +84,13 @@ class ProductController extends AbstractController
             $em = $this->getDoctrine()->getManager();
 
 
-// procedure to link the product directly to the parents of the chosen category
-$arrayofObjectCategory = [];
-foreach ($product->getCategories() as $value ){
-    $arrayofObjectCategory[] = $value->getCategory()->getId();
-    if($value->getCategory()->getCategory()) {
-        $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getId();
-        if($value->getCategory()->getCategory()->getCategory()) {
-            $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getId();
-            if($value->getCategory()->getCategory()->getCategory()->getCategory()) {
-                $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getCategory()->getId();
+            $arrayofObjectCategory = $linkProductDirectlyWithParentsCategory->link($product, $categoryRepository);
+
+
+
+            foreach ($arrayofObjectCategory as $index) {
+                $product->addCategory($categoryRepository->find(intval($index)));
             }
-        }
-    }
-
-}
-
-
-foreach ($arrayofObjectCategory as $index) {
-    $product->addCategory($categoryRepository->find(intval($index)));
-}
 
 
 
