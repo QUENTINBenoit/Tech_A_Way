@@ -18,94 +18,49 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CategoryController extends AbstractController
 {
-    /**
+
+   /**
      * @Route("/", name="index")
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('admin/category/index.html.twig', [
+            'categories' => $categories,
+            'colors' => ['primary', 'success', 'danger', 'warning', 'secondary', 'info'],
+        ]);
+    }
+
+    /**
+     * @Route("/tree-structure", name="tree_structure")
+     */
+    public function treeStructure(CategoryRepository $categoryRepository): Response
+    {
         $allCategories = $categoryRepository->findAll();
 
-        // 1) on récupère toutes les catégories qui ont au moins 1 parent
-        $subSubCategories = [];
+        $maincategories = [];
         foreach ($allCategories as $category) {
-            // si la catégorie a un parent
-            if ($category->getCategory()) {
-                
-                // si la catégorie n'a pas de parent
-                if (!$category->getCategory()->getCategory()){
-                    $subSubCategories[$category->getName()] = $category;
-                    
-                } else {
-                    if (!$category->getCategory()->getCategory()->getCategory()){
-                        $subSubCategories[$category->getName()] = $category;  
-                    } else {
-                        if (!$category->getCategory()->getCategory()->getCategory()->getCategory()){
-                            $subSubCategories[$category->getName()] = $category;  
-                        } else {
-                            if (!$category->getCategory()->getCategory()->getCategory()->getCategory()->getCategory()){
-                                $subSubCategories[$category->getName()] = $category;  
-                            }
+            // si la catégorie n'a pas de parent
+            if (!$category->getCategory()) {
+                $maincategories[$category->getId()][] = $category;
 
+                foreach ($category->getSubcategories() as $subCategory) {
+                    $maincategories[$category->getId()][$subCategory->getId()][] = $subCategory;
+
+                    foreach ($subCategory->getSubcategories() as $subSubCategory) {
+                        $maincategories[$category->getId()][$subCategory->getId()][$subSubCategory->getId()][] = $subSubCategory;
+                        
+                        foreach ($subSubCategory->getSubcategories() as $subSubSubCategory) {
+                            $maincategories[$category->getId()][$subCategory->getId()][$subSubCategory->getId()][$subSubSubCategory->getId()][] = $subSubSubCategory;
                         }
                     }
                 }
-            } 
-        }
-        
-        // 2) on récupère toutes les catégories qui sont les plus en bas de la hiérarchie (on supprime donc les catégories intermédiaires)
-        $number = 0;
-        foreach( $subSubCategories as $subSubCategory) {
-            
-            if($number != 0) {
-                $numberCheck = 0;
-                foreach ($subSubCategories as $check) {
-                    if ($subSubCategory == $check->getCategory()) {
-                        $numberCheck++;
-                    }
-                    if ($numberCheck >=2) {
-                        unset($subSubCategories[array_search($check->getCategory(), $subSubCategories)]);
-                    }
-                } 
-            }
-            $number++;
-        }
-        // dd($subSubCategories);
-        
-        //3) on classe les catégories 
-        $subCategoriesClassified = [];
-        foreach( $subSubCategories as $subSubCategory){
-
-            if($subSubCategory->getCategory()) {
-                if($subSubCategory->getCategory()->getCategory()) {
-
-                    if($subSubCategory->getCategory()->getCategory()->getCategory()) {
-
-                        if($subSubCategory->getCategory()->getCategory()->getCategory()->getCategory()) {
-
-                        } else {
-                            $subCategoriesClassified[$subSubCategory->getCategory()->getCategory()->getCategory()->getId()][$subSubCategory->getId()] =  $subSubCategory;
-                        }
-                    } else {
-                        $subCategoriesClassified[$subSubCategory->getCategory()->getCategory()->getId()][$subSubCategory->getId()] =  $subSubCategory;
-                    }
-
-                } else {
-                    $subCategoriesClassified[$subSubCategory->getCategory()->getId()][$subSubCategory->getId()] =  $subSubCategory;
-                    $subCategoriesClassified[$subSubCategory->getCategory()->getId()]['parent 1'] =  $subSubCategory->getCategory()->getSubcategories();
-
-                }
             }
         }
-        // dd($subCategoriesClassified);
-    
-
-
-     
-   
-
-        return $this->render('admin/category/index2.html.twig', [
-            'categories' => $allCategories,
-            'subCategoriesClassified' => $subCategoriesClassified,
+        // dd($maincategories);
+        return $this->render('admin/category/tree.structure.html.twig', [
+            'mainCategories' => $maincategories,
             'colors' => ['primary', 'success', 'danger', 'warning', 'secondary', 'info'],
         ]);
     }

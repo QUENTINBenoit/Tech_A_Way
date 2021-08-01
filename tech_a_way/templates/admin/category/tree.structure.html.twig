@@ -1,0 +1,86 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Arborescence des Catégories
+{% endblock %}
+
+{% block body %}
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<h1 class="container mb-5">Arborescence des Catégories <span class="fs-4"><a href="{{ path('admin_category_index') }}">(voir la liste des catégories classique)</a></span></h1>
+		<div class="container">
+
+					{% set i = 0 %}
+					{% for indexes1 in mainCategories %}
+				
+
+							<div class="d-flex" ><span class="fs-2 fw-bold"><div class="fs-6 fw-normal fst-italic">Catégorie Principale :</div>{{ indexes1[0].name }} <i class="fas fa-arrow-circle-right"></i></span>
+							
+							{% set i = 0 %}
+							{% for indexes2 in indexes1 %}
+							<ul>
+							{% if i == 1 %}
+							<li class="tree_structure_li">
+							<span class="fs-3 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant :</div>{{ indexes2[0].name }} <i class="fas fa-arrow-circle-down"></i></span>
+								{% set i = 0 %}
+								{% for indexes3 in indexes2 %}
+								<ul>
+								{% if i == 1 %}
+								<li class="tree_structure_li">
+								<span class="fs-4 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 2 :</div>{{ indexes3[0].name }}</span>
+									{% set i = 0 %}
+									{% for indexes4 in indexes3 %}
+									<ul>
+									{% if i == 1 %}
+									<li class="tree_structure_li">
+									<span class="fs-5 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 3 :</div>{{ indexes4[0].name }}</span>
+										{% set i = 0 %}
+										{% for indexes5 in indexes4 %}
+										<ul>
+										{% if i == 1 %}
+										<li class="tree_structure_li">
+										<span class="ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 4 :</div>{{ indexes5[0].name }}</span>
+											{% set i = 0 %}
+											{% for indexes6 in indexes5 %}
+											<ul>
+											{% if i == 1 %}
+											<li class="tree_structure_li">
+											<span class="ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 5 :</div>{{ indexes6[0].name }}</span>
+											</li>
+											{% endif %}
+											{% set i = 1 %}
+											</ul>
+											{% endfor %}
+										</li>
+										{% endif %}
+										{% set i = 1 %}
+										</ul>
+										{% endfor %}
+
+									</li>
+									{% endif %}
+									{% set i = 1 %}
+									</ul>
+									{% endfor %}
+
+								</li>
+								{% endif %}
+								{% set i = 1 %}
+								</ul>
+								{% endfor %}
+
+							</li>
+							{% endif %}
+							{% set i = 1 %}
+							</ul>
+							{% endfor %}
+
+						</div>
+							{% endfor %}
+
+
+	</section>
+
+
+</div></main>{% endblock %}

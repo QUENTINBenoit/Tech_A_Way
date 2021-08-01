@@ -8,7 +8,8 @@
 
 
 	<section class="container-fluid scrollarea table-boot py-5">
-		<h1>Liste des catégories</h1>
+		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span></h1>
+		
 		<div class="container">
 			<table class="table  table-hover">
 				<thead class="table-primary">
@@ -22,27 +23,32 @@
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-					{% set i = 0 %}
-					{% for index in subCategoriesClassified %}
-						{% for subCategory in index %}
+							<tbody>
+					{% set i=0 %}
+					{% for category in categories %}
 						<tr>
-							<th scope="row">{{ subCategory.id }}</th>
-							<td class="fw-bold text-{{ colors[i] }}">{{ subCategory.name }}</td>
-							<td>{{ subCategory.subtitle }}</td>
-							<td>{{ subCategory.picture }}</td>
-							{% if subCategory.getCategory %}
-							<td class="">{{ subCategory.getCategory.name}}</td>
+							<th scope="row">{{ category.id }}</th>
+							{% if category.getCategory == false %}
+							<td class="fw-bold fs-5">{{ category.name }}<div class="fs-6 fw-normal fst-italic">(catégorie principale)</div></td>
+							{% set i = i +1%}
+							{% else %}
+							<td>{{ category.name }}</td>
+							{% endif %}
+							<td>{{ category.subtitle }}</td>
+							<td>{{ category.picture }}</td>
+
+							{% if category.getCategory %}
+							<td class="">{{ category.getCategory.name}}</td>
 							{% else %}
 							<td></td>
 							{% endif %}
 
-							{% if subCategory.getSubcategories %}
+							{% if category.getSubcategories %}
 							<td>
 							<ul>
-							{% for newSubcategories in subCategory.getSubcategories %}
+							{% for subcategories in category.getSubcategories %}
 							<li>
-							{{ newSubcategories.name }}
+							{{ subcategories.name }}
 							</li>
 							{% endfor %}
 							</ul>
@@ -55,9 +61,6 @@
                                 <a href="#">éditer</a>
                             </td>
 						</tr>
-					{% endfor %}
-					{% set i = i + 1 %}
-
 					{% else %}
 						<tr>
 							<td colspan="7">Aucunes données trouvées</td>
