@@ -29,6 +29,7 @@
 						<button type="submit" class="btn btn-lg btn-primary">Editer</button>
 						{{ form_end(form) }}
 					</div>
+						<div><a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}" class="col-4 btn btn-lg btn-danger">Supprimer</a></div>
 				</div>
 			</div>
 		</section>
