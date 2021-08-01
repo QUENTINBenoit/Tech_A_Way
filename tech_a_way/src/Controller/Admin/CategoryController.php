@@ -119,4 +119,54 @@ class CategoryController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/{id}/update", name="update")
+     */
+    public function update(Category $category, Request $request)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été mise à jour');
+
+            return $this->redirectToRoute('admin_category_index');
+        }
+
+        return $this->render('admin/category/update.sub.html.twig', [
+            'form' => $form->createView(),
+            'category' => $category
+        ]);
+    }
+
+     /**
+     * @Route("/{id}/update/parent", name="update_parent")
+     */
+    public function updateParent(Category $category, Request $request)
+    {
+        $form = $this->createForm(CategoryReductType::class, $category);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', 'La catégorie ' . $category->getName() . ' a bien été mise à jour');
+
+            return $this->redirectToRoute('admin_category_index');
+        }
+
+        return $this->render('admin/category/update.main.html.twig', [
+            'form' => $form->createView(),
+            'category' => $category
+        ]);
+    }
 }

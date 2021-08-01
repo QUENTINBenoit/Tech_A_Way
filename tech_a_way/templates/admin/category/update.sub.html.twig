@@ -1,14 +1,11 @@
 {% extends 'admin/layout.back.office.html.twig' %}
 
-{% block title %}Nouvelle catégorie
-{% endblock %}
-
 {% block body %}
 {% block cards %}{% endblock %}
 
 
 	<section class="container">
-		<h1 class="text-center">Création d'une catégorie principale</h1>
+		<h1 class="text-center">Modification d'une categorie</h1>
 		<section class="container-lg">
 			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
 				<div class="row g-3 mt-2 d-flex justify-content-center">
@@ -23,10 +20,17 @@
 						{{ form_row(form.picture) }}
 					</div>
 					<div class="">
-						{{ form_row(form.products) }}
+						{{ form_row(form.category, {
+                                    label: 'Catégorie'
+                                }) }}
 					</div>
 					<div class="">
-						<button type="submit" class="btn btn-lg btn-primary">Créer</button>
+						{{ form_row(form.products, {
+                                    label: 'Produits'
+                                }) }}
+					</div>
+					<div class="">
+						<button type="submit" class="btn btn-lg btn-primary">Editer</button>
 						{{ form_end(form) }}
 					</div>
 				</div>
