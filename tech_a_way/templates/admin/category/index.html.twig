@@ -8,7 +8,7 @@
 
 
 	<section class="container-fluid scrollarea table-boot py-5">
-		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span><div class="fst-italic fs-5 text-danger">(Cliquez sur le nom de la catégorie pour l'éditer)</div></h1>
+		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span></h1>
 		
 		<div class="container">
 			<table class="table  table-hover">
@@ -20,9 +20,11 @@
 						<th scope="col">Image</th>
 						<th scope="col"><div>sa catégorie</div> <div>juste au-dessus</div></th>
 						<th scope="col"><div>sa ou ses sous-</div> <div>catégorie(s) directes</div></th>
+						<th scope="col">Action réservé aux admins</th>
+
 					</tr>
 				</thead>
-							<tbody>
+					<tbody>
 					{% set i=0 %}
 					{% for category in categories %}
 						<tr>
@@ -55,7 +57,9 @@
 							{% else %}
 							<td></td>
 							{% endif %}
-
+						    <td>
+                                <a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}">Supprimer cette catégorie</a>
+                            </td>
 						</tr>
 					{% else %}
 						<tr>

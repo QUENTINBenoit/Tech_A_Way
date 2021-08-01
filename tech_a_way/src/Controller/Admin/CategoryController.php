@@ -96,28 +96,35 @@ class CategoryController extends AbstractController
         /**
      * @Route("/create/subCategory", name="create_sub")
      */
-    public function createSubCategory(Request $request)
+    public function createSubCategory(Request $request, CategoryRepository $categoryRepository)
     {
-        $category = new Category();
+       if ($categoryRepository->findAll()) {
+           
+           $category = new Category();
+    
+           $form = $this->createForm(CategoryType::class, $category);
+    
+           $form->handleRequest($request);
+    
+           if ($form->isSubmitted() && $form->isValid()) {
+    
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($category);
+               $em->flush();
+    
+               $this->addFlash('success', 'La sous-catégorie ' . $category->getName() . ' a bien été ajoutée');
+    
+               return $this->redirectToRoute('admin_category_index');
+           }
+    
+           return $this->render('admin/category/create.sub.html.twig', [
+               'form' => $form->createView()
+           ]);
 
-        $form = $this->createForm(CategoryType::class, $category);
+       } else {
+        return $this->redirectToRoute('admin_category_create_main');
+       }
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
-
-            $this->addFlash('success', 'La sous-catégorie ' . $category->getName() . ' a bien été ajoutée');
-
-            return $this->redirectToRoute('admin_category_index');
-        }
-
-        return $this->render('admin/category/create.sub.html.twig', [
-            'form' => $form->createView()
-        ]);
     }
 
     /**
@@ -168,5 +175,31 @@ class CategoryController extends AbstractController
             'form' => $form->createView(),
             'category' => $category
         ]);
+    }
+
+
+    /**
+     * @Route("/{id}/delete", name="delete")
+     */
+    public function delete(Category $category, Request $request)
+    {
+        $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+
+        // 'delete-item' est la même clé utilisée dans le template pour générer le token
+        if ($this->isCsrfTokenValid('delete-category', $submitedToken)) {
+            
+            $em = $this->getDoctrine()->getManager();
+            foreach ($category->getSubcategories() as $subCategory) {
+                $em->remove($subCategory);
+            }
+            $em->remove($category);
+            $em->flush();
+
+            $this->addFlash('success', 'Catégorie supprimée avec succes');
+
+            return $this->redirectToRoute('admin_category_index');
+        } else {
+            return new Response('Action interdite', 403);
+        }
     }
 }
