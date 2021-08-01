@@ -190,7 +190,29 @@ class CategoryController extends AbstractController
             
             $em = $this->getDoctrine()->getManager();
             foreach ($category->getSubcategories() as $subCategory) {
+
+                foreach ($subCategory->getSubcategories() as $subCategory2) {
+                
+                    foreach ($subCategory2->getSubcategories() as $subCategory3) {
+                        foreach ($subCategory3->getSubcategories() as $subCategory4) {
+                
+                            foreach ($subCategory4->getSubcategories() as $subCategory5) {
+                
+
+                            }
+                            $em->remove($subCategory4);
+                            $em->flush();
+                        }
+                        $em->remove($subCategory3);
+                        $em->flush();
+
+                    }
+                    $em->remove($subCategory2);
+                    $em->flush();
+                }
                 $em->remove($subCategory);
+                $em->flush();
+
             }
             $em->remove($category);
             $em->flush();

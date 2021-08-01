@@ -8,7 +8,13 @@
 
 
 	<section class="container-fluid scrollarea table-boot py-5">
-		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span><div class="fst-italic fs-5 text-danger">(Cliquez sur le nom de la catégorie pour l'éditer)<div class="text-end"><a href="{{ path('admin_category_create_sub') }}">Ajouter une nouvelle catégorie</a></div></div></h1>
+		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span><div class="fst-italic fs-5 text-danger">(Cliquez sur le nom de la catégorie pour l'éditer)
+		<div class="d-flex justify-content-around">
+			<span class="fs-6"><a href="{{ path('admin_category_create_main') }}">Ajouter une Catégorie principale</a></span>
+			<span class="fs-6"><a href="{{ path('admin_category_create_sub') }}">Ajouter une sous-catégorie</a></span>
+		</div>
+		
+		</div></h1>
 		
 		<div class="container">
 			<table class="table  table-hover">
