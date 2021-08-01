@@ -82,4 +82,55 @@ class ProductController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/{id}/update", name="update")
+     */
+    public function update(Product $product, Request $request, CategoryRepository $categoryRepository)
+    {
+        $form = $this->createForm(ProductType::class, $product);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+
+// procedure to link the product directly to the parents of the chosen category
+$arrayofObjectCategory = [];
+foreach ($product->getCategories() as $value ){
+    $arrayofObjectCategory[] = $value->getCategory()->getId();
+    if($value->getCategory()->getCategory()) {
+        $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getId();
+        if($value->getCategory()->getCategory()->getCategory()) {
+            $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getId();
+            if($value->getCategory()->getCategory()->getCategory()->getCategory()) {
+                $arrayofObjectCategory[] = $value->getCategory()->getCategory()->getCategory()->getCategory()->getId();
+            }
+        }
+    }
+
+}
+
+
+foreach ($arrayofObjectCategory as $index) {
+    $product->addCategory($categoryRepository->find(intval($index)));
+}
+
+
+
+
+            $em->flush();
+
+            $this->addFlash('success', 'Le ' . $product->getName() . ' a bien été mis à jour');
+
+            return $this->redirectToRoute('admin_product_index');
+        }
+
+        return $this->render('admin/product/update.html.twig', [
+            'form' => $form->createView(),
+            'product' => $product
+        ]);
+    }
 }

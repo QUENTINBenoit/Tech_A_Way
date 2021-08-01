@@ -65,7 +65,8 @@
 							{% endif %}
 							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
 						    <td>
-                                <a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}">Supprimer</a>
+                                <div><a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}">Supprimer</a></div>
+                                <div><a href="{{ path('admin_category_list_products', {id:category.id}) }}">voir Liste des produits</a></div>
                             </td>
 							{% else %}
 							<td class="fst-italic">Cetta action vous est interdite</td>

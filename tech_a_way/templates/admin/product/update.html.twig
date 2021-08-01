@@ -1,6 +1,6 @@
 {% extends 'admin/layout.back.office.html.twig' %}
 
-{% block title %}Nouveau produit
+{% block title %}Mise à jour produit produit
 {% endblock %}
 
 {% block body %}
@@ -8,7 +8,7 @@
 
 
 	<section class="container">
-		<h1 class="text-center">Création d'un nouveau produit</h1>
+		<h1 class="text-center">Modification d'un nouveau produit</h1>
 		<a href="{{ path('admin_product_index') }}">Retour</a>
 		<section class="container-lg">
 			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
@@ -72,7 +72,7 @@
 								</div>
 								
 								<div class="col-12">
-									<button type="submit" class="btn btn-lg btn-primary">Créer</button>
+									<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
 									{{ form_end(form) }}
 								</div>
 							</div>

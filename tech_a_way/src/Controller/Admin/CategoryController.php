@@ -61,7 +61,6 @@ class CategoryController extends AbstractController
         // dd($maincategories);
         return $this->render('admin/category/tree.structure.html.twig', [
             'mainCategories' => $maincategories,
-            'colors' => ['primary', 'success', 'danger', 'warning', 'secondary', 'info'],
         ]);
     }
 
@@ -224,4 +223,17 @@ class CategoryController extends AbstractController
             return new Response('Action interdite', 403);
         }
     }
+
+   /**
+     * @Route("/{id}/list-products", name="list_products")
+     */
+    public function listProducts(Category $category): Response
+    {
+
+        return $this->render('admin/category/list.products.html.twig', [
+            'category' => $category,
+        ]);
+    }
+
+    
 }
