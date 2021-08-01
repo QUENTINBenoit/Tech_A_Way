@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * @Route("/admin/product", name="admin_product_")
  */

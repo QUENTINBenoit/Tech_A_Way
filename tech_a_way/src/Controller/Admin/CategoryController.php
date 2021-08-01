@@ -7,17 +7,23 @@ use App\Entity\Product;
 use App\Form\CategoryReductType;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Service\PictureUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 /**
  * @Route("/admin/category", name="admin_category_")
  */
 class CategoryController extends AbstractController
 {
+
+    private $pictureUploader;
+    public function __construct(PictureUploader $pictureUploader)
+    {
+        $this->pictureUploader = $pictureUploader;
+    }
 
    /**
      * @Route("/", name="index")
@@ -78,6 +84,11 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'picture');
+    
+            $category->setPicture($newFileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
@@ -107,6 +118,11 @@ class CategoryController extends AbstractController
     
            if ($form->isSubmitted() && $form->isValid()) {
     
+                // we use PictureUploader service because construct class Category make injection
+                $newFileName = $this->pictureUploader->upload($form, 'picture');
+               
+                $category->setPicture($newFileName);
+
                $em = $this->getDoctrine()->getManager();
                $em->persist($category);
                $em->flush();
@@ -137,6 +153,11 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'picture');
+    
+            $category->setPicture($newFileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
@@ -161,6 +182,11 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'picture');
+    
+            $category->setPicture($newFileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
