@@ -19,7 +19,7 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('subtitle', TextType::class)
+            ->add('subtitle')
             ->add('picture', FileType::class, [
                 'label' => 'Uploader une nouvelle image',
 

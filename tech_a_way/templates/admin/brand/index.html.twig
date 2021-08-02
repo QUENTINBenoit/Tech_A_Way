@@ -32,8 +32,8 @@
 							<td><img width="60px" src="{{ asset('uploads/' ~ brand.logo) }}" alt=""></td>
 	
 						    <td>
-                                <div><a href="#">Editer</a></div>
-                                <div><a href="#">Supprimer</a></div>
+                                <div><a href="{{ path('admin_brand_update', {id:brand.id}) }}">Editer</a></div>
+                                <div><a href="{{ path('admin_brand_delete', {id:brand.id, token:csrf_token('delete-brand')}) }}">Supprimer</a></div>
                             </td>
 						</tr>
 					{% else %}

@@ -65,4 +65,54 @@ class BrandController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/{id}/update", name="update")
+     */
+    public function update(Brand $brand, Request $request)
+    {
+        $form = $this->createForm(BrandType::class, $brand);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'logo');
+
+            $brand->setLogo($newFileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', 'La marque ' . $brand->getName() . ' a bien été mise à jour');
+
+            return $this->redirectToRoute('admin_brand_update', ['id' => $brand->getId()]);
+        }
+
+        return $this->render('admin/brand/update.html.twig', [
+            'form' => $form->createView(),
+            'brand' => $brand
+        ]);
+    }
+
+        /**
+     * @Route("/{id}/delete", name="delete")
+     */
+    public function delete(Brand $brand, Request $request)
+    {
+        $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+
+        if ($this->isCsrfTokenValid('delete-brand', $submitedToken)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($brand);
+            $em->flush();
+
+            $this->addFlash('success', 'Marque supprimée avec succes');
+
+            return $this->redirectToRoute('admin_brand_index');
+        } else {
+            return new Response('Action interdite', 403);
+        }
+    }
 }
