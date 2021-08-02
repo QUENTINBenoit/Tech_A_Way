@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -59,6 +60,10 @@ class ProductType extends AbstractType
                     'class' => Category::class,
                     'choice_label' => 'name',
                     'multiple' => true,
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('c')
+                        ->where('c.category IS NOT NULL');
+                    },
                 ])
 
         ;
