@@ -26,7 +26,7 @@ class ProductType extends AbstractType
                     '20' => 20
                 ],
             ])
-            ->add('inclTaxesPrice')
+            //->add('inclTaxesPrice')
             ->add('reference')
             ->add('description', TextType::class)
             ->add('stock')

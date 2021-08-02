@@ -46,6 +46,8 @@ class ProductController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
+
             $em = $this->getDoctrine()->getManager();
             
             $arrayofObjectCategory = $linkProductDirectlyWithParentsCategory->link($product, $categoryRepository);
@@ -85,6 +87,8 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
 
             $em = $this->getDoctrine()->getManager();
 
