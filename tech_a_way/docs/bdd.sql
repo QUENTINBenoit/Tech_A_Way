@@ -264,6 +264,9 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (1,	'Bernard',	'Legrand',	'Monsieur',	654245658,	'bernards@gmail.com',	1,	'$2y$13$5J00w3BSzBm7NP7oHjVbq.S89Z4EiuwV0C0s97BGxXF26U4hWD5Pa',	'1986-06-14',	'2021-07-31 12:02:41',	'2021-07-31 12:02:41',	'[]'),
 (2,	'Frédéric',	'Guillon',	'Monsieur',	645756452,	'fred@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1984-09-27',	'2021-07-31 12:05:57',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (3,	'fff',	'fff',	'Monsieur',	454,	'test@gmail.com',	1,	'$2y$13$zqrsgKxpZTs0BspQgmWqGu4hpk1tOpvb0.G6qBCFruwoGV8NjlJL.',	'1990-05-27',	'2021-08-01 15:49:41',	'2021-08-01 15:49:41',	'[\"ROLE_CATALOG_MANAGER\"]'),
-(4,	'dfdfd',	'fdfdf',	'Monsieur',	454,	'fddfdf@gmail.com',	1,	'$2y$13$uRPw3YDjpP8./OPmtaHAdewpynZr9xTfFjLTB4lNx4I41Cf7va3fO',	'1984-06-15',	'2021-08-01 16:02:33',	'2021-08-01 16:02:33',	'[\"ROLE_ADMIN\"]');
+(4,	'dfdfd',	'fdfdf',	'Monsieur',	454,	'fddfdf@gmail.com',	1,	'$2y$13$uRPw3YDjpP8./OPmtaHAdewpynZr9xTfFjLTB4lNx4I41Cf7va3fO',	'1984-06-15',	'2021-08-01 16:02:33',	'2021-08-01 16:02:33',	'[\"ROLE_ADMIN\"]'),
+(5,	'Benoit',	'QUENTIN',	'Monsieur',	685457452,	'benquel@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-25',	'2021-08-02 08:54:54',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
+(6,	'Jamal',	'lastname',	'Monsieur',	645754856,	'lastname',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-24',	'2021-08-02 08:56:11',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
+(7,	'Mickael',	'GEERARDYN',	'Monsieur',	645745125,	'mick@gmail.comm',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-05',	'2021-08-02 08:57:03',	NULL,	'[\"ROLE_SUPER_ADMIN\"]');
 
--- 2021-08-01 14:48:19
+-- 2021-08-02 06:57:16

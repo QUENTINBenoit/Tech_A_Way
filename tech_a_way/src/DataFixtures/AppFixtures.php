@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
         $userList = [
             ['firstname' => 'Benoit', 'lastname' => 'QUENTIN', 'email' => 'benquel@gmail.com'],
             ['firstname' => 'Frédéric', 'lastname' => 'GUILLON', 'email' => 'fred@gmail.com'],
-            ['firstname' => 'Jamal', 'lastname' => 'EL', 'email' => 'jamal@gmail.com'],
+            ['firstname' => 'Jamal', 'lastname' => 'EL', 'email' => 'c'],
             ['firstname' => 'Mickael', 'lastname' => 'GEERARDYN', 'email' => 'mick@gmail.comm']
         ];
 
