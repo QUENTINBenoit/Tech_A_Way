@@ -76,6 +76,8 @@
 									{{ form_end(form) }}
 								</div>
 							</div>
+								<div class=""><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}" class="btn btn-lg btn-danger">Supprimer</a></div>
+								
 						</div>
 					</div>
 				</div>

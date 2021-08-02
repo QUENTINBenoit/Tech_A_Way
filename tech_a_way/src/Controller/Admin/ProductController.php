@@ -114,6 +114,26 @@ class ProductController extends AbstractController
     }
 
       /**
+     * @Route("/{id}/delete", name="delete")
+     */
+    public function delete(Product $product, Request $request)
+    {
+        $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+
+        if ($this->isCsrfTokenValid('delete-product', $submitedToken)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($product);
+            $em->flush();
+
+            $this->addFlash('success', 'Le produit a bien été supprimé');
+
+            return $this->redirectToRoute('admin_product_index');
+        } else {
+            return new Response('Action interdite', 403);
+        }
+    }
+
+      /**
      * @Route("/{id}/picture/create", name="picture_create")
      */
     public function createNewPicture(Request $request, Product $product, PictureUploader $pictureUploader)
@@ -165,7 +185,7 @@ class ProductController extends AbstractController
     {
         $picture = $pictureRepository->find($pictureId);
         $product = $productRepository->find($productId);
-        
+
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
         if ($this->isCsrfTokenValid('delete-picture', $submitedToken)) {

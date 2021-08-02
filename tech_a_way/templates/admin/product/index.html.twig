@@ -60,7 +60,7 @@
 						    <td>
                                 <div><a href="{{ path('admin_product_update', {id:product.id}) }}">Editer</a></div>
                                 <div><a href="{{ path('admin_product_picture_create', {id:product.id}) }}">Images</a></div>
-                                <div><a href="#">Supprimer</a></div>
+                                <div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
                             </td>
 						</tr>
 					{% else %}
