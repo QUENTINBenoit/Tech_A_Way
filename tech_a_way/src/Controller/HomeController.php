@@ -51,11 +51,16 @@ class HomeController extends AbstractController
     {
         $searchValue = $request->get('query');
 
-        $product= $productRepository->findSearchByName($searchValue);
+       // dd($searchValue);
+
+        $products= $productRepository->findBySearchByName($searchValue);
+        //dd($products);
 
         return $this->render('home/search.html.twig', [
-            'product' => $product,
-            'searchValue' => $searchValue
+           
+            'products' => $products,
+            //'searchValue' => $searchValue,
+            
         ]);
     }
 

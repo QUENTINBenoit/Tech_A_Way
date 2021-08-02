@@ -51,9 +51,11 @@ class ProductRepository extends ServiceEntityRepository
      * 
      * 
      */
-    public function findSearchName($name)
+    public function findBySearchByName($name)
     {
         $qb = $this->createQueryBuilder('product');
+
+        $qb->where('product.name LIKE :name');
 
         $qb->setParameter(':name', "%$name%");
 
