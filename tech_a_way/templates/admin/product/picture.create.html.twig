@@ -1,0 +1,37 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Nouvelle image
+{% endblock %}
+
+{% block body %}
+{% block cards %}{% endblock %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<h1 class="text-center">Ajout d'une nouvelle image</h1>
+		<a href="{{ path('admin_product_index') }}">Retour</a>
+		<section class="container-lg">
+			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="mb-3">
+						{{ form_row(form.name) }}
+					</div>
+			
+					<div class="">
+						<button type="submit" class="btn btn-lg btn-primary">Ajouter</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="container mt-5">
+		<h2 class="text-center">Images existantes pour le produit N°{{ product.id }} : {{ product.name }}</h2>
+		<div class="row">
+			{% for picture in pictures %}
+				<div class="col-4 col-md-3"><img width="170px" src="{{ asset('uploads/' ~ picture.name) }}" alt="{{ picture.name }}"></div>
+			{% endfor %}
+		</div>
+		</section>
+	</section>
+{% endblock %}

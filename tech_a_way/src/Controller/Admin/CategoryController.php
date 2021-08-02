@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Picture;
 use App\Entity\Product;
 use App\Form\CategoryReductType;
 use App\Form\CategoryType;
+use App\Form\PictureType;
 use App\Repository\CategoryRepository;
 use App\Service\PictureUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -183,10 +185,10 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // we use PictureUploader service because construct class Category make injection
-            $newFileName = $this->pictureUploader->upload($form, 'picture');
-    
-            $category->setPicture($newFileName);
+                // we use PictureUploader service because construct class Category make injection
+                $newFileName = $this->pictureUploader->upload($form, 'picture');
+        
+                $category->setPicture($newFileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -261,5 +263,6 @@ class CategoryController extends AbstractController
         ]);
     }
 
+  
     
 }
