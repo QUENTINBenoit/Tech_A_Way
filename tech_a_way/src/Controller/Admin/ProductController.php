@@ -8,6 +8,7 @@ use App\Entity\Product;
 use App\Form\PictureType;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
+use App\Repository\PictureRepository;
 use App\Repository\ProductRepository;
 use App\Service\LinkProductDirectlyWithParentsCategory;
 use App\Service\PictureUploader;
@@ -155,8 +156,28 @@ class ProductController extends AbstractController
                'product' => $product,
                'pictures' => $arrayPictures
            ]);
+    }
 
-  
+    /**
+     * @Route("/{productId}/picture/{pictureId}delete", name="picture_delete")
+     */
+    public function deletePicture($productId, $pictureId, PictureRepository $pictureRepository, ProductRepository $productRepository, Request $request)
+    {
+        $picture = $pictureRepository->find($pictureId);
+        $product = $productRepository->find($productId);
+        
+        $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
+        if ($this->isCsrfTokenValid('delete-picture', $submitedToken)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($picture);
+            $em->flush();
+
+            $this->addFlash('success', 'L\'image a bien été supprimée');
+
+            return $this->redirectToRoute('admin_product_picture_create', ['id' => $product->getId()], 301);
+        } else {
+            return new Response('Action interdite', 403);
+        }
     }
 }

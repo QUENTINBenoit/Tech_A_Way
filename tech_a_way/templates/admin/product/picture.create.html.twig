@@ -29,8 +29,10 @@
 		<h2 class="text-center">Images existantes pour le produit N°{{ product.id }} : {{ product.name }}</h2>
 		<div class="row">
 			{% for picture in pictures %}
-				<div class="col-4 col-md-3"><img width="170px" src="{{ asset('uploads/' ~ picture.name) }}" alt="{{ picture.name }}"></div>
+				<div class="col-4 col-md-3"><img width="170px" src="{{ asset('uploads/' ~ picture.name) }}" alt="{{ picture.name }}"><a href="{{ path('admin_product_picture_delete', {productId:product.id, pictureId:picture.id, token:csrf_token('delete-picture')}) }}">Supprimer</a></div>
 			{% endfor %}
+
+			
 		</div>
 		</section>
 	</section>
