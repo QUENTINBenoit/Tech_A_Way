@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Address;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,20 +20,36 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
+        
+        $billing = new Address();
+        $billing->setType('Facturation');
+        $user->addAddress($billing);
+
+        
+        
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
-                )
-            );
+                ),
+            );  
+            
+            // Add clone of $billing data in $delievery to add a second type "Livraison" at the same adress to the database in the other primary id
+            $delivery = clone $billing;
+            $delivery->setType('Livraison');
+            $user->addAddress($delivery);
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($billing);
+            $entityManager->persist($delivery);
             $entityManager->flush();
             // do anything else you need here, like send an email
 

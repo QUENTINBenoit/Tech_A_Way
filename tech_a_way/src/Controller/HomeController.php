@@ -7,6 +7,7 @@ use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -15,8 +16,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, SessionInterface $sessionInterface): Response
     {
+        $session = $sessionInterface->get('cart', []);
+        
+        // Total quantity of the session array values (corresponding of the product quantity add to the cart)
+        $totalQuantity = array_sum($session);
 
         $productsRecent = $productRepository->findBy([
             'statusRecent' => null,
@@ -34,6 +39,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'productsRecent'=> $productsRecent,
             'productsPromotion'=> $productsPromotion,
+            'quantity' => $totalQuantity,
             //'productsByPromotionInPercent'=>$productsByPromotionInPercent
 
 

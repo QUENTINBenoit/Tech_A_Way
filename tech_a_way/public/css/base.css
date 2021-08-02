@@ -9,6 +9,24 @@
 
 }
 
+#quantity-shop {
+    margin-top: 10px;
+    z-index: 10000;
+    top : 100px;
+    left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    width: 2em;
+    border-radius: 50%;
+    background-color: lightcoral;
+}
+
+#quantity-shop.p {
+    align-self: center;
+}
+
 
 #connection_user {
     margin-top: 30px;

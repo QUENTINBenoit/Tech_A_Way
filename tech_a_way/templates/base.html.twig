@@ -48,6 +48,12 @@
         </div>
         <div id="spacing"></div>
 
+		<div id="quantity-shop">
+		{% if quantity is defined and quantity > 0 %}
+		<p>{{ quantity }}</p>
+		{% endif %}
+		</div>
+
         {% block body %}{% endblock %}
         {% include "partials/_carousel_brands.html.twig" %}
         {% include "partials/_footer.html.twig" %}</body>

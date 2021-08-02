@@ -27,7 +27,7 @@ class CartController extends AbstractController
         // Search the session with de 'cart' key if exist otherwise an empty array
         $cart = $sessionInterface->get('cart', []);
 
-        // Create a new empty array to store the product and quantity data
+        // Create a new empty array to store the product(s) and quantity data
         $cartWithData = [];
 
         // To fill the data in the array, we create a loop on the $cart array to find the key which represent the id of the product and the value which represent the quantity
