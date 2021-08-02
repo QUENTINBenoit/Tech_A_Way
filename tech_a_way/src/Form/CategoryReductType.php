@@ -10,16 +10,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CategoryReductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('subtitle')
+            ->add('name', TextType::class)
+            ->add('subtitle', TextType::class)
             ->add('picture', FileType::class, [
                 'label' => 'Uploader une nouvelle image',
 
