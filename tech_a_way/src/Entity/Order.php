@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
@@ -32,6 +34,12 @@ class Order
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Le code postal ext composé de 5 chiffres",
+     *      maxMessage = "Le code postal ext composé de 5 chiffres"
+     * )
      */
     private $zipcodeDelivery;
 
@@ -47,6 +55,12 @@ class Order
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Le code postal ext composé de 5 chiffres",
+     *      maxMessage = "Le code postal ext composé de 5 chiffres"
+     * )
      */
     private $zipcodeBill;
 

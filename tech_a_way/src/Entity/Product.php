@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use DateTime;
 
 /**
@@ -27,21 +28,31 @@ class Product
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(message="un prix doit forcément être positif")
      */
     private $exclTaxesPrice;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Assert\PositiveOrZero(message="la tva ne peut pas être négative")
      */
     private $salesTax;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(message="un prix doit forcément être positif")
      */
     private $inclTaxesPrice;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive(message="la référence d'un produit ne peut avoir une valeur négative")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 10,
+     *      minMessage = "La référence du produit comporte au moins 5 chiffres",
+     *      maxMessage = "La référence du produit comporte au plus 10 chiffres"
+     * )
      */
     private $reference;
 
@@ -52,6 +63,7 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero(message="Le stock doit être positif ou égal à 0")
      */
     private $stock;
 

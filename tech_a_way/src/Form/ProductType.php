@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,9 +28,9 @@ class ProductType extends AbstractType
                 ],
             ])
             //->add('inclTaxesPrice')
-            ->add('reference')
+            ->add('reference', IntegerType::class)
             ->add('description', TextType::class)
-            ->add('stock')
+            ->add('stock', IntegerType::class)
             ->add('statusRecent', ChoiceType::class, [
                 'choices' => [
                     '0' => 0,

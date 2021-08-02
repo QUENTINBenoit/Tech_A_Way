@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AddressRepository::class)
@@ -30,6 +31,12 @@ class Address
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Le code postal ext composé de 5 chiffres",
+     *      maxMessage = "Le code postal ext composé de 5 chiffres"
+     * )
      */
     private $zipcode;
 
