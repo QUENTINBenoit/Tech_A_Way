@@ -46,6 +46,21 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Find all Product and Categories for filter
+     * @return void
+     */
+    /*
+      public function  findFilter($productForm)
+      {
+            $qb = $this->createQueryBuilder('p') 
+                        ->select('categories','p')   
+                        ->leftJoin('p.categories', 'categories')
+                        ->leftJoin('p.brand', 'brand');
+            $query = $qb->getQuery();
+            return  $query ->getOneOrNullResult();
+      }*/
+   
 
     // /**
     //  * @return Product[] Returns an array of Product objects

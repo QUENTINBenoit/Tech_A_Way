@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Category;
+use App\Entity\Product;
+use App\Form\SearchType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -36,28 +39,38 @@ class CategoryController extends AbstractController
                     'categotype1' =>  $catgoType,
                    
                     ]);
-
-    }
+            }
+        
 
             /**
             * @Route("/{id}/pagination ", name="pagination")
             */
-            public function pagination(Category $category, PaginatorInterface $paginator, Request $request): Response
+            public function pagination(
+                                        Category $category,
+                                        PaginatorInterface $paginator, 
+                                        Request $request, 
+                                        ProductRepository $productRepository 
+                                                                        ): Response
+
                         {      
+                            $productForm = new Product();
+                            // je lie le formulaire à l'entité Product
+                            $form = $this->createForm(SearchType::class, $productForm);
+                            $form->handleRequest($request);
+                         
+                            $products = $productRepository->findAll();
+                          
                             $productsbyCategory = $category->getProducts();   
-                      
-
+                           
                             $query = $productsbyCategory; 
-
                             $products= $paginator->paginate(
                             $query, 
                                     $request->query->getInt('page', 1), 
                                 10
                                 ); 
-                                dump(
-                                $products); 
-                            return $this->render('/product/product_list.html.twig',[
+                            return $this->render('product/product_list.html.twig',[
                             'products' => $products,
+                            'form' => $form->createView()
                      
                     ]);       
                     

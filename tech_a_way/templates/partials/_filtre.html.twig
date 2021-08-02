@@ -1,106 +1,48 @@
-    <div class="card position-static">
-            <h5 class="card-header h6 p-3">Affinez votre recherche</h5>
-              <div class="card-body">
-                <ul class="nav nav-pills flex-column ">
-                   <li class="mb-1 ">
-                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false"> 
-                          Marque
-                      </button>
-                      <div class="collapse" id="brand-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <form >
-                            <div class="form-check">
-                              <input class="form-check-input "  type="checkbox" value="" id="Samsung" >
-                              <label class="form-check-label"  for="flexCheckChecked">
-                               Samsung
-                              </label> 
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input "  type="checkbox" value="" id="LG" >
-                              <label class="form-check-label"  for="flexCheckChecked">
-                                LG
-                              </label> 
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input "  type="checkbox" value="" id=" Philips" >
-                              <label class="form-check-label"  for="flexCheckChecked">
-                              Philips
-                              </label> 
-                            </div>
-                          </form>
-                        </ul> 
-                      </div>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column ">
-                  <li class="mb-1 ">
-                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#height-collapse" aria-expanded="false"> 
-                        Taille de D'Écran
-                      </button>
-                        <div class="collapse" id="height-collapse">
-                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <form >
-                                <div class="form-check">
-                                  <input class="form-check-input "  type="checkbox" value="" id="32p" >
-                                  <label class="form-check-label"  for="flexCheckChecked">
-                                    32 pouces
-                                  </label> 
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input "  type="checkbox" value="" id="40p" >
-                                    <label class="form-check-label"  for="flexCheckChecked">
-                                      40 pouces
-                                    </label> 
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input "  type="checkbox" value="" id="43p" >
-                                    <label class="form-check-label"  for="flexCheckChecked">
-                                      43 pouces
-                                    </label> 
-                                </div>
-                              </form>
-                            </ul> 
-                        </div>
-                    </li>
-                </ul>
-                <ul class="nav nav-pills flex-column ">
-                  <li class="mb-1 ">
-                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#standard-collapse" aria-expanded="false"> 
-                        Norme HD
-                      </button>
-                        <div class="collapse" id="standard-collapse">
-                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <form >
-                                <div class="form-check">
-                                  <input class="form-check-input "  type="checkbox" value="" id="4K" >
-                                  <label class="form-check-label"  for="flexCheckChecked">
-                                    4k UHD
-                                  </label> 
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input "  type="checkbox" value="" id="8K" >
-                                    <label class="form-check-label"  for="flexCheckChecked">
-                                      8k
-                                    </label> 
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input "  type="checkbox" value="" id="HDTV" >
-                                    <label class="form-check-label"  for="flexCheckChecked">
-                                      HDTV
-                                    </label> 
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input "  type="checkbox" value="" id="HDTV1080" >
-                                  <label class="form-check-label"  for="flexCheckChecked">
-                                    HDTV 1080
-                                  </label> 
-                              </div>
-                              </form>
-                            </ul> 
-                        </div>
-                    </li>
-                </ul>    
-              <a href="#" class="btn  btn-sm color  ">Valider</a>
-            </div>
-          </div>              
-        </div> 
+
+
+
+<div class="card position-static">
+  <h5 class="card-header h6 p-3">Affinez votre recherche</h5>
+    <div class="card-body">
+        <ul class="nav nav-pills flex-column ">
+            <li class="mb-1 ">
+                <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false"> 
+                 Marque
+                </button>
+                  <div class="collapse" id="brand-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      {{form(form.brand)}}          
+                    </ul> 
+                  </div>
+            </li>
+         </ul>
+          <ul class="nav nav-pills flex-column ">
+            <li class="mb-1 ">
+                <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#categorie-collapse" aria-expanded="false"> 
+                Categories
+                </button>
+                  <div class="collapse" id="categorie-collapse">
+                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        {{form(form.categories)}}
+                     </ul> 
+                  </div>
+             </li>
+          </ul>
+          <ul class="nav nav-pills flex-column ">
+             <li class="mb-1 ">
+                <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#promotion-collapse" aria-expanded="false"> 
+                Promotion
+                </button>
+                  <div class="collapse" id="promotion-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      {{form(form.statusPromotion)}}
+                    </ul> 
+                  </div>
+             </li>
+          </ul>
+       <button type"sumbit" class="btn btn-sm btn-primary color w-100"> Filtrer </button>   
+    
+     </div>
+     </div>       
+</div>              
+       

@@ -19,6 +19,7 @@ class BrandRepository extends ServiceEntityRepository
         parent::__construct($registry, Brand::class);
     }
 
+
     // /**
     //  * @return Brand[] Returns an array of Brand objects
     //  */
@@ -47,4 +48,5 @@ class BrandRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }
