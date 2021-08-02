@@ -46,6 +46,23 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Returns a table with the names of the products
+     * 
+     * 
+     */
+    public function findSearchName($name)
+    {
+        $qb = $this->createQueryBuilder('product');
+
+        $qb->setParameter(':name', "%$name%");
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+
 
     // /**
     //  * @return Product[] Returns an array of Product objects
