@@ -43,12 +43,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Positive(message="la référence d'un produit ne peut avoir une valeur négative")
+     * @Assert\Positive(message="un numéro de téléphone ne peut être négatif")
      * @Assert\Length(
-     *      min = 5,
-     *      max = 10,
-     *      minMessage = "La référence du produit comporte au moins 5 chiffres",
-     *      maxMessage = "La référence du produit comporte au plus 10 chiffres"
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "Le numéro de téléphone doit avoir 9 chiffres (le 0 du début n'étant pas comptabilisé)",
+     *      maxMessage = "Le numéro de téléphone doit avoir 9 chiffres (le 0 du début n'étant pas comptabilisé)"
      * )
      */
     private $phoneNumber;
