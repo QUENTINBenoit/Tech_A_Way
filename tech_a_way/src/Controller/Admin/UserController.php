@@ -71,6 +71,27 @@ class UserController extends AbstractController
             // we update the password property with the new hash password
             $user->setPassword($hashedPassword);
 
+            if(in_array("ROLE_DEACTIVATE_ADMIN", $user->getRoles())) {
+                $user->setRoles(["ROLE_USER"]);
+              } 
+            else if(in_array("ROLE_SUPER_ADMIN", $user->getRoles())) {
+                if($this->getUser()->getRoles()[0] == "ROLE_SUPER_ADMIN") {
+                    $user->setRoles(["ROLE_SUPER_ADMIN"]);
+                } else {
+                    $user->setRoles([$this->getUser()->getRoles()[0]]);
+                }
+            } 
+            else if(in_array("ROLE_ADMIN", $user->getRoles())) {
+                if (($this->getUser()->getRoles()[0] == "ROLE_SUPER_ADMIN") || ($this->getUser()->getRoles()[0] == "ROLE_ADMIN")) {
+                    $user->setRoles(["ROLE_ADMIN"]);
+                } else {
+                    $user->setRoles([$this->getUser()->getRoles()[0]]);
+                }
+            } 
+            else if(in_array("ROLE_CATALOG_MANAGER", $user->getRoles())) {
+                $user->setRoles(["ROLE_CATALOG_MANAGER"]);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -91,23 +112,45 @@ class UserController extends AbstractController
      */
     public function update(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
-
+        // dd($this->getUser()->getRoles()[0]);
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             $plainPassword = $form->get('password')->getData();
-
+            
             if ($plainPassword) {
                 $hashedPassword = $passwordHasher->hashPassword(
                     $user,
                     $plainPassword
                 );
-
+                
                 $user->setPassword($hashedPassword);
             }
 
+            if(in_array("ROLE_DEACTIVATE_ADMIN", $user->getRoles())) {
+                $user->setRoles(["ROLE_USER"]);
+              } 
+            else if(in_array("ROLE_SUPER_ADMIN", $user->getRoles())) {
+                if($this->getUser()->getRoles()[0] == "ROLE_SUPER_ADMIN") {
+                    $user->setRoles(["ROLE_SUPER_ADMIN"]);
+                } else {
+                    $user->setRoles([$this->getUser()->getRoles()[0]]);
+                }
+            } 
+            else if(in_array("ROLE_ADMIN", $user->getRoles())) {
+                if (($this->getUser()->getRoles()[0] == "ROLE_SUPER_ADMIN") || ($this->getUser()->getRoles()[0] == "ROLE_ADMIN")) {
+                    $user->setRoles(["ROLE_ADMIN"]);
+                } else {
+                    $user->setRoles([$this->getUser()->getRoles()[0]]);
+                }
+            } 
+            else if(in_array("ROLE_CATALOG_MANAGER", $user->getRoles())) {
+                $user->setRoles(["ROLE_CATALOG_MANAGER"]);
+            }
+          
+            
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été modifié');

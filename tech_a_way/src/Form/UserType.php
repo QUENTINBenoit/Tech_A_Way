@@ -33,6 +33,7 @@ class UserType extends AbstractType
             ->add('roles', ChoiceType::class, [
                 'choices' => [
 
+                    'Super Administrateur' => 'ROLE_SUPER_ADMIN',
                     'Administrateur' => 'ROLE_ADMIN',
                     'Catalog manager' => 'ROLE_CATALOG_MANAGER',
                     'désactiver profil admin' =>'ROLE_DEACTIVATE_ADMIN'
