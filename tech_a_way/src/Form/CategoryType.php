@@ -21,7 +21,7 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de la catégorie'
             ])
-            ->add('subtitle', TextType::class, [
+            ->add('subtitle', null, [
                 'label' => 'Phrase d\'accroche'
             ])
             ->add('picture', FileType::class, [
