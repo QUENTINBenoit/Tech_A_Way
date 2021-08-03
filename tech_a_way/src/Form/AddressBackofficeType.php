@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints\Length;
 
-class AddressType extends AbstractType
+class AddressBackofficeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,28 +23,23 @@ class AddressType extends AbstractType
             $address = $event->getData();
             $form = $event->getForm();
     
-            // checks if the Address object is "new"
-            // If no data is passed to the form, the data is "null".
-            // This should be considered a new "Address"
-            if ($address->getId() || (isset($admin))) {
-                $form->add('type', ChoiceType::class, [
-                    'choices' => [
-                        'Livraison' => 'livraison',
-                        'Facturation' => 'facturation'],
-                    ]);
-
-                    if($address->getType() === 'livraison') {
-                $form->add('delivery', ChoiceType::class, [
-                    'choices' => [
-                        'colissimo' => 'Colissimo',
-                        'chronopost' => 'Chronopost',
-                        'relais_colis' =>'Relais colis'],
-                    ]);
-                }
+                if($address->getType() === 'livraison') {
+            $form->add('delivery', ChoiceType::class, [
+                'choices' => [
+                    'colissimo' => 'Colissimo',
+                    'chronopost' => 'Chronopost',
+                    'relais_colis' =>'Relais colis'],
+                ]);
             }
+            
 
         })
 
+            ->add('type', ChoiceType::class, [
+            'choices' => [
+                'Livraison' => 'livraison',
+                'Facturation' => 'facturation'],
+            ])
             ->add('street', TextType::class)
             ->add('zipcode', null, [
                 'constraints' =>[new Length([

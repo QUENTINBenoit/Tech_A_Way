@@ -2,7 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Address;
 use App\Entity\User;
+use App\Form\AddressBackofficeType;
+use App\Form\AddressType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -163,6 +166,41 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+
+      /**
+     * @Route("/{id}/address/create", name="address_create")
+     */
+    public function createNewAddress(Request $request, User $user)
+    {
+           $address = new Address();
+
+       
+
+           $form = $this->createForm(AddressBackofficeType::class, $address);
+    
+           $form->handleRequest($request);
+    
+           if ($form->isSubmitted() && $form->isValid()) {
+    
+                $user->addAddress($address);
+
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($user);
+                $em->persist($address);
+            
+               $em->flush();
+    
+               $this->addFlash('success', 'L\'adresse a bien été ajoutée');
+    
+               return $this->redirectToRoute('admin_user_personal_details', ['id' => $user->getId()], 301);
+           }
+    
+           return $this->render('admin/user/address.create.html.twig', [
+               'form' => $form->createView(),
+               'user' => $user,
+           ]);
     }
 
 
