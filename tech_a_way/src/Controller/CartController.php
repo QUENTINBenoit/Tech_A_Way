@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -26,7 +25,7 @@ class CartController extends AbstractController
         // dd($sessionInterface->get('cart'));
         // Search the session with de 'cart' key if exist otherwise an empty array
         $cart = $sessionInterface->get('cart', []);
-
+          
         // Create a new empty array to store the product and quantity data
         $cartWithData = [];
 
@@ -37,16 +36,18 @@ class CartController extends AbstractController
                 'quantity' => $quantity,
             ];
         }
-
+        
         // declared variable for total price in the cart
         $total = 0;
-
+        //dd($cart); 
         // Loop to calculate the total for each product and total global
         foreach($cartWithData as $item) {
-            $totalItem = $item['product']->getinclTaxesPrice() * $item['quantity'];
+           //  dd($cartWithData ); 
+            $totalItem = $item['product']->getInclTaxesPrice() * $item['quantity'];
+            
             $total += $totalItem;
         }
-
+       
         // Return the data at the view
         return $this->render('cart/index.html.twig', [
             'items' => $cartWithData,
@@ -76,7 +77,7 @@ class CartController extends AbstractController
 
         // Set the array variable "$cart" which contain the data into the session
         $sessionInterface->set('cart', $cart);
-
+      
         // Return at the index method (cart list)
         return $this->redirectToRoute('cart_list');
         

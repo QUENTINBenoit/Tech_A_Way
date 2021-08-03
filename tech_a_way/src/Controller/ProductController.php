@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\SearchType;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,24 +39,5 @@ class ProductController extends AbstractController
             'product' => $productRepository->findOneByDetails($id),
         ]);
     }
-     /**
-      * @Route("/", name="filter")
-    */
-
-     /*public function filter(ProductRepository $productRepository,Request $request)
-              {
-                  $productForm = new Product();
-                  // je lie le formulaire à l'entité Product
-                  $form = $this->createForm(SearchType::class, $productForm);
-                  $form->handleRequest($request);
-                  dd($productForm); 
-                  $products = $productRepository->findAll();
-                            
-                  return $this->render('partials/_filtre.html.twig', [
-                    'products'=> $products,
-                    'form' => $form->createView()
-                ]);
-              }*/
-            
-
+     
 }

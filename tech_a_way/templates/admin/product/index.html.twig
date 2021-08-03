@@ -8,7 +8,10 @@
 
 
 	<section class="container-fluid scrollarea table-boot py-5">
-		<h1>Liste des produits</h1>
+		<h1 class="container">Liste des produits</h1>
+		<div class="d-flex justify-content-around">
+			<span class="fs-6"><a href="{{ path('admin_product_create') }}">Ajouter un produit</a></span>
+		</div>
 		<div class="container">
 			<table class="table  table-hover">
 				<thead class="table-primary">
@@ -21,9 +24,13 @@
 						<th scope="col">Référence</th>
 						<th scope="col">Description</th>
 						<th scope="col">Stock</th>
-						<th scope="col">Récent</th>
-						<th scope="col">Promotion</th>
-						<th scope="col">Pourcentage Promotion</th>
+						<th scope="col">Catégories associées</th>
+						<th class="d-none d-lg-block" id="list_recent_products">
+						<div>récent</div>
+						<div>promos</div>
+						<div>% prom</div>
+						</th>
+					
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -38,11 +45,22 @@
 							<td>{{ product.reference }}</td>
 							<td>{{ product.description }}</td>
 							<td>{{ product.stock }}</td>
-							<td>{{ product.statusRecent }}</td>
-							<td>{{ product.statusPromotion }}</td>
-							<td>{{ product.percentagePromotion }}</td>
+							<td><ul>
+							{% for category in product.categories %}
+							<li>{{ category.name }}</li>
+							{% endfor %}
+							</ul>
+							</td>
+							<td class="d-none d-lg-block text-center">
+							<div>{{ product.statusRecent }}</div>
+							<div>{{ product.statusPromotion }}</div>
+							<div>{{ product.percentagePromotion }}</div>
+							</td>
+			
 						    <td>
-                                <a href="#">éditer</a>
+                                <div><a href="{{ path('admin_product_update', {id:product.id}) }}">Editer</a></div>
+                                <div><a href="{{ path('admin_product_picture_create', {id:product.id}) }}">Images</a></div>
+                                <div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
                             </td>
 						</tr>
 					{% else %}

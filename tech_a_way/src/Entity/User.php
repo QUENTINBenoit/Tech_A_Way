@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -41,11 +43,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive(message="un numéro de téléphone ne peut être négatif")
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "Le numéro de téléphone doit avoir 9 chiffres (le 0 du début n'étant pas comptabilisé)",
+     *      maxMessage = "Le numéro de téléphone doit avoir 9 chiffres (le 0 du début n'étant pas comptabilisé)"
+     * )
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas un email valide."
+     * )
      */
     private $email;
 
@@ -56,6 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
    /**
      * @ORM\Column(type="smallint")
+     * @Assert\PositiveOrZero(message="le statut de l'utilisateur doit être égal à 0 (inactif) ou 1 (actif)")
      */
     private $statusUser;
 

@@ -15,7 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/category", name="category_")
- */
+ 
+**/
 class CategoryController extends AbstractController
 {
     /**
@@ -46,7 +47,7 @@ class CategoryController extends AbstractController
         PaginatorInterface $paginator,
         Request $request,
         ProductRepository $productRepository
-    ): Response {
+                     ): Response {
         $filter = $request->query->all();
         // je lie le formulaire à l'entité Product
         $form = $this->createForm(SearchType::class, null, [
@@ -56,13 +57,11 @@ class CategoryController extends AbstractController
 
             $form->handleRequest($request);
 
-         if(isset($filter['search'])){
-            $query= $productRepository->findByFilter($filter['search']);
-          }else{
-            $query= $category->getProducts();
-         
+            if(isset($filter['search'])){
+                $query= $productRepository->findByFilter($filter['search']);
+            }else{
+                $query= $category->getProducts();     
            // $query = $productsbyCategory;
-
            }
            
            // dd($productsbyCategory);
@@ -72,7 +71,7 @@ class CategoryController extends AbstractController
             $products = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            10
+            2
         );
 
         return $this->render('product/product_list.html.twig', [

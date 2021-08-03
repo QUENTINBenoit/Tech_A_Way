@@ -23,53 +23,53 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
-     /** 
-     * Find all Product and Categories for filter
-     * @return void
-     */
+    /**
+    * Find all Product and Categories for filter
+    * @return void
+    */
 
 
     public function findByFilter($filter)
     {
-       $qb= $this->createQueryBuilder('p');
-       if(isset($filter['brand'])){
-        $qb->innerJoin(Brand::class, 'b', 'WITH', 'p.brand = b.id');
-        foreach($filter['brand'] as $id){
-            $qb->orWhere('b.id ='.$id);
+        $qb= $this->createQueryBuilder('p');
+        if (isset($filter['brand'])) {
+            $qb->innerJoin(Brand::class, 'b', 'WITH', 'p.brand = b.id');
+            foreach ($filter['brand'] as $id) {
+                $qb->orWhere('b.id ='.$id);
+            }
         }
-       }
-       if(isset($filter['categories'])){
-        $qb->leftJoin('p.categories', "c");
-        $qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie 
-        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie 
+        if (isset($filter['categories'])) {
+            $qb->leftJoin('p.categories', "c");
+            $qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie
+        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie
         }
 
-        if(isset($filter['statusPromotion']) ) {
-            $qb->where('p.statusPromotion = 1'); 
-          //  dd($filter['statusPromotion']); 
-       }
+        if (isset($filter['statusPromotion'])) {
+            $qb->where('p.statusPromotion = 1');
+            //  dd($filter['statusPromotion']);
+        }
 
-       $qb->distinct();
-       return $qb->getQuery()->getResult(); 
+        $qb->distinct();
+        return $qb->getQuery()->getResult();
     }
 
 
     /*if (isset($filter['brand'])){
-        foreach ($filter['brand'] as $id){ 
-        $qb->andWhere('p.id = :id');  
-        $qb->setParameter(':id', $id);  
+        foreach ($filter['brand'] as $id){
+        $qb->andWhere('p.id = :id');
+        $qb->setParameter(':id', $id);
         }
-    
+
     }if (isset($filter['categories'])) {
             foreach ($filter['categories'] as $id) {
                 $qb->andWhere('p.id  :id');
                 $qb->setParameter(':id', $id);
             }
      }if (isset($filter['statusPromotion'])){
-         $filter['statusPromotion'] === "1" ; 
-    
-         
-    
+         $filter['statusPromotion'] === "1" ;
+
+
+
 
      }*/
 
@@ -99,11 +99,30 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getOneOrNullResult();
     }
 
-   
- 
-    //  /**
-    // * @return Product[] Returns an array of Product objects
-     // */
+
+    /**
+     * Returns a table with the names of the products
+     *
+     *
+     */
+    public function findBySearchByName($name)
+    {
+        $qb = $this->createQueryBuilder('product');
+
+        $qb->where('product.name LIKE :name');
+
+        $qb->setParameter(':name', "%$name%");
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+
+
+    // /**
+    //  * @return Product[] Returns an array of Product objects
+    //  */
     /*
     public function findByExampleField($value)
     {
@@ -128,5 +147,7 @@ class ProductRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+*/
 }
+
+
