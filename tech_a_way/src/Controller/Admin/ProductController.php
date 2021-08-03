@@ -183,7 +183,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{productId}/picture/{pictureId}delete", name="picture_delete")
+     * @Route("/{productId}/picture/{pictureId}/delete", name="picture_delete")
      */
     public function deletePicture($productId, $pictureId, PictureRepository $pictureRepository, ProductRepository $productRepository, Request $request)
     {

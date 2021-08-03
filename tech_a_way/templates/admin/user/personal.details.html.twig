@@ -47,6 +47,7 @@
 						<th scope="col">Rue</th>
 						<th scope="col">Code postal</th>
 						<th scope="col">Ville</th>
+						<th scope="col">Livraison</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -58,10 +59,11 @@
                             <td>{{ address.street }}</td>
 							<td>{{ address.zipcode }}</td>
 							<td>{{ address.city }}</td>
+							<td>{{ address.delivery }}</td>
 							<td>
-                                <a href="#">éditer</a>
+                                <a href="{{ path('admin_user_address_update', {userId:user.id, addressId:address.id}) }}">éditer</a>
                                  <div></div> 
-                                <a href="#">supprimer</a></td>
+                                <a href="{{ path('admin_user_address_delete', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}">supprimer</a></td>
 						</tr>
 					{% endfor %}
 
