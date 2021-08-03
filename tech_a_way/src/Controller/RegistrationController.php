@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Address;
+use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -26,8 +27,11 @@ class RegistrationController extends AbstractController
         $user->addAddress($billing);
 
         
-        
         $form = $this->createForm(RegistrationFormType::class, $user);
+
+        // $address = new Address();
+        // $form = $this->createForm(RegistrationFormType::class, ['user' => $user, 'address' => $address]);
+
         $form->handleRequest($request);
         
         
@@ -46,13 +50,18 @@ class RegistrationController extends AbstractController
             $user->addAddress($delivery);
 
 
+            $delivery = clone $billing;
+            $delivery->setType('Livraison');
+            $user->addAddress($delivery);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($billing);
             $entityManager->persist($delivery);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+            $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été créé');
+            
             return $this->redirectToRoute('app_login');
         }
 

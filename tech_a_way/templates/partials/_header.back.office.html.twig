@@ -59,16 +59,16 @@
 		</svg>
 
 		<main>
-			<h1 class="visually-hidden matchMediaJs">Benoit</h1>
+			<h1 class="visually-hidden matchMediaJs"></h1>
 
-			<div class="matchMediaJs d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+			<div class="matchMediaJs d-lg-flex d-none flex-column flex-shrink-0 p-3 text-white bg-dark" id"nav_backoffice" style="width: 280px;">
 				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
 					<img id="scren" src="{{ asset('images/logo/T.png') }}" alt="logo">
 
 
 					<span class="fs-4">
-						Bonjour {{ app.user.firstname }}</span>
+						Backoffice Admin</span>
 				</a>
 				<hr>
 				<ul class="nav nav-pills flex-column mb-auto">
@@ -81,7 +81,7 @@
 						<div class="collapse show text " id="home-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
 								<li>
-									<a href="{{ path('admin_user_index') }}" class="text-white rounded">Accueil backoffice</a>
+									<a href="{{ path('admin_home_index') }}" class="text-white rounded">Accueil backoffice</a>
 								</li>
 								<li>
 									<a href="{{ path('home') }}" class="text-white rounded">Accès boutique en ligne</a>
@@ -123,17 +123,39 @@
 						</div>
 					</li>
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed text-white " data-bs-toggle="collapse" data-bs-target="#products-collapse" aria-expanded="false">
+						<button class="btn btn-toggle align-items-center rounded collapsed text-white " data-bs-toggle="collapse" data-bs-target="#categories-collapse" aria-expanded="false">
 							<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
 							Catégories
 						</button>
-						<div class="collapse" id="products-collapse">
+						<div class="collapse" id="categories-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li>
-									<a href="#" class="text-white  rounded">Liste complète</a>
+									<a href="{{ path('admin_category_index') }}" class="text-white  rounded">Liste complète</a>
 								</li>
 								<li>
-									<a href="#" class="text-white  rounded">Ajouter une nouvelle catégorie</a>
+									<a href="{{ path('admin_category_tree_structure') }}" class="text-white  rounded">Arborescence</a>
+								</li>
+								<li>
+									<a href="{{ path('admin_category_create_main') }}" class="text-white  rounded">Ajouter une nouvelle catégorie principale</a>
+								</li>
+								<li>
+									<a href="{{ path('admin_category_create_sub') }}" class="text-white  rounded">Ajouter une nouvelle sous-catégorie</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button class="btn btn-toggle align-items-center rounded collapsed text-white " data-bs-toggle="collapse" data-bs-target="#brands-collapse" aria-expanded="false">
+							<svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+							Marques
+						</button>
+						<div class="collapse" id="brands-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li>
+									<a href="{{ path('admin_brand_index') }}" class="text-white  rounded">Liste complète</a>
+								</li>
+								<li>
+									<a href="{{ path('admin_brand_create') }}" class="text-white  rounded">Ajouter une nouvelle marque</a>
 								</li>
 							</ul>
 						</div>
@@ -142,26 +164,11 @@
 				<hr>
 
 
-				<div class="dropdown ">
-					<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-						<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-						<strong>Benoit</strong>
+				<div id="user_backoffice">
+					<a href="{{ path('admin_user_personal_details', {id:app.user.id}) }}" class="d-flex align-items-center text-white text-decoration-none">
+						<img src="https://previews.123rf.com/images/prettyvectors/prettyvectors1309/prettyvectors130900060/22545994-profil-utilisateur-avatar-man-ic%C3%B4ne.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+						<strong>Bonjour {{ app.user.firstname }}</strong>
 					</a>
-					<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-						<li>
-							<a class="dropdown-item" href="#">Créer un compte Admin</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Paramètre</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#">Compte</a>
-						</li>
-						<li><hr class="dropdown-divider"></li>
-						<li>
-							<a class="dropdown-item" href="#">Déconnexion</a>
-						</li>
-					</ul>
 				</div>
 			</div>
 	

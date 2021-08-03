@@ -55,8 +55,12 @@
 								</div>
 								{% endfor %}
 								<div class="col-md-3">
+									{{ form_row(registrationForm.addresses) }}
+								</div>
+								<div class="col-md-3">
 									{{ form_row(registrationForm.agreeTerms) }}
 								</div>
+					
 								<div class="col-12">
 									<button type="submit" class="btn btn-lg btn-primary">Register</button>
 									{{ form_end(registrationForm) }}

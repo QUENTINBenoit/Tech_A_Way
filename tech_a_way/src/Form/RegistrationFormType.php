@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use App\Entity\Address;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -12,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,6 +20,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -28,6 +30,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Termes et conditions',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -52,16 +55,24 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('firstname',TextType::class)
-            ->add('lastname', TextType::class)
+            ->add('firstname',TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom'
+            ])
             ->add('gender', ChoiceType::class, [
+                'label' => 'Sexe',
                 'choices' => [
                     'Monsieur' => 'Monsieur',
                     'Madame' => 'Madame'
                 ],
             ])
-            ->add('phone_number')
+            ->add('phone_number', IntegerType::class, [
+                'label' => 'Numéro de téléphone'
+            ])
             ->add('birthdate', DateType::class, array(
+                'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
@@ -77,6 +88,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+           
         ]);
     }
 }

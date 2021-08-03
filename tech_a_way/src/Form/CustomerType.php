@@ -20,18 +20,26 @@ class CustomerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom'
+            ])
             ->add('gender', ChoiceType::class, [
+                'label' => 'Sexe',
                 'choices' => [
                     'Monsieur' => 'Monsieur',
                     'Madame' => 'Madame'
                 ],
             ])
-            ->add('phoneNumber')
+            ->add('phoneNumber', null, [
+                'label' => 'Numéro de téléphone'
+            ])
             ->add('email', EmailType::class)
       
             ->add('birthdate', DateType::class, array(
+                'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',

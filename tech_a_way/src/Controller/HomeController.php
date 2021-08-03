@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +45,32 @@ class HomeController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route ("/search", name="search")
+     * 
+     * 
+     * 
+     * @return void
+     */
+    public function search(Request $request, ProductRepository $productRepository)
+    {
+        $searchValue = $request->get('query');
+
+       // dd($searchValue);
+
+        $products=  $productRepository->findBySearchByName($searchValue);
+        //dd($products);
+
+        return $this->render('home/search.html.twig', [
+            'products' => $products,
+            'searchValue' => $searchValue,
+            
+            
+            
+        ]);
+    }
+
    
 }
 

@@ -10,6 +10,8 @@
 
 	<section class="container-fluid mt-5 scrollarea">
 		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+		<a href="{{ path('admin_user_index') }}">Retour</a>
+
             <div class="fs-5 position-absolute top-0 end-0"><a  href="{{ path('admin_user_personal_details', {id:user.id}) }}">voir les informations personnelles détaillées</a></div>
         
             <h2 class="fs-4">Informations liées aux commandes du client</h2>

@@ -53,7 +53,11 @@
 					<li>
 					  <a href="{{ path('home') }}" class="fs-3 fw-bold">Accueil</a>
 					</li>
-			
+					{% if app.user %}
+					{% if (app.user.roles[0] == 'ROLE_CATALOG_MANAGER') or (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+					<a href="{{ path('admin_home_index') }}">Accès Back office</a>
+					{% endif %}
+					{% endif %}
 					{% for cat in global.categories %}
 					<li>
 					  <a href="#" class="fs-6 fst-italic"> {{ cat.name }} </a>
@@ -93,22 +97,24 @@
 				</div>
 				<div class="py-4 col-6">
 				  <div class="d-flex justify-content-center">
-					<form class="d-flex col-12" id="search">
-					  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+					<form class="d-flex col-12" id="search" action="{{ path('search') }}">
+					  <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
 					  <button class="btn btn-outline-primary" type="submit">
 						<i class="fas fa-search fa-1x"></i>
 					  </button>
 					</form>
+
 				  </div>
 				  <div class="">
 					<ul class="d-flex" id="liste_categories">
 						{% for cat in global.categories %}
 							<li class="col-3 ps-2" id="category_1">
-								<a href="{{ path('category_parent', {id:cat.id}) }}">{{cat.name}}</a>
+								<a href="{{path('category_pagination', {id: cat.id})}}">{{cat.name}}</a>
 								<div class="ps-1 header_sub_category" id="sub_category_1_appears">
 									{% for subcat in cat.subcategories %}
 										<div>
-											<a href="{{ path('category_parent', {id:subcat.id}) }}">{{subcat.name}}</a>
+											<a href="{{ path('category_pagination', {id:subcat.id}) }}">{{subcat.name}}</a>
 										</div>
 									{% endfor %}
 								</div>							
