@@ -39,11 +39,16 @@ class ProductRepository extends ServiceEntityRepository
         }
        }
        if(isset($filter['categories'])){
-        $qb->join(Category::class, 'c');
-        foreach($filter['categories'] as $id){
-            $qb->andWhere('c.id ='.$id);
+        $qb->leftJoin('p.categories', "c");
+        $qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie 
+        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie 
         }
+
+        if(isset($filter['statusPromotion']) ) {
+            $qb->where('p.statusPromotion = 1'); 
+          //  dd($filter['statusPromotion']); 
        }
+
        $qb->distinct();
        return $qb->getQuery()->getResult(); 
     }
