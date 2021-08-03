@@ -50,11 +50,7 @@ class UserType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ))
-            ->add('addresses', CollectionType::class, [
-                'label' => 'Votre adresse',
-                'entry_type' => AddressType::class,
-                'entry_options' => ['label' => false],
-            ])
+
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 // Before building the form, we will first check in which context we are
                 // - Creation : password required
@@ -75,6 +71,13 @@ class UserType extends AbstractType
                     'mapped' => false,
                     'required' => $required
                 ]);
+                if (!$userData->getId()){
+                    $form->add('addresses', CollectionType::class, [
+                        'label' => 'Votre adresse',
+                        'entry_type' => AddressType::class,
+                        'entry_options' => ['label' => false],
+                    ])
+                ;}
             });
     }
 
