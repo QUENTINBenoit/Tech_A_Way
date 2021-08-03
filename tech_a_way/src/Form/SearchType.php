@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Brand;
 use App\Entity\Category;
-use App\Entity\Product;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -17,11 +17,17 @@ class SearchType extends AbstractType
     {
         $builder
             ->add('categories', EntityType::class, [
-               'label' => false,
+                'label' => false,
                 'required' => false,
-                 'class' => Category::class,
-                 'expanded' => true,
+                'class' => Category::class,
+                'expanded' => true,
                 'multiple' => true,
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.category  = :categoryId')
+                        ->setParameter('categoryId', $options['category'])
+                    ;
+                },
             ])
             ->add('brand', EntityType::class, [
                 'label' => false,
@@ -33,32 +39,17 @@ class SearchType extends AbstractType
             ->add('statusPromotion', CheckboxType::class, [
                 'label' => 'En promotion',
                 'required' => false,
-               
             ])
-
-
-
-            //->add('exclTaxesPrice')
-            //->add('salesTax')
-            //->add('inclTaxesPrice')
-            //->add('reference')
-            //->add('description')
-            //->add('stock')
-            //->add('statusRecent')
-            //->add('statusPromotion')
-            //->add('percentagePromotion')
-            //->add('createdAt')
-            //->add('updatedAt')
-           
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Product::class,
-            'method'=> 'GET',
-            'csrf_protection' => false
+            'data_class' => null,
+            'method' => 'GET',
+            'category' => null,
+            'csrf_protection' => false,
         ]);
     }
 }
