@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Form\SearchType;
+use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProductType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,13 +33,11 @@ class ProductController extends AbstractController
      * @Route("/{id}", name="details", requirements={"id" ="\d+"})
      * @return Response
      */
-    public function show(int $id, ProductRepository $productRepository, CategoryRepository $categoryRepository)
+    public function show(int $id, ProductRepository $productRepository )
     {       
         return $this->render('product/index.html.twig', [
             'product' => $productRepository->findOneByDetails($id),
         ]);
     }
-
-
- 
+     
 }
