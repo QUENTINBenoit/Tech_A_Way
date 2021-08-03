@@ -57,6 +57,11 @@ class UserController extends AbstractController
     public function create(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
+
+        $billing = new Address();
+        $billing->setType('Facturation');
+        $user->addAddress($billing);
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -96,8 +101,15 @@ class UserController extends AbstractController
                 $user->setRoles(["ROLE_CATALOG_MANAGER"]);
             }
 
+
+            $delivery = clone $billing;
+            $delivery->setType('Livraison');
+            $user->addAddress($delivery);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($billing);
+            $entityManager->persist($delivery);
             $entityManager->flush();
 
             $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été créé');

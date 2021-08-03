@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -49,6 +50,11 @@ class UserType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ))
+            ->add('addresses', CollectionType::class, [
+                'label' => 'Votre adresse',
+                'entry_type' => AddressType::class,
+                'entry_options' => ['label' => false],
+            ])
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 // Before building the form, we will first check in which context we are
                 // - Creation : password required

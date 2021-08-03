@@ -7,7 +7,7 @@
 {% block cards %}{% endblock %}
 
 
-	<section class="container">
+	<section class="container scrollarea">
 		<h1 class="text-center">Création d'un nouvel Utilisateur</h1>
 		<a href="{{ path('admin_category_index') }}">Retour</a>
 
@@ -54,10 +54,13 @@
 									</div>
 
 								</div>
-								<div class="col-md-6">
+								<div class="col">
 									{{ form_row(form.birthdate) }}
 								</div>
-								<div class="col-12">
+										<div class="col">
+									{{ form_row(form.addresses) }}
+								</div>
+								<div class="col">
 									<button type="submit" class="btn btn-lg btn-primary">Créer</button>
 									{{ form_end(form) }}
 								</div>
