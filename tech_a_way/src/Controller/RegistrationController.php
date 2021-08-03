@@ -26,7 +26,6 @@ class RegistrationController extends AbstractController
         $billing->setType('Facturation');
         $user->addAddress($billing);
 
-
         
         $form = $this->createForm(RegistrationFormType::class, $user);
 
@@ -34,15 +33,22 @@ class RegistrationController extends AbstractController
         // $form = $this->createForm(RegistrationFormType::class, ['user' => $user, 'address' => $address]);
 
         $form->handleRequest($request);
-
+        
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
-                )
-            );
+                ),
+            );  
+            
+            // Add clone of $billing data in $delievery to add a second type "Livraison" at the same adress to the database in the other primary id
+            $delivery = clone $billing;
+            $delivery->setType('Livraison');
+            $user->addAddress($delivery);
+
 
             $delivery = clone $billing;
             $delivery->setType('Livraison');
@@ -52,7 +58,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($billing);
             $entityManager->persist($delivery);
-
             $entityManager->flush();
             // do anything else you need here, like send an email
             $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été créé');

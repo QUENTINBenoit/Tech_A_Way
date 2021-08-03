@@ -13,135 +13,37 @@
                     </div>
                 </div>
             </div>
-            <dump
             <div class="container mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
+                {% for address in app.user.addresses %}
                     <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Adresse De Facturation </h5>
+                                <h5 class="card-title">Adresse De {{ address.type }} </h5>
                                 <p class="card-text">    
                                 <ul class="list-group list-group-flush">                         
                                     <li class="list-group-item">Nom : 
-                                        <p class="font-italic"></p></li>
+                                        <p class="font-italic">{{ app.user.lastname }}</p></li>
                                     <li class="list-group-item">Prénom : 
-                                        <p class="font-italic"></p></li>
+                                        <p class="font-italic">{{ app.user.firstname }}</p></li>
                                     <li class="list-group-item font-italic">Nom de Rue:
-                                        <p class="font-italic"></p></li>
+                                        <p class="font-italic">{{ address.street }}</p></li>
                                     <li class="list-group-item">ville :
-                                        <p class="font-italic"></p> </li>
+                                        <p class="font-italic">{{ address.city }}</p> </li>
                                          <li class="list-group-item">Tel: :
-                                        <p class="font-italic"></p> </li>
+                                        <p class="font-italic">{{ app.user.phoneNumber }}</p> </li>
                                     <li class="list-group-item">Pays :
                                         <p class="font-italic"> France</p></li>           
                                 </ul>
                                 </p>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminate">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        selectioner
-                                    </label>
-                                </div>
+                                <div class="ms-5 mb-4">
+					<a href="{{ path('order_update_address', {'id':address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="" class="btn btn-primary">Supprimer</a>
+				</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col d-flex justify-content-md-center" >
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Adresse De Livraison </h5>
-                                <p class="card-text">
-                                <ul class="list-group list-group-flush">
-                                   <li class="list-group-item">Nom :
-                                            <p class="font-italic"></p></li> 
-                                    <li class="list-group-item">Prénom :
-                                            <p class="font-italic"></p></li>
-                                    <li class="list-group-item">Nom de Rue :
-                                    <p class="font-italic"></p></li>
-                                    <li class="list-group-item">ville :
-                                    <p class="font-italic"></p> </li>
-                                    <li class="list-group-item">Pays :
-                                    <p>france</p>
-                                    </li>
-                                      <li class="list-group-item">Mode de Livraison :
-                                    <p class="font-italic"></p> </li>
-                                </ul>
-                                </p>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminate2">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        selectioner
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="containe-fluid mt-3">
-                <div class="row">
-                    <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ;">
-                        <h2>Ajouter une nouvelle adresse</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="container mt-3" id="add an adress">
-                <div class="row" id="form_add_adress">
-                    <div class="col" style="border-bottom:1px solid #F25528;">
-                        <form class="row g-3 needs-validation" novalidate>
-                            <div class="col-md-4">
-                                <label for="validationCustom01" class="form-label">Prenom</label>
-                                <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-                                <div class="valid-feedback">
-                                    Valide
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="validationCustom02" class="form-label">Nom de famille</label>
-                                <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-                                <div class="valid-feedback">
-                                    Valide
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="validationCustom03" class="form-label">Ville</label>
-                                <input type="text" class="form-control" id="validationCustom03" required>
-                                <div class="invalid-feedback">
-                                    Veuillez fournir une ville valide.
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="validationCustom04" class="form-label">Pays</label>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Choisissez...</option>
-                                    <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Veuillez sélectionner un état valide. </div>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="validationCustom05" class="form-label">Code postal</label>
-                                <input type="text" class="form-control" id="validationCustom05" required>
-                                <div class="invalid-feedback">
-                                    Veuillez fournir un code postal valide. </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                    <label class="form-check-label" for="invalidCheck">
-                                        Accepter les conditions
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        Vous devez accepter avant de soumettre.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn mb-2" style="background-color: #F25528;" type="submit">validé</button>
-                            </div>
-                        </form>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>

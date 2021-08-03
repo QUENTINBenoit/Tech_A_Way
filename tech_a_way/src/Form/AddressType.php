@@ -26,7 +26,7 @@ class AddressType extends AbstractType
             // checks if the Address object is "new"
             // If no data is passed to the form, the data is "null".
             // This should be considered a new "Address"
-            if ($address->getId() || (isset($admin))) {
+            if ($address->getId()) {
                 $form->add('type', ChoiceType::class, [
                     'choices' => [
                         'Livraison' => 'livraison',
