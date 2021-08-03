@@ -24,12 +24,12 @@ class HomeController extends AbstractController
         $totalQuantity = array_sum($session);
 
         $productsRecent = $productRepository->findBy([
-            'statusRecent' => null,
+            'statusRecent' => 1,
         ], null, 6);
       
         $productsPromotion = $productRepository->findBy([
-            'statusPromotion' => null,
-        ], null, 6);
+            'statusPromotion' => 1,
+        ], null, 3);
 
         //$productsByPromotionInPercent = $reposPromotionByPercentage->findByPercentagePromotion('40');
 
