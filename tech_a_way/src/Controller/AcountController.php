@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Address;
+use App\Form\AddressBackofficeType;
 use App\Form\AddressType;
 use App\Form\CustomerType;
 use App\Repository\AddressRepository;
@@ -92,12 +93,12 @@ class AcountController extends AbstractController
     /**
      * @Route("/{userId}/address/create", name="create_address")
      */
-    public function addNewAddress(Request $request, $userId)
+    public function createNewAddress(Request $request, $userId)
     {
         $address = new Address();
         // dd($this->getUser());
         $address->setUser($this->getUser());
-        $form = $this->createForm(AddressType::class, $address);
+        $form = $this->createForm(AddressBackofficeType::class, $address);
 
         $form->handleRequest($request);
 

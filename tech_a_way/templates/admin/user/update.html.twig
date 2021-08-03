@@ -1,14 +1,15 @@
 {% extends 'admin/layout.back.office.html.twig' %}
 
-{% block title %}Nouvel Utilisateur
+{% block title %}Modifier un Utilisateur
 {% endblock %}
 
 {% block body %}
 {% block cards %}{% endblock %}
 
 
-	<section class="container">
-		<h1>Modification d'un nouvel Utilisateur</h1>
+	<section class="container scrollarea">
+		<h1 class="text-center">Modification d'un Utilisateur</h1>
+		<a href="{{ path('admin_user_personal_details', {id:user.id}) }}">Retour</a>
 		<section class="container-lg">
 			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
 
@@ -35,6 +36,9 @@
 							<div class="col-md-3">
 								{{ form_row(form.roles) }}
 							</div>
+							<div class="col-md-3 fst-italic text-danger">
+								Attention, le rôle le plus haut que vous attribuez à l'utilisateur ne peut en aucun cas correspondre à un rôle supérieur au vôtre. Dans le cas contraire, le rôle de l'utisateur sera réattribué afin d'être identique au vôtre.
+							</div>
 							<div class="container">
 								<div class="row gy-3">
 									<div class="col-md-4">
@@ -53,7 +57,7 @@
 									{{ form_row(form.birthdate) }}
 								</div>
 								<div class="col-12">
-									<button type="submit" class="btn btn-lg btn-primary">Créer</button>
+									<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
 									{{ form_end(form) }}
 								</div>
 							</div>

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\OrderLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=OrderLineRepository::class)
@@ -25,21 +27,25 @@ class OrderLine
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero(message="La quantité doit être positive ou égale à 0")
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\PositiveOrZero(message="un prix doit forcément être positif")
      */
     private $exclTaxesUnitPrice;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Assert\PositiveOrZero(message="la tva ne peut pas être négative")
      */
     private $salesTax;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\PositiveOrZero(message="un prix doit forcément être positif")
      */
     private $inclTaxesUnitPrice;
 

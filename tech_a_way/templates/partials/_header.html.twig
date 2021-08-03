@@ -53,7 +53,11 @@
 					<li>
 					  <a href="{{ path('home') }}" class="fs-3 fw-bold">Accueil</a>
 					</li>
-			
+					{% if app.user %}
+					{% if (app.user.roles[0] == 'ROLE_CATALOG_MANAGER') or (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+					<a href="{{ path('admin_home_index') }}">Accès Back office</a>
+					{% endif %}
+					{% endif %}
 					{% for cat in global.categories %}
 					<li>
 					  <a href="#" class="fs-6 fst-italic"> {{ cat.name }} </a>

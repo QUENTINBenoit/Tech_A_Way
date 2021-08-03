@@ -10,6 +10,8 @@
 
 	<section class="container-fluid mt-5 scrollarea">
 		<h1 class="text-center text-success">{{user.firstname}} {{user.lastname}}</h1>
+		<a href="{{ path('admin_user_index') }}">Retour</a>
+
 		       <div class="fs-5 position-absolute top-0 end-0"><a  href="{{ path('admin_user_orders', {id:user.id}) }}">voir son historique de commande</a></div>
             <h2 class="fs-4">Informations personnelles de {{user.gender}} {{user.firstname}} {{user.lastname}}</h2>
             <table class="table  table-hover">
@@ -38,7 +40,7 @@
 				</tbody>
 			</table>
 
-            <h4>Liste des adresses <a class="fs-5" href="#">(Ajouter une adresse)</a></h4>
+            <h4>Liste des adresses <a class="fs-5" href="{{ path('admin_user_address_create', {id:user.id}) }}">(Ajouter une adresse)</a></h4>
 			
             <table class="table  table-hover">
 				<thead class="table-primary">
@@ -47,6 +49,7 @@
 						<th scope="col">Rue</th>
 						<th scope="col">Code postal</th>
 						<th scope="col">Ville</th>
+						<th scope="col">Livraison</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -58,10 +61,11 @@
                             <td>{{ address.street }}</td>
 							<td>{{ address.zipcode }}</td>
 							<td>{{ address.city }}</td>
+							<td>{{ address.delivery }}</td>
 							<td>
-                                <a href="#">éditer</a>
+                                <a href="{{ path('admin_user_address_update', {userId:user.id, addressId:address.id}) }}">éditer</a>
                                  <div></div> 
-                                <a href="#">supprimer</a></td>
+                                <a href="{{ path('admin_user_address_delete', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}">supprimer</a></td>
 						</tr>
 					{% endfor %}
 
