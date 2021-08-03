@@ -18,10 +18,14 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('subtitle')
+            ->add('name', TextType::class, [
+                'label' => 'Nom de la catégorie'
+            ])
+            ->add('subtitle', TextType::class, [
+                'label' => 'Phrase d\'accroche'
+            ])
             ->add('picture', FileType::class, [
-                'label' => 'Uploader une nouvelle image',
+                'label' => 'Uploader une image',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
@@ -39,6 +43,7 @@ class CategoryType extends AbstractType
                 ],
             ])
             ->add('category', EntityType::class, [
+                'label' => 'Cat la + petite dans laquelle mettre cette nelle cat',
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])

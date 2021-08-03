@@ -23,7 +23,7 @@ class AddressBackofficeType extends AbstractType
             $address = $event->getData();
             $form = $event->getForm();
     
-                if($address->getType() === 'livraison') {
+                if($address->getType() === 'Livraison choisie') {
             $form->add('delivery', ChoiceType::class, [
                 'choices' => [
                     'colissimo' => 'Colissimo',
@@ -40,8 +40,11 @@ class AddressBackofficeType extends AbstractType
                 'Livraison' => 'livraison',
                 'Facturation' => 'facturation'],
             ])
-            ->add('street', TextType::class)
+            ->add('street', TextType::class, [
+                'label' => 'Rue'
+            ])
             ->add('zipcode', null, [
+                'label' => 'Code postal',
                 'constraints' =>[new Length([
                     'min' => 5,
                     'minMessage' => 'pas assez de chiffres',
@@ -50,7 +53,9 @@ class AddressBackofficeType extends AbstractType
                     'maxMessage' => 'trop de chiffres',
                 ])],
             ])
-            ->add('city', TextType::class);
+            ->add('city', TextType::class, [
+                'label' => 'Ville'
+            ]);
  
         
     }

@@ -17,7 +17,7 @@ class PictureType extends AbstractType
     {
         $builder
             ->add('name', FileType::class, [
-                'label' => 'Uploader une nouvelle image',
+                'label' => 'Uploader une image',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

@@ -30,6 +30,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Termes et conditions',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -54,16 +55,24 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('firstname',TextType::class)
-            ->add('lastname', TextType::class)
+            ->add('firstname',TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom'
+            ])
             ->add('gender', ChoiceType::class, [
+                'label' => 'Sexe',
                 'choices' => [
                     'Monsieur' => 'Monsieur',
                     'Madame' => 'Madame'
                 ],
             ])
-            ->add('phone_number', IntegerType::class)
+            ->add('phone_number', IntegerType::class, [
+                'label' => 'Numéro de téléphone'
+            ])
             ->add('birthdate', DateType::class, array(
+                'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',

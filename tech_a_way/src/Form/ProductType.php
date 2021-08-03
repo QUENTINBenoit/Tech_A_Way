@@ -20,30 +20,44 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('exclTaxesPrice')
+            ->add('name', TextType::class, [
+                'label' => 'Nom du produit'
+            ])
+            ->add('exclTaxesPrice', null, [
+                'label' => 'Montant Hors Taxes'
+            ])
             ->add('salesTax', ChoiceType::class, [
+                'label' => 'TVA',
                 'choices' => [
                     '20' => 20
                 ],
             ])
             //->add('inclTaxesPrice')
-            ->add('reference', IntegerType::class)
-            ->add('description', TextType::class)
-            ->add('stock', IntegerType::class)
+            ->add('reference', IntegerType::class, [
+                'label' => 'Référence du produit'
+            ])
+            ->add('description', TextType::class, [
+                'label' => 'Description'
+            ])
+            ->add('stock', IntegerType::class, [
+                'label' => 'Stock restant'
+            ])
             ->add('statusRecent', ChoiceType::class, [
+                'label' => 'Statut récent',
                 'choices' => [
                     '0' => 0,
                     '1' => 1
                 ],
                 ])
             ->add('statusPromotion', ChoiceType::class, [
+                'label' => 'Statut promotion',
                 'choices' => [
                     '0' => 0,
                     '1' => 1
                 ],
                 ])
             ->add('percentagePromotion', ChoiceType::class, [
+                'label' => 'Pourcentage promotion appliqué',
                 'choices' => [
                     '0' => 0,
                     '10' => 10,
@@ -54,10 +68,12 @@ class ProductType extends AbstractType
                 ])
 
                 ->add('brand', EntityType::class, [
+                    'label' => 'Choisir la MARQUE dans laquelle le produit se trouve',
                     'class' => Brand::class,
                     'choice_label' => 'name'
                 ])
                 ->add('categories', EntityType::class, [
+                    'label' => 'Choisir la(les) plus petite(s) CATEGORIE(s) dans laquelle(lesquelles) le produit se trouve',
                     'class' => Category::class,
                     'choice_label' => 'name',
                     'multiple' => true,

@@ -35,6 +35,7 @@ class AddressType extends AbstractType
 
                     if($address->getType() === 'livraison') {
                 $form->add('delivery', ChoiceType::class, [
+                    'label' => 'Livraison choisie',
                     'choices' => [
                         'colissimo' => 'Colissimo',
                         'chronopost' => 'Chronopost',
@@ -45,8 +46,11 @@ class AddressType extends AbstractType
 
         })
 
-            ->add('street', TextType::class)
+            ->add('street', TextType::class, [
+                'label' => 'Rue'
+            ])
             ->add('zipcode', null, [
+                'label' => 'Code postal',
                 'constraints' =>[new Length([
                     'min' => 5,
                     'minMessage' => 'pas assez de chiffres',
@@ -55,7 +59,9 @@ class AddressType extends AbstractType
                     'maxMessage' => 'trop de chiffres',
                 ])],
             ])
-            ->add('city', TextType::class);
+            ->add('city', TextType::class, [
+                'label' => 'Ville'
+            ]);
  
         
     }
