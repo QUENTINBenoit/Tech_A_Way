@@ -26,7 +26,7 @@
 						<th scope="col">Image</th>
 						<th scope="col"><div>sa catégorie</div> <div>juste au-dessus</div></th>
 						<th scope="col"><div>sa ou ses sous-</div> <div>catégorie(s) directes</div></th>
-						<th scope="col">Suppression</th>
+						<th scope="col">Actions</th>
 
 					</tr>
 				</thead>
@@ -63,14 +63,15 @@
 							{% else %}
 							<td></td>
 							{% endif %}
-							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
 						    <td>
                                 <div><a href="{{ path('admin_category_list_products', {id:category.id}) }}">Liste des produits</a></div>
+							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
                                 <div><a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}">Supprimer</a></div>
-                            </td>
 							{% else %}
-							<td class="fst-italic">Cetta action vous est interdite</td>
+							<div class="fst-italic">Suppression interdite</div>
 							{% endif %}
+                            </td>
+                            
 						</tr>
 					{% else %}
 						<tr>

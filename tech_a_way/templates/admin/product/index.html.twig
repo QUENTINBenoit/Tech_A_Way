@@ -62,7 +62,15 @@
 						    <td>
                                 <div><a href="{{ path('admin_product_update', {id:product.id}) }}">Editer</a></div>
                                 <div><a href="{{ path('admin_product_picture_create', {id:product.id}) }}">Images</a></div>
-                                <div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
+
+
+							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+                    		<div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
+							{% else %}
+							<div class="fst-italic">suppression interdite</div>
+							{% endif %}
+
+                                
                             </td>
 						</tr>
 					{% else %}
