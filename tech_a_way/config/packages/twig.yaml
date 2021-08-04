@@ -4,6 +4,8 @@ twig:
     globals:
         # the value is the service's id
         global: '@App\Service\GlobalTwig'
+        global2: '@App\Service\GlobalBrands'
+  
 when@test:
     twig:
         strict_variables: true
