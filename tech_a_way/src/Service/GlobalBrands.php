@@ -15,7 +15,15 @@ class GlobalBrands
     public function brandsCarousel() {
         $brandsCarousel = $this->brandRepository->findAll();
 
+        // $array = [];
+        // foreach($brandsCarousel as $id =>$brand)
+        // {
 
+        //     for ($i=0 ; $i<4; $i++){
+        //         $array[]
+        //     }
+
+        // }
         
          
         return $brandsCarousel;
