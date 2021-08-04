@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Product;
+use App\Form\SearchType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -33,8 +37,7 @@ class HomeController extends AbstractController
         ], null, 3);
 
         //$productsByPromotionInPercent = $reposPromotionByPercentage->findByPercentagePromotion('40');
-
-       //dd($productsPromotion, $productsRecent);
+        //dd($productsPromotion, $productsRecent);
         
 
         return $this->render('home/index.html.twig', [
@@ -42,8 +45,6 @@ class HomeController extends AbstractController
             'productsPromotion'=> $productsPromotion,
             'quantity' => $totalQuantity,
             //'productsByPromotionInPercent'=>$productsByPromotionInPercent
-
-
         ]);
     }
 
@@ -54,25 +55,28 @@ class HomeController extends AbstractController
      * 
      * @return void
      */
-    public function search(Request $request, ProductRepository $productRepository)
+    
+    public function search(Request $request,
+                            PaginatorInterface $paginator, 
+                            ProductRepository $productRepository 
+                            ) 
     {
         $searchValue = $request->get('query');
-
-       // dd($searchValue);
-
-        $products=  $productRepository->findBySearchByName($searchValue);
+      
+        // dd($searchValue);
+        $query=  $productRepository->findBySearchByName($searchValue );
         //dd($products);
-
+        $products = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            3
+        );
         return $this->render('home/search.html.twig', [
             'products' => $products,
             'searchValue' => $searchValue,
             
-            
-            
         ]);
-    }
-
-   
+    }   
 }
 
 
