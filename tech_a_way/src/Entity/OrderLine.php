@@ -49,7 +49,6 @@ class OrderLine
     /**
      * @ORM\Column(type="float")
      * @Assert\PositiveOrZero(message="un prix doit forcément être positif")
-     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $inclTaxesUnitPrice;
 

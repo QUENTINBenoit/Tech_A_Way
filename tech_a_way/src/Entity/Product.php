@@ -43,7 +43,6 @@ class Product
     /**
      * @ORM\Column(type="float")
      * @Assert\Positive(message="un prix doit forcément être positif")
-     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $inclTaxesPrice;
 

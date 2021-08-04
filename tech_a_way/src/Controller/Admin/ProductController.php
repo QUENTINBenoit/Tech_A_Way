@@ -46,8 +46,11 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
+            $inclTaxesPrice = ($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice();
+            $inclTaxesRounded = round($inclTaxesPrice, 2);
+       
+            $product->setExclTaxesPrice(round($product->getExclTaxesPrice(), 2));
+            $product->setInclTaxesPrice($inclTaxesRounded);
 
             $em = $this->getDoctrine()->getManager();
             
@@ -88,8 +91,12 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $product->setExclTaxesPrice(round($product->getExclTaxesPrice(), 2));
+            $inclTaxesPrice = ($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice();
+            $inclTaxesRounded = round($inclTaxesPrice, 2);
 
-            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
+            $product->setInclTaxesPrice($inclTaxesRounded);
 
             $em = $this->getDoctrine()->getManager();
 
