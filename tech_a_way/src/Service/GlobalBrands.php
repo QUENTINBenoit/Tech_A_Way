@@ -13,24 +13,15 @@ class GlobalBrands
         $this->brandRepository = $brandRepository;
     }
     public function brandsCarousel() {
-        $brandsCarousel = $this->brandRepository->findAll();
+        $brands = $this->brandRepository->findAll();
 
-        // $array = [];
-        // foreach($brandsCarousel as $id =>$brand)
-        // {
-
-        //     for ($i=0 ; $i<4; $i++){
-        //         $array[]
-        //     }
-
-        // }
+      
+        $brandsCarousel = array_chunk($brands, 4);
         
          
         return $brandsCarousel;
     }
      
-
-
 
     
 }
