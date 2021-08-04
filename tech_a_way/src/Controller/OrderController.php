@@ -11,15 +11,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 /**
  * Class to send order with payment
  * 
- * @Route("/order/", name="order_")
- *  
+ * @Route("/order", name="order_")
  */
 class OrderController extends AbstractController
 {
@@ -27,14 +24,13 @@ class OrderController extends AbstractController
     /**
      * Method to display informations at the order page
      * 
-     * @Route("list", name="address_list")
-     *  
+     * @Route("/list", name="address_list")
      * 
      */
-    public function customerOrder(SessionService $sessionService): Response
+    public function customerOrder(SessionService $sessionService)
     {
           
-        return $this->render('order/index.html.twig', [
+        return $this->render('order/index.html.twig',[
             'items' => $sessionService->getCart(),
             'total' => $sessionService->getTotal(),
         ]);

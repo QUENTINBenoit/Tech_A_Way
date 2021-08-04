@@ -36,7 +36,7 @@
                                 </ul>
                                 </p>
                                 <div class="ms-5 mb-4">
-					<a href="{{ path('acount_user_update_address', {'userId':app.user.id}, {'addressId':address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
 				</div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
             </div>
 
             {% if items is not empty %}
-			<h1 class="">MON PANIER</h1>
+			<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Ma commande</h1>
 
 			<div id="feature_product" class="row">
 				<div class="col-md-3">Produit</div>
@@ -74,7 +74,10 @@
                     <p class="btn-warning">Non disponible</p>
                     {% endif %}
 				</div>
-				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item['quantity'] }} €</div>
+				<div class="col-md-2 d-flex align-items-baseline quantity">
+					<div class="fw-bold mx-2" id="actual_quantity_product_1">{{ item.quantity }}</div>
+				</div>
+				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item.quantity }} €</div>
 			</div>
         {% endfor %}
 			<div class="summary_total_amount">
@@ -91,7 +94,7 @@
 					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
 				</div>
 				<form action="{{ path('order_address_list') }}" class="button_order row">
-					<button type="submit">COMMANDER</button>
+					<button type="submit">CHOISIR MA LIVRAISON</button>
 				</form>
 			</div>
         {% else %}

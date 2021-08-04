@@ -46,7 +46,7 @@
 
 				</div>
 
-				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item['quantity'] }} €</div>
+				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item.quantity }} €</div>
 				<div class="col-md-1 button_delete">
 					<a href="{{ path('cart_remove_all_one_product', {id: item.product.id}) }}"class="btn btn-light btn-sm button_delete_product" id="button_delete_product_1">
 						<i class="fas fa-times"></i>
