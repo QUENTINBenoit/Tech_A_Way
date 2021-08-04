@@ -6,22 +6,22 @@
 {% block body %}
 
 
-	<div class="container-lg" id="carouselOfImagesHomePage">
+	<div style="width:650px;" class="d-none d-md-block container-lg" id="carouselOfImagesHomePage">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">
 				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
 				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
 				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
 			</div>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="http://lorempixel.com/400/200/technics/4" class="d-block w-100" alt="...">
+			<div class="carousel-inner container">
+				<div class="carousel-item active row col-10">
+					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[0].getPictures[0].name) }}" class="d-block" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img src="http://lorempixel.com/400/200/technics/2" class="d-block w-100" alt="...">
+					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}" class="d-block" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img src="http://lorempixel.com/400/200/technics/3" class="d-block w-100" alt="...">
+					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[2].getPictures[0].name) }}" class="d-block" alt="...">
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -49,7 +49,7 @@
 			{% for newProduct in productsRecent %}
 				<div class="d-flex justify-content-center col-xs-12 col-md-4">
 					<div class="text card mb-4 shadow-sm">
-						<img class="bd-placeholder-img card-img-top" width="100%" height="225" src="http://lorempixel.com/200/100/technics/2" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+						<img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('uploads/' ~  newProduct.getPictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
 						<title>{{newProduct.name}}</title>
 						<rect width="100%" height="100%" fill="#55595c"></rect>
 						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{newProduct.name}}</text>
@@ -82,7 +82,7 @@
 			{% for promotionalProduct in productsPromotion %}
 				<div class="d-flex justify-content-center col-xs-12 col-md-4">
 					<div class="text card mb-4 shadow-sm">
-						<img class="bd-placeholder-img card-img-top" width="100%" height="225" src="http://lorempixel.com/200/100/technics/2" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+						<img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('uploads/' ~  promotionalProduct.getPictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
 						<title>{{promotionalProduct.name}}</title>
 						<rect width="100%" height="100%" fill="#55595c"></rect>
 						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{promotionalProduct.name}}</text>

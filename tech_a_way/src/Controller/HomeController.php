@@ -24,6 +24,7 @@ class HomeController extends AbstractController
     {
         $session = $sessionInterface->get('cart', []);
         
+      
         // Total quantity of the session array values (corresponding of the product quantity add to the cart)
         $totalQuantity = array_sum($session);
 
