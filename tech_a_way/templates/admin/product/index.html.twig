@@ -69,7 +69,7 @@
 
 
 							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
-                    		<div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
+                    		<div><a class="confirmRequestedProduct" href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
 							{% else %}
 							<div class="fst-italic">suppression interdite</div>
 							{% endif %}
