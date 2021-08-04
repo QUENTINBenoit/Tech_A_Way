@@ -129,6 +129,11 @@ class UserController extends AbstractController
     public function update(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
         // dd($this->getUser()->getRoles()[0]);
+
+        // we will test that the owners of the account or a super admin has the right to modify the user information
+        // Symfony call supports method of Voter UserVoter
+        $this->denyAccessUnlessGranted('USER_EDIT', $user);
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         
