@@ -43,11 +43,13 @@ class CategoryController extends AbstractController
      * @Route("/{id}/pagination ", name="pagination")
      */
     public function pagination(
-        Category $category,
-        PaginatorInterface $paginator,
-        Request $request,
-        ProductRepository $productRepository
-                     ): Response {
+                    Category $category,
+                    PaginatorInterface $paginator,
+                    Request $request,
+                    ProductRepository $productRepository
+                                ): Response 
+                                {
+
         $filter = $request->query->all();
         // je lie le formulaire à l'entité Product
         $form = $this->createForm(SearchType::class, null, [
@@ -56,26 +58,21 @@ class CategoryController extends AbstractController
         ]);
 
             $form->handleRequest($request);
-
+            
             if(isset($filter['search'])){
                 $query= $productRepository->findByFilter($filter['search']);
             }else{
-                $query= $category->getProducts();     
-           // $query = $productsbyCategory;
-           }
-           
-           // dd($productsbyCategory);
-           
+                $query= $category->getProducts();           
+           }        
             dump(count($query));
             //dd($query );
             $products = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            2
+            3
         );
-
         return $this->render('product/product_list.html.twig', [
-            'products' => $products,
+            'products' => $products,  
             'form' => $form->createView(),
         ]);
     }
