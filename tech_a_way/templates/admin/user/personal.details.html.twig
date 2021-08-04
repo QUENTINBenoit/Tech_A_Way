@@ -65,7 +65,7 @@
 							<td>
                                 <a href="{{ path('admin_user_address_update', {userId:user.id, addressId:address.id}) }}">éditer</a>
                                  <div></div> 
-                                <a href="{{ path('admin_user_address_delete', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}">supprimer</a></td>
+                                <a class="confirmRequested" href="{{ path('admin_user_address_delete', {userId:user.id, addressId:address.id, token:csrf_token('delete-address')}) }}">supprimer</a></td>
 						</tr>
 					{% endfor %}
 

@@ -50,7 +50,12 @@ class BrandController extends AbstractController
             // we use PictureUploader service because construct class Category make injection
             $newFileName = $this->pictureUploader->upload($form, 'logo');
 
-            $brand->setLogo($newFileName);
+            if ($newFileName) {
+                $brand->setLogo($newFileName);
+            } else {
+                $brand->setLogo($brand->getName());
+
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($brand);
@@ -80,14 +85,16 @@ class BrandController extends AbstractController
             // we use PictureUploader service because construct class Category make injection
             $newFileName = $this->pictureUploader->upload($form, 'logo');
 
-            $brand->setLogo($newFileName);
+            if ($newFileName) {
+                $brand->setLogo($newFileName);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
             $this->addFlash('success', 'La marque ' . $brand->getName() . ' a bien été mise à jour');
 
-            return $this->redirectToRoute('admin_brand_update', ['id' => $brand->getId()]);
+            return $this->redirectToRoute('admin_brand_index');
         }
 
         return $this->render('admin/brand/update.html.twig', [

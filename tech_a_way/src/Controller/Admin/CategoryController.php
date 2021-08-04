@@ -158,7 +158,9 @@ class CategoryController extends AbstractController
             // we use PictureUploader service because construct class Category make injection
             $newFileName = $this->pictureUploader->upload($form, 'picture');
     
-            $category->setPicture($newFileName);
+            if ($newFileName) {
+                $category->setPicture($newFileName);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -185,10 +187,12 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-                // we use PictureUploader service because construct class Category make injection
-                $newFileName = $this->pictureUploader->upload($form, 'picture');
-        
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'picture');
+    
+            if ($newFileName) {
                 $category->setPicture($newFileName);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();

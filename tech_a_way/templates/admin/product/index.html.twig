@@ -39,7 +39,11 @@
 						<tr>
 							<th scope="row">{{ product.id }}</th>
 							<td>{{ product.name }}
+							{% if product.getPictures[0] is defined %}
 							<div><img width="60px" src="{{ asset('uploads/' ~  product.getPictures[0].name) }}" alt=""></div>
+							{% else %}
+							<div></div>
+							{% endif %}
 							</td>
 							<td>{{ product.exclTaxesPrice }}</td>
 							<td>{{ product.salesTax }}</td>

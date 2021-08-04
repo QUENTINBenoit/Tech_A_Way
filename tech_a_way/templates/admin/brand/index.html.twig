@@ -34,7 +34,7 @@
 						    <td>
                                 <div><a href="{{ path('admin_brand_update', {id:brand.id}) }}">Editer</a></div>
 							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
-                                  <div><a href="{{ path('admin_brand_delete', {id:brand.id, token:csrf_token('delete-brand')}) }}">Supprimer</a></div>
+                                  <div><a class="confirmRequested" href="{{ path('admin_brand_delete', {id:brand.id, token:csrf_token('delete-brand')}) }}">Supprimer</a></div>
 							{% else %}
 							<div class="fst-italic">Suppression interdite</div>
 							{% endif %}
