@@ -124,6 +124,17 @@ class SessionService
 
         $this->session->set('cart', $cart);
     }
+
+
+    /**
+     * Method that allows to empty the session cart
+     *
+     * @return void
+     */
+    public function emptyCart()
+    {
+        $this->session->clear();
+    }
         
    
 }

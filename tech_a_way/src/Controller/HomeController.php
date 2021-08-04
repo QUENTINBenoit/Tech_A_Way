@@ -22,6 +22,7 @@ class HomeController extends AbstractController
      */
     public function index(ProductRepository $productRepository, SessionInterface $sessionInterface): Response
     {
+        // phpinfo();
         $session = $sessionInterface->get('cart', []);
         
         // Total quantity of the session array values (corresponding of the product quantity add to the cart)

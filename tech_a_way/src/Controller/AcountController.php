@@ -26,7 +26,7 @@ class AcountController extends AbstractController
      */
     public function readorUpdate($id, UserRepository $userRepository, Request $request): Response
     {
-        $user= $userRepository->findWithAllDetails($id);
+        $user = $userRepository->findWithAllDetails($id);
 
         $form = $this->createForm(CustomerType::class, $user);
         $form->handleRequest($request);

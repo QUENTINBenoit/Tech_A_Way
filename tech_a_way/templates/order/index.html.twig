@@ -4,16 +4,15 @@
 
 {% block body %}
     
-<main>
-        <section>
-            <div class="container-fluid mt-4" id="delivery address selection">
+<main class="container">
+            <div class="container-lg mt-4" id="delivery address selection">
                 <div class="row" id="title_adress_selected">
                     <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ">
-                        <h1 class="">Sélectionner votre adresse de livraison</h1>
+                        <h1 class="">Votre adresse de livraison</h1>
                     </div>
                 </div>
             </div>
-            <div class="container mt-3" id="selected_adress">
+            <div class="container-lg mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
                 {% for address in app.user.addresses %}
                     <div class="col d-flex justify-content-md-center " >
@@ -37,8 +36,7 @@
                                 </ul>
                                 </p>
                                 <div class="ms-5 mb-4">
-					<a href="{{ path('order_update_address', {'id':address.id}) }}" class="btn btn-primary">Editer</a>
-					<a href="" class="btn btn-primary">Supprimer</a>
+					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
 				</div>
                             </div>
                         </div>
@@ -46,131 +44,68 @@
                     {% endfor %}
                 </div>
             </div>
-        </section>
 
-        <section>
-            <div class="container mt-3" id="selection of payment method">
-                <div class="row">
-                    <div class="col d-flex justify-content-md-center " style="border-bottom:1px solid #F25528;">
-                        <h2>Selectionner un mode de paiement</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="container mt-3" id="Financing option ">
-                <div class="row">
-                    <div class="col" style="border-bottom:1px solid #F25528;">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                        Payer en 4 fois carte bancaire
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
-                                        Placeholder content for this accordion, which is intended to demonstrate the
-                                        <code>.accordion-flush</code> class. This is the first item's accordion body.
-                                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminate3">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        Indeterminate checkbox
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                        Payer jusqu'a 24X
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
-                                        Placeholder content for this accordion, which is intended to demonstrate the
-                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
-                                        Let's imagine this being filled with some actual content.
-                                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminate4">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        Indeterminate checkbox
-                                    </label>
-                                </div>
+            {% if items is not empty %}
+			<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Ma commande</h1>
 
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingthree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapsethree" aria-expanded="false"
-                                        aria-controls="flush-collapsethree">
-                                       Carte bancaire
-                                    </button>
-                                </h2>
-                                <div id="flush-collapsethree" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingthree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
-                                        Placeholder content for this accordion, which is intended to demonstrate the
-                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
-                                        Let's imagine this being filled with some actual content.
-                                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminate4">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        Indeterminate checkbox
-                                    </label>
-                                </div>
+			<div id="feature_product" class="row">
+				<div class="col-md-3">Produit</div>
+				<div class="col-md-4">Description</div>
+				<div class="col-md-2">Quantité</div>
+				<div class="col-md-2">Prix</div>
+				<div class="col-md-1">
+					<i class="fas fa-trash delete_icon"></i>
+				</div>
+			</div>
 
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingfour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapsefour" aria-expanded="false"
-                                        aria-controls="flush-collapsefour">
-                                        Paypal
-                                    </button>
-                                </h2>
-                                <div id="flush-collapsefour" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingfour" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body" style="background-color: rgb(255, 230, 197);">
-                                        Placeholder content for this accordion, which is intended to demonstrate the
-                                        <code>.accordion-flush</code> class. This is the second item's accordion body.
-                                        Let's imagine this being filled with some actual content.
-                                    </div>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckIndeterminatefour">
-                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                        Indeterminate checkbox
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="container mt-3 mb-3" id="button_validate_method_payment">
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="btn" style="background-color: #F25528;">Valider</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+            {% for item in items %}
+			<div class="row p-3 product product_1">
+				<div class="col-3 col-md-3 picture_product">
+					<img src="{{ asset('/images/produits/acer-nitro-5.jpg')}}" alt="acer-nitro-5" width="120px">
+				</div>
+				<div class="col-8 col-md-4 product_characteristics">
+					<p class="name_product">
+						<a href="{{ path('product_details', {id: item.product.id}) }}">{{ item.product.brand.name }} {{ item.product.name }}</a>
+					</p>
+					<p class="description_product">{{ item.product.description }}</p>
+                    {% if item.product.stock > 0 %}
+					<p class="available">Disponible</p>
+                    {% else %}
+                    <p class="btn-warning">Non disponible</p>
+                    {% endif %}
+				</div>
+				<div class="col-md-2 d-flex align-items-baseline quantity">
+					<div class="fw-bold mx-2" id="actual_quantity_product_1">{{ item.quantity }}</div>
+				</div>
+				<div class="col-md-2 price">{{ item.product.inclTaxesPrice * item.quantity }} €</div>
+			</div>
+        {% endfor %}
+			<div class="summary_total_amount">
+				<div class="delivery col p-3 row">
+					<div class="col-9 col-sm-10 col-md-9">Date de livraison estimée le : {{ "now"|date_modify("+3 day")|date("d/m/Y") }}</div>
+					<div class="col-3 col-sm-2 col-md-3">Gratuit</div>
+				</div>
+				<div class="summary_order p-3 row mb-2">
+					<form action="" class="d-flex mb-3">
+						<input class="form-control me-2" type="order" placeholder="code PROMO" aria-label="order">
+						<button class="btn btn-outline-secondary" type="submit">OK</button>
+					</form>
+					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
+					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
+				</div>
+				<form action="{{ path('order_payment_list') }}" class="button_order row">
+					<button type="submit">LIVRAISON ET PAIEMENT</button>
+				</form>
+			</div>
+        {% else %}
+		<div class="container-fluid">
+		<div class="row p-3 product product_1 justify-content-center">
+		<div class="col-12 col-md-3 picture_product">
+        	<p class="text-center text-uppercase fw-bold"> Votre panier est vide</p>
+		</div>
+		</div>
+		</div>
+        {% endif %}
     </main>
 
 {% endblock %}

@@ -83,9 +83,9 @@ class UserType extends AbstractType
                 ]);
                 if (!$userData->getId()){
                     $form->add('addresses', CollectionType::class, [
-                        'label' => 'Votre adresse',
                         'entry_type' => AddressType::class,
                         'entry_options' => ['label' => false],
+                        'allow_add' => true,
                     ])
                 ;}
             });
