@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de paiement{% endblock %}
+
+{% block body %}
+<main class="row container justify-content-md-between" id="account-page-main">
+    <section class="row col col-lg-5 mb-3 p-2" id="compte_user_informations">
+			<h1 style="color: black;" class="text-center mb-3 fs-2">Ajouter une adresse</h1>
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.typeDelivery) }}
+							</div> 
+						</div>
+					</div>
+                    {{ form_start(formPayment) }}
+					<div class="container">
+						<div class="row">
+							<div class="mb-3">
+								{{ form_row(formPayment.type) }}
+							</div> 
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Ajouter</button>
+                                    {{ form_end(formPayment) }}
+									{{ form_end(form) }}
+
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+</main>
+
+{% endblock %}
