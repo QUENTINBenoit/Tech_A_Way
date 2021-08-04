@@ -43,7 +43,7 @@
 							<td>{{ product.statusPromotion }}</td>
 							<td>{{ product.percentagePromotion }}</td>
 						    <td>
-                                <a href="#">éditer</a>
+                                <a href="{{ path('admin_product_update', {id:product.id}) }}">éditer</a>
                             </td>
 						</tr>
 					{% else %}

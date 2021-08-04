@@ -38,7 +38,9 @@
 					{% for product in products %}
 						<tr>
 							<th scope="row">{{ product.id }}</th>
-							<td>{{ product.name }}</td>
+							<td>{{ product.name }}
+							<div><img width="60px" src="{{ asset('uploads/' ~  product.getPictures[0].name) }}" alt=""></div>
+							</td>
 							<td>{{ product.exclTaxesPrice }}</td>
 							<td>{{ product.salesTax }}</td>
 							<td>{{ product.inclTaxesPrice }}</td>
