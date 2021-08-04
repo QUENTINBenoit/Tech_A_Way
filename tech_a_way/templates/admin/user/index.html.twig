@@ -33,9 +33,9 @@
 							<td>{{ user.lastname }}</td>
 							<td>{{ user.gender }}</td>
 						    <td>
-                                <a href="{{ path('admin_user_orders', {id:user.id}) }}">ses commandes</a>
-								<div></div>
                                 <a href="{{ path('admin_user_personal_details', {id:user.id}) }}">infos personnelles</a>
+								<div></div>
+                                <a href="{{ path('admin_user_orders', {id:user.id}) }}">ses commandes</a>
                             </td>
 						</tr>
 					{% else %}

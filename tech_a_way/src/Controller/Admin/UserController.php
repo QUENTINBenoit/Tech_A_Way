@@ -132,7 +132,7 @@ class UserController extends AbstractController
 
         // we will test that the owners of the account or a super admin has the right to modify the user information
         // Symfony call supports method of Voter UserVoter
-        $this->denyAccessUnlessGranted('USER_EDIT', $user);
+        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou un admin/super admin peut afficher cette page');
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -192,7 +192,10 @@ class UserController extends AbstractController
      */
     public function createNewAddress(Request $request, User $user)
     {
-           $address = new Address();
+           
+            $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou un admin/super admin peut afficher cette page');
+        
+            $address = new Address();
 
        
 
@@ -227,10 +230,11 @@ class UserController extends AbstractController
      */
     public function updateAddress($userId, $addressId, Request $request, UserRepository $userRepository, AddressRepository $addressRepository)
     {
-          
             $user = $userRepository->find($userId);
             $address = $addressRepository->find($addressId);
-       
+    
+            $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou un admin/super admin peut afficher cette page');
+          
 
            $form = $this->createForm(AddressBackofficeType::class, $address);
     
@@ -264,6 +268,8 @@ class UserController extends AbstractController
     {
         $user = $userRepository->find($userId);
         $address = $addressRepository->find($addressId);
+        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou un admin/super admin peut afficher cette page');
+        
 
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
