@@ -210,6 +210,8 @@ class CategoryController extends AbstractController
      */
     public function delete(Category $category, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page');
+
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
         // 'delete-item' est la même clé utilisée dans le template pour générer le token

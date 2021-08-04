@@ -123,6 +123,8 @@ class ProductController extends AbstractController
      */
     public function delete(Product $product, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page');
+
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
         if ($this->isCsrfTokenValid('delete-product', $submitedToken)) {
@@ -188,6 +190,8 @@ class ProductController extends AbstractController
      */
     public function deletePicture($productId, $pictureId, PictureRepository $pictureRepository, ProductRepository $productRepository, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page');
+
         $picture = $pictureRepository->find($pictureId);
         $product = $productRepository->find($productId);
 
