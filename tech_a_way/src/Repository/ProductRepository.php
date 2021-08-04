@@ -41,7 +41,7 @@ class ProductRepository extends ServiceEntityRepository
         if (isset($filter['categories'])) {
             $qb->leftJoin('p.categories', "c");
             $qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie
-        $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie
+            $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie
         }
 
         if (isset($filter['statusPromotion'])) {
