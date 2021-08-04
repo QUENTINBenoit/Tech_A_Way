@@ -64,12 +64,17 @@ class UserController extends AbstractController
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
 
             // We recover the password in non-hash
             $plainPassword = $form->get('password')->getData();
+
+            if($plainPassword == null) {
+                $this->addFlash('danger', 'Le mot de passe est obligatoire');
+
+                return $this->redirectToRoute('admin_user_create');
+            }
 
             // We hash password
             $hashedPassword = $passwordHasher->hashPassword(

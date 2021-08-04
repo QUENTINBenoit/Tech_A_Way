@@ -23,12 +23,14 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $name;
 
     /**
      * @ORM\Column(type="float")
      * @Assert\Positive(message="un prix doit forcément être positif")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $exclTaxesPrice;
 
@@ -41,11 +43,13 @@ class Product
     /**
      * @ORM\Column(type="float")
      * @Assert\Positive(message="un prix doit forcément être positif")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $inclTaxesPrice;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Positive(message="la référence d'un produit ne peut avoir une valeur négative")
      * @Assert\Length(
      *      min = 5,
@@ -64,6 +68,7 @@ class Product
     /**
      * @ORM\Column(type="integer")
      * @Assert\PositiveOrZero(message="Le stock doit être positif ou égal à 0")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $stock;
 

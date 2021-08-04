@@ -22,18 +22,21 @@ class OrderLine
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $productName;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\PositiveOrZero(message="La quantité doit être positive ou égale à 0")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="float")
      * @Assert\PositiveOrZero(message="un prix doit forcément être positif")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $exclTaxesUnitPrice;
 
@@ -46,6 +49,7 @@ class OrderLine
     /**
      * @ORM\Column(type="float")
      * @Assert\PositiveOrZero(message="un prix doit forcément être positif")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $inclTaxesUnitPrice;
 

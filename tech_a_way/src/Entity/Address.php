@@ -21,16 +21,19 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $street;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Length(
      *      min = 5,
      *      max = 5,
@@ -42,6 +45,7 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $city;
 

@@ -28,11 +28,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $lastname;
 
@@ -44,6 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="integer")
      * @Assert\Positive(message="un numéro de téléphone ne peut être négatif")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Length(
      *      min = 9,
      *      max = 9,
@@ -55,6 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas un email valide."
      * )
@@ -68,6 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
    /**
      * @ORM\Column(type="smallint")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\PositiveOrZero(message="le statut de l'utilisateur doit être égal à 0 (inactif) ou 1 (actif)")
      */
     private $statusUser;
