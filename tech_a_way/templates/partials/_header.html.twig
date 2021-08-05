@@ -60,9 +60,11 @@
 					{% endif %}
 					{% for cat in global.categories %}
 					<li>
-					  <a href="#" class="fs-6 fst-italic"> {{ cat.name }} </a>
+					  <a href="{{path('category_pagination', {id: cat.id})}}" class="fs-6 fst-italic"> {{ cat.name }} </a>
 					</li>
 					{% endfor %}
+
+					
 					<li>
 					  <a href="#" class="fs-6 fst-italic">- Marques</a>
 					</li>
