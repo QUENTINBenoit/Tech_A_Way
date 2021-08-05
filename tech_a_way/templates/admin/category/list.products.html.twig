@@ -17,7 +17,7 @@
 						<th scope="col">Id</th>
 						<th scope="col">Nom</th>
 						<th scope="col">prix HT</th>
-						<th scope="col">TVA</th>
+						<th scope="col">TVA (%)</th>
 						<th scope="col">prix TTC</th>
 						<th scope="col">Référence</th>
 						<th scope="col">Description</th>
@@ -33,17 +33,17 @@
 						<tr>
 							<th scope="row">{{ product.id }}</th>
 							<td>{{ product.name }}</td>
-							<td>{{ product.exclTaxesPrice }}</td>
-							<td>{{ product.salesTax }}</td>
-							<td>{{ product.inclTaxesPrice }}</td>
-							<td>{{ product.reference }}</td>
+							<td>{{ product.exclTaxesPrice }} €</td>
+							<td>{{ product.salesTax }} %</td>
+							<td>{{ product.inclTaxesPrice }} €</td>
+							<td class="text-secondary fst-italic">{{ product.reference }}</td>
 							<td>{{ product.description }}</td>
 							<td>{{ product.stock }}</td>
 							<td>{{ product.statusRecent }}</td>
 							<td>{{ product.statusPromotion }}</td>
 							<td>{{ product.percentagePromotion }}</td>
 						    <td>
-                                <a href="#">éditer</a>
+                                <a href="{{ path('admin_product_update', {id:product.id}) }}">éditer</a>
                             </td>
 						</tr>
 					{% else %}

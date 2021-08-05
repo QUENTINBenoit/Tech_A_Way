@@ -43,16 +43,12 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 ),
             );  
-            
             // Add clone of $billing data in $delievery to add a second type "Livraison" at the same adress to the database in the other primary id
             $delivery = clone $billing;
             $delivery->setType('Livraison');
             $user->addAddress($delivery);
+         
 
-
-            $delivery = clone $billing;
-            $delivery->setType('Livraison');
-            $user->addAddress($delivery);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

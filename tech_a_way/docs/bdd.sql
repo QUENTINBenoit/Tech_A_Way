@@ -28,7 +28,12 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (2,	'facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
 (3,	'livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
 (4,	'Facturation',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
-(5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL);
+(5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
+(6,	'livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
+(7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
+(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
+(9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
+(10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
@@ -52,7 +57,12 @@ INSERT INTO `brand` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 (9,	'Samsung',	'samsung-61093aef1a612.png',	'2021-08-03 14:47:43',	'2021-08-03 14:47:43'),
 (10,	'Sony',	'sony-61093af9c8c57.jpg',	'2021-08-03 14:47:53',	'2021-08-03 14:47:53'),
 (11,	'Toshiba',	'toshiba-61093b0414592.jpg',	'2021-08-03 14:48:04',	'2021-08-03 14:48:04'),
-(12,	'Xiaomi',	'xiaomi-61093b0d62c45.png',	'2021-08-03 14:48:13',	'2021-08-03 14:48:13');
+(12,	'Xiaomi',	'xiaomi-61093b0d62c45.png',	'2021-08-03 14:48:13',	'2021-08-03 14:48:13'),
+(13,	'Logitech',	'logitech-610b362ab54e7.png',	'2021-08-05 02:51:54',	'2021-08-05 02:51:54'),
+(14,	'JBL',	'JBL-610b37b636764.png',	'2021-08-05 02:58:30',	'2021-08-05 02:58:30'),
+(15,	'Ryzen',	'Ryzen-610b3c2e3c86d.jpg',	'2021-08-05 03:17:34',	'2021-08-05 03:17:34'),
+(16,	'Tp-Link',	'tplink-610b4102a2309.jpg',	'2021-08-05 03:38:10',	'2021-08-05 03:38:10'),
+(17,	'Epson',	'Epson-Logo-610b4337a5efa.png',	'2021-08-05 03:47:35',	'2021-08-05 03:47:35');
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -161,6 +171,14 @@ CREATE TABLE `mode_of_payment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
+(1,	'American Express'),
+(2,	'CB'),
+(3,	'Bitcoin'),
+(4,	'Paypal'),
+(5,	'Mastercard'),
+(6,	'Visa Electron'),
+(7,	'Visa');
 
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
@@ -186,6 +204,11 @@ CREATE TABLE `order` (
   CONSTRAINT `FK_F5299398C9A9CD82` FOREIGN KEY (`mode_of_payment_id`) REFERENCES `mode_of_payment` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `order` (`id`, `type_delivery`, `street_delivery`, `zipcode_delivery`, `city_delivery`, `street_bill`, `zipcode_bill`, `city_bill`, `created_at`, `updated_at`, `status_id`, `mode_of_payment_id`, `user_id`) VALUES
+(1,	'Chronopost',	'15 rue de la Beauce',	45000,	'Orléans',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-05 04:36:09',	NULL,	2,	5,	1),
+(2,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:41:35',	NULL,	3,	6,	8),
+(3,	'Chronopost',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:44:37',	NULL,	3,	4,	8),
+(4,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:48:23',	NULL,	2,	3,	8);
 
 DROP TABLE IF EXISTS `order_line`;
 CREATE TABLE `order_line` (
@@ -203,6 +226,14 @@ CREATE TABLE `order_line` (
   CONSTRAINT `FK_9CE58EE170A5F021` FOREIGN KEY (`an_order_id`) REFERENCES `order` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `order_line` (`id`, `product_name`, `quantity`, `excl_taxes_unit_price`, `sales_tax`, `incl_taxes_unit_price`, `created_at`, `updated_at`, `an_order_id`) VALUES
+(1,	'Câble HDMI 1 m',	1,	7.99,	20,	9.59,	'2021-08-05 04:37:14',	NULL,	1),
+(2,	'2020 Apple MacBook Air',	1,	1199.99,	20,	1439.99,	'2021-08-05 04:37:53',	NULL,	1),
+(3,	'Acer Swift 1',	1,	350,	20,	420,	'2021-08-05 04:42:36',	NULL,	2),
+(4,	'Caméra de Surveillance WiFi',	2,	39.99,	20,	47.99,	'2021-08-05 04:43:19',	NULL,	2),
+(5,	'JBL LIVE 500BT',	1,	72.5,	20,	87,	'2021-08-05 04:45:23',	NULL,	3),
+(6,	'TP-Link Tapo Ampoule E27 Connectée Wifi',	1,	23.99,	20,	28.79,	'2021-08-05 04:45:56',	NULL,	3),
+(7,	'Epson Expression Home XP 4100',	1,	69.5,	20,	83.4,	'2021-08-05 04:49:12',	NULL,	4);
 
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture` (
@@ -228,7 +259,36 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 (9,	'Toshiba-55UA4B63DG-1-61093fda65056.jpg',	'2021-08-03 15:08:42',	'2021-08-03 15:08:42',	5),
 (10,	'Toshiba-55UA4B63DG-2-61093fde2aea4.jpg',	'2021-08-03 15:08:46',	'2021-08-03 15:08:46',	5),
 (11,	'Toshiba-55UA4B63DG-3-61093fe1adfb6.jpg',	'2021-08-03 15:08:49',	'2021-08-03 15:08:49',	5),
-(12,	'camerasurveillance-6109409c5efc0.jpg',	'2021-08-03 15:11:56',	'2021-08-03 15:11:56',	6);
+(12,	'camerasurveillance-6109409c5efc0.jpg',	'2021-08-03 15:11:56',	'2021-08-03 15:11:56',	6),
+(13,	'homecinemalg-610b3472e186b.jpg',	'2021-08-05 02:44:34',	'2021-08-05 02:44:34',	7),
+(19,	'JBL1-610b38a1bfee3.jpg',	'2021-08-05 03:02:25',	'2021-08-05 03:02:25',	10),
+(20,	'JBL2-610b38a835073.jpg',	'2021-08-05 03:02:32',	'2021-08-05 03:02:32',	10),
+(21,	'JBL3-610b39005319c.jpg',	'2021-08-05 03:04:00',	'2021-08-05 03:04:00',	10),
+(22,	'JBL4-610b3905cbb6f.jpg',	'2021-08-05 03:04:05',	'2021-08-05 03:04:05',	10),
+(23,	'ecphilips1-610b39d384f85.jpg',	'2021-08-05 03:07:31',	'2021-08-05 03:07:31',	11),
+(24,	'ecphilips2-610b39d87e153.jpg',	'2021-08-05 03:07:36',	'2021-08-05 03:07:36',	11),
+(25,	'ecphilips3-610b39dd43de0.jpg',	'2021-08-05 03:07:41',	'2021-08-05 03:07:41',	11),
+(26,	'ecphilips4-610b39e105033.jpg',	'2021-08-05 03:07:44',	'2021-08-05 03:07:44',	11),
+(27,	'delltour1-610b3b9923e9a.jpg',	'2021-08-05 03:15:05',	'2021-08-05 03:15:05',	12),
+(28,	'delltour2-610b3bc0ee22d.jpg',	'2021-08-05 03:15:44',	'2021-08-05 03:15:44',	12),
+(29,	'ryzen1-610b3c8458111.jpg',	'2021-08-05 03:19:00',	'2021-08-05 03:19:00',	13),
+(30,	'apple1-610b3d9cc67e8.jpg',	'2021-08-05 03:23:40',	'2021-08-05 03:23:40',	14),
+(31,	'nokia1-610b3eddb4091.jpg',	'2021-08-05 03:29:01',	'2021-08-05 03:29:01',	15),
+(32,	'nokia2-610b3ee24812e.jpg',	'2021-08-05 03:29:06',	'2021-08-05 03:29:06',	15),
+(33,	'xiaomi1-610b3f885858a.jpg',	'2021-08-05 03:31:52',	'2021-08-05 03:31:52',	16),
+(34,	'xiaomi2-610b3f8cb1465.jpg',	'2021-08-05 03:31:56',	'2021-08-05 03:31:56',	16),
+(35,	'xiaomi3-610b3f94a04a0.jpg',	'2021-08-05 03:32:04',	'2021-08-05 03:32:04',	16),
+(36,	'xiaomi4-610b3f9c21def.jpg',	'2021-08-05 03:32:12',	'2021-08-05 03:32:12',	16),
+(37,	'samsung1-610b4048895a7.jpg',	'2021-08-05 03:35:04',	'2021-08-05 03:35:04',	17),
+(38,	'samsung2-610b404cda13a.jpg',	'2021-08-05 03:35:08',	'2021-08-05 03:35:08',	17),
+(39,	'samsung3-610b40519b528.jpg',	'2021-08-05 03:35:13',	'2021-08-05 03:35:13',	17),
+(40,	'samsun4-610b4056cfe44.jpg',	'2021-08-05 03:35:18',	'2021-08-05 03:35:18',	17),
+(41,	'tplink1-610b41952b7d1.jpg',	'2021-08-05 03:40:37',	'2021-08-05 03:40:37',	18),
+(42,	'tplink2-610b41991929f.jpg',	'2021-08-05 03:40:41',	'2021-08-05 03:40:41',	18),
+(43,	'pa1-610b42700f394.jpg',	'2021-08-05 03:44:16',	'2021-08-05 03:44:16',	19),
+(44,	'pa2-610b42751f09f.jpg',	'2021-08-05 03:44:21',	'2021-08-05 03:44:21',	19),
+(45,	'epson1-610b43c443084.jpg',	'2021-08-05 03:49:56',	'2021-08-05 03:49:56',	20),
+(46,	'epson2-610b43ca52af4.jpg',	'2021-08-05 03:50:02',	'2021-08-05 03:50:02',	20);
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
@@ -252,11 +312,23 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `product` (`id`, `name`, `excl_taxes_price`, `sales_tax`, `incl_taxes_price`, `reference`, `description`, `stock`, `status_recent`, `status_promotion`, `percentage_promotion`, `created_at`, `updated_at`, `brand_id`) VALUES
-(2,	'Câble HDMI 1 m',	7.99,	20,	9.588,	14556655,	'Sony DLC-HE10C Câble HDMI Haute Vitesse avec Ethernet, 1 m',	300,	0,	0,	0,	'2021-08-03 14:54:56',	'2021-08-03 14:54:56',	10),
-(3,	'Acer Swift 1',	350,	20,	420,	454456,	'Acer Swift 1 SF114-34-P8Q7 Ordinateur Portable Ultrafin 14\'\' FHD IPS, PC Portable (Intel Pentium Silver N6000, RAM 4 Go, SSD 128 Go, Intel UHD Graphics, Windows 10) - Clavier AZERTY, Laptop Gris',	39,	0,	0,	0,	'2021-08-03 15:01:03',	'2021-08-03 15:01:03',	1),
-(4,	'Toshiba Téléviseur LED 32W',	299.99,	20,	359.988,	4556781,	'Toshiba Téléviseur LED 32W3863DA 32W3863DA 81 cm 32 Pouces EEC A+ (A++ - E) DVB-T2, DVB-C, DVB-S, HD Ready, Smart TV, Wi',	46,	1,	0,	0,	'2021-08-03 15:05:03',	'2021-08-03 15:05:03',	11),
-(5,	'Toshiba 55UA4B63DG',	429.99,	20,	515.988,	45554,	'Toshiba 55UA4B63DG, Smart TV 55\\\" LED Ultra HD 4K, Alexa intégré, Wi-Fi, 3x Hdmi, Dolby Audio 2x10W, Ethernet (55\\\"/139 cm), noir',	84,	1,	0,	0,	'2021-08-03 15:08:35',	'2021-08-03 15:08:35',	11),
-(6,	'Caméra de Surveillance WiFi',	39.99,	20,	47.988,	454551,	'Caméra de Surveillance WiFi, 1080P Caméra WiFi sans Fil, Suivi de Mouvement de Détection de Son, Audio Bidirectionnel, Vision Nocturne Haute Définition, Carte SD/Stockage Cloud',	40,	1,	1,	20,	'2021-08-03 15:11:47',	'2021-08-03 15:11:47',	8);
+(2,	'Câble HDMI 1 m',	7.99,	20,	9.59,	14587456,	'Sony DLC-HE10C Câble HDMI Haute Vitesse avec Ethernet, 1 m',	300,	0,	0,	0,	'2021-08-03 14:54:56',	'2021-08-03 14:54:56',	10),
+(3,	'Acer Swift 1',	350,	20,	420,	24157487,	'Acer Swift 1 SF114-34-P8Q7 Ordinateur Portable Ultrafin 14\'\' FHD IPS, PC Portable (Intel Pentium Silver N6000, RAM 4 Go, SSD 128 Go, Intel UHD Graphics, Windows 10) - Clavier AZERTY, Laptop Gris',	39,	0,	0,	0,	'2021-08-03 15:01:03',	'2021-08-03 15:01:03',	1),
+(4,	'Toshiba Téléviseur LED 32W',	299.99,	20,	359.99,	24157487,	'Toshiba Téléviseur LED 32W3863DA 32W3863DA 81 cm 32 Pouces EEC A+ (A++ - E) DVB-T2, DVB-C, DVB-S, HD Ready, Smart TV, Wi',	46,	1,	0,	0,	'2021-08-03 15:05:03',	'2021-08-03 15:05:03',	11),
+(5,	'Toshiba 55UA4B63DG',	429.99,	20,	515.99,	12457487,	'Toshiba 55UA4B63DG, Smart TV 55\\\" LED Ultra HD 4K, Alexa intégré, Wi-Fi, 3x Hdmi, Dolby Audio 2x10W, Ethernet (55\\\"/139 cm), noir',	84,	0,	0,	0,	'2021-08-03 15:08:35',	'2021-08-03 15:08:35',	11),
+(6,	'Caméra de Surveillance WiFi',	39.99,	20,	47.99,	12474587,	'Caméra de Surveillance WiFi, 1080P Caméra WiFi sans Fil, Suivi de Mouvement de Détection de Son, Audio Bidirectionnel, Vision Nocturne Haute Définition, Carte SD/Stockage Cloud',	40,	1,	0,	20,	'2021-08-03 15:11:47',	'2021-08-03 15:11:47',	8),
+(7,	'Home Cinéma 5.1 LG LHB625M',	237.55,	20,	285.06,	24157487,	'Système Home Cinema - Canal 5.1, Lecteur de disque Blu-ray. Alimentation en sortie / Total : 1000 Watt Fonction : Lecteur numérique, récepteur AV, enregistreur numérique, lecteur de disque Blu-ray, Lecteur réseau, récepteur audio Bluetooth',	21,	1,	0,	0,	'2021-08-05 02:44:20',	'2021-08-05 02:44:20',	5),
+(10,	'JBL LIVE 500BT',	72.5,	20,	87,	14521457,	'Casque audio circum-auriculaire sans fil – Écouteurs Bluetooth avec commande pour appels – avec Amazon Alexa intégré – Autonomie jusqu\'à 30 heures – Bleu',	43,	0,	0,	0,	'2021-08-05 03:01:06',	'2021-08-05 03:01:06',	14),
+(11,	'Philips T2205BK/00',	39.99,	20,	47.99,	14574648,	'Écouteurs Bluetooth (Écouteurs sans Fil, Commande vocale, 12 Heures d\'autonomie, Protection Contre Les éclaboussures IPX4, Petit boîtier de Charge) Noir - Modèle 2020/2021',	43,	0,	1,	10,	'2021-08-05 03:06:01',	'2021-08-05 03:06:01',	8),
+(12,	'Dell OptiPlex 3010 SFF',	191.9,	20,	230.28,	45741254,	'OptiPlex 3010 SFF Intel Core i5 3.20 GHz 8 Go DDR3 240 Go SSD DVD Writer HDMI Windows 10 Pro 64 bit (reconditionné)',	56,	0,	0,	0,	'2021-08-05 03:14:21',	'2021-08-05 03:14:21',	4),
+(13,	'Ryzen 8-Thread 4300GE',	435.5,	20,	522.6,	14567456,	'Ryzen 8-Thread 4300GE 4.00 GHz | 6-Core Radeon R7 DX12 4Go | 16Go DDR4 | 512Go SSD | DVD±RW | Windows 10 | WiFi | USB3.0 Unité Centrale Ordinateur de Bureau PC Gaming #6706',	34,	1,	0,	0,	'2021-08-05 03:18:27',	'2021-08-05 03:18:27',	15),
+(14,	'2020 Apple MacBook Air',	1199.99,	20,	1439.99,	14574584,	'Apple MacBook Air avec Apple M1 Chip (13 Pouces, 8 Go RAM, 512 Go SSD) - Gris sidéral Puce M1 conçue par Apple pour un gain de performances spectaculaire au niveau du processeur central, du processeur graphique et de l’apprentissage automatique',	24,	0,	0,	0,	'2021-08-05 03:22:09',	'2021-08-05 03:22:09',	2),
+(15,	'SMARTPHONE NOKIA 1.4 32GO GRIS',	99,	20,	118.8,	14574875,	'Nokia 1.4-Android 11Go-Mémoire vive (RAM):2Go-Mémoir interne:32Go-4G LTE-Dual SIM (2x nano)',	24,	0,	1,	20,	'2021-08-05 03:28:12',	'2021-08-05 03:28:12',	6),
+(16,	'Xiaomi Mi 11 5G',	629.99,	20,	755.99,	14527458,	'Smartphone 8GB+128GB, Écran 6,81” WQHD+ AMOLED DotDisplay, Snapdragon 888, Triple Camera 108MP+13MP+5MP, 46000mAh, NFC, Gris de Minuit (Version officielle + 2 ans de garantie Xiaomi)',	134,	1,	0,	0,	'2021-08-05 03:30:34',	'2021-08-05 03:30:34',	12),
+(17,	'Samsung Galaxy S21 Ultra 5G',	1199.99,	20,	1439.99,	14574678,	'Galaxy S21 Ultra 5G SM-G998 17,3 cm (6.8\") Double SIM Android 11 USB Type-C 12 Go 256 Go 5000 mAh Noir',	25,	0,	0,	0,	'2021-08-05 03:33:38',	'2021-08-05 03:33:38',	9),
+(18,	'TP-Link Tapo Ampoule E27 Connectée Wifi',	23.99,	20,	28.79,	14574654,	'Ampoule Connectée Wifi, Ampoule E27 LED 8.7W 806Lm, RGBCW Multicouleur et Blanc Chaud, Smart Ampoule compatible avec Alexa et Google Home, 2PCS [Classe énergétique A+] (Tapo L530E)',	60,	0,	0,	0,	'2021-08-05 03:39:48',	'2021-08-05 03:39:48',	16),
+(19,	'Philips Hue Ampoules LED Connectées E27',	24.99,	20,	29.99,	14574586,	'Philips Hue Ampoules LED Connectées Blanc Chaud E27 Compatible Bluetooth, Fonctionne avec Alexa Pack de 2 [Classe énergétique A+]',	63,	0,	0,	0,	'2021-08-05 03:43:29',	'2021-08-05 03:43:29',	8),
+(20,	'Epson Expression Home XP 4100',	69.5,	20,	83.4,	14574875,	'Epson Expression Home XP 4100 Imprimante/Jet d\'encre/Noir Normal Jet d\'Encre Duplexage automatique',	43,	0,	1,	20,	'2021-08-05 03:49:13',	'2021-08-05 03:49:13',	17);
 
 DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
@@ -283,7 +355,40 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (5,	66),
 (6,	18),
 (6,	40),
-(6,	47);
+(6,	47),
+(7,	16),
+(7,	60),
+(7,	62),
+(10,	16),
+(10,	60),
+(10,	65),
+(11,	16),
+(11,	60),
+(11,	65),
+(12,	17),
+(12,	26),
+(12,	37),
+(13,	17),
+(13,	26),
+(13,	37),
+(14,	17),
+(14,	25),
+(14,	31),
+(15,	19),
+(15,	52),
+(16,	19),
+(16,	52),
+(17,	19),
+(17,	52),
+(18,	18),
+(18,	38),
+(18,	41),
+(19,	18),
+(19,	38),
+(19,	41),
+(20,	17),
+(20,	20),
+(20,	30);
 
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
@@ -294,6 +399,11 @@ CREATE TABLE `status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `status` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1,	'En cours (non envoyé)',	'2021-08-05 04:30:48',	NULL),
+(2,	'En cours (envoyé, non livré)',	'2021-08-05 04:31:19',	NULL),
+(3,	'Terminé',	'2021-08-05 04:31:41',	NULL),
+(4,	'Annulé',	'2021-08-05 04:31:49',	NULL);
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -321,6 +431,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (5,	'Benoit',	'QUENTIN',	'Monsieur',	685457452,	'benoit@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-25',	'2021-08-02 08:54:54',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (6,	'Laetitia',	'Coffe',	'Madame',	645754856,	'laetitia-coffe@hotmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-24',	'2021-08-02 08:56:11',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (7,	'Mickael',	'GEERARDYN',	'Monsieur',	645745125,	'mickael.geerardyn@gmail.comm',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-05',	'2021-08-02 08:57:03',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
-(8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]');
+(8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]'),
+(9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]');
 
--- 2021-08-03 13:20:12
+-- 2021-08-05 06:58:24

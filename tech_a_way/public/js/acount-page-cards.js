@@ -3,12 +3,12 @@ let acountPage = {
     init: function() {
       if(window.innerWidth <= 991) {
    const mainEl = document.querySelector('#account-page-main');
-mainEl.classList.remove('row')
+mainEl.classList.remove('row');
 
       }
       if(window.innerWidth >= 992) {
         const mainEl = document.querySelector('#account-page-main');
-     mainEl.classList.add('row')
+     mainEl.classList.add('row');
      const userInsertEl = document.querySelector('#compte_user_insert');
      userInsertEl.classList.remove('d-flex');
  

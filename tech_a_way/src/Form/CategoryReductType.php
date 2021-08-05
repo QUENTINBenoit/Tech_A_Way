@@ -16,6 +16,8 @@ class CategoryReductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $category = $builder->getData();
+
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom de la catégorie'
@@ -24,7 +26,7 @@ class CategoryReductType extends AbstractType
                 'label' => 'Phrase d\'accroche'
             ])
             ->add('picture', FileType::class, [
-                'label' => 'Uploader une image',
+                'label' => $category->getPicture() !== null ? "Modifier l'image de la catégorie" : "Ajouter une image",
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

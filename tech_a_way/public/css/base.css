@@ -6,7 +6,11 @@
     z-index: 9999;
     color: #F25528;
     font-weight: bold;
+    margin-top: 22px;
 
+}
+#salutation_user a {
+    color: blue;
 }
 
 #quantity-shop {

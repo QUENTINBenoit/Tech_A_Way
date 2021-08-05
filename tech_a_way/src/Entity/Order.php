@@ -29,11 +29,13 @@ class Order
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $streetDelivery;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Length(
      *      min = 5,
      *      max = 5,
@@ -45,16 +47,19 @@ class Order
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $cityDelivery;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $streetBill;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      * @Assert\Length(
      *      min = 5,
      *      max = 5,
@@ -66,6 +71,7 @@ class Order
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank(message="ce champ doit être rempli")
      */
     private $cityBill;
 

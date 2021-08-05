@@ -158,7 +158,9 @@ class CategoryController extends AbstractController
             // we use PictureUploader service because construct class Category make injection
             $newFileName = $this->pictureUploader->upload($form, 'picture');
     
-            $category->setPicture($newFileName);
+            if ($newFileName) {
+                $category->setPicture($newFileName);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -185,10 +187,12 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-                // we use PictureUploader service because construct class Category make injection
-                $newFileName = $this->pictureUploader->upload($form, 'picture');
-        
+            // we use PictureUploader service because construct class Category make injection
+            $newFileName = $this->pictureUploader->upload($form, 'picture');
+    
+            if ($newFileName) {
                 $category->setPicture($newFileName);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -210,6 +214,8 @@ class CategoryController extends AbstractController
      */
     public function delete(Category $category, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page ou effectuer cette action');
+
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
         // 'delete-item' est la même clé utilisée dans le template pour générer le token

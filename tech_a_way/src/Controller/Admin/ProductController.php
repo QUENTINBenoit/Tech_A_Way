@@ -28,6 +28,7 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $productRepository): Response
     {
+        
         return $this->render('admin/product/index.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
@@ -45,8 +46,11 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
+            $inclTaxesPrice = ($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice();
+            $inclTaxesRounded = round($inclTaxesPrice, 2);
+       
+            $product->setExclTaxesPrice(round($product->getExclTaxesPrice(), 2));
+            $product->setInclTaxesPrice($inclTaxesRounded);
 
             $em = $this->getDoctrine()->getManager();
             
@@ -87,8 +91,12 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $product->setExclTaxesPrice(round($product->getExclTaxesPrice(), 2));
+            $inclTaxesPrice = ($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice();
+            $inclTaxesRounded = round($inclTaxesPrice, 2);
 
-            $product->setInclTaxesPrice(($product->getExclTaxesPrice()*($product->getSalesTax()/100))+$product->getExclTaxesPrice());
+            $product->setInclTaxesPrice($inclTaxesRounded);
 
             $em = $this->getDoctrine()->getManager();
 
@@ -122,6 +130,8 @@ class ProductController extends AbstractController
      */
     public function delete(Product $product, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page ou effectuer cette action');
+
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
         if ($this->isCsrfTokenValid('delete-product', $submitedToken)) {
@@ -187,6 +197,8 @@ class ProductController extends AbstractController
      */
     public function deletePicture($productId, $pictureId, PictureRepository $pictureRepository, ProductRepository $productRepository, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous ne pouvez pas accéder à cette page ou effectuer cette action');
+
         $picture = $pictureRepository->find($pictureId);
         $product = $productRepository->find($productId);
 

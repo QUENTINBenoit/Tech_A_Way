@@ -14,13 +14,14 @@ class BrandType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $brand = $builder->getData();
+
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom de la marque'
             ])
             ->add('logo', FileType::class, [
-                'label' => 'Uploader une image',
-
+                'label' => $brand->getLogo() !== null ? "Modifier l'image de la marque" : "Ajouter une image",
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
 

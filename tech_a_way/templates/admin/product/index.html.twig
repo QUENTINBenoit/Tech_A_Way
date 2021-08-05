@@ -19,7 +19,7 @@
 						<th scope="col">Id</th>
 						<th scope="col">Nom</th>
 						<th scope="col">prix HT</th>
-						<th scope="col">TVA</th>
+						<th scope="col">TVA (%)</th>
 						<th scope="col">prix TTC</th>
 						<th scope="col">Référence</th>
 						<th scope="col">Description</th>
@@ -38,11 +38,17 @@
 					{% for product in products %}
 						<tr>
 							<th scope="row">{{ product.id }}</th>
-							<td>{{ product.name }}</td>
-							<td>{{ product.exclTaxesPrice }}</td>
-							<td>{{ product.salesTax }}</td>
-							<td>{{ product.inclTaxesPrice }}</td>
-							<td>{{ product.reference }}</td>
+							<td>{{ product.name }}
+							{% if product.getPictures[0] is defined %}
+							<div><img width="60px" src="{{ asset('uploads/' ~  product.getPictures[0].name) }}" alt=""></div>
+							{% else %}
+							<div></div>
+							{% endif %}
+							</td>
+							<td>{{ product.exclTaxesPrice }} €</td>
+							<td>{{ product.salesTax }} %</td>
+							<td>{{ product.inclTaxesPrice }} €</td>
+							<td class="text-secondary fst-italic">{{ product.reference }}</td>
 							<td>{{ product.description }}</td>
 							<td>{{ product.stock }}</td>
 							<td><ul>
@@ -60,7 +66,15 @@
 						    <td>
                                 <div><a href="{{ path('admin_product_update', {id:product.id}) }}">Editer</a></div>
                                 <div><a href="{{ path('admin_product_picture_create', {id:product.id}) }}">Images</a></div>
-                                <div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
+
+
+							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+                    		<div><a class="confirmRequestedProduct" href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}">Supprimer</a></div>
+							{% else %}
+							<div class="fst-italic">suppression interdite</div>
+							{% endif %}
+
+                                
                             </td>
 						</tr>
 					{% else %}

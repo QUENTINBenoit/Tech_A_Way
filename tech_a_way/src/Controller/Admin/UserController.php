@@ -64,12 +64,17 @@ class UserController extends AbstractController
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
 
             // We recover the password in non-hash
             $plainPassword = $form->get('password')->getData();
+
+            if($plainPassword == null) {
+                $this->addFlash('danger', 'Le mot de passe est obligatoire');
+
+                return $this->redirectToRoute('admin_user_create');
+            }
 
             // We hash password
             $hashedPassword = $passwordHasher->hashPassword(
@@ -129,6 +134,11 @@ class UserController extends AbstractController
     public function update(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
         // dd($this->getUser()->getRoles()[0]);
+
+        // we will test that the owners of the account or a super admin has the right to modify the user information
+        // Symfony call supports method of Voter UserVoter
+        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou une personne avec un rôle supérieur peut accéder à cette page');
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         
@@ -187,7 +197,10 @@ class UserController extends AbstractController
      */
     public function createNewAddress(Request $request, User $user)
     {
-           $address = new Address();
+           
+            $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou une personne avec un rôle supérieur peut accéder à cette page');
+        
+            $address = new Address();
 
        
 
@@ -222,10 +235,11 @@ class UserController extends AbstractController
      */
     public function updateAddress($userId, $addressId, Request $request, UserRepository $userRepository, AddressRepository $addressRepository)
     {
-          
             $user = $userRepository->find($userId);
             $address = $addressRepository->find($addressId);
-       
+    
+            $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou une personne avec un rôle supérieur peut accéder à cette page');
+          
 
            $form = $this->createForm(AddressBackofficeType::class, $address);
     
@@ -259,6 +273,8 @@ class UserController extends AbstractController
     {
         $user = $userRepository->find($userId);
         $address = $addressRepository->find($addressId);
+        $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou une personne avec un rôle supérieur peut accéder à cette page');
+        
 
         $submitedToken = $request->query->get('token') ?? $request->request->get('token');
 
