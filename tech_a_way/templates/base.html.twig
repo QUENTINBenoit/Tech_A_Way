@@ -36,7 +36,7 @@
 				Bonjour
 				{{app.user.firstname}}
 				{% if (app.user.roles[0] == 'ROLE_CATALOG_MANAGER') or (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
-				   -  <a href="{{ path('admin_home_index') }}">Accès Back office</a>
+				   -  <a href="{{ path('admin_home_index') }}">Accès Back Office</a>
 				{% endif %}
                 {% endif %}
 		</div>
