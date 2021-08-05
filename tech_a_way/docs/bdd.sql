@@ -31,7 +31,9 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
 (6,	'livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
 (7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
-(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL);
+(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
+(9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
+(10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
@@ -429,6 +431,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (5,	'Benoit',	'QUENTIN',	'Monsieur',	685457452,	'benoit@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-25',	'2021-08-02 08:54:54',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (6,	'Laetitia',	'Coffe',	'Madame',	645754856,	'laetitia-coffe@hotmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-24',	'2021-08-02 08:56:11',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (7,	'Mickael',	'GEERARDYN',	'Monsieur',	645745125,	'mickael.geerardyn@gmail.comm',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-05',	'2021-08-02 08:57:03',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
-(8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]');
+(8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]'),
+(9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]');
 
--- 2021-08-05 02:54:19
+-- 2021-08-05 06:58:24
