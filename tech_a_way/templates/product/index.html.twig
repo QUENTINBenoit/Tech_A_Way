@@ -26,20 +26,28 @@
             </div>
             <div class="carousel-inner container">
               <div class="carousel-item active">
+              {% if product.pictures[0].name is defined %}
                 <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
+                {% else %}
+                <img style="height:400px; " src="" class="d-block" alt="...">
+                {% endif %}
               </div>
               <div class="carousel-item">
               {% if product.pictures[1].name is defined %}
                 <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[1].name) }}" class="d-block" alt="...">
-                {% else %}
+                {% elseif product.pictures[0].name is defined %}
                 <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="">
+               {% else %}
+                <img style="height:400px; " src="" class="d-block" alt="...">
                 {% endif %}
               </div>
               <div class="carousel-item">
               {% if product.pictures[2].name is defined %}
                 <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[2].name) }}" class="d-block" alt="...">
-             {% else %}
+             {% elseif product.pictures[0].name is defined %}
                 <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
+              {% else %}
+                <img style="height:400px; " src="" class="d-block" alt="...">
                 {% endif %}
               </div>
             </div>
