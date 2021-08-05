@@ -28,7 +28,10 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (2,	'facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
 (3,	'livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
 (4,	'Facturation',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
-(5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL);
+(5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
+(6,	'livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
+(7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
+(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
@@ -166,6 +169,14 @@ CREATE TABLE `mode_of_payment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
+(1,	'American Express'),
+(2,	'CB'),
+(3,	'Bitcoin'),
+(4,	'Paypal'),
+(5,	'Mastercard'),
+(6,	'Visa Electron'),
+(7,	'Visa');
 
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
@@ -191,6 +202,11 @@ CREATE TABLE `order` (
   CONSTRAINT `FK_F5299398C9A9CD82` FOREIGN KEY (`mode_of_payment_id`) REFERENCES `mode_of_payment` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `order` (`id`, `type_delivery`, `street_delivery`, `zipcode_delivery`, `city_delivery`, `street_bill`, `zipcode_bill`, `city_bill`, `created_at`, `updated_at`, `status_id`, `mode_of_payment_id`, `user_id`) VALUES
+(1,	'Chronopost',	'15 rue de la Beauce',	45000,	'Orléans',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-05 04:36:09',	NULL,	2,	5,	1),
+(2,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:41:35',	NULL,	3,	6,	8),
+(3,	'Chronopost',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:44:37',	NULL,	3,	4,	8),
+(4,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:48:23',	NULL,	2,	3,	8);
 
 DROP TABLE IF EXISTS `order_line`;
 CREATE TABLE `order_line` (
@@ -208,6 +224,14 @@ CREATE TABLE `order_line` (
   CONSTRAINT `FK_9CE58EE170A5F021` FOREIGN KEY (`an_order_id`) REFERENCES `order` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `order_line` (`id`, `product_name`, `quantity`, `excl_taxes_unit_price`, `sales_tax`, `incl_taxes_unit_price`, `created_at`, `updated_at`, `an_order_id`) VALUES
+(1,	'Câble HDMI 1 m',	1,	7.99,	20,	9.59,	'2021-08-05 04:37:14',	NULL,	1),
+(2,	'2020 Apple MacBook Air',	1,	1199.99,	20,	1439.99,	'2021-08-05 04:37:53',	NULL,	1),
+(3,	'Acer Swift 1',	1,	350,	20,	420,	'2021-08-05 04:42:36',	NULL,	2),
+(4,	'Caméra de Surveillance WiFi',	2,	39.99,	20,	47.99,	'2021-08-05 04:43:19',	NULL,	2),
+(5,	'JBL LIVE 500BT',	1,	72.5,	20,	87,	'2021-08-05 04:45:23',	NULL,	3),
+(6,	'TP-Link Tapo Ampoule E27 Connectée Wifi',	1,	23.99,	20,	28.79,	'2021-08-05 04:45:56',	NULL,	3),
+(7,	'Epson Expression Home XP 4100',	1,	69.5,	20,	83.4,	'2021-08-05 04:49:12',	NULL,	4);
 
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture` (
@@ -373,6 +397,11 @@ CREATE TABLE `status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `status` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1,	'En cours (non envoyé)',	'2021-08-05 04:30:48',	NULL),
+(2,	'En cours (envoyé, non livré)',	'2021-08-05 04:31:19',	NULL),
+(3,	'Terminé',	'2021-08-05 04:31:41',	NULL),
+(4,	'Annulé',	'2021-08-05 04:31:49',	NULL);
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -402,4 +431,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (7,	'Mickael',	'GEERARDYN',	'Monsieur',	645745125,	'mickael.geerardyn@gmail.comm',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-05',	'2021-08-02 08:57:03',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]');
 
--- 2021-08-05 02:05:32
+-- 2021-08-05 02:54:19
