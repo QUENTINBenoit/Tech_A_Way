@@ -288,7 +288,13 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 (43,	'pa1-610b42700f394.jpg',	'2021-08-05 03:44:16',	'2021-08-05 03:44:16',	19),
 (44,	'pa2-610b42751f09f.jpg',	'2021-08-05 03:44:21',	'2021-08-05 03:44:21',	19),
 (45,	'epson1-610b43c443084.jpg',	'2021-08-05 03:49:56',	'2021-08-05 03:49:56',	20),
-(46,	'epson2-610b43ca52af4.jpg',	'2021-08-05 03:50:02',	'2021-08-05 03:50:02',	20);
+(46,	'epson2-610b43ca52af4.jpg',	'2021-08-05 03:50:02',	'2021-08-05 03:50:02',	20),
+(47,	'samsung1-610b9992ba336.jpg',	'2021-08-05 09:56:02',	'2021-08-05 09:56:02',	21),
+(48,	'samsung2-610b9995dab36.jpg',	'2021-08-05 09:56:05',	'2021-08-05 09:56:05',	21),
+(49,	'samsung3-610b9999d7de3.jpg',	'2021-08-05 09:56:09',	'2021-08-05 09:56:09',	21),
+(50,	'samsung4-610b999d5d95c.jpg',	'2021-08-05 09:56:13',	'2021-08-05 09:56:13',	21),
+(51,	'1-610b9a79d4935.jpg',	'2021-08-05 09:59:53',	'2021-08-05 09:59:53',	22),
+(52,	'2-610b9a7d7d134.jpg',	'2021-08-05 09:59:57',	'2021-08-05 09:59:57',	22);
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
@@ -316,19 +322,21 @@ INSERT INTO `product` (`id`, `name`, `excl_taxes_price`, `sales_tax`, `incl_taxe
 (3,	'Acer Swift 1 portable',	350,	20,	420,	24157487,	'Acer Swift 1 SF114-34-P8Q7 Ordinateur Portable Ultrafin 14\'\' FHD IPS, PC Portable (Intel Pentium Silver N6000, RAM 4 Go, SSD 128 Go, Intel UHD Graphics, Windows 10) - Clavier AZERTY, Laptop Gris',	39,	0,	0,	0,	'2021-08-03 15:01:03',	'2021-08-03 15:01:03',	1),
 (4,	'Toshiba Téléviseur LED 32W',	299.99,	20,	359.99,	24157487,	'Toshiba Téléviseur LED 32W3863DA 32W3863DA 81 cm 32 Pouces EEC A+ (A++ - E) DVB-T2, DVB-C, DVB-S, HD Ready, Smart TV, Wi',	46,	1,	0,	0,	'2021-08-03 15:05:03',	'2021-08-03 15:05:03',	11),
 (5,	'Toshiba 55UA4B63DG téléviseur',	429.99,	20,	515.99,	12457487,	'Toshiba 55UA4B63DG, Smart TV 55\\\" LED Ultra HD 4K, Alexa intégré, Wi-Fi, 3x Hdmi, Dolby Audio 2x10W, Ethernet (55\\\"/139 cm), noir',	84,	0,	0,	0,	'2021-08-03 15:08:35',	'2021-08-03 15:08:35',	11),
-(6,	'Caméra de Surveillance WiFi',	39.99,	20,	47.99,	12474587,	'Caméra de Surveillance WiFi, 1080P Caméra WiFi sans Fil, Suivi de Mouvement de Détection de Son, Audio Bidirectionnel, Vision Nocturne Haute Définition, Carte SD/Stockage Cloud',	40,	1,	0,	20,	'2021-08-03 15:11:47',	'2021-08-03 15:11:47',	8),
+(6,	'Caméra de Surveillance WiFi',	39.99,	20,	47.99,	12474587,	'Caméra de Surveillance WiFi, 1080P Caméra WiFi sans Fil, Suivi de Mouvement de Détection de Son, Audio Bidirectionnel, Vision Nocturne Haute Définition, Carte SD/Stockage Cloud',	40,	1,	0,	0,	'2021-08-03 15:11:47',	'2021-08-03 15:11:47',	8),
 (7,	'Home Cinéma 5.1 LG LHB625M',	237.55,	20,	285.06,	24157487,	'Système Home Cinema - Canal 5.1, Lecteur de disque Blu-ray. Alimentation en sortie / Total : 1000 Watt Fonction : Lecteur numérique, récepteur AV, enregistreur numérique, lecteur de disque Blu-ray, Lecteur réseau, récepteur audio Bluetooth',	21,	1,	0,	0,	'2021-08-05 02:44:20',	'2021-08-05 02:44:20',	5),
 (10,	'JBL LIVE 500BT casque',	72.5,	20,	87,	14521457,	'Casque audio circum-auriculaire sans fil – Écouteurs Bluetooth avec commande pour appels – avec Amazon Alexa intégré – Autonomie jusqu\'à 30 heures – Bleu',	43,	0,	0,	0,	'2021-08-05 03:01:06',	'2021-08-05 03:01:06',	14),
 (11,	'Philips T2205BK/00 - ecouteurs',	39.99,	20,	47.99,	14574648,	'Écouteurs Bluetooth (Écouteurs sans Fil, Commande vocale, 12 Heures d\'autonomie, Protection Contre Les éclaboussures IPX4, Petit boîtier de Charge) Noir - Modèle 2020/2021',	43,	0,	1,	10,	'2021-08-05 03:06:01',	'2021-08-05 03:06:01',	8),
 (12,	'Dell OptiPlex 3010 SFF tour',	191.9,	20,	230.28,	45741254,	'OptiPlex 3010 SFF Intel Core i5 3.20 GHz 8 Go DDR3 240 Go SSD DVD Writer HDMI Windows 10 Pro 64 bit (reconditionné)',	56,	0,	0,	0,	'2021-08-05 03:14:21',	'2021-08-05 03:14:21',	4),
 (13,	'Ryzen 8-Thread 4300GE tour',	435.5,	20,	522.6,	14567456,	'Ryzen 8-Thread 4300GE 4.00 GHz | 6-Core Radeon R7 DX12 4Go | 16Go DDR4 | 512Go SSD | DVD±RW | Windows 10 | WiFi | USB3.0 Unité Centrale Ordinateur de Bureau PC Gaming #6706',	34,	1,	0,	0,	'2021-08-05 03:18:27',	'2021-08-05 03:18:27',	15),
-(14,	'2020 Apple MacBook Air portable',	1199.99,	20,	1439.99,	14574584,	'Apple MacBook Air avec Apple M1 Chip (13 Pouces, 8 Go RAM, 512 Go SSD) - Gris sidéral Puce M1 conçue par Apple pour un gain de performances spectaculaire au niveau du processeur central, du processeur graphique et de l’apprentissage automatique',	24,	0,	0,	0,	'2021-08-05 03:22:09',	'2021-08-05 03:22:09',	2),
+(14,	'2020 Apple MacBook Air portable',	1199.99,	20,	1439.99,	14574584,	'Apple MacBook Air avec Apple M1 Chip (13 Pouces, 8 Go RAM, 512 Go SSD) - Gris sidéral Puce M1 conçue par Apple pour un gain de performances spectaculaire au niveau du processeur central, du processeur graphique et de l’apprentissage automatique',	24,	0,	1,	10,	'2021-08-05 03:22:09',	'2021-08-05 03:22:09',	2),
 (15,	'SMARTPHONE NOKIA 1.4 32GO GRIS - mobile',	99,	20,	118.8,	14574875,	'Nokia 1.4-Android 11Go-Mémoire vive (RAM):2Go-Mémoir interne:32Go-4G LTE-Dual SIM (2x nano)',	24,	0,	1,	20,	'2021-08-05 03:28:12',	'2021-08-05 03:28:12',	6),
 (16,	'Xiaomi Mi 11 5G - mobile',	629.99,	20,	755.99,	14527458,	'Smartphone 8GB+128GB, Écran 6,81” WQHD+ AMOLED DotDisplay, Snapdragon 888, Triple Camera 108MP+13MP+5MP, 46000mAh, NFC, Gris de Minuit (Version officielle + 2 ans de garantie Xiaomi)',	134,	1,	0,	0,	'2021-08-05 03:30:34',	'2021-08-05 03:30:34',	12),
 (17,	'Samsung Galaxy S21 Ultra 5G - mobile',	1199.99,	20,	1439.99,	14574678,	'Galaxy S21 Ultra 5G SM-G998 17,3 cm (6.8\") Double SIM Android 11 USB Type-C 12 Go 256 Go 5000 mAh Noir',	25,	0,	0,	0,	'2021-08-05 03:33:38',	'2021-08-05 03:33:38',	9),
 (18,	'TP-Link Tapo Ampoule E27 Connectée Wifi',	23.99,	20,	28.79,	14574654,	'Ampoule Connectée Wifi, Ampoule E27 LED 8.7W 806Lm, RGBCW Multicouleur et Blanc Chaud, Smart Ampoule compatible avec Alexa et Google Home, 2PCS [Classe énergétique A+] (Tapo L530E)',	60,	0,	0,	0,	'2021-08-05 03:39:48',	'2021-08-05 03:39:48',	16),
 (19,	'Philips Hue Ampoules LED Connectées E27',	24.99,	20,	29.99,	14574586,	'Philips Hue Ampoules LED Connectées Blanc Chaud E27 Compatible Bluetooth, Fonctionne avec Alexa Pack de 2 [Classe énergétique A+]',	63,	0,	0,	0,	'2021-08-05 03:43:29',	'2021-08-05 03:43:29',	8),
-(20,	'Epson Expression Home XP 4100 imprimantes',	69.5,	20,	83.4,	14574875,	'Epson Expression Home XP 4100 Imprimante/Jet d\'encre/Noir Normal Jet d\'Encre Duplexage automatique',	43,	0,	1,	20,	'2021-08-05 03:49:13',	'2021-08-05 03:49:13',	17);
+(20,	'Epson Expression Home XP 4100 imprimantes',	69.5,	20,	83.4,	14574875,	'Epson Expression Home XP 4100 Imprimante/Jet d\'encre/Noir Normal Jet d\'Encre Duplexage automatique',	43,	0,	0,	0,	'2021-08-05 03:49:13',	'2021-08-05 03:49:13',	17),
+(21,	'Samsung Galaxy M11 - mobile',	115,	20,	138,	14564527,	'Samsung Galaxy M11 - Smartphone débloqué 4G - Noir - écran Infinity-O TFT HD+ de 6,4 pouces - 512 Go avec carte MicroSD',	24,	0,	0,	0,	'2021-08-05 09:55:02',	'2021-08-05 09:55:02',	9),
+(22,	'Philips SHS3300BK/10 Écouteurs Sport',	14.99,	20,	17.99,	14547485,	'SHS3300BK/10 Écouteurs Sport (son puissant, son Bass-Beat, tour d\'oreille Flex Soft, ouvert, câble de 1,2 m) noir',	45,	0,	1,	10,	'2021-08-05 09:59:18',	'2021-08-05 09:59:18',	1);
 
 DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
@@ -388,7 +396,12 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (19,	41),
 (20,	17),
 (20,	20),
-(20,	30);
+(20,	30),
+(21,	19),
+(21,	52),
+(22,	16),
+(22,	60),
+(22,	65);
 
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
@@ -434,4 +447,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]'),
 (9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]');
 
--- 2021-08-05 07:45:07
+-- 2021-08-05 08:22:46
