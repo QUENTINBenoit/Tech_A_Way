@@ -33,7 +33,11 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
 (8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
 (9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
-(10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL);
+(10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
+(11,	'facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
+(12,	'Livraison',	'15 rue Gaston',	75018,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
+(13,	'facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
+(14,	'Livraison',	'15 rue toto',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
@@ -62,7 +66,8 @@ INSERT INTO `brand` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 (14,	'JBL',	'JBL-610b37b636764.png',	'2021-08-05 02:58:30',	'2021-08-05 02:58:30'),
 (15,	'Ryzen',	'Ryzen-610b3c2e3c86d.jpg',	'2021-08-05 03:17:34',	'2021-08-05 03:17:34'),
 (16,	'Tp-Link',	'tplink-610b4102a2309.jpg',	'2021-08-05 03:38:10',	'2021-08-05 03:38:10'),
-(17,	'Epson',	'Epson-Logo-610b4337a5efa.png',	'2021-08-05 03:47:35',	'2021-08-05 03:47:35');
+(17,	'Epson',	'Epson-Logo-610b4337a5efa.png',	'2021-08-05 03:47:35',	'2021-08-05 03:47:35'),
+(18,	'Hp',	'hp-610bbb65d5d6f.png',	'2021-08-05 12:20:21',	'2021-08-05 12:20:21');
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -128,7 +133,8 @@ INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `upda
 (66,	'Télévisions',	NULL,	NULL,	'2021-08-01 16:42:05',	'2021-08-01 16:42:05',	61),
 (67,	'Vidéoprojecteurs',	NULL,	NULL,	'2021-08-01 16:42:20',	'2021-08-01 16:42:20',	61),
 (68,	'Caméras',	NULL,	NULL,	'2021-08-01 16:42:48',	'2021-08-01 16:42:48',	61),
-(69,	'Photo',	NULL,	NULL,	'2021-08-01 16:42:58',	'2021-08-01 16:42:58',	61);
+(69,	'Photo',	NULL,	NULL,	'2021-08-01 16:42:58',	'2021-08-01 16:42:58',	61),
+(70,	'Accessoires',	NULL,	NULL,	'2021-08-05 12:21:12',	'2021-08-05 12:21:12',	17);
 
 DROP TABLE IF EXISTS `doctrine_migration_versions`;
 CREATE TABLE `doctrine_migration_versions` (
@@ -294,7 +300,9 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 (49,	'samsung3-610b9999d7de3.jpg',	'2021-08-05 09:56:09',	'2021-08-05 09:56:09',	21),
 (50,	'samsung4-610b999d5d95c.jpg',	'2021-08-05 09:56:13',	'2021-08-05 09:56:13',	21),
 (51,	'1-610b9a79d4935.jpg',	'2021-08-05 09:59:53',	'2021-08-05 09:59:53',	22),
-(52,	'2-610b9a7d7d134.jpg',	'2021-08-05 09:59:57',	'2021-08-05 09:59:57',	22);
+(52,	'2-610b9a7d7d134.jpg',	'2021-08-05 09:59:57',	'2021-08-05 09:59:57',	22),
+(53,	'HP-62-1-610bbbdd120bc.jpg',	'2021-08-05 12:22:21',	'2021-08-05 12:22:21',	23),
+(54,	'HP-62-2-610bbbe22a106.jpg',	'2021-08-05 12:22:26',	'2021-08-05 12:22:26',	23);
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
@@ -336,7 +344,8 @@ INSERT INTO `product` (`id`, `name`, `excl_taxes_price`, `sales_tax`, `incl_taxe
 (19,	'Philips Hue Ampoules LED Connectées E27',	24.99,	20,	29.99,	14574586,	'Philips Hue Ampoules LED Connectées Blanc Chaud E27 Compatible Bluetooth, Fonctionne avec Alexa Pack de 2 [Classe énergétique A+]',	63,	0,	0,	0,	'2021-08-05 03:43:29',	'2021-08-05 03:43:29',	8),
 (20,	'Epson Expression Home XP 4100 imprimantes',	69.5,	20,	83.4,	14574875,	'Epson Expression Home XP 4100 Imprimante/Jet d\'encre/Noir Normal Jet d\'Encre Duplexage automatique',	43,	0,	0,	0,	'2021-08-05 03:49:13',	'2021-08-05 03:49:13',	17),
 (21,	'Samsung Galaxy M11 - mobile',	115,	20,	138,	14564527,	'Samsung Galaxy M11 - Smartphone débloqué 4G - Noir - écran Infinity-O TFT HD+ de 6,4 pouces - 512 Go avec carte MicroSD',	24,	0,	0,	0,	'2021-08-05 09:55:02',	'2021-08-05 09:55:02',	9),
-(22,	'Philips SHS3300BK/10 Écouteurs Sport',	14.99,	20,	17.99,	14547485,	'SHS3300BK/10 Écouteurs Sport (son puissant, son Bass-Beat, tour d\'oreille Flex Soft, ouvert, câble de 1,2 m) noir',	45,	0,	1,	10,	'2021-08-05 09:59:18',	'2021-08-05 09:59:18',	1);
+(22,	'Philips SHS3300BK/10 Écouteurs Sport',	14.99,	20,	17.99,	14547485,	'SHS3300BK/10 Écouteurs Sport (son puissant, son Bass-Beat, tour d\'oreille Flex Soft, ouvert, câble de 1,2 m) noir',	45,	0,	1,	10,	'2021-08-05 09:59:18',	'2021-08-05 09:59:18',	8),
+(23,	'Encre pck de 2 cartouhe HP3200',	10,	20,	12,	154552155,	'description',	5,	0,	0,	0,	'2021-08-05 12:22:10',	'2021-08-05 12:22:10',	18);
 
 DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
@@ -401,7 +410,9 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (21,	52),
 (22,	16),
 (22,	60),
-(22,	65);
+(22,	65),
+(23,	17),
+(23,	70);
 
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
@@ -437,7 +448,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `email`, `status_user`, `password`, `birthdate`, `created_at`, `updated_at`, `roles`) VALUES
-(1,	'Bernard',	'Legrand',	'Monsieur',	654245658,	'bernards@gmail.com',	1,	'$2y$13$5J00w3BSzBm7NP7oHjVbq.S89Z4EiuwV0C0s97BGxXF26U4hWD5Pa',	'1986-06-14',	'2021-07-31 12:02:41',	'2021-07-31 12:02:41',	'[\"ROLE_CATALOG_MANAGER\"]'),
+(1,	'Bernard',	'Legrand',	'Monsieur',	654245658,	'bernards@gmail.com',	1,	'$2y$13$5J00w3BSzBm7NP7oHjVbq.S89Z4EiuwV0C0s97BGxXF26U4hWD5Pa',	'1986-06-14',	'2021-07-31 12:02:41',	'2021-07-31 12:02:41',	'[\"ROLE_USER\"]'),
 (2,	'Frédéric',	'Guillon',	'Monsieur',	645756452,	'frederic-guillon@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1984-09-27',	'2021-07-31 12:05:57',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (3,	'Louis',	'Dupond',	'Monsieur',	674254565,	'Louis@gmail.com',	1,	'$2y$13$zqrsgKxpZTs0BspQgmWqGu4hpk1tOpvb0.G6qBCFruwoGV8NjlJL.',	'1990-05-27',	'2021-08-01 15:49:41',	'2021-08-01 15:49:41',	'[\"ROLE_ADMIN\"]'),
 (4,	'Jean',	'Martin',	'Monsieur',	745854762,	'Jean-martin@gmail.com',	1,	'$2y$13$uRPw3YDjpP8./OPmtaHAdewpynZr9xTfFjLTB4lNx4I41Cf7va3fO',	'1984-06-15',	'2021-08-01 16:02:33',	'2021-08-01 16:02:33',	'[\"ROLE_ADMIN\"]'),
@@ -445,6 +456,8 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (6,	'Laetitia',	'Coffe',	'Madame',	645754856,	'laetitia-coffe@hotmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-24',	'2021-08-02 08:56:11',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (7,	'Mickael',	'GEERARDYN',	'Monsieur',	645745125,	'mickael.geerardyn@gmail.comm',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1990-05-05',	'2021-08-02 08:57:03',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]'),
-(9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]');
+(9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]'),
+(10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
+(11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
 
--- 2021-08-05 08:22:46
+-- 2021-08-05 12:21:06
