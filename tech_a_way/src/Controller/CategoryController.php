@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\SearchType;
@@ -42,35 +43,34 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}/pagination ", name="pagination")
      */
-    public function pagination(
+    public function filter(
+                   
                     Category $category,
                     PaginatorInterface $paginator,
                     Request $request,
                     ProductRepository $productRepository
                                 ): Response 
                                 {
+                        $filter = $request->query->all();  // je lie le formulaire à l'entité Product
+                            $form = $this->createForm(SearchType::class, null, [
+                            'category' => $category->getId(),
+                            'action' => $this->generateUrl('category_pagination', ['id' => $category->getId()]),
+                        ]);
 
-        $filter = $request->query->all();
-        // je lie le formulaire à l'entité Product
-        $form = $this->createForm(SearchType::class, null, [
-            'category' => $category->getId(),
-            'action' => $this->generateUrl('category_pagination', ['id' => $category->getId()]),
-        ]);
-
-            $form->handleRequest($request);
+                            $form->handleRequest($request);
+                            
+                            if (isset($filter['search'])) {
+                                $query= $productRepository->findByFilter($filter['search']);
+                            } else {
+                                $query= $category->getProducts();
+                            }                 
+          
             
-            if(isset($filter['search'])){
-                $query= $productRepository->findByFilter($filter['search']);
-            }else{
-                $query= $category->getProducts();           
-           }        
-            dump(count($query));
-            //dd($query );
             $products = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            3
-        );
+            2
+            );
         return $this->render('product/product_list.html.twig', [
             'products' => $products,  
             'form' => $form->createView(),
