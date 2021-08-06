@@ -25,29 +25,29 @@
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
             </div>
             <div class="carousel-inner container">
-              <div class="carousel-item active">
+              <div class="carousel-item active row">
               {% if product.pictures[0].name is defined %}
-                <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-5 d-block" alt="...">
                 {% else %}
-                <img style="height:400px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="" class="d-block" alt="...">
                 {% endif %}
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item row">
               {% if product.pictures[1].name is defined %}
-                <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[1].name) }}" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[1].name) }}" class="d-block" alt="...">
                 {% elseif product.pictures[0].name is defined %}
-                <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="">
+                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="">
                {% else %}
-                <img style="height:400px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="" class="d-block" alt="...">
                 {% endif %}
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item row">
               {% if product.pictures[2].name is defined %}
-                <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[2].name) }}" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[2].name) }}" class="d-block" alt="...">
              {% elseif product.pictures[0].name is defined %}
-                <img style="height:400px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
               {% else %}
-                <img style="height:400px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="" class="d-block" alt="...">
                 {% endif %}
               </div>
             </div>
