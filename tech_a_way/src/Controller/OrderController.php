@@ -65,7 +65,9 @@ class OrderController extends AbstractController
             $this->addFlash('success', 'Votre commande a bien été envoyée');
             $sessionService->emptyCart();
 
-            return $this->redirectToRoute('home', [], 301);
+            return $this->redirectToRoute('email');
+
+            //.return $this->redirectToRoute('home', [], 301);
         }
 
         return $this->render('order/payment.html.twig', [
