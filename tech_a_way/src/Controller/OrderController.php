@@ -9,12 +9,14 @@ use App\Form\OrderType;
 use App\Repository\AddressRepository;
 use App\Repository\OrderRepository;
 use App\Repository\UserRepository;
+use App\Service\SendEmail;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class to send order with payment
@@ -48,7 +50,7 @@ class OrderController extends AbstractController
      * 
      * @return void
      */
-    public function customerOrderPayementList(Request $request, SessionService $sessionService): Response
+    public function customerOrderPayementList(Request $request, UserInterface $user, SessionService $sessionService, SendEmail $sendEmail): Response
     {
         $form = $this->createForm(OrderType::class);
         $formPayment = $this->createForm(ModeOfPaymentType::class);
@@ -63,12 +65,17 @@ class OrderController extends AbstractController
         if ($formPayment->isSubmitted() && $formPayment->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre commande a bien été envoyée');
+            // dd($sessionService->getTotal());
+            $sendEmail->sendEmail($user, 'Confirmation de votre commande', 'order.confirmed', 'de confirmation de commande', $sessionService->getCart(), $sessionService->getTotal());
+            
             $sessionService->emptyCart();
 
             // return $this->redirectToRoute('email');
 
             return $this->redirectToRoute('home', [], 301);
         }
+
+
 
         return $this->render('order/payment.html.twig', [
             'form' => $form->createView(),

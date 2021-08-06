@@ -20,8 +20,10 @@ class SendEmail extends AbstractController
     }
 
     
-    public function sendEmail($user, $message, $template)
+    public function sendEmail($user, $subjectMessage, $template, $flashMessage, $other1 = null, $other2 = null )
     {
+
+
         $email = (new TemplatedEmail())
         ->from('techawayecommerce@gmail.com')
         ->to($user->getEmail())
@@ -29,16 +31,18 @@ class SendEmail extends AbstractController
         //->bcc('bcc@example.com')
         //->replyTo('fabien@example.com')
         //->priority(Email::PRIORITY_HIGH)
-        ->subject($message)
+        ->subject($subjectMessage)
         // ->text('coucou')
         //->html('<p>Contenu du mail normalement</p>')
-        ->htmlTemplate('mailer/'.$template.'.html.twig')
+        ->htmlTemplate('email/'.$template.'.html.twig')
         ->context([
             'user' =>  $user,
+            'order' => $other1,
+            'total' => $other2
         ]);
         //dd( $user); 
         $this->mailer->send($email);
-        $this->addFlash('primary', 'Un email de confirmation de commande vous a été envoyé');
+        $this->addFlash('primary', 'un email ' . $flashMessage . ' vous a été envoyé');
 
     }
 }

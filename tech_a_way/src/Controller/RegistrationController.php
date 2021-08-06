@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($delivery);
             $entityManager->flush();
 
-            $sendEmail->sendEmail($user, 'Bienvenue, vous êtes désormais inscrit sur notre site', 'email.created');
+            $sendEmail->sendEmail($user, 'Bienvenue, vous êtes désormais inscrit sur notre site', 'acount.created', 'de confirmation de commande');
 
             // do anything else you need here, like send an email
             $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été créé');
