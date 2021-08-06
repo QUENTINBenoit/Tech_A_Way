@@ -5,7 +5,9 @@ twig:
         # the value is the service's id
         global: '@App\Service\GlobalTwig'
         global2: '@App\Service\GlobalBrands'
-  
+    paths:
+        # point this wherever your css files live
+        '%kernel.project_dir%/public/css': styles
 when@test:
     twig:
         strict_variables: true

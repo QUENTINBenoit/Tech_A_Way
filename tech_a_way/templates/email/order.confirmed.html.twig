@@ -1,50 +1,47 @@
+{% apply inline_css(source('@styles/bootstrap.min.css')) %}
+
 <h1 style="font-size: 1.5em;">Cher Monsieur
-	{{ user.lastname }}, votre commande a bien été validée<a href="http://www.techaway.fr">Tech a Way</a>
+	{{ user.lastname }}, votre commande a bien été validée pour un total de
+	{{ total }}
 </h1>
 
-<h2 class="text-center mt-4" style="border-bottom:1px solid #F25528">Votre commande</h1>
 
-<div id="feature_product" class="row">
-	<div class="col-md-3">Produit</div>
-	<div class="col-md-4">Description</div>
-	<div class="col-md-2">Quantité achetée</div>
-	<div class="col-md-2">Prix</div>
-	<div class="col-md-1">
-		<i class="fas fa-trash delete_icon"></i>
-	</div>
-</div>
+<h2 class="text-center mt-4" style="border-bottom:1px solid #F25528">Votre commande</h2>
 
-{% for orderLine in order %}
-	<div class="row p-3 product product_1">
-		<div class="col-3 col-md-3 picture_product">
-			<img src="{{ asset('uploads/' ~ orderLine.product.getPictures[0].name) }}" alt="product" width="120px">
-		</div>
-		<div class="col-8 col-md-4 product_characteristics">
-			<p class="name_product">
-				<a href="{{ path('product_details', {id: orderLine.product.id}) }}">{{ orderLine.product.brand.name }}
-					{{ orderLine.product.name }}</a>
-			</p>
-			<p class="description_product">{{ orderLine.product.description }}</p>
-		</div>
-		<div class="col-md-2 d-flex align-items-baseline quantity">
-			<div class="fw-bold mx-2" id="actual_quantity_product_1">{{ orderLine.quantity }}</div>
-		</div>
-		<div class="col-md-2 price">{{ orderLine.product.inclTaxesPrice * orderLine.quantity }}
-			€</div>
+
+<section class="container-fluid scrollarea table-boot py-5">
+	<h1 class="container">Liste des produits</h1>
+	<div class="container">
+		<table class="table  table-hover">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Quantité achetée</th>
+					<th scope="col">prix HT</th>
+					<th scope="col">TVA (%)</th>
+					<th scope="col">prix TTC</th>
+					<th scope="col">Référence</th>
+					<th scope="col">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for orderLine in order %}
+					<tr>
+						<td>{{ orderLine.product.name }}</td>
+						<td>{{ orderLine.quantity }}</td>
+						<td>{{ orderLine.product.exclTaxesPrice }}
+							€</td>
+						<td>{{ orderLine.product.salesTax }}
+							%</td>
+						<td>{{ orderLine.product.inclTaxesPrice }}
+							€</td>
+						<td>{{ orderLine.product.description }}</td>
+						<td class="text-secondary fst-italic">{{ orderLine.product.reference }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
-{% endfor %}
-<div class="summary_total_amount">
-	<div class="delivery col p-3 row">
-		<div class="col-9 col-sm-10 col-md-9">Date de livraison estimée le :
-			{{ "now"|date_modify("+3 day")|date("d/m/Y") }}</div>
-		<div class="col-3 col-sm-2 col-md-3">Gratuit</div>
-	</div>
-	<div class="summary_order p-3 row mb-2">
-		<form action="" class="d-flex mb-3">
-			<input class="form-control me-2" type="order" placeholder="code PROMO" aria-label="order">
-			<button class="btn btn-outline-secondary" type="submit">OK</button>
-		</form>
-		<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
-		<div class="col-2 col-md-3 fs-5">{{ total }}</div>
-	</div>
-</div>
+</section>
+<h3><a href="http://www.techaway.fr">Tech a Way</a></h3>
+{% endapply %}
