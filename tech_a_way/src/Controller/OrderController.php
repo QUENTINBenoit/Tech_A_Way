@@ -6,7 +6,6 @@ use App\Entity\ModeOfPayment;
 use App\Entity\Order;
 use App\Entity\OrderLine;
 use App\Entity\User;
-use App\Form\ModeOfPaymentType;
 use App\Form\OrderType;
 use App\Repository\AddressRepository;
 use App\Repository\OrderRepository;
@@ -48,32 +47,27 @@ class OrderController extends AbstractController
 /**
      * Method that allows to send the user at the payement choices page
      *
-     * @Route("/payment/{id}", name="payment_list", requirements={"id" = "\d+"})
+     * @Route("/payment", name="payment_list")
      * 
      * @return 
      */
-    public function customerOrderPayementList(Request $request, SessionService $sessionService, StatusRepository $statusRepository, User $user, SendEmail $sendEmail, UserInterface $userInterface): Response
+    public function customerOrderPayementList(Request $request, SessionService $sessionService, StatusRepository $statusRepository, SendEmail $sendEmail, UserInterface $userInterface): Response
     {
         $order = new Order();
-        $modeOfPayment = new ModeOfPayment();
-
+      
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
-
-        $formPayment = $this->createForm(ModeOfPaymentType::class, $modeOfPayment);
-        $formPayment->handleRequest($request);
 
         $cart = $sessionService->getCart();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
                 
-            $order->setModeOfPayment($modeOfPayment);
-            $order->setUser($user);
+            $order->setUser($userInterface);
 
             $status = $statusRepository->find(1);
             $order->setStatus($status); 
-            $entityManager->persist($modeOfPayment);  
+        
 
                 foreach ($cart as $item) {
                         $orderLine = new OrderLine();
@@ -107,7 +101,6 @@ class OrderController extends AbstractController
 
         return $this->render('order/payment.html.twig', [
             'form' => $form->createView(),
-            'formPayment' => $formPayment->createView(),
         ]);
     }
 
