@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Brand;
+use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,6 +19,26 @@ class BrandRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Brand::class);
     }
+
+/**
+ * Find all the products by brand
+ *@param int $id
+ */
+
+    public function findProductsByeBrand($id)
+         {
+
+      $qb = $this->createQueryBuilder('b') 
+                  ->where('b.id = :id')
+                  ->setParameter(':id', $id)
+                  ->leftJoin('b.products', 'products'); 
+                  
+                
+                  $query = $qb->getQuery();
+      
+       return $query->getResult();
+                 
+         }
 
 
     // /**

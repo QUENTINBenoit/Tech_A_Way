@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ProductType;
+use App\Repository\BrandRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,4 +42,21 @@ class ProductController extends AbstractController
         ]);
     }
      
+/**
+     * @Route("/display/{id}", name="brandst", requirements={"id" ="\d+"})
+     * @return Response
+     */
+
+     public function brands(int $id, BrandRepository $brandRepository, ProductRepository $productRepository) : Response
+     
+     {
+              $brandsCarr = $brandRepository->findProductsByeBrand($id); 
+             // $listProduits = $productRepository->find($id); 
+            // dd($brandsCarr); 
+        return $this->render('brands/brands_list.html.twig', [
+                   'productBrands' => $brandsCarr,
+                   //'listProduit' => $listProduits,
+        ]);
+     }
+    
 }

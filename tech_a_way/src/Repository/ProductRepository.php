@@ -27,51 +27,32 @@ class ProductRepository extends ServiceEntityRepository
     * Find all Product and Categories for filter
     * @return void
     */
-
-
     public function findByFilter($filter)
-    {
-        $qb= $this->createQueryBuilder('p');
-        if (isset($filter['brand'])) {
-            $qb->innerJoin(Brand::class, 'b', 'WITH', 'p.brand = b.id');
-            foreach ($filter['brand'] as $id) {
-                $qb->orWhere('b.id ='.$id);
+        {
+            $qb= $this->createQueryBuilder('p');
+            if (isset($filter['brand'])) {
+                $qb->innerJoin(Brand::class, 'b', 'WITH', 'p.brand = b.id');
+                foreach ($filter['brand'] as $id) {
+                    $qb->orWhere('b.id ='.$id);
+                }
             }
-        }
-        if (isset($filter['categories'])) {
-            $qb->leftJoin('p.categories', "c");
-            $qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie
-            $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie
-        }
-
-        if (isset($filter['statusPromotion'])) {
-            $qb->where('p.statusPromotion = 1');
-            //  dd($filter['statusPromotion']);
-        }
-
-        $qb->distinct();
-        return $qb->getQuery()->getResult();
-    }
-
-
-    /*if (isset($filter['brand'])){
-        foreach ($filter['brand'] as $id){
-        $qb->andWhere('p.id = :id');
-        $qb->setParameter(':id', $id);
-        }
-
-    }if (isset($filter['categories'])) {
-            foreach ($filter['categories'] as $id) {
-                $qb->andWhere('p.id  :id');
-                $qb->setParameter(':id', $id);
+            if (isset($filter['categories'])) {
+                $qb->leftJoin('p.categories', 'c');
+                //$qb->orWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois appartenir à l'une des catégorie
+                $qb->andWhere($qb->expr()->in('c.id', $filter['categories'])); // si le produit dois etre dans les toutes catégorie
             }
-     }if (isset($filter['statusPromotion'])){
-         $filter['statusPromotion'] === "1" ;
+
+            if (isset($filter['statusPromotion'])) {
+                $qb->andWhere('p.statusPromotion = 1');
+            }
+              
+            // dd($filter['statusPromotion']);
+            $qb->distinct();
+            return $qb->getQuery()->getResult();
+        }
 
 
 
-
-     }*/
 
     /**
      * Find all details of one product.
@@ -79,7 +60,7 @@ class ProductRepository extends ServiceEntityRepository
      * @param int $id
      */
     public function findOneByDetails($id)
-    {
+        {
         // Initialized the query builder with alias of the table product
         $qb = $this->createQueryBuilder('p');
 
@@ -97,7 +78,7 @@ class ProductRepository extends ServiceEntityRepository
 
         // Return the result if it's find otherwise null
         return $query->getOneOrNullResult();
-    }
+            }
 
 
     /**
@@ -106,7 +87,7 @@ class ProductRepository extends ServiceEntityRepository
      *
      */
     public function findBySearchByName($name)
-    {
+            {
         $qb = $this->createQueryBuilder('product');
 
         $qb->where('product.name LIKE :name');
@@ -116,7 +97,7 @@ class ProductRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
 
         return $query->getResult();
-    }
+        }
 
 
 
