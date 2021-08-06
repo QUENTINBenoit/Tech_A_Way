@@ -64,13 +64,13 @@ class CategoryController extends AbstractController
                             } else {
                                 $query= $category->getProducts();
                             }                 
-            dump($query);
-            //dd($query );
+          
+            
             $products = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            3
-        );
+            2
+            );
         return $this->render('product/product_list.html.twig', [
             'products' => $products,  
             'form' => $form->createView(),

@@ -11,6 +11,8 @@ use App\Form\ProductType;
 use App\Repository\BrandRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,16 +49,25 @@ class ProductController extends AbstractController
      * @return Response
      */
 
-     public function brands(int $id, BrandRepository $brandRepository, ProductRepository $productRepository) : Response
-     
-     {
-              $brandsCarr = $brandRepository->findProductsByeBrand($id); 
+     public function brands(int $id,
+                            Request $request, 
+                              
+                            BrandRepository $brandRepository, 
+                            PaginatorInterface $paginator ) : Response
+                {
+                    $query = $brandRepository->findProductsByeBrand($id); 
              // $listProduits = $productRepository->find($id); 
             // dd($brandsCarr); 
-        return $this->render('brands/brands_list.html.twig', [
-                   'productBrands' => $brandsCarr,
-                   //'listProduit' => $listProduits,
-        ]);
-     }
-    
-}
+            
+                $brandsCarr = $paginator->paginate(
+                $query, 
+                $request->query->getInt('page', 1), 
+                2
+            ); 
+
+            return $this->render('brands/brands_list.html.twig', [
+                'productBrands' => $brandsCarr,
+                //'listProduit' => $listProduits,
+                ]);
+                }
+    }
