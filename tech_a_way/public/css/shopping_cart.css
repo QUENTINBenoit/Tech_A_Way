@@ -189,7 +189,7 @@ start css HEADER
     font-size: 12px;
 }
 
-#search input, #search button {
+#search input, #search button,#search2 input, #search2 button {
     border: 1px solid #F25528;
 }
 

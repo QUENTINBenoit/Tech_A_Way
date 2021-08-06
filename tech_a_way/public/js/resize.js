@@ -53,24 +53,30 @@
 
 if (window.matchMedia("(max-width: 991px)").matches) {
     const mainEl = document.querySelector('#account-page-main');
-    mainEl.classList.remove('row');
-    console.log('coucou');
+    if(mainEl){
+        mainEl.classList.remove('row');
+    }
 
     const userInsertEl = document.querySelector('#compte_user_insert');
-    userInsertEl.classList.remove('d-flex');
-    userInsertEl.classList.add('row');
+    if(userInsertEl){
+        userInsertEl.classList.remove('d-flex');
+        userInsertEl.classList.add('row');
+    }
    
 
    
 
 } else if (window.matchMedia("(min-width: 992px)").matches) {
-    console.log('Hello');
     const mainEl = document.querySelector('#account-page-main');
-    mainEl.classList.add('row');
+    if(mainEl){
+        mainEl.classList.add('row');
+    }
 
     const userInsertEl = document.querySelector('#compte_user_insert');
-    userInsertEl.classList.remove('d-flex');
-    userInsertEl.classList.remove('row');
+    if(userInsertEl){
+        userInsertEl.classList.remove('d-flex');
+        userInsertEl.classList.remove('row');
+    }
    
 
 }

@@ -43,8 +43,11 @@
 							<td><a href="{{ path('admin_category_update', {id:category.id}) }}">{{ category.name }}</a></td>
 							{% endif %}
 							<td>{{ category.subtitle }}</td>
-							<td><img width="60px" src="{{ asset('uploads/' ~ category.picture) }}" alt=""></td>
-
+							<td>
+							{% if category.picture %}
+							<img width="60px" src="{{ asset('uploads/' ~ category.picture) }}" alt="">
+							{% endif %}
+							</td>
 							{% if category.getCategory %}
 							<td class="">{{ category.getCategory.name}}</td>
 							{% else %}
