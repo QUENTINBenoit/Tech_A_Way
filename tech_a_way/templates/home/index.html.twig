@@ -16,7 +16,7 @@
 			<div class="carousel-inner container">
 				<div class="carousel-item active row col-10">
 					<img style="height:500px; " src="
-				{% if productsRecent[0] is defined %}
+				{% if productsPromotion[0] is defined %}
 					{{ asset('uploads/' ~  productsPromotion[0].getPictures[0].name) }}
 					{% endif %}
 					" class="ps-5 d-block" alt="...">
@@ -30,7 +30,7 @@
 				</div>
 				<div class="ps-5 carousel-item">
 					<img style="height:500px; " src="
-					{% if productsRecent[2] is defined %}
+					{% if productsPromotion[2] is defined %}
 					{{ asset('uploads/' ~  productsPromotion[2].getPictures[0].name) }}
 					{% endif %}
 					" class="d-block" alt="...">
