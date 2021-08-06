@@ -42,7 +42,9 @@
 							{% if product.getPictures[0] is defined %}
 							<div><img width="60px" src="{{ asset('uploads/' ~  product.getPictures[0].name) }}" alt=""></div>
 							{% else %}
-							<div></div>
+							<div><img width="35px" src="{{ asset('images/produits/attention.jpg') }}" alt=""></div>
+							<div class="fst-italic text-danger">Pas d'image</div>
+					
 							{% endif %}
 							</td>
 							<td>{{ product.exclTaxesPrice }} €</td>
