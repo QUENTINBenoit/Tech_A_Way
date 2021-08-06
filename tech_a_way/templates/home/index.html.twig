@@ -15,13 +15,25 @@
 			</div>
 			<div class="carousel-inner container">
 				<div class="carousel-item active row col-10">
-					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[0].getPictures[0].name) }}" class="d-block" alt="...">
+					<img style="height:400px; " src="
+				{% if productsRecent[0] is defined %}
+					{{ asset('uploads/' ~  productsRecent[0].getPictures[0].name) }}
+					{% endif %}
+					" class="d-block" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}" class="d-block" alt="...">
+					<img style="height:400px; " src="
+					{% if productsRecent[1] is defined %}
+					{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}
+					{% endif %}
+					" class="d-block" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img style="height:400px; " src="{{ asset('uploads/' ~  productsRecent[2].getPictures[0].name) }}" class="d-block" alt="...">
+					<img style="height:400px; " src="
+					{% if productsRecent[2] is defined %}
+					{{ asset('uploads/' ~  productsRecent[2].getPictures[0].name) }}
+					{% endif %}
+					" class="d-block" alt="...">
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
