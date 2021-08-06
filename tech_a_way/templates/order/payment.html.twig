@@ -15,10 +15,10 @@
 							</div> 
 						</div>
 					</div>
-                    {{ form_start(formPayment) }}
+					{{ form_start(formPayment) }}
 					<div class="container">
 						<div class="row">
-							<div class="mb-3">
+							<div class="col-md-6 mb-3">
 								{{ form_row(formPayment.type) }}
 							</div> 
 						</div>
@@ -27,9 +27,8 @@
 						<div class="row">
 							<div class="col-12">
 									<button type="submit" class="btn btn-lg btn-primary">Ajouter</button>
-                                    {{ form_end(formPayment) }}
 									{{ form_end(form) }}
-
+									{{ form_end(formPayment) }}
 							</div>
 						</div>
 					</div>

@@ -8,7 +8,7 @@
             <div class="container-lg mt-4" id="delivery address selection">
                 <div class="row" id="title_adress_selected">
                     <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ">
-                        <h1 class="">Votre adresse de livraison</h1>
+                        <h1 class="">Vos adresses</h1>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Adresse De {{ address.type }} </h5>
+                                <h5 class="card-title">Adresse de {{ address.type }} </h5>
                                 <p class="card-text">    
                                 <ul class="list-group list-group-flush">                         
                                     <li class="list-group-item">Nom : 
@@ -37,6 +37,9 @@
                                 </p>
                                 <div class="ms-5 mb-4">
 					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
+				</div>
+				<div class="ms-5 mb-4">
+					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Choisir</a>
 				</div>
                             </div>
                         </div>
@@ -93,7 +96,7 @@
 					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
 					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
 				</div>
-				<form action="{{ path('order_payment_list') }}" class="button_order row">
+				<form action="{{ path('order_payment_list', {id:app.user.id}) }}" class="button_order row">
 					<button type="submit">LIVRAISON ET PAIEMENT</button>
 				</form>
 			</div>

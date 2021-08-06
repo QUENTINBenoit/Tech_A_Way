@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Order;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -22,8 +23,14 @@ class OrderType extends AbstractType
                     'colissimo' => 'colissimo',
                     'chronopost' => 'chronopost',
                     'relais colis' => 'relais colis',
-                ]
-                ]);
+            ]])
+            ->add('streetDelivery')
+            ->add('zipcodeDelivery')
+            ->add('cityDelivery')
+            ->add('streetBill')
+            ->add('zipcodeBill')
+            ->add('cityBill');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
