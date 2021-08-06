@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Address;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Service\SendEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +19,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function register(Request $request, UserPasswordHasherInterface $passwordHasher, SendEmail $sendEmail): Response
     {
         $user = new User();
         
@@ -55,6 +56,9 @@ class RegistrationController extends AbstractController
             $entityManager->persist($billing);
             $entityManager->persist($delivery);
             $entityManager->flush();
+
+            $sendEmail->sendEmail($user, 'Bienvenue, vous êtes désormais inscrit sur notre site', 'email.created');
+
             // do anything else you need here, like send an email
             $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . ' ' . $user->getLastname() . ' a bien été créé');
             
