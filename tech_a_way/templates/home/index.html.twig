@@ -14,7 +14,7 @@
 				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
 			</div>
 			<div class="carousel-inner container">
-				<div class="carousel-item active row col-10">
+				<div style="height:500px; " class="carousel-item active row col-10">
 					<a href="{{ path('product_details', {id:productsPromotion[0].id}) }}">
 						<img style="height:500px; " src="
 						{% if productsPromotion[0].getPictures[0].name is defined %}
@@ -25,7 +25,7 @@
 						" class="ps-5 d-block" alt="...">
 					</a>
 				</div>
-				<div class="ps-5 carousel-item">
+				<div style="height:500px; " class="ps-5 carousel-item">
 					<a href="{{ path('product_details', {id:productsRecent[1].id}) }}">
 						<img style="height:500px; " src="
 						{% if productsRecent[1].getPictures[0].name is defined %}
@@ -36,7 +36,7 @@
 						" class="d-block" alt="...">
 					</a>
 				</div>
-				<div class="ps-5 carousel-item">
+				<div style="height:500px; " class="ps-5 carousel-item">
 					<a href="{{ path('product_details', {id:productsPromotion[2].id}) }}">
 						<img style="height:500px; " src="
 						{% if productsPromotion[2].getPictures[0].name is defined %}
