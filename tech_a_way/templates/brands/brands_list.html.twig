@@ -24,7 +24,14 @@
                     
                         <div class="text card mb-4 shadow p-3 mb-5  rounded">
                     
-                          <a href="{{ path('product_details', {id: newProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="{{ asset('uploads/' ~  newProduct.pictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
+                          <a href="{{ path('product_details', {id: newProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+				              	    {% if newProduct.pictures[0].name is defined %}
+                            {{ asset('uploads/' ~  newProduct.pictures[0].name) }}
+                            {% else %}
+                            {{ asset('images/produits/visuel-non-disponible.jpg') }}	
+                            {% endif %}
+                          
+                          " preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
                           <title>{{newProduct.name}}</title>
                           <rect width="100%" height="100%" fill="#55595c"></rect>
                           <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{newProduct.name}}</text>

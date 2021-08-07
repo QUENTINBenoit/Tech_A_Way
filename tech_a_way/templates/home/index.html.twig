@@ -16,22 +16,28 @@
 			<div class="carousel-inner container">
 				<div class="carousel-item active row col-10">
 					<img style="height:500px; " src="
-				{% if productsPromotion[0] is defined %}
+				{% if productsPromotion[0].getPictures[0].name is defined %}
 					{{ asset('uploads/' ~  productsPromotion[0].getPictures[0].name) }}
+					{% else %}
+					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
 					{% endif %}
 					" class="ps-5 d-block" alt="...">
 				</div>
 				<div class="ps-5 carousel-item">
 					<img style="height:500px; " src="
-					{% if productsRecent[1] is defined %}
+					{% if productsRecent[1].getPictures[0].name is defined %}
 					{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}
+					{% else %}
+					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
 					{% endif %}
 					" class="d-block" alt="...">
 				</div>
 				<div class="ps-5 carousel-item">
 					<img style="height:500px; " src="
-					{% if productsPromotion[2] is defined %}
+					{% if productsPromotion[2].getPictures[0].name is defined %}
 					{{ asset('uploads/' ~  productsPromotion[2].getPictures[0].name) }}
+					{% else %}
+					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
 					{% endif %}
 					" class="d-block" alt="...">
 				</div>
@@ -61,7 +67,14 @@
 			{% for newProduct in productsRecent %}
 				<div class="d-flex justify-content-center col-xs-12 col-md-4">
 					<div class="text card mb-4 shadow-sm">
-						<a class="img-container" href="{{ path('product_details', {id:newProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="{{ asset('uploads/' ~  newProduct.getPictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
+						<a class="img-container" href="{{ path('product_details', {id:newProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+					{% if newProduct.getPictures[0].name is defined %}
+					{{ asset('uploads/' ~  newProduct.getPictures[0].name) }}
+					{% else %}
+					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
+					{% endif %}
+						
+						" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
 						<title><a href="{{ path('product_details', {id:newProduct.id}) }}">{{newProduct.name}}</a></title>
 						<rect width="100%" height="100%" fill="#55595c"></rect>
 						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{newProduct.name}}</text>
@@ -95,7 +108,15 @@
 			{% for promotionalProduct in productsPromotion %}
 				<div class="d-flex justify-content-center col-xs-12 col-md-4">
 					<div class="text card mb-4 shadow-sm">
-						<a class="img-container" href="{{ path('product_details', {id:promotionalProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="{{ asset('uploads/' ~  promotionalProduct.getPictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
+						<a class="img-container" href="{{ path('product_details', {id:promotionalProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+						{% if promotionalProduct.getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  promotionalProduct.getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}	
+						{% endif %}
+						
+						
+						" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
 						<title class="mt-2"><a href="{{ path('product_details', {id:promotionalProduct.id}) }}">{{promotionalProduct.name}}</a></title>
 						<rect width="100%" height="100%" fill="#55595c"></rect>
 						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{promotionalProduct.name}}</text>

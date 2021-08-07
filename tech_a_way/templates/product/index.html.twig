@@ -29,7 +29,7 @@
               {% if product.pictures[0].name is defined %}
                 <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-5 d-block" alt="...">
                 {% else %}
-                <img style="height:500px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
                 {% endif %}
               </div>
               <div class="carousel-item row">
@@ -38,7 +38,7 @@
                 {% elseif product.pictures[0].name is defined %}
                 <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="">
                {% else %}
-                <img style="height:500px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
                 {% endif %}
               </div>
               <div class="carousel-item row">
@@ -47,7 +47,7 @@
              {% elseif product.pictures[0].name is defined %}
                 <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
               {% else %}
-                <img style="height:500px; " src="" class="d-block" alt="...">
+                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
                 {% endif %}
               </div>
             </div>

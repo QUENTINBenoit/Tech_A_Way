@@ -29,7 +29,13 @@
                       <div class="d-flex justify-content-center col-xs-12 col-md-6 col-lg-4">
                         <div class="text card mb-4 shadow p-3 mb-5  rounded">
                           <a class="img-container" href="{{ path('product_details', {id: newProduct.id}) }}">
-                            <img class="bd-placeholder-img card-img-top" width="100%" height="" src="{{ asset('uploads/' ~  newProduct.pictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+                            {% if newProduct.pictures[0].name is defined %}
+                            {{ asset('uploads/' ~  newProduct.pictures[0].name) }}
+                            {% else %}
+                            {{ asset('images/produits/visuel-non-disponible.jpg') }}	
+                            {% endif %}
+                            " preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                           </a>
 
                           <title>{{newProduct.name}}</title>
