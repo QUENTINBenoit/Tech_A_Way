@@ -15,31 +15,37 @@
 			</div>
 			<div class="carousel-inner container">
 				<div class="carousel-item active row col-10">
-					<img style="height:500px; " src="
-				{% if productsPromotion[0].getPictures[0].name is defined %}
-					{{ asset('uploads/' ~  productsPromotion[0].getPictures[0].name) }}
-					{% else %}
-					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
-					{% endif %}
-					" class="ps-5 d-block" alt="...">
+					<a href="{{ path('product_details', {id:productsPromotion[0].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsPromotion[0].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsPromotion[0].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="ps-5 d-block" alt="...">
+					</a>
 				</div>
 				<div class="ps-5 carousel-item">
-					<img style="height:500px; " src="
-					{% if productsRecent[1].getPictures[0].name is defined %}
-					{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}
-					{% else %}
-					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
-					{% endif %}
-					" class="d-block" alt="...">
+					<a href="{{ path('product_details', {id:productsRecent[1].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsRecent[1].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="d-block" alt="...">
+					</a>
 				</div>
 				<div class="ps-5 carousel-item">
-					<img style="height:500px; " src="
-					{% if productsPromotion[2].getPictures[0].name is defined %}
-					{{ asset('uploads/' ~  productsPromotion[2].getPictures[0].name) }}
-					{% else %}
-					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
-					{% endif %}
-					" class="d-block" alt="...">
+					<a href="{{ path('product_details', {id:productsPromotion[2].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsPromotion[2].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsPromotion[2].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="d-block" alt="...">
+					</a>
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
