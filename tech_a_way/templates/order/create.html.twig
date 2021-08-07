@@ -21,25 +21,15 @@
                                 <h5 class="card-title">Adresse de {{ address.type }} </h5>
                                 <p class="card-text">    
                                 <ul class="list-group list-group-flush">                         
-                                    <li class="list-group-item">Nom : 
-                                        <p class="font-italic">{{ app.user.lastname }}</p></li>
-                                    <li class="list-group-item">Prénom : 
-                                        <p class="font-italic">{{ app.user.firstname }}</p></li>
-                                    <li class="list-group-item font-italic">Nom de Rue:
-                                        <p class="font-italic">{{ address.street }}</p></li>
-                                    <li class="list-group-item">ville :
-                                        <p class="font-italic">{{ address.city }}</p> </li>
-                                         <li class="list-group-item">Tel: :
-                                        <p class="font-italic">{{ app.user.phoneNumber }}</p> </li>
-                                    <li class="list-group-item">Pays :
-                                        <p class="font-italic"> France</p></li>           
+                                    <li class="list-group-item">{{ app.user.lastname }} {{ app.user.firstname }}</li>
+                                    <li class="list-group-item font-italic">{{ address.street }}</li>
+                                    <li class="list-group-item">{{ address.city }}</li>
+                                         <li class="list-group-item">0{{ app.user.phoneNumber }}</li>
+                                    <li class="list-group-item">Pays : France</span></li>           
                                 </ul>
                                 </p>
                                 <div class="ms-5 mb-4">
 					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
-				</div>
-				<div class="ms-5 mb-4">
-					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Choisir</a>
 				</div>
                             </div>
                         </div>
@@ -47,6 +37,12 @@
                     {% endfor %}
                 </div>
             </div>
+
+
+
+
+
+
 
             {% if items is not empty %}
 			<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Ma commande</h1>
@@ -96,19 +92,30 @@
 					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
 					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
 				</div>
-				<form action="{{ path('order_payment_list') }}" class="button_order row">
+			</div>
+        {% endif %}
+
+
+<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Validation de la commande</h1>
+			{{ form_start(form) }}
+			<div id="feature_product" class="row">
+				<div class="col-md-3">Type de livraison</div>
+				<div class="col-md-4">Mode de paiement</div>
+			</div>
+			<div class="row p-3 product product_1">
+				<div class="col-3 col-md-3 picture_product">
+					{{ form_row(form.typeDelivery) }}
+				</div>
+				<div class="col-8 col-md-4 product_characteristics">
+						{{ form_row(form.modeOfPayment) }}
+				</div>
+				
+				<form action="" class="button_order row">
 					<button type="submit">LIVRAISON ET PAIEMENT</button>
+						{{ form_end(form) }}
 				</form>
 			</div>
-        {% else %}
-		<div class="container-fluid">
-		<div class="row p-3 product product_1 justify-content-center">
-		<div class="col-12 col-md-3 picture_product">
-        	<p class="text-center text-uppercase fw-bold"> Votre panier est vide</p>
-		</div>
-		</div>
-		</div>
-        {% endif %}
+
     </main>
 
 {% endblock %}
