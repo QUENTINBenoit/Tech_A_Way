@@ -195,9 +195,9 @@ class UserController extends AbstractController
       /**
      * @Route("/{id}/address/create", name="address_create")
      */
-    public function createNewAddress(Request $request, User $user)
+    public function createNewAddress($id, Request $request, UserRepository $userRepository)
     {
-           
+           $user = $userRepository->find($id);
             $this->denyAccessUnlessGranted('USER_EDIT', $user, 'Seul le propriétaire du compte ou une personne avec un rôle supérieur peut accéder à cette page');
         
             $address = new Address();
@@ -210,6 +210,21 @@ class UserController extends AbstractController
     
            if ($form->isSubmitted() && $form->isValid()) {
     
+            $addressesUser = $user->getAddresses();
+            foreach ($addressesUser as $addressUser){
+                    if ($address->getType() == "Facturation" && $addressUser->getType() == 'Facturation') {
+                        $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type facturation. Vous ne pouvez choisir qu\'une seule adresse de facturation. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE FACTURATION sur cette adresse,');
+                        return $this->redirectToRoute('admin_user_address_create', ['id' => $id], 301);
+                    }
+                    if ($address->getType() == "Livraison" && $addressUser->getType() == 'Livraison') {
+                        $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type livraison. Vous ne pouvez choisir qu\'une seule adresse de livraison. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE LIVRAISON sur cette adresse.');
+                        return $this->redirectToRoute('admin_user_address_create', ['id' => $id], 301);
+                    }
+                }
+
+
+
+
                 $user->addAddress($address);
 
                $em = $this->getDoctrine()->getManager();
@@ -247,6 +262,27 @@ class UserController extends AbstractController
     
            if ($form->isSubmitted() && $form->isValid()) {
     
+
+            $addressesUser = $userRepository->find($userId)->getAddresses();
+            $billNumber = 0;
+            $deliveryNumber = 0;
+            foreach ($addressesUser as $addressUser){
+                    if ($address->getType() == "Facturation" && $addressUser->getType() == "Facturation") {
+                        $billNumber++;
+                        if($billNumber >=2) {
+                            $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type facturation. Vous ne pouvez choisir qu\'une seule adresse de facturation. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE FACTURATION sur cette adresse,');
+                            return $this->redirectToRoute('admin_user_address_update', ['userId' => $userId, 'addressId' => $addressId], 301);
+                        }
+                    }
+                    if ($address->getType() == "Livraison" && $addressUser->getType() == "Livraison") {
+                        $deliveryNumber++;
+                        if($deliveryNumber >=2) {
+                            $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type livraison. Vous ne pouvez choisir qu\'une seule adresse de livraison. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE LIVRAISON sur cette adresse.');
+                            return $this->redirectToRoute('admin_user_address_update', ['userId' => $userId, 'addressId' => $addressId], 301);
+                        }
+                    }
+                }
+
                 $user->addAddress($address);
 
                $em = $this->getDoctrine()->getManager();
