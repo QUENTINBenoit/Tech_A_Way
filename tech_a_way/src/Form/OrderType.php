@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Address;
+use App\Entity\Brand;
 use App\Entity\ModeOfPayment;
 use App\Entity\Order;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,12 +27,13 @@ class OrderType extends AbstractType
                     'chronopost' => 'chronopost',
                     'relais colis' => 'relais colis',
             ]])
-            ->add('streetDelivery')
-            ->add('zipcodeDelivery')
-            ->add('cityDelivery')
-            ->add('streetBill')
-            ->add('zipcodeBill')
-            ->add('cityBill')
+            // ->add('streetDelivery')
+            // ->add('zipcodeDelivery')
+            // ->add('cityDelivery')
+            // ->add('streetBill')
+            // ->add('zipcodeBill')
+            // ->add('cityBill')
+
             ->add('modeOfPayment', EntityType::class, [
                 'label' => 'Choisir le mode de paiement utilisé',
                 'class' => ModeOfPayment::class,

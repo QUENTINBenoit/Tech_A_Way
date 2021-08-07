@@ -7,6 +7,7 @@ use App\Entity\Order;
 use App\Entity\OrderLine;
 use App\Entity\User;
 use App\Form\OrderType;
+use App\Form\UserReductforAddressType;
 use App\Repository\AddressRepository;
 use App\Repository\OrderRepository;
 use App\Repository\StatusRepository;
@@ -34,9 +35,12 @@ class OrderController extends AbstractController
      * @Route("/list", name="address_list")
      * 
      */
-    public function customerOrderAddressList(SessionService $sessionService)
+    public function customerOrderAddressList(Request $request, SessionService $sessionService): Response
     {
           
+        
+
+
         return $this->render('order/index.html.twig',[
             'items' => $sessionService->getCart(),
             'total' => $sessionService->getTotal(),
@@ -54,13 +58,19 @@ class OrderController extends AbstractController
     public function customerOrderPayementList(Request $request, SessionService $sessionService, StatusRepository $statusRepository, SendEmail $sendEmail, UserInterface $userInterface): Response
     {
         $order = new Order();
-      
+        
+
         $form = $this->createForm(OrderType::class, $order);
+        $formAddress = $this->createForm(UserReductforAddressType::class, $userInterface);
+        $formAddress2 = $this->createForm(UserReductforAddressType::class, $userInterface);
         $form->handleRequest($request);
+        $formAddress->handleRequest($request);
+        $formAddress2->handleRequest($request);
 
         $cart = $sessionService->getCart();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $formAddress->isSubmitted() && $formAddress->isValid() && $formAddress2->isSubmitted() && $formAddress2->isValid()) {
+            // dd($request);
             $entityManager = $this->getDoctrine()->getManager();
                 
             $order->setUser($userInterface);
@@ -101,6 +111,8 @@ class OrderController extends AbstractController
 
         return $this->render('order/payment.html.twig', [
             'form' => $form->createView(),
+            'formAddress' => $formAddress->createView(),
+            'formAddress2' => $formAddress2->createView(),
         ]);
     }
 
