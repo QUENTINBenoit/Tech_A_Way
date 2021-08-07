@@ -61,8 +61,12 @@ class OrderController extends AbstractController
         
 
         $form = $this->createForm(OrderType::class, $order);
-        $formAddress = $this->createForm(UserReductforAddressType::class, $userInterface);
-        $formAddress2 = $this->createForm(UserReductforAddressType::class, $userInterface);
+        $formAddress = $this->createForm(UserReductforAddressType::class, $userInterface, [
+            'label' => 'facturation'
+        ]);
+        $formAddress2 = $this->createForm(UserReductforAddressType::class, $userInterface, [
+            'label' => 'livraison'
+        ]);
         $form->handleRequest($request);
         $formAddress->handleRequest($request);
         $formAddress2->handleRequest($request);
