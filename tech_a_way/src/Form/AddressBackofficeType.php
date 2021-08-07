@@ -25,6 +25,7 @@ class AddressBackofficeType extends AbstractType
     
                 if($address->getType() === 'Livraison choisie') {
             $form->add('delivery', ChoiceType::class, [
+                'placeholder' => 'Choisissez',
                 'choices' => [
                     'colissimo' => 'Colissimo',
                     'chronopost' => 'Chronopost',
@@ -36,6 +37,7 @@ class AddressBackofficeType extends AbstractType
         })
 
             ->add('type', ChoiceType::class, [
+            'placeholder' => 'Choisissez',
             'choices' => [
                 'Livraison' => 'livraison',
                 'Facturation' => 'facturation'],

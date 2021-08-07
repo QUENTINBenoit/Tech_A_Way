@@ -28,6 +28,7 @@ class CustomerType extends AbstractType
             ])
             ->add('gender', ChoiceType::class, [
                 'label' => 'Sexe',
+                'placeholder' => 'Choisissez',
                 'choices' => [
                     'Monsieur' => 'Monsieur',
                     'Madame' => 'Madame'

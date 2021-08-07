@@ -98,20 +98,17 @@
 
 <h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Validation de la commande</h1>
 			{{ form_start(form) }}
-			<div id="feature_product" class="row">
-				<div class="col-md-3">Type de livraison</div>
-				<div class="col-md-4">Mode de paiement</div>
-			</div>
+
 			<div class="row p-3 product product_1">
-				<div class="col-3 col-md-3 picture_product">
+				<div class="col-6 picture_product">
 					{{ form_row(form.typeDelivery) }}
 				</div>
-				<div class="col-8 col-md-4 product_characteristics">
+				<div class="col-6 product_characteristics">
 						{{ form_row(form.modeOfPayment) }}
 				</div>
 				
 				<form action="" class="button_order row">
-					<button type="submit">LIVRAISON ET PAIEMENT</button>
+					<button class="fw-bold fs-4" type="submit">Valider votre commande et payer</button>
 						{{ form_end(form) }}
 				</form>
 			</div>

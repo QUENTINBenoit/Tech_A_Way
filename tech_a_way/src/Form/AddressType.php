@@ -28,6 +28,7 @@ class AddressType extends AbstractType
             // This should be considered a new "Address"
             if ($address->getId()) {
                 $form->add('type', ChoiceType::class, [
+                    'placeholder' => 'Choisissez',
                     'choices' => [
                         'Livraison' => 'livraison',
                         'Facturation' => 'facturation'],
@@ -36,6 +37,7 @@ class AddressType extends AbstractType
                     if($address->getType() === 'livraison') {
                 $form->add('delivery', ChoiceType::class, [
                     'label' => 'Livraison choisie',
+                    'placeholder' => 'Choisissez',
                     'choices' => [
                         'colissimo' => 'Colissimo',
                         'chronopost' => 'Chronopost',

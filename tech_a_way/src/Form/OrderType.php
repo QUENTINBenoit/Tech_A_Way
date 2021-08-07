@@ -21,7 +21,8 @@ class OrderType extends AbstractType
     {
         $builder
             ->add('typeDelivery', ChoiceType::class, [
-                'label' => 'choisissez votre mode de livraison',
+                'label' => 'Type de livraison ',
+                'placeholder' => 'Choisissez',
                 'choices' => [
                     'colissimo' => 'colissimo',
                     'chronopost' => 'chronopost',
@@ -35,7 +36,8 @@ class OrderType extends AbstractType
             ->add('cityBill')
 
             ->add('modeOfPayment', EntityType::class, [
-                'label' => 'Choisir le mode de paiement utilisé',
+                'label' => 'Mode de paiement',
+                'placeholder' => 'Choisissez',
                 'class' => ModeOfPayment::class,
                 'choice_label' => 'type'
             ]);
