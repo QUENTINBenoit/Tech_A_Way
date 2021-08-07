@@ -34,6 +34,8 @@ class OrderController extends AbstractController
      */
     public function customerOrderAddressList(Request $request, SessionService $sessionService, User $user, StatusRepository $statusRepository, SendEmail $sendEmail): Response
     {
+        $empty = null;
+
         $addressBillAlreadyCreated = true;
         $addressBill = [];
         $numberAddressBill = 0;
@@ -64,7 +66,9 @@ class OrderController extends AbstractController
         $this->addFlash('danger', 'Vous n\'avez pas spécifié d\'adresse de LIVRAISON. Veuillez en attribuer une dans votre compte client ou en créer une en cliquant sur le bouton ci-dessous');
         $addressDeliveryAlreadyCreated = false;
     }
-      
+      if($addressDeliveryAlreadyCreated == false && $addressBillAlreadyCreated == false){
+         $empty = true;
+      }
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
         
@@ -115,18 +119,19 @@ class OrderController extends AbstractController
             $sessionService->emptyCart();
 
             // return $this->redirectToRoute('email');
-
             return $this->redirectToRoute('home', [], 301);
         }
-
-
+        
+        
+      
 
         return $this->render('order/create.html.twig', [
             'form' => $form->createView(),
             'items' => $sessionService->getCart(),
             'total' => $sessionService->getTotal(),
             'addressBillAlreadyCreated' => $addressBillAlreadyCreated,
-            'addressDeliveryAlreadyCreated' => $addressDeliveryAlreadyCreated
+            'addressDeliveryAlreadyCreated' => $addressDeliveryAlreadyCreated,
+            'empty' => $empty,
         ]);
     }
 

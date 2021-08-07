@@ -3,7 +3,7 @@
 {% block title %}Page de commande{% endblock %}
 
 {% block body %}
-    
+
 <main class="container">
             <div class="container-lg mt-4" id="delivery address selection">
                 <div class="row" id="title_adress_selected">
@@ -11,10 +11,20 @@
                         <h1 class="">Vos adresses</h1>
                     </div>
                 </div>
+					{% if empty == true %}
+					      <div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Livraison et une nouvelle adresse de Facturation</a>
+					 </div>
+					{% endif %}
             </div>
             <div class="container-lg mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
                 {% for address in app.user.addresses %}
+				{% if (addressBillAlreadyCreated == false) and (addressDeliveryAlreadyCreated == true) %}
+					<div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Facturation</a>
+					 </div>
+					{% endif %}
 				{% if address.type != 'Secondaire' %}
                     <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
@@ -35,20 +45,21 @@
                             </div>
                         </div>
                     </div>
-					{% else %}
-                    <div class="col d-flex justify-content-md-center align-items-center" >
-					<a href="{{ path('acount_user_create_address', {userId:app.user.id}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Facturation</a>
-					
-					 </div>
 					{% endif %}
+		
+		
+
+					{% if (addressBillAlreadyCreated == true) and (addressDeliveryAlreadyCreated == false) %}
+                    <div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Livraison</a>
+					 </div>
+					 {% endif %}
+
 
                     {% endfor %}
-				
+		
                 </div>
             </div>
-
-
-
 
 
 
