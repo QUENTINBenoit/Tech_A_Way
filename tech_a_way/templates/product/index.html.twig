@@ -17,7 +17,7 @@
         <div class="row mt-3" id="two">
 
 
-        <div style="width:650px;" class="d-none d-md-block container-lg" id="carouselOfImagesHomePage">
+        <div style="width:450px;" class="d-none d-md-block container-lg" id="carouselOfImagesHomePage">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
@@ -27,27 +27,27 @@
             <div class="carousel-inner container">
               <div class="carousel-item active row">
               {% if product.pictures[0].name is defined %}
-                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-5 d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-4 d-block" alt="...">
                 {% else %}
-                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="ps-4 d-block" alt="...">
                 {% endif %}
               </div>
               <div class="carousel-item row">
               {% if product.pictures[1].name is defined %}
-                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[1].name) }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('uploads/' ~  product.pictures[1].name) }}" class="ps-4 d-block" alt="...">
                 {% elseif product.pictures[0].name is defined %}
-                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="">
+                <img style="height:300px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-4 d-block" alt="">
                {% else %}
-                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="ps-4 d-block" alt="...">
                 {% endif %}
               </div>
               <div class="carousel-item row">
               {% if product.pictures[2].name is defined %}
-                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[2].name) }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('uploads/' ~  product.pictures[2].name) }}" class="ps-4 d-block" alt="...">
              {% elseif product.pictures[0].name is defined %}
-                <img style="height:500px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('uploads/' ~  product.pictures[0].name) }}" class="ps-4 d-block" alt="...">
               {% else %}
-                <img style="height:500px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="d-block" alt="...">
+                <img style="height:300px; " src="{{ asset('images/produits/visuel-non-disponible.jpg') }}" class="ps-4 d-block" alt="...">
                 {% endif %}
               </div>
             </div>
