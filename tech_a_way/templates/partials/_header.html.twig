@@ -36,8 +36,8 @@
 			  <div class="collapse col-sm-4" id="navbarToggleExternalContent">
 				<div class="p-4" id="displayClick">
 				  <div class="d-sm-none d-flex justify-content-center">
-					<form class="d-flex col-12" id="search">
-					  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<form class="d-flex col-12" id="search" action="{{ path('search') }}">
+					  <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
 					  <button class="btn btn-outline-primary" type="submit">
 						<i class="fas fa-search fa-2x text-light"></i>
 					  </button>
