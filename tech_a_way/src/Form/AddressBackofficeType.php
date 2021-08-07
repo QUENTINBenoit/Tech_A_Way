@@ -37,10 +37,10 @@ class AddressBackofficeType extends AbstractType
         })
 
             ->add('type', ChoiceType::class, [
-            'placeholder' => 'Choisissez',
             'choices' => [
-                'Livraison' => 'livraison',
-                'Facturation' => 'facturation'],
+                'non défini' => 'Secondaire',
+                'Livraison' => 'Livraison',
+                'Facturation' => 'Facturation'],
             ])
             ->add('street', TextType::class, [
                 'label' => 'Rue'

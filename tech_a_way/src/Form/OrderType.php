@@ -28,12 +28,12 @@ class OrderType extends AbstractType
                     'chronopost' => 'chronopost',
                     'relais colis' => 'relais colis',
             ]])
-            ->add('streetDelivery')
-            ->add('zipcodeDelivery')
-            ->add('cityDelivery')
-            ->add('streetBill')
-            ->add('zipcodeBill')
-            ->add('cityBill')
+            // ->add('streetDelivery')
+            // ->add('zipcodeDelivery')
+            // ->add('cityDelivery')
+            // ->add('streetBill')
+            // ->add('zipcodeBill')
+            // ->add('cityBill')
 
             ->add('modeOfPayment', EntityType::class, [
                 'label' => 'Mode de paiement',

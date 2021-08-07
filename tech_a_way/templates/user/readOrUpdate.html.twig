@@ -113,7 +113,7 @@
 		</section>
 
 		<section class="d-none row col col-lg-5 mb-3 p-2" id="compte_user_addresses">
-			<a href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="fw-bold col-3 btn">Nouvelle adresse</a>
+			<a style="max-height: 60px" href="{{ path('acount_user_create_address', {userId:user.id}) }}" class="fw-bold col-3 btn">Nouvelle adresse</a>
 
 			{% set i = 1 %}
 			{% for address in user.addresses %}

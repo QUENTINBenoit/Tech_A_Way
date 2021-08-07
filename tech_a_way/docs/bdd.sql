@@ -24,19 +24,19 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, `updated_at`, `user_id`, `delivery`) VALUES
-(1,	'livraison',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-03 15:12:48',	'2021-08-03 15:12:48',	1,	NULL),
-(2,	'facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
-(3,	'livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
+(1,	'Livraison',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-03 15:12:48',	'2021-08-03 15:12:48',	1,	NULL),
+(2,	'Facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
+(3,	'Livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
 (4,	'Facturation',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
 (5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
-(6,	'livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
-(7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
-(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
+(6,	'Livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
+(7,	'Facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
+(8,	'Livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
 (9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
 (10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
-(11,	'facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
+(11,	'Facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
 (12,	'Livraison',	'15 rue Gaston',	75018,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
-(13,	'facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
+(13,	'Facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
 (14,	'Livraison',	'15 rue toto',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
@@ -460,4 +460,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
 (11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
 
--- 2021-08-06 22:51:19
+-- 2021-08-07 14:58:42

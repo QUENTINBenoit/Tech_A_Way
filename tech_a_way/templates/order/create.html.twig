@@ -15,6 +15,7 @@
             <div class="container-lg mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
                 {% for address in app.user.addresses %}
+				{% if address.type != 'Secondaire' %}
                     <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
@@ -29,12 +30,20 @@
                                 </ul>
                                 </p>
                                 <div class="ms-5 mb-4">
-					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Modifier</a>
 				</div>
                             </div>
                         </div>
                     </div>
+					{% else %}
+                    <div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Facturation</a>
+					
+					 </div>
+					{% endif %}
+
                     {% endfor %}
+				
                 </div>
             </div>
 
