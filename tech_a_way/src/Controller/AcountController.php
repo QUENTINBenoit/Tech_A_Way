@@ -58,7 +58,17 @@ class AcountController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Cette adresse a bien été mise à jour');
 
-            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+            if ($this->isCsrfTokenValid('come-order', $submitedToken)) {
+                return $this->redirectToRoute('order_create', ['id' => $userId], 301);
+            }
+            else {
+
+                return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            }
+            // dd($request->headers->get('referer') );
+            //return $this->redirect($_SERVER['HTTP_REFERER']);
+
         }
 
         return $this->render('user/updateAddress.html.twig', [
@@ -110,8 +120,17 @@ class AcountController extends AbstractController
 
             $this->addFlash('success', 'L\'adresse ' . $address->getid() . ' de l\'utilisateur numéro ' . $userId .' a bien été ajoutée');
 
-            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
-            
+  
+        
+            $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+            if ($this->isCsrfTokenValid('come-order', $submitedToken)) {
+                return $this->redirectToRoute('order_create', ['id' => $userId], 301);
+            }
+            else {
+
+                return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            }
+
         }
 
         return $this->render('user/createAddress.html.twig', [

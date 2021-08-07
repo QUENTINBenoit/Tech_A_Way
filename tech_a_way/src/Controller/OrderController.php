@@ -35,15 +35,14 @@ class OrderController extends AbstractController
     public function customerOrderAddressList(Request $request, SessionService $sessionService, User $user, StatusRepository $statusRepository, SendEmail $sendEmail): Response
     {
         $empty = null;
-
         $addressBillAlreadyCreated = true;
         $addressBill = [];
         $numberAddressBill = 0;
-
+        
         $addressDeliveryAlreadyCreated = true;
         $addressDelivery = [];
         $numberAddressDelivery = 0;
-
+        
         foreach ($user->getAddresses() as $address){
             if(($address->getType() == 'Facturation')){
                 $addressBill['street'] = $address->getStreet();
@@ -57,6 +56,7 @@ class OrderController extends AbstractController
                 $addressDelivery['city'] = $address->getCity();
                 $numberAddressDelivery++;
             }
+  
         }
        if ($numberAddressBill != 1){
            $this->addFlash('danger', 'Vous n\'avez pas spécifié d\'adresse de FACTURATION. Veuillez en attribuer une dans votre compte client ou en créer une en cliquant sur le bouton ci-dessous');
