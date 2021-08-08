@@ -69,7 +69,7 @@ class CategoryController extends AbstractController
             $products = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            2
+            3
             );
         return $this->render('product/product_list.html.twig', [
             'products' => $products,  
