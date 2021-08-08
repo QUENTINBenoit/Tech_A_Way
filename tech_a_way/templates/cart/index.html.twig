@@ -67,7 +67,7 @@
 					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
 					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
 				</div>
-				<form action="{{ path('order_create', {id:app.user.id}) }}" class="button_order row">
+				<form action="{{ path('order_create') }}" class="button_order row">
 					<button type="submit">COMMANDER</button>
 				</form>
 			</div>

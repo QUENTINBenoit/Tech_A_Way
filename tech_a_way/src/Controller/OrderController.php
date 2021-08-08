@@ -30,9 +30,9 @@ class OrderController extends AbstractController
 {
 
     /**
-     * @Route("/{id}/create", name="create")
+     * @Route("/create", name="create")
      */
-    public function customerOrderAddressList(Request $request, SessionService $sessionService, User $user, StatusRepository $statusRepository, SendEmail $sendEmail): Response
+    public function customerOrderAddressList(Request $request, SessionService $sessionService, UserInterface $user, StatusRepository $statusRepository, SendEmail $sendEmail): Response
     {
         $empty = null;
         $addressBillAlreadyCreated = true;
@@ -111,7 +111,6 @@ class OrderController extends AbstractController
             $entityManager->flush();
 
 
-            $sessionService->emptyCart();
             $this->addFlash('success', 'Votre commande a bien été envoyée');
             // dd($sessionService->getTotal());
             $sendEmail->sendEmail($user, 'Confirmation de votre commande', 'order.confirmed', 'de confirmation de commande', $sessionService->getCart(), $sessionService->getTotal());
