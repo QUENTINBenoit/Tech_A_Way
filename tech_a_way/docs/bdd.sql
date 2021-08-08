@@ -180,7 +180,6 @@ CREATE TABLE `mode_of_payment` (
 
 INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
 (1,	'American Express'),
-(2,	'CB'),
 (3,	'Bitcoin'),
 (4,	'Paypal'),
 (5,	'Mastercard'),
@@ -475,4 +474,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
 (11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
 
--- 2021-08-08 22:37:45
+-- 2021-08-08 23:54:22

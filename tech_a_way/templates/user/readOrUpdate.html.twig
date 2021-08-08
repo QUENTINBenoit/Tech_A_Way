@@ -145,8 +145,7 @@
 			{% set results = results|merge([orderLine.inclTaxesUnitPrice]) %}
 		
 				<div class="ms-5">
-			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">Ligne de commande {{ orderLine.id }}</h1>
-					<p>Nom du produit : {{ orderLine.productName }}</p>
+			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">{{ orderLine.productName }}</h1>
 					<p>Quantité : {{ orderLine.quantity }}</p>
 					<p>Prix unitaire HT : {{ orderLine.exclTaxesUnitPrice }} € HT</p>
 					<p>TVA : {{ orderLine.salesTax }} %</p>
@@ -159,6 +158,7 @@
             {% set totalAmount = totalAmount + result %}
             {% endfor %}
 				<div class="fw-bold mb-4">Total général de la commande : {{ totalAmount }}€ TTC</div>
+				<hr>
 		{% endfor %}
 		</section>
 
