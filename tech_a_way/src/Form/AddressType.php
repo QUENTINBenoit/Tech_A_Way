@@ -39,9 +39,9 @@ class AddressType extends AbstractType
                     'label' => 'Livraison choisie',
                     'placeholder' => 'Choisissez',
                     'choices' => [
-                        'colissimo' => 'Colissimo',
-                        'chronopost' => 'Chronopost',
-                        'relais_colis' =>'Relais colis'],
+                        'Colissimo' => 'Colissimo',
+                        'Chronopost' => 'Chronopost',
+                        'Relais_colis' =>'Relais colis'],
                     ]);
                 }
             }

@@ -54,6 +54,9 @@ class OrderController extends AbstractController
                 $addressDelivery['street'] = $address->getStreet();
                 $addressDelivery['zipcode'] = $address->getZipcode();
                 $addressDelivery['city'] = $address->getCity();
+                if($address->getDelivery()){
+                    $addressDelivery['delivery'] = $address->getDelivery();
+                }
                 $numberAddressDelivery++;
             }
   
@@ -70,7 +73,9 @@ class OrderController extends AbstractController
          $empty = true;
       }
         $order = new Order();
-        $form = $this->createForm(OrderType::class, $order);
+        $form = $this->createForm(OrderType::class, $order, [
+            'label' => $addressDelivery
+        ]);
         
         if ($addressBill){
             $order->setStreetBill($addressBill['street']);

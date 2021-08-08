@@ -27,9 +27,9 @@ class AddressBackofficeType extends AbstractType
             $form->add('delivery', ChoiceType::class, [
                 'placeholder' => 'Choisissez',
                 'choices' => [
-                    'colissimo' => 'Colissimo',
-                    'chronopost' => 'Chronopost',
-                    'relais_colis' =>'Relais colis'],
+                    'Colissimo' => 'Colissimo',
+                    'Chronopost' => 'Chronopost',
+                    'Relais_colis' =>'Relais colis'],
                 ]);
             }
             

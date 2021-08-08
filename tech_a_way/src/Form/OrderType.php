@@ -19,15 +19,69 @@ class OrderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('typeDelivery', ChoiceType::class, [
+
+        $label = $options['label'];
+        // dd($label);
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($label) {
+            $form = $event->getForm();
+
+            //dd($label['delivery']);
+            if(isset($label['delivery'])){
+                if($label['delivery'] == 'Colissimo'){
+                    $form->add('typeDelivery', ChoiceType::class, [
+                        'label' => 'Type de livraison ',
+                        'choices' => [
+                            'Colissimo' => 'Colissimo',
+                            'Chronopost' => 'Chronopost',
+                            'Relais colis' => 'Relais colis',
+                    ]]);
+                }
+                else if($label['delivery'] == 'Chronopost'){
+                    $form->add('typeDelivery', ChoiceType::class, [
+                        'label' => 'Type de livraison ',
+                        'choices' => [
+                            'Chronopost' => 'Chronopost',
+                            'Relais colis' => 'Relais colis',
+                            'Colissimo' => 'Colissimo',
+                    ]]);
+                }
+                else if($label['delivery'] == 'Relais colis'){
+                    $form->add('typeDelivery', ChoiceType::class, [
+                        'label' => 'Type de livraison ',
+                        'choices' => [
+                            'Relais colis' => 'Relais colis',
+                            'Colissimo' => 'Colissimo',
+                            'Chronopost' => 'Chronopost',
+                    ]]);
+                }
+                else {
+                    $form->add('typeDelivery', ChoiceType::class, [
+                    'label' => 'Type de livraison ',
+                    'placeholder' => 'Choisissez',
+                    'choices' => [
+                        'Colissimo' => 'Colissimo',
+                        'Chronopost' => 'Chronopost',
+                        'Relais colis' => 'Relais colis',
+                ]]);
+                }
+
+            } else {
+                $form->add('typeDelivery', ChoiceType::class, [
                 'label' => 'Type de livraison ',
                 'placeholder' => 'Choisissez',
                 'choices' => [
-                    'colissimo' => 'colissimo',
-                    'chronopost' => 'chronopost',
-                    'relais colis' => 'relais colis',
-            ]])
+                    'Colissimo' => 'Colissimo',
+                    'Chronopost' => 'Chronopost',
+                    'Relais colis' => 'Relais colis',
+            ]]);
+
+
+            }
+
+
+        })
+
+
             // ->add('streetDelivery')
             // ->add('zipcodeDelivery')
             // ->add('cityDelivery')
