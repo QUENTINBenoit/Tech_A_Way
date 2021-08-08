@@ -15,7 +15,11 @@
 		{% endfor %}
 		<section style="height: 200px; background-color: white;" class="d-flex col align-items-center justify-content-around" id="compte_user_insert">
 			<div style="min-width: 140px; max-width: 200px;" class="col" id="picture">
-				<img src="{{ asset('images/icon_account.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% if app.user.gender == 'Madame' %}
+				<img src="{{ asset('images/icon_acount_woman.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% else %}
+				<img src="{{ asset('images/icon_acount_man.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% endif %}
 			</div>
 			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
 				<div>
