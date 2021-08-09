@@ -4,18 +4,17 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
-			{% block title %}Tech a Way
+			{% block title %}Tech a Way : boutique en ligne
 			{% endblock %}
 		</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
 				           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('css/jamal_style.css')}}">
+			<link rel="stylesheet" href="{{ asset('css/home_&_product.css')}}">
 			<link rel="stylesheet" href="{{ asset('css/search_page.css')}}">
 			<link rel="stylesheet" href="{{ asset('css/shopping_cart.css')}}">
 			<link rel="stylesheet" href="{{ asset('css/base.css')}}">
 			<link rel="stylesheet" href="{{ asset('css/style-account-pageV2.css')}}">
-			<link rel="stylesheet" href="{{ asset('css/product.css')}}">
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		{% endblock %}
 		{% block javascripts %}

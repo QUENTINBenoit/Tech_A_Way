@@ -74,6 +74,7 @@ class Address
     {
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
+        $this->type = "non utilisé";
     }
 
     public function getId(): ?int

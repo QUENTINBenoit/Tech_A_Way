@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<main class="container">
+<main style="min-height:25em;" class="container px-5">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -11,11 +11,11 @@
     
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
             </div>
         {% endif %}
     
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1>
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
         <label for="inputPassword">Password</label>
@@ -36,11 +36,12 @@
             </div>
         #}
     
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
+        <button class="btn btn-md btn-primary mt-2" type="submit">
+            Se connecter
         </button>
     </form>
 
+    <div><a class="text-danger" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a></div>
     <div>Vous n'avez pas encore de compte : <a href="{{ path('app_register') }}">cliquez ici</a></div>
 </main>
 {% endblock %}

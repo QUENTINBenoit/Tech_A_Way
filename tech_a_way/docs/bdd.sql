@@ -24,19 +24,19 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, `updated_at`, `user_id`, `delivery`) VALUES
-(1,	'livraison',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-03 15:12:48',	'2021-08-03 15:12:48',	1,	NULL),
-(2,	'facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
-(3,	'livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
+(1,	'Livraison',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-03 15:12:48',	'2021-08-03 15:12:48',	1,	NULL),
+(2,	'Facturation',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-03 15:13:25',	'2021-08-03 15:13:25',	2,	NULL),
+(3,	'Livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
 (4,	'Facturation',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
 (5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
-(6,	'livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
-(7,	'facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
-(8,	'livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
+(6,	'Livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
+(7,	'Facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
+(8,	'Livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
 (9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
 (10,	'Livraison',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
-(11,	'facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
+(11,	'Facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
 (12,	'Livraison',	'15 rue Gaston',	75018,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
-(13,	'facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
+(13,	'Facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
 (14,	'Livraison',	'15 rue toto',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
@@ -168,7 +168,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20210725105058',	'2021-07-31 11:59:54',	15),
 ('DoctrineMigrations\\Version20210727123211',	'2021-07-31 11:59:54',	8),
 ('DoctrineMigrations\\Version20210727175029',	'2021-07-31 11:59:54',	1),
-('DoctrineMigrations\\Version20210730131941',	'2021-07-31 11:59:54',	337);
+('DoctrineMigrations\\Version20210730131941',	'2021-07-31 11:59:54',	337),
+('DoctrineMigrations\\Version20210808123542',	'2021-08-08 18:45:31',	48);
 
 DROP TABLE IF EXISTS `mode_of_payment`;
 CREATE TABLE `mode_of_payment` (
@@ -179,7 +180,6 @@ CREATE TABLE `mode_of_payment` (
 
 INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
 (1,	'American Express'),
-(2,	'CB'),
 (3,	'Bitcoin'),
 (4,	'Paypal'),
 (5,	'Mastercard'),
@@ -278,7 +278,6 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 (27,	'delltour1-610b3b9923e9a.jpg',	'2021-08-05 03:15:05',	'2021-08-05 03:15:05',	12),
 (28,	'delltour2-610b3bc0ee22d.jpg',	'2021-08-05 03:15:44',	'2021-08-05 03:15:44',	12),
 (29,	'ryzen1-610b3c8458111.jpg',	'2021-08-05 03:19:00',	'2021-08-05 03:19:00',	13),
-(30,	'apple1-610b3d9cc67e8.jpg',	'2021-08-05 03:23:40',	'2021-08-05 03:23:40',	14),
 (31,	'nokia1-610b3eddb4091.jpg',	'2021-08-05 03:29:01',	'2021-08-05 03:29:01',	15),
 (32,	'nokia2-610b3ee24812e.jpg',	'2021-08-05 03:29:06',	'2021-08-05 03:29:06',	15),
 (33,	'xiaomi1-610b3f885858a.jpg',	'2021-08-05 03:31:52',	'2021-08-05 03:31:52',	16),
@@ -302,7 +301,8 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 (51,	'1-610b9a79d4935.jpg',	'2021-08-05 09:59:53',	'2021-08-05 09:59:53',	22),
 (52,	'2-610b9a7d7d134.jpg',	'2021-08-05 09:59:57',	'2021-08-05 09:59:57',	22),
 (53,	'HP-62-1-610bbbdd120bc.jpg',	'2021-08-05 12:22:21',	'2021-08-05 12:22:21',	23),
-(54,	'HP-62-2-610bbbe22a106.jpg',	'2021-08-05 12:22:26',	'2021-08-05 12:22:26',	23);
+(54,	'HP-62-2-610bbbe22a106.jpg',	'2021-08-05 12:22:26',	'2021-08-05 12:22:26',	23),
+(55,	'macbook2-610dbc5a561c3.jpg',	'2021-08-07 00:48:58',	'2021-08-07 00:48:58',	14);
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
@@ -414,6 +414,20 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (23,	17),
 (23,	70);
 
+DROP TABLE IF EXISTS `reset_password_request`;
+CREATE TABLE `reset_password_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `selector` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hashed_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `requested_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `expires_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  PRIMARY KEY (`id`),
+  KEY `IDX_7CE748AA76ED395` (`user_id`),
+  CONSTRAINT `FK_7CE748AA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -448,7 +462,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `email`, `status_user`, `password`, `birthdate`, `created_at`, `updated_at`, `roles`) VALUES
-(1,	'Bernard',	'Legrand',	'Monsieur',	654245658,	'bernards@gmail.com',	1,	'$2y$13$5J00w3BSzBm7NP7oHjVbq.S89Z4EiuwV0C0s97BGxXF26U4hWD5Pa',	'1986-06-14',	'2021-07-31 12:02:41',	'2021-07-31 12:02:41',	'[\"ROLE_USER\"]'),
+(1,	'Bernard',	'Legrand',	'Monsieur',	654245658,	'bernards@gmail.com',	1,	'$2y$13$5J00w3BSzBm7NP7oHjVbq.S89Z4EiuwV0C0s97BGxXF26U4hWD5Pa',	'1986-06-14',	'2021-07-31 12:02:41',	'2021-07-31 12:02:41',	'[\"ROLE_CATALOG_MANAGER\"]'),
 (2,	'Frédéric',	'Guillon',	'Monsieur',	645756452,	'frederic-guillon@gmail.com',	1,	'$2y$13$QtsNMqjme0ZfYSvgT81Ns.a3XmNZDH92aMqpKAx1xmzKGr9aQMlJ6',	'1984-09-27',	'2021-07-31 12:05:57',	NULL,	'[\"ROLE_SUPER_ADMIN\"]'),
 (3,	'Louis',	'Dupond',	'Monsieur',	674254565,	'Louis@gmail.com',	1,	'$2y$13$zqrsgKxpZTs0BspQgmWqGu4hpk1tOpvb0.G6qBCFruwoGV8NjlJL.',	'1990-05-27',	'2021-08-01 15:49:41',	'2021-08-01 15:49:41',	'[\"ROLE_ADMIN\"]'),
 (4,	'Jean',	'Martin',	'Monsieur',	745854762,	'Jean-martin@gmail.com',	1,	'$2y$13$uRPw3YDjpP8./OPmtaHAdewpynZr9xTfFjLTB4lNx4I41Cf7va3fO',	'1984-06-15',	'2021-08-01 16:02:33',	'2021-08-01 16:02:33',	'[\"ROLE_ADMIN\"]'),
@@ -460,4 +474,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
 (11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
 
--- 2021-08-05 12:21:06
+-- 2021-08-09 10:06:02

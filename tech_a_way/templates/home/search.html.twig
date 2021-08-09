@@ -15,14 +15,7 @@
                        <div class=" col-lg-3 py-3 " >
                         {{knp_pagination_render(products,'pagination.html.twig')}}
                         </div>
-                        <div class="form-group col-lg-3 color">
-                          <label for="filtre" >trier</label>
-                          <select class="form-control form-control-sm" id="filtre" placeholder="name@example.com">
-                            <option ></option>
-                            <option>du - cher au + cher</option>
-                            <option>du + cher au - cher</option>
-                          </select>           
-                        </div>    
+      
                   </div>
        
                 <div class="container" id="displayOfNewProducts">
@@ -30,7 +23,16 @@
                     {% for newProduct in products %}
                       <div class="d-flex justify-content-center col-xs-12 col-md-4">
                         <div class="text card mb-4 shadow p-3 mb-5  rounded">
-                          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('uploads/' ~  newProduct.getPictures[0].name) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                          <a class="img-container" href="{{ path('product_details', {id:newProduct.id}) }}">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+                                                        {% if newProduct.getPictures[0].name is defined %}
+                              {{ asset('uploads/' ~  newProduct.getPictures[0].name) }}
+                              {% else %}
+                              {{ asset('images/produits/visuel-non-disponible.jpg') }}
+                              {% endif %}
+                            
+                            " preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                          </a>
                           <title>{{newProduct.name}}</title>
                           <rect width="100%" height="100%" fill="#55595c"></rect>
                           <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{newProduct.name}}</text>
@@ -39,7 +41,9 @@
                           {% endif %}
                           <text x="50%" y="50%" fill="#eceeef" dy=".3em"> Prix {{newProduct.inclTaxesPrice}}€</text>
                           <div class="card-body d-flex flex-column justify-content-between">
-                            <p class="card-text d-flex align-items-start">{{newProduct.description}}</p>
+                            <a class="link-description-product" href="{{ path('product_details', {id:newProduct.id}) }}">
+                              <p class="card-text d-flex align-items-start">{{newProduct.description}}</p>
+                            </a>
                             <div class="d-flex justify-content-between">
                               <div class="btn-group">
                                 <a href="{{ path('product_details', {id: newProduct.id}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>

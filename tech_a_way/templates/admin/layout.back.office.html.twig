@@ -43,17 +43,13 @@
 		</style>
 
 
-		<!-- Custom styles for this template -->
-		<link href="sidebars.css" rel="stylesheet">
 	</head>
 	<body>
 	{% block header %}
 		{% include "partials/_header.back.office.html.twig" %}
 		{% endblock %}
 
-		{% block cards %}
-		{% include "partials/_cards.back.office.html.twig" %}
-		{% endblock %}
+		
 		<div class="position-relative"><a class="position-absolute top-0 start-100 badge border border-light rounded-circle bg-danger p-2" href="{{ path('admin_home_index') }}"><svg class="bi" width="16" height="16"><use xlink:href="#home"></use></svg></a></div>
 			{% for label, messages in app.flashes %}
 			{% for message in messages %}

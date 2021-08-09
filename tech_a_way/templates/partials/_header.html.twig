@@ -27,7 +27,7 @@
 					  <i class="fas fa-user fa-2x me-4"></i>
 					</a>
 					{% endif %}
-					<a href="" class="logo_shopping_cart">
+					<a href="{{ path('cart_list') }}" class="logo_shopping_cart">
 					  <i class="fas fa-shopping-cart fa-2x me-4"></i>
 					</a>
 				  </div>
@@ -36,14 +36,14 @@
 			  <div class="collapse col-sm-4" id="navbarToggleExternalContent">
 				<div class="p-4" id="displayClick">
 				  <div class="d-sm-none d-flex justify-content-center">
-					<form class="d-flex col-12" id="search">
-					  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<form class="d-flex col-12" id="search" action="{{ path('search') }}">
+					  <input class="form-control me-2" name="query" type="search" placeholder="Recherche" aria-label="Search">
 					  <button class="btn btn-outline-primary" type="submit">
 						<i class="fas fa-search fa-2x text-light"></i>
 					  </button>
 					</form>
 				  </div>
-				  <a href="" id="burger_logo_shopping_cart">
+				  <a href="{{ path('cart_list') }}" id="burger_logo_shopping_cart">
 					<i class="fas fa-shopping-cart fa-2x me-4 text-light"></i>
 				  </a>
 				  <a href="" class="logo_user">
@@ -66,7 +66,14 @@
 
 					
 					<li>
-					  <a href="#" class="fs-6 fst-italic">- Marques</a>
+						<div>
+						{% if app.user %}
+						<a href="{{ path('app_logout') }}">( Déconnexion )</a>
+						{% else %}
+						<a href="{{ path('app_register') }}">S'enregistrer</a> /
+						<a href="{{ path('app_login') }}">Connexion</a>
+						{% endif %}
+						</div>
 					</li>
 					<li class="burger_li_shopping_cart">
 					  <a href="{{ path('cart_list') }}" class="fs-5">Panier</a>
@@ -100,20 +107,20 @@
 				<div class="py-4 col-6">
 				  <div class="d-flex justify-content-center">
 
-					<form class="d-flex col-12" id="search" action="{{ path('search') }}">
-					  <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+					<form class="d-flex col-12" id="search2" action="{{ path('search') }}">
+					  <input class="form-control me-2" name="query" type="search2" placeholder="Recherche (mot clé du produit recherché)" aria-label="Search2">
 					  <button class="btn btn-outline-primary" type="submit">
 						<i class="fas fa-search fa-1x"></i>
 					  </button>
 					</form>
 
 				  </div>
-				  <div class="">
+				  <div  class="">
 					<ul class="d-flex" id="liste_categories">
 						{% for cat in global.categories %}
-							<li class="col-3 ps-2" id="category_1">
+							<li style="margin-right:8px;" class="col-3" id="category_1">
 								<a href="{{path('category_pagination', {id: cat.id})}}">{{cat.name}}</a>
-								<div class="ps-1 header_sub_category" id="sub_category_1_appears">
+								<div style="margin-left: -32px; margin-top:7px;" class="ps-1 header_sub_category" id="sub_category_1_appears">
 									{% for subcat in cat.subcategories %}
 										<div>
 											<a href="{{ path('category_pagination', {id:subcat.id}) }}">{{subcat.name}}</a>

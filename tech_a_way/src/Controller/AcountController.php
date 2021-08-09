@@ -32,6 +32,7 @@ class AcountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Les données personnelles de  ' . $user->getFirstname(). ' ' . $user->getLastname() . ' ont bien été mises à jour');
 
@@ -47,18 +48,56 @@ class AcountController extends AbstractController
     /**
      * @Route("/{userId}/address/{addressId}/update", name="update_address", methods={"GET","POST"})
      */
-    public function updateAddress($userId, $addressId, AddressRepository $addressRepository, Request $request): Response
+    public function updateAddress($userId, $addressId, AddressRepository $addressRepository, Request $request, UserRepository $userRepository): Response
     {
         $address= $addressRepository->find($addressId);
-
+        
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            // dd($address->getType());
+            
+            $em = $this->getDoctrine()->getManager();
+
+
+            $addressesUser = $userRepository->find($userId)->getAddresses();
+            $billNumber = 0;
+            $deliveryNumber = 0;
+            foreach ($addressesUser as $addressUser){
+                    if ($address->getType() == "Facturation" && $addressUser->getType() == "Facturation") {
+                        $billNumber++;
+                        if($billNumber >=2) {
+                            $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type facturation. Vous ne pouvez choisir qu\'une seule adresse de facturation. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE FACTURATION sur cette adresse,');
+                            return $this->redirectToRoute('acount_user_update_address', ['userId' => $userId, 'addressId' => $addressId], 301);
+                        }
+                    }
+                    if ($address->getType() == "Livraison" && $addressUser->getType() == "Livraison") {
+                        $deliveryNumber++;
+                        if($deliveryNumber >=2) {
+                            $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type livraison. Vous ne pouvez choisir qu\'une seule adresse de livraison. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE LIVRAISON sur cette adresse.');
+                            return $this->redirectToRoute('acount_user_update_address', ['userId' => $userId, 'addressId' => $addressId], 301);
+                        }
+                    }
+                }
+
+            $em->flush();
+
+
             $this->addFlash('success', 'Cette adresse a bien été mise à jour');
 
-            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            // if this token is valid, it means that I came from the order page, so I will redirect myself to it to finalize the order
+            $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+            if ($this->isCsrfTokenValid('come-order', $submitedToken)) {
+                return $this->redirectToRoute('order_create', ['id' => $userId], 301);
+            }
+            else {
+
+                return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            }
+            // dd($request->headers->get('referer') );
+            //return $this->redirect($_SERVER['HTTP_REFERER']);
+
         }
 
         return $this->render('user/updateAddress.html.twig', [
@@ -93,7 +132,7 @@ class AcountController extends AbstractController
     /**
      * @Route("/{userId}/address/create", name="create_address")
      */
-    public function createNewAddress(Request $request, $userId)
+    public function createNewAddress(Request $request, $userId, UserRepository $userRepository)
     {
         $address = new Address();
         // dd($this->getUser());
@@ -105,13 +144,35 @@ class AcountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
+
+            $addressesUser = $userRepository->find($userId)->getAddresses();
+            foreach ($addressesUser as $addressUser){
+                    if ($address->getType() == "Facturation" && $addressUser->getType() == 'Facturation') {
+                        $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type facturation. Vous ne pouvez choisir qu\'une seule adresse de facturation. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE FACTURATION sur cette adresse,');
+                        return $this->redirectToRoute('acount_user_create_address', ['userId' => $userId], 301);
+                    }
+                    if ($address->getType() == "Livraison" && $addressUser->getType() == 'Livraison') {
+                        $this->addFlash('danger', 'Votre adresse ' . $addressUser->getStreet() . ', ' . $addressUser->getZipcode() . ' ' . $addressUser->getCity() . ' comporte déjà le type livraison. Vous ne pouvez choisir qu\'une seule adresse de livraison. Vous devez d\'abord définir l\'autre adresse comme secondaire afin de pouvoir réattribuer le TYPE LIVRAISON sur cette adresse.');
+                        return $this->redirectToRoute('acount_user_create_address', ['userId' => $userId], 301);
+                    }
+                }
+
             $em->persist($address);
             $em->flush();
 
             $this->addFlash('success', 'L\'adresse ' . $address->getid() . ' de l\'utilisateur numéro ' . $userId .' a bien été ajoutée');
 
-            return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
-            
+  
+            // if this token is valid, it means that I came from the order page, so I will redirect myself to it to finalize the order
+            $submitedToken = $request->query->get('token') ?? $request->request->get('token');
+            if ($this->isCsrfTokenValid('come-order', $submitedToken)) {
+                return $this->redirectToRoute('order_create', ['id' => $userId], 301);
+            }
+            else {
+
+                return $this->redirectToRoute('acount_user_read_or_update', ['id' => $userId], 301);
+            }
+
         }
 
         return $this->render('user/createAddress.html.twig', [

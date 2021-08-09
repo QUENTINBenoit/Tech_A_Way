@@ -92,3 +92,4 @@ we create a form so that the customer can register
  created: templates/registration/register.html.twig
 
  - `composer require symfony/rate-limiter` Then, configure so that the user has to wait 15 minutes after 3 connection attempts.
+

@@ -2,32 +2,53 @@ let acountPage = {
 
     init: function() {
       if(window.innerWidth <= 991) {
-   const mainEl = document.querySelector('#account-page-main');
-mainEl.classList.remove('row');
+          const mainEl = document.querySelector('#account-page-main');
+          if(mainEl){
+            mainEl.classList.remove('row');
+          }
 
       }
       if(window.innerWidth >= 992) {
         const mainEl = document.querySelector('#account-page-main');
-     mainEl.classList.add('row');
-     const userInsertEl = document.querySelector('#compte_user_insert');
-     userInsertEl.classList.remove('d-flex');
+        if(mainEl){
+        mainEl.classList.add('row');
+        }
+        const userInsertEl = document.querySelector('#compte_user_insert');
+        if(userInsertEl){
+          userInsertEl.classList.remove('d-flex');
+        }
  
            }
 
       const buttonAddressesEl = document.querySelector('#button-page-acount-addresses');
-      buttonAddressesEl.addEventListener('click', acountPage.handleButtonAdressesClick);
+      if(buttonAddressesEl){
+        buttonAddressesEl.addEventListener('click', acountPage.handleButtonAdressesClick);
+      }
+
       const buttonMenuAddressesEl = document.querySelector('#menu-page-acount-addresses');
-      buttonMenuAddressesEl.addEventListener('click', acountPage.handleButtonAdressesClick);
-      
+      if (buttonMenuAddressesEl){
+        buttonMenuAddressesEl.addEventListener('click', acountPage.handleButtonAdressesClick);
+      }
       const buttonInformationsEl = document.querySelector('#button-page-acount-informations');
-      buttonInformationsEl.addEventListener('click', acountPage.handleButtonInformationsClick);
+      if(buttonInformationsEl){
+        buttonInformationsEl.addEventListener('click', acountPage.handleButtonInformationsClick);
+      }
+
       const buttonMenuInformationsEl = document.querySelector('#menu-page-acount-informations');
-      buttonMenuInformationsEl.addEventListener('click', acountPage.handleButtonInformationsClick);
+      if(buttonMenuInformationsEl){
+        buttonMenuInformationsEl.addEventListener('click', acountPage.handleButtonInformationsClick);
+      }
 
       const buttonOrdersEl = document.querySelector('#button-page-acount-orders');
-      buttonOrdersEl.addEventListener('click', acountPage.handleButtonOrdersClick);
+      if(buttonOrdersEl){
+        buttonOrdersEl.addEventListener('click', acountPage.handleButtonOrdersClick);
+      }
+
       const buttonMenuOrdersEl = document.querySelector('#menu-page-acount-orders');
-      buttonMenuOrdersEl.addEventListener('click', acountPage.handleButtonOrdersClick);
+      if(buttonMenuOrdersEl){
+        buttonMenuOrdersEl.addEventListener('click', acountPage.handleButtonOrdersClick);
+      }
+
     },
     
     

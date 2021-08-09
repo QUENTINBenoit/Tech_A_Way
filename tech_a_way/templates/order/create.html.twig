@@ -3,47 +3,67 @@
 {% block title %}Page de commande{% endblock %}
 
 {% block body %}
-    
+
 <main class="container">
             <div class="container-lg mt-4" id="delivery address selection">
                 <div class="row" id="title_adress_selected">
                     <div class="col d-flex justify-content-center" style="border-bottom:1px solid #F25528 ">
-                        <h1 class="">Votre adresse de livraison</h1>
+                        <h1 class="">Vos adresses</h1>
                     </div>
                 </div>
+					{% if empty == true %}
+					      <div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id, token:csrf_token('come-order')}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Livraison et une nouvelle adresse de Facturation</a>
+					 </div>
+					{% endif %}
+					
             </div>
             <div class="container-lg mt-3" id="selected_adress">
                 <div class="row" id="selecte_adress_one">
+				{% if (addressBillAlreadyCreated == false) and (addressDeliveryAlreadyCreated == true) %}
+					<div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id, token:csrf_token('come-order')}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Facturation</a>
+					 </div>
+					{% endif %}
                 {% for address in app.user.addresses %}
+				{% if address.type != 'Secondaire' %}
                     <div class="col d-flex justify-content-md-center " >
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Adresse De {{ address.type }} </h5>
+                                <h5 class="card-title">Adresse de {{ address.type }} </h5>
                                 <p class="card-text">    
                                 <ul class="list-group list-group-flush">                         
-                                    <li class="list-group-item">Nom : 
-                                        <p class="font-italic">{{ app.user.lastname }}</p></li>
-                                    <li class="list-group-item">Prénom : 
-                                        <p class="font-italic">{{ app.user.firstname }}</p></li>
-                                    <li class="list-group-item font-italic">Nom de Rue:
-                                        <p class="font-italic">{{ address.street }}</p></li>
-                                    <li class="list-group-item">ville :
-                                        <p class="font-italic">{{ address.city }}</p> </li>
-                                         <li class="list-group-item">Tel: :
-                                        <p class="font-italic">{{ app.user.phoneNumber }}</p> </li>
-                                    <li class="list-group-item">Pays :
-                                        <p class="font-italic"> France</p></li>           
+                                    <li class="list-group-item">{{ app.user.lastname }} {{ app.user.firstname }}</li>
+                                    <li class="list-group-item font-italic">{{ address.street }}</li>
+                                    <li class="list-group-item">{{ address.city }}</li>
+                                         <li class="list-group-item">0{{ app.user.phoneNumber }}</li>
+                                    <li class="list-group-item">Pays : France</span></li>           
                                 </ul>
                                 </p>
                                 <div class="ms-5 mb-4">
-					<a href="{{ path('acount_user_update_address', {userId: app.user.id, addressId: address.id}) }}" class="btn btn-primary">Editer</a>
+					<a href="{{ path('acount_user_update_address', {userId:app.user.id, addressId:address.id, token:csrf_token('come-order')}) }}" class="btn btn-primary">Modifier</a>
 				</div>
                             </div>
                         </div>
                     </div>
+					{% endif %}
+		
+		
+
+
+
                     {% endfor %}
+					{% if (addressBillAlreadyCreated == true) and (addressDeliveryAlreadyCreated == false) %}
+                    <div class="col d-flex justify-content-md-center align-items-center" >
+					<a href="{{ path('acount_user_create_address', {userId:app.user.id, token:csrf_token('come-order')}) }}" class="fs-5 btn btn-primary">Créer une nouvelle adresse de Livraison</a>
+					 </div>
+					 {% endif %}
+		
                 </div>
             </div>
+
+
+
 
             {% if items is not empty %}
 			<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Ma commande</h1>
@@ -91,21 +111,29 @@
 						<button class="btn btn-outline-secondary" type="submit">OK</button>
 					</form>
 					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
-					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
+					<div class="col-2 col-md-3 fs-5">{{ total }} €</div>
 				</div>
-				<form action="{{ path('order_payment_list') }}" class="button_order row">
-					<button type="submit">LIVRAISON ET PAIEMENT</button>
+			</div>
+        {% endif %}
+
+
+<h1 class="text-center mt-4" style="border-bottom:1px solid #F25528">Validation de la commande</h1>
+			{{ form_start(form) }}
+
+			<div class="row p-3 product product_1">
+				<div class="col-6 picture_product">
+					{{ form_row(form.typeDelivery) }}
+				</div>
+				<div class="col-6 product_characteristics">
+						{{ form_row(form.modeOfPayment) }}
+				</div>
+				
+				<form action="" class="col-12 button_order row">
+					<button class="fw-bold fs-4" type="submit">Valider votre commande et payer</button>
+						{{ form_end(form) }}
 				</form>
 			</div>
-        {% else %}
-		<div class="container-fluid">
-		<div class="row p-3 product product_1 justify-content-center">
-		<div class="col-12 col-md-3 picture_product">
-        	<p class="text-center text-uppercase fw-bold"> Votre panier est vide</p>
-		</div>
-		</div>
-		</div>
-        {% endif %}
+
     </main>
 
 {% endblock %}

@@ -29,17 +29,19 @@ class AddressType extends AbstractType
             if ($address->getId()) {
                 $form->add('type', ChoiceType::class, [
                     'choices' => [
-                        'Livraison' => 'livraison',
-                        'Facturation' => 'facturation'],
+                        'non défini' => 'Secondaire',
+                        'Livraison' => 'Livraison',
+                        'Facturation' => 'Facturation'],
                     ]);
 
-                    if($address->getType() === 'livraison') {
+                    if($address->getType() === 'Livraison') {
                 $form->add('delivery', ChoiceType::class, [
                     'label' => 'Livraison choisie',
+                    'placeholder' => 'Choisissez',
                     'choices' => [
-                        'colissimo' => 'Colissimo',
-                        'chronopost' => 'Chronopost',
-                        'relais_colis' =>'Relais colis'],
+                        'Colissimo' => 'Colissimo',
+                        'Chronopost' => 'Chronopost',
+                        'Relais_colis' =>'Relais colis'],
                     ]);
                 }
             }

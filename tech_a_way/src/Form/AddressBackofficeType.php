@@ -25,10 +25,11 @@ class AddressBackofficeType extends AbstractType
     
                 if($address->getType() === 'Livraison choisie') {
             $form->add('delivery', ChoiceType::class, [
+                'placeholder' => 'Choisissez',
                 'choices' => [
-                    'colissimo' => 'Colissimo',
-                    'chronopost' => 'Chronopost',
-                    'relais_colis' =>'Relais colis'],
+                    'Colissimo' => 'Colissimo',
+                    'Chronopost' => 'Chronopost',
+                    'Relais_colis' =>'Relais colis'],
                 ]);
             }
             
@@ -37,8 +38,9 @@ class AddressBackofficeType extends AbstractType
 
             ->add('type', ChoiceType::class, [
             'choices' => [
-                'Livraison' => 'livraison',
-                'Facturation' => 'facturation'],
+                'non défini' => 'Secondaire',
+                'Livraison' => 'Livraison',
+                'Facturation' => 'Facturation'],
             ])
             ->add('street', TextType::class, [
                 'label' => 'Rue'

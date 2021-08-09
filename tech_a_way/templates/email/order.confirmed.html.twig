@@ -2,7 +2,7 @@
 
 <h1 style="font-size: 1.5em;">Cher Monsieur
 	{{ user.lastname }}, votre commande a bien été validée pour un total de
-	{{ total }}
+	{{ total }} €
 </h1>
 
 
@@ -29,12 +29,9 @@
 					<tr>
 						<td>{{ orderLine.product.name }}</td>
 						<td>{{ orderLine.quantity }}</td>
-						<td>{{ orderLine.product.exclTaxesPrice }}
-							€</td>
-						<td>{{ orderLine.product.salesTax }}
-							%</td>
-						<td>{{ orderLine.product.inclTaxesPrice }}
-							€</td>
+						<td>{{ orderLine.product.exclTaxesPrice }}€</td>
+						<td>{{ orderLine.product.salesTax }}%</td>
+						<td>{{ orderLine.product.inclTaxesPrice }}€</td>
 						<td>{{ orderLine.product.description }}</td>
 						<td class="text-secondary fst-italic">{{ orderLine.product.reference }}</td>
 					</tr>
@@ -43,5 +40,5 @@
 		</table>
 	</div>
 </section>
-<h3><a href="http://www.techaway.fr">Tech a Way</a></h3>
+<h3><a href="https://www.techaway.fr">Tech a Way</a></h3>
 {% endapply %}

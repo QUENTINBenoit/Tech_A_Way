@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page non trouvé {% endblock %}
+{% block body %} 
+
+<div style="min-height:50vh;" class="container-fluid mt-2 border-0">
+    <div class="row mt-2">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <img style="height:200px;" src="{{ asset('images/errors/404.png')}}" alt="">
+        </div>
+        <div class="col-12 text-center">
+            <h1 class="mb-5">Page non trouvée</h1>
+            <p class="mt-5">la page que vous cherchez n'existe pas</p>
+            <p>Code de l'erreur : {{ status_code }}</p>
+            <p>Message de l'erreur : {{ status_text }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
