@@ -111,7 +111,7 @@
 						<button class="btn btn-outline-secondary" type="submit">OK</button>
 					</form>
 					<div class="col-10 col-md-9 fs-5">Total commande TTC</div>
-					<div class="col-2 col-md-3 fs-5">{{ total }}</div>
+					<div class="col-2 col-md-3 fs-5">{{ total }} €</div>
 				</div>
 			</div>
         {% endif %}
@@ -128,7 +128,7 @@
 						{{ form_row(form.modeOfPayment) }}
 				</div>
 				
-				<form action="" class="button_order row">
+				<form action="" class="col-12 button_order row">
 					<button class="fw-bold fs-4" type="submit">Valider votre commande et payer</button>
 						{{ form_end(form) }}
 				</form>

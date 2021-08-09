@@ -168,7 +168,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20210725105058',	'2021-07-31 11:59:54',	15),
 ('DoctrineMigrations\\Version20210727123211',	'2021-07-31 11:59:54',	8),
 ('DoctrineMigrations\\Version20210727175029',	'2021-07-31 11:59:54',	1),
-('DoctrineMigrations\\Version20210730131941',	'2021-07-31 11:59:54',	337);
+('DoctrineMigrations\\Version20210730131941',	'2021-07-31 11:59:54',	337),
+('DoctrineMigrations\\Version20210808123542',	'2021-08-08 18:45:31',	48);
 
 DROP TABLE IF EXISTS `mode_of_payment`;
 CREATE TABLE `mode_of_payment` (
@@ -179,7 +180,6 @@ CREATE TABLE `mode_of_payment` (
 
 INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
 (1,	'American Express'),
-(2,	'CB'),
 (3,	'Bitcoin'),
 (4,	'Paypal'),
 (5,	'Mastercard'),
@@ -414,6 +414,20 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 (23,	17),
 (23,	70);
 
+DROP TABLE IF EXISTS `reset_password_request`;
+CREATE TABLE `reset_password_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `selector` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hashed_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `requested_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `expires_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  PRIMARY KEY (`id`),
+  KEY `IDX_7CE748AA76ED395` (`user_id`),
+  CONSTRAINT `FK_7CE748AA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -460,4 +474,4 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
 (11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
 
--- 2021-08-07 14:58:42
+-- 2021-08-08 23:54:22

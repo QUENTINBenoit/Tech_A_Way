@@ -15,7 +15,11 @@
 		{% endfor %}
 		<section style="height: 200px; background-color: white;" class="d-flex col align-items-center justify-content-around" id="compte_user_insert">
 			<div style="min-width: 140px; max-width: 200px;" class="col" id="picture">
-				<img src="{{ asset('images/icon_account.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% if app.user.gender == 'Madame' %}
+				<img src="{{ asset('images/icon_acount_woman.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% else %}
+				<img src="{{ asset('images/icon_acount_man.png') }}" class="img-fluid" alt="image générique de représentation du compte client">
+			{% endif %}
 			</div>
 			<div style="min-width: 150px; max-width: 200px;" class="row align-items-center col h-100" id="user_deconnect">
 				<div>
@@ -141,8 +145,7 @@
 			{% set results = results|merge([orderLine.inclTaxesUnitPrice]) %}
 		
 				<div class="ms-5">
-			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">Ligne de commande {{ orderLine.id }}</h1>
-					<p>Nom du produit : {{ orderLine.productName }}</p>
+			<h2 style="color: black;" class="text-start mt-1 fs-5 text-primary">{{ orderLine.productName }}</h1>
 					<p>Quantité : {{ orderLine.quantity }}</p>
 					<p>Prix unitaire HT : {{ orderLine.exclTaxesUnitPrice }} € HT</p>
 					<p>TVA : {{ orderLine.salesTax }} %</p>
@@ -155,6 +158,7 @@
             {% set totalAmount = totalAmount + result %}
             {% endfor %}
 				<div class="fw-bold mb-4">Total général de la commande : {{ totalAmount }}€ TTC</div>
+				<hr>
 		{% endfor %}
 		</section>
 
