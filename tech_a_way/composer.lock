@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c7aed81a543a7dc3e1693c88cdb1fd8",
+    "content-hash": "09c55fd748f7bafe5c5ba5c72135ca6d",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1438,16 +1438,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v3.5.3",
+            "version": "v3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "286b9776d25ac2cbf319fbde89418af62e2f313a"
+                "reference": "11c73c0a53ccbc82d4b4b7518912e51eece47025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/286b9776d25ac2cbf319fbde89418af62e2f313a",
-                "reference": "286b9776d25ac2cbf319fbde89418af62e2f313a",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/11c73c0a53ccbc82d4b4b7518912e51eece47025",
+                "reference": "11c73c0a53ccbc82d4b4b7518912e51eece47025",
                 "shasum": ""
             },
             "require": {
@@ -1519,17 +1519,13 @@
                 "backend",
                 "generator"
             ],
-            "support": {
-                "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v3.5.3"
-            },
             "funding": [
                 {
                     "url": "https://github.com/javiereguiluz",
                     "type": "github"
                 }
             ],
-            "time": "2021-08-04T18:57:35+00:00"
+            "time": "2021-08-08T09:25:33+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2594,6 +2590,28 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.1.5"
             },
             "time": "2021-05-31T10:40:46+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "shasum": ""
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "time": "2017-12-12T01:46:35+00:00"
         },
         {
             "name": "symfony/asset",
@@ -10925,5 +10943,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
