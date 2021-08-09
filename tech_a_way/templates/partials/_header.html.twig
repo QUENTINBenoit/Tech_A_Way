@@ -27,7 +27,7 @@
 					  <i class="fas fa-user fa-2x me-4"></i>
 					</a>
 					{% endif %}
-					<a href="" class="logo_shopping_cart">
+					<a href="{{ path('cart_list') }}" class="logo_shopping_cart">
 					  <i class="fas fa-shopping-cart fa-2x me-4"></i>
 					</a>
 				  </div>
@@ -43,7 +43,7 @@
 					  </button>
 					</form>
 				  </div>
-				  <a href="" id="burger_logo_shopping_cart">
+				  <a href="{{ path('cart_list') }}" id="burger_logo_shopping_cart">
 					<i class="fas fa-shopping-cart fa-2x me-4 text-light"></i>
 				  </a>
 				  <a href="" class="logo_user">
@@ -66,7 +66,14 @@
 
 					
 					<li>
-					  <a href="#" class="fs-6 fst-italic">- Marques</a>
+						<div>
+						{% if app.user %}
+						<a href="{{ path('app_logout') }}">( Déconnexion )</a>
+						{% else %}
+						<a href="{{ path('app_register') }}">S'enregistrer</a> /
+						<a href="{{ path('app_login') }}">Connexion</a>
+						{% endif %}
+						</div>
 					</li>
 					<li class="burger_li_shopping_cart">
 					  <a href="{{ path('cart_list') }}" class="fs-5">Panier</a>

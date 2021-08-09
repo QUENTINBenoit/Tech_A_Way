@@ -3,7 +3,7 @@
 {% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<main style="min-height:350px;" class="container">
+<main style="min-height:25em;" class="container px-5">
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -36,7 +36,7 @@
             </div>
         #}
     
-        <button class="btn btn-lg btn-primary" type="submit">
+        <button class="btn btn-md btn-primary mt-2" type="submit">
             Se connecter
         </button>
     </form>
