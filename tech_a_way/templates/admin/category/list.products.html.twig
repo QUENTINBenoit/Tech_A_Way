@@ -1,0 +1,66 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des produits
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<a href="{{ path('admin_category_index') }}">Retour</a>
+		<h1 class="container">Liste des produits dans la categorie {{ category.name}}</h1>
+		<div class="container">
+			<table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nom</th>
+						<th scope="col">prix HT</th>
+						<th scope="col">TVA (%)</th>
+						<th scope="col">prix TTC</th>
+						<th scope="col">Référence</th>
+						<th scope="col">Description</th>
+						<th scope="col">Stock</th>
+						<th scope="col">Récent</th>
+						<th scope="col">Promotion</th>
+						<th scope="col">Pourcentage Promotion</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in category.products %}
+						<tr>
+							<th scope="row">{{ product.id }}</th>
+							<td>{{ product.name }}
+								{% if product.getPictures[0] is defined %}
+							<div><img width="60px" src="{{ asset('uploads/' ~  product.getPictures[0].name) }}" alt=""></div>
+							{% else %}
+							<div><img width="35px" src="{{ asset('images/produits/attention.jpg') }}" alt=""></div>
+							<div class="fst-italic text-danger">Pas d'image</div>
+							{% endif %}
+							</td>
+							<td>{{ product.exclTaxesPrice }} €</td>
+							<td>{{ product.salesTax }} %</td>
+							<td>{{ product.inclTaxesPrice }} €</td>
+							<td class="text-secondary fst-italic">{{ product.reference }}</td>
+							<td>{{ product.description }}</td>
+							<td>{{ product.stock }}</td>
+							<td>{{ product.statusRecent }}</td>
+							<td>{{ product.statusPromotion }}</td>
+							<td>{{ product.percentagePromotion }}</td>
+						    <td>
+                                <a href="{{ path('admin_product_update', {id:product.id}) }}">éditer</a>
+                            </td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucunes données trouvées</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+</div></main>{% endblock %}

@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="../css/search_page.css" />
+  <link rel="stylesheet" href="../css/shopping_cart.css">
+  <link rel="stylesheet" href="../css/style-account-page.css">
+  <link rel="stylesheet" href="../css/jamal_style.css">
+  <!--load all styles -->
+  <script src="https://kit.fontawesome.com/74ed2f933d.js"></script>
+  <script src="https://kit.fontawesome.com/cc61b26897.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+
+
+
+  <title>Page produit</title>
+</head>
+
+<body>
+  <header>
+    <div class="d-md-none div_mobile">
+      <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="burger">
+              <img src="../images/burger_menu/burger-menu.png" alt="" width="70px"></span>
+          </button>
+          <div class="mx-auto logo">
+            <img src="../images/logo/logo-web-transparent.png" alt="logo" width="180px">
+          </div>
+
+          <div class="mx-auto logo_t">
+            <img src="../images/logo/T transparent.png" alt="T" width="45px">
+          </div>
+
+          <div class="mx-3">
+            <a href="" class="logo_search">
+              <i class="fas fa-search fa-2x me-4"></i>
+            </a>
+            <a href="" class="logo_user">
+              <i class="fas fa-user fa-2x me-4"></i>
+            </a>
+            <a href="" class="logo_shopping_cart">
+              <i class="fas fa-shopping-cart fa-2x me-4"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="collapse col-sm-4" id="navbarToggleExternalContent">
+        <div class="p-4" id="displayClick">
+          <div class="d-sm-none d-flex justify-content-center">
+            <form class="d-flex col-12" id="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fas fa-search fa-2x text-light"></i>
+              </button>
+            </form>
+          </div>
+          <a href="" id="burger_logo_shopping_cart">
+            <i class="fas fa-shopping-cart fa-2x me-4 text-light"></i>
+          </a>
+          <a href="" class="logo_user">
+            <i class="d-none fas fa-user fa-1x me-4 text-primary"></i>
+          </a>
+          <ul id="header_ul_burger">
+            <li>
+              <a href="#" class="fs-3 fw-bold">Accueil</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 1</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 2</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 3</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Catégorie 4</a>
+            </li>
+            <li>
+              <a href="#" class="fs-6 fst-italic">- Marques</a>
+            </li>
+            <li class="burger_li_shopping_cart">
+              <a href="#" class="fs-5">Panier</a>
+            </li>
+            <li class="burger_li_user">
+              <a href="#" class="fs-5">Mon Compte</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-md-block d-none div_desktop">
+      <div class="d-flex justify-content-between">
+        <div class="ps-2 pt-2">
+          <a class="navbar-brand" href="#">
+            <img src="../images/logo_site/logo-web-transparent.png" alt="cameleon" width="180px"></a>
+        </div>
+
+        <div class="pt-4 ">
+          <a href="#" class="logo_home_desktop ">
+            <i class="fas fa-home fa-2x"></i>
+          </a>
+        </div>
+        <div class="py-4 col-6">
+          <div class="d-flex justify-content-center">
+            <form class="d-flex col-12" id="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fas fa-search fa-1x"></i>
+              </button>
+            </form>
+          </div>
+          <div class="">
+            <ul class="d-flex" id="liste_categories">
+              <li class="col-3 ps-2" id="category_1">
+                <a href="#Accueil">Catégorie 1</a>
+                <div class="ps-1 header_sub_category" id="sub_category_1_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_2">
+                <a href="#Apropos">Catégorie 2</a>
+                <div class="ps-1 header_sub_category" id="sub_category_2_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_3">
+                <a href="#Contact">Catégorie 3</a>
+                <div class="ps-1 header_sub_category" id="sub_category_3_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-3 ps-2" id="category_4">
+                <a href="#Contact">Catégorie 4</a>
+                <div class="ps-1 header_sub_category" id="sub_category_4_appears">
+                  <div>
+                    <a href="#Accueil">sous-catégorie 1</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 2</a>
+                  </div>
+                  <div>
+                    <a href="#Accueil">sous-catégorie 3</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex pt-4 mx-3">
+          <a href="#" class="logo_user_desktop">
+            <i class="fas fa-user fa-2x me-4"></i>
+          </a>
+          <a href="#" class="logo_shopping_cart_desktop">
+            <i class="fas fa-shopping-cart fa-2x me-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section id="first part" class="mt-4">
+        <div class="row mt-3" id="one">
+          <div class=" d-flex justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12" id="title_page">
+            <h1>Page produit</h1>
+          </div>
+        </div>
+        <div class="row mt-3" id="two">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="carousel_image">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="http://lorempixel.com/400/200/technics/4" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="http://lorempixel.com/400/200/technics/2" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="http://lorempixel.com/400/200/technics/3" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3" id="three">
+          <div class="d-flex justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12" id="title_product">
+            <h2>Ipad pro</h2>
+          </div>
+        </div>
+        <div class="row mt-3 flex-row-reverse" id="four">
+          <div class="d-flex justify-content-center flex-column  col-xs-12 col-sm-12 col-md-6 col-lg-6" id="title_card">
+            <h3 class="d-flex justify-content-center">Meilleures tablette</h3>
+            <p class="d-flex justify-content-center">Laissez vous seduire par la dernière tablette de chez apple</p>
+          </div>
+          <div class="pt-2 d-flex justify-content-center col-xs-12 col-sm-12 col-md-6 col-lg-6" id="card_image">
+            <div class="card" style="width: auto;">
+              <img class="card-img-top " src="http://lorempixel.com/200/100/technics/1" alt="image ipad">
+              <div class="card-body">
+                <p class="card-text">
+                  Collaboratively brand bricks-and-clicks models with emerging services. Phosfluorescently
+                  matrix sustainable..
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="second part" class="mt-4">
+        <div class="row mt-3" id="five">
+          <div class="d-flex justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12" id="title_describe">
+            <h3 class="">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">
+                  <h3>Bien plus qu'une tablette</h3>
+                </font>
+              </font>
+            </h3>
+          </div>
+        </div>
+        <div class="row mt-3" id="six">
+          <div class="d-flex justify-content-center flex-column col-xs-12 col-sm-12 col-md-6 col-lg-6 "
+            id="first_description">
+            <h1>Quod vestri non item.</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <a href="http://loripsum.net/" target="_blank">Traditur, inquit, ab Epicuro ratio neglegendi doloris.
+              </a>
+              Qualem igitur hominem natura inchoavit? Hunc vos beatum; Duo Reges: constructio interrete. Sedulo, inquam,
+              faciam.
+            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tamen a proposito, inquam, aberramus. Profectus
+              in exilium Tubulus statim nec respondere ausus; Sed nunc, quod agimus; Tollitur beneficium, tollitur
+              gratia, quae sunt vincla concordiae. Nihil enim hoc differt. Duo Reges: constructio interrete. Primum quid
+              tu dicis breve? Num quid tale Democritus? </p>
+
+
+          </div>
+          <div class="d-flex align-items-center col-xs-12 col-sm-12 col-md-6 col-lg-6" id="second_description">
+            <dl>
+              <dt><dfn>Sed nimis multa.</dfn></dt>
+              <dd>Ex rebus enim timiditas, non ex vocabulis nascitur.</dd>
+              <dt><dfn>Quae sequuntur igitur?</dfn></dt>
+              <dd>Quod quidem iam fit etiam in Academia.</dd>
+              <dt><dfn>Quid Zeno?</dfn></dt>
+              <dd>An potest, inquit ille, quicquam esse suavius quam nihil dolere?</dd>
+              <dt><dfn>Sed fortuna fortis;</dfn></dt>
+              <dd>Idem iste, inquam, de voluptate quid sentit?</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="row mt-3" id="seven">
+          <div class="mt-3 col-xs-12 col-sm-12 col-md-6 col-lg-6" id="card_cart">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">N'hésitez plus</h5>
+                <p class="card-text">faite vous plaisire.</p>
+                <a href="#" class="btn btn-primary">panier</a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 col-xs-12 col-sm-12 col-md-6 col-lg-6" id="purchase_card">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cadeau pour votre entourage</h5>
+                <p class="card-text">Offrez au personne que vous aimez.</p>
+                <a href="#" class="btn btn-primary">Achater</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3" id="eight">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="detailed_information">
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                      aria-expanded="true" aria-controls="collapseOne">
+                      DESCRIPTION
+                    </button>
+                  </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                  data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                    labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      FICHE TECHNIQUE
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                    labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                      data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      QUESTION/REPONSE
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                    labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="d-flex border partial_brands" id="partial_brands_1">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/acer.png" alt="acer" width="70px">
+      </a>
+    </div>
+
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/apple.jpg" alt="apple" width="70px">
+      </a>
+    </div>
+
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/dell.png" alt="dell" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/lg.jpg" alt="lg" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+  <div class="d-none border partial_brands" id="partial_brands_2">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/nokia.png" alt="nokia" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/samsung.png" alt="samsung" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/sony.jpg" alt="sony" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/toshiba.jpg" alt="toshiba" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+
+  <div class="d-none border partial_brands" id="partial_brands_3">
+    <button class="button_brands-left">
+      <i class="far fa-arrow-alt-circle-left"></i>
+    </button>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/panasonic.png" alt="panasonic" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/philips.png" alt="philips" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/xiaomi.png" alt="xiaomi" width="70px">
+      </a>
+    </div>
+    <div>
+      <a href="" class="">
+        <img src="../images/marques/asus.png" alt="asus" width="70px">
+      </a>
+    </div>
+    <button class="button_brands-right">
+      <i class="far fa-arrow-alt-circle-right"></i>
+    </button>
+  </div>
+
+
+
+  <footer class="mt-3 pt-3 position-relative">
+
+    <ul class="d-md-flex pt-md-4 pe-md-4 justify-content-md-between footer_list_links">
+      <li>
+        <a href="#">Qui sommes nous ?</a>
+      </li>
+      <li>
+        <a href="#">mentions légales</a>
+      </li>
+      <li>
+        <a href="#">CGU</a>
+      </li>
+      <li>
+        <a href="#">Nous contacter</a>
+      </li>
+      <li>
+        <a href="#">Mode paiement</a>
+      </li>
+      <li>
+        <a href="#">Mode livraison</a>
+      </li>
+    </ul>
+
+    <div class="d-md-flex justify-content-md-around footer_payments">
+      <div><img src="../images/paiements/american-express.jpg" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/bitcoin.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/cb.jpg" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/mastercard.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/paypal.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/visa-electron.png" alt="logo" width="50px"></div>
+      <div><img src="../images/paiements/visa.svg" alt="logo" width="50px"></div>
+    </div>
+    <div class="footer_logo py-3"><img src="../images/logo_site/logo-web-transparent.png" alt="logo" width="180px">
+    </div>
+  </footer>
+
+  <script src="../js/carousel_brands.js"></script>
+  <script src="../js/shopping_cart.js"></script>
+  <script src="../js/resize.js"></script>
+
+  <script src="https://kit.fontawesome.com/74ed2f933d.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
+  </footer>
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

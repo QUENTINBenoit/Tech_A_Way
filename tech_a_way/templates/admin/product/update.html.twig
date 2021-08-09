@@ -1,0 +1,88 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Mise à jour d'un produit
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container">
+		<h1 class="text-center">Modification d'un produit</h1>
+		<a href="{{ path('admin_product_index') }}">Retour</a>
+		<section class="container-lg">
+			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
+
+
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.name) }}
+							</div> 
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.reference) }}
+							</div>
+						<div class="col-md-2">
+									{{ form_row(form.stock) }}
+							</div>
+								<div class="col-md-10">
+										{{ form_row(form.description) }}
+									</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4">
+								{{ form_row(form.exclTaxesPrice) }}
+							</div>
+							<div class="col-md-4">
+								{{ form_row(form.salesTax) }}
+							</div>
+							<div class="col-md-4">
+								(Le prix TTC sera généré automatiquement en fonction du HT)
+							</div>
+							
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.brand) }}
+							</div> 
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.categories) }}
+							</div>
+						</div>
+					</div>
+
+							<div class="container">
+								<div class="row gy-3">
+									<div class="col-md-4">
+										{{ form_row(form.statusRecent) }}
+
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.statusPromotion) }}
+									</div>
+									<div class="col-md-4">
+										{{ form_row(form.percentagePromotion) }}
+									</div>
+								
+
+								</div>
+								
+								<div class="col-12">
+									<button type="submit" class="btn btn-lg btn-primary">Modifier</button>
+									{{ form_end(form) }}
+								</div>
+							</div>
+								<div><a href="{{ path('admin_product_delete', {id:product.id, token:csrf_token('delete-product')}) }}" class="confirmRequestedProduct btn btn-lg btn-danger">Supprimer</a></div>
+								
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+	</section>
+{% endblock %}

@@ -1,0 +1,51 @@
+
+
+
+<div class="card position-static">
+  <h5 class="card-header h6 p-3">Affinez votre recherche</h5>
+    <div class="card-body">
+    {{form_start(form)}}
+        <ul class="nav nav-pills flex-column ">
+            <li class="mb-1 ">
+                <button type="button" class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false"> 
+                 Marque
+                </button>
+                  <div class="collapse" id="brand-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      {{form_row(form.brand)}}          
+                    </ul> 
+                  </div>
+            </li>
+         </ul>
+          <ul class="nav nav-pills flex-column ">
+            <li class="mb-1 ">
+                <button type="button" class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#categorie-collapse" aria-expanded="false"> 
+                Categories
+                </button>
+                  <div class="collapse" id="categorie-collapse">
+                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        {{form_row(form.categories)}}
+                     </ul> 
+                  </div>
+             </li>
+          </ul>
+          <ul class="nav nav-pills flex-column ">
+             <li class="mb-1 ">
+                <button type="button" class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#promotion-collapse" aria-expanded="false"> 
+                Promotion
+                </button>
+                  <div class="collapse" id="promotion-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      {{form_row(form.statusPromotion)}}
+                    </ul> 
+                  </div>
+             </li>
+          </ul>
+          {{ form_rest(form) }}
+       <button type"sumbit" class="btn btn-sm btn-primary color w-100"> Filtrer </button>   
+     
+     {{ form_end(form) }}
+     </div>
+     </div>       
+</div>              
+       

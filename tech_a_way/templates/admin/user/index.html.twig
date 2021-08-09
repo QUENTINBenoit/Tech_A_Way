@@ -1,0 +1,51 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des Utilisateurs !
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<h1 class="container">Liste des utilisateurs</h1>
+		<div class="text-center"><a href="{{ path('admin_user_create') }}">Ajouter un nouvel utilisateur</a></div>
+		<div class="container">
+			<table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Email</th>
+						<th scope="col">Rôles</th>
+						<th scope="col">Prénom</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Sexe</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<th scope="row">{{ user.id }}</th>
+							<td>{{ user.email }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.firstname }}</td>
+							<td>{{ user.lastname }}</td>
+							<td>{{ user.gender }}</td>
+						    <td>
+                                <a href="{{ path('admin_user_personal_details', {id:user.id}) }}">infos personnelles</a>
+								<div></div>
+                                <a href="{{ path('admin_user_orders', {id:user.id}) }}">ses commandes</a>
+                            </td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucunes données trouvées</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+</div></main>{% endblock %}

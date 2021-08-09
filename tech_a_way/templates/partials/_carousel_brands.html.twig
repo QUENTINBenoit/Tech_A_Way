@@ -1,0 +1,26 @@
+
+
+
+
+{% for index, groupBrands in global2.brandsCarousel %}
+
+<div class=" d-none border partial_brands" data-begin="{{ index }}" data-min="0" data-max="2" id="partial_brands_{{ index }}">
+	<button class="button_brands-left">
+		<i class="far fa-arrow-alt-circle-left"></i>
+	</button>
+	
+	{% for brand in groupBrands %}
+	<div>
+		<a href="{{path('product_brandst', { id: brand.id})}}" class="">
+			<img src="{{ asset('uploads/' ~  brand.logo) }}" alt="acer" width="70px">
+		</a>
+	</div>
+	{% endfor %}
+
+
+	<button class="button_brands-right">
+		<i class="far fa-arrow-alt-circle-right"></i>
+	</button>
+</div>
+{% endfor %}
+

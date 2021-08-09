@@ -1,0 +1,34 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Mise à jour d'une catégorie
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container scrollarea">
+		<h1 class="text-center">Modification d'une categorie</h1>
+		<a href="{{ path('admin_category_index') }}">Retour</a>
+		<section class="container-lg">
+			<div class="container-fluid mx-lg-auto d-flex justify-content-center">
+				<div class="row g-3 mt-2 d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="mb-3">
+						{{ form_row(form.name) }}
+					</div>
+					<div class="mb-3">
+						{{ form_row(form.subtitle) }}
+					</div>
+					<div class="">
+						{{ form_row(form.picture) }}
+					</div>
+					<div class="">
+						<button type="submit" class="btn btn-lg btn-primary">Editer</button>
+						{{ form_end(form) }}
+					</div>
+						<div><a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}" class="confirmRequestedCategory col-4 btn btn-lg btn-danger">Supprimer</a></div>
+				</div>
+			</div>
+		</section>
+	</section>
+{% endblock %}

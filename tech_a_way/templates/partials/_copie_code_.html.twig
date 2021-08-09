@@ -1,0 +1,160 @@
+   
+            <div class="container-fluid row d-flex justify-content-between py-3">
+              <ul class="pagination col-lg-6 py-3">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a class="active" href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">»</a></li>
+              </ul>              
+            </div>
+
+
+
+                               {% for prodByBrand in productBrands %}
+                                       {% for  infoProducts in prodByBrand.products %}
+    
+            <div class="card position-static">
+            <h5 class="card-header h6 p-3">Affinez votre recherche</h5>
+              <div class="card-body">
+                <ul class="nav nav-pills flex-column ">
+                   <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false"> 
+                          Marque
+                      </button>
+                      <div class="collapse" id="brand-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                          <form >
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id="Samsung" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                               Samsung
+                              </label> 
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id="LG" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                                LG
+                              </label> 
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input "  type="checkbox" value="" id=" Philips" >
+                              <label class="form-check-label"  for="flexCheckChecked">
+                              Philips
+                              </label> 
+                            </div>
+                          </form>
+                        </ul> 
+                      </div>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column ">
+                  <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#height-collapse" aria-expanded="false"> 
+                        Taille de D'Écran
+                      </button>
+                        <div class="collapse" id="height-collapse">
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <form >
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="32p" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    32 pouces
+                                  </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="40p" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      40 pouces
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="43p" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      43 pouces
+                                    </label> 
+                                </div>
+                              </form>
+                            </ul> 
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column ">
+                  <li class="mb-1 ">
+                      <button class=" btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse" data-bs-target="#standard-collapse" aria-expanded="false"> 
+                        Norme HD
+                      </button>
+                        <div class="collapse" id="standard-collapse">
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <form >
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="4K" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    4k UHD
+                                  </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="8K" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      8k
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input "  type="checkbox" value="" id="HDTV" >
+                                    <label class="form-check-label"  for="flexCheckChecked">
+                                      HDTV
+                                    </label> 
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input "  type="checkbox" value="" id="HDTV1080" >
+                                  <label class="form-check-label"  for="flexCheckChecked">
+                                    HDTV 1080
+                                  </label> 
+                              </div>
+                              </form>
+                            </ul> 
+                        </div>
+                    </li>
+                </ul>    
+              <a href="#" class="btn  btn-sm color  ">Valider</a>
+            </div>
+          </div>              
+        </div>  <div class=" col-lg-6 py-3 " >
+                        {{knp_pagination_render(products,'pagination.html.twig')}}
+                        </div>
+        {% for product in products %} 
+                <div class="p-3 mb-2  bkgporduct"> 
+                  <p id="text">{{product.name}} <p>
+                        <div class=" text-dark container-fluid d-flex flex-row bd-highlight mb-1 shadow-sm p-3  bg-white rounded   ">
+                        <div class="d-flex align-items-star ">
+                          <div class="col-2">
+                              <div class="mobilefirst">
+                                <img src="../images/pc-portable-huawei-matebook-13-13-2k-core.jpg" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                              </div>
+                          </div>
+                          <div class="p-2 bd-highlight col-6 ">
+                              <p>
+                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, adipisci dicta ipsum libero    quia   quos mollitia error quas .
+                              </p>
+                          </div>
+                          <div class="col-2">
+                              <p>dispo stock</p> 
+                          </div>
+                          <div class="col-2  mx-6">
+                              <p>Prix</p> 
+                              <p>30€</p>  
+                              <a href="#">
+                              <span class="material-icons color">
+                                  shopping_cart
+                              </span>
+                              </a>
+                          </div>                    
+                       </div>
+                       </div>                        
+                    </div>
+         {% endfor %}
+         

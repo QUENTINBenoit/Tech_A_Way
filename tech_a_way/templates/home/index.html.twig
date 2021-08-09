@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'accueil
+{% endblock %}
+
+{% block body %}
+
+
+	<div style="width:650px;" class="d-none d-md-block container-lg" id="carouselOfImagesHomePage">
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+			</div>
+			<div class="carousel-inner container">
+				<div style="height:500px; " class="carousel-item active row col-10">
+					<a href="{{ path('product_details', {id:productsPromotion[0].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsPromotion[0].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsPromotion[0].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="ps-5 d-block" alt="...">
+					</a>
+				</div>
+				<div style="height:500px; " class="ps-5 carousel-item">
+					<a href="{{ path('product_details', {id:productsRecent[1].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsRecent[1].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsRecent[1].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="d-block" alt="...">
+					</a>
+				</div>
+				<div style="height:500px; " class="ps-5 carousel-item">
+					<a href="{{ path('product_details', {id:productsPromotion[2].id}) }}">
+						<img style="height:500px; " src="
+						{% if productsPromotion[2].getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  productsPromotion[2].getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}
+						{% endif %}
+						" class="d-block" alt="...">
+					</a>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon bg-secondary" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</div>
+
+
+	<div class="container" id="titleHomepageNewProduct">
+		<div class="row">
+			<div class="d-flex justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+				<h2>Nouveau Produit</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" id="displayOfNewProducts">
+		<div class="row">
+			{% for newProduct in productsRecent %}
+				<div class="d-flex justify-content-center col-xs-12 col-md-4">
+					<div class="text card mb-4 shadow-sm">
+						<a class="img-container" href="{{ path('product_details', {id:newProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+					{% if newProduct.getPictures[0].name is defined %}
+					{{ asset('uploads/' ~  newProduct.getPictures[0].name) }}
+					{% else %}
+					{{ asset('images/produits/visuel-non-disponible.jpg') }}	
+					{% endif %}
+						
+						" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
+						<title><a href="{{ path('product_details', {id:newProduct.id}) }}">{{newProduct.name}}</a></title>
+						<rect width="100%" height="100%" fill="#55595c"></rect>
+						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{newProduct.name}}</text>
+						<div class="card-body d-flex flex-column justify-content-between">
+							<a class="link-description-product" href="{{ path('product_details', {id:newProduct.id}) }}">
+								<p class="card-text d-flex align-items-start">
+								{{ newProduct.description|length > 77 ? newProduct.description|slice(0, 77) ~ '...' : newProduct.description  }}</p>
+							</a>
+							<div class="d-flex justify-content-between">
+								<div class="btn-group">
+									<a href="{{ path('product_details', {id: newProduct.id}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+									<a href=" {{path('cart_add', {id: newProduct.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Panier</a>
+								</div>
+								<small class="text-muted">New</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="container" id="titleHomepagePromotionalProduct">
+		<div class="row">
+			<div class="d-flex justify-content-center col-12">
+				<h2>En Promotion</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" id="displayOfPromotionProducts">
+		<div class="row">
+			{% for promotionalProduct in productsPromotion %}
+				<div class="d-flex justify-content-center col-xs-12 col-md-4">
+					<div class="text card mb-4 shadow-sm">
+						<a class="img-container" href="{{ path('product_details', {id:promotionalProduct.id}) }}"><img class="bd-placeholder-img card-img-top" width="100%" height="" src="
+						{% if promotionalProduct.getPictures[0].name is defined %}
+						{{ asset('uploads/' ~  promotionalProduct.getPictures[0].name) }}
+						{% else %}
+						{{ asset('images/produits/visuel-non-disponible.jpg') }}	
+						{% endif %}
+						
+						
+						" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></a>
+						<title class="mt-2"><a href="{{ path('product_details', {id:promotionalProduct.id}) }}">{{promotionalProduct.name}}</a></title>
+						<rect width="100%" height="100%" fill="#55595c"></rect>
+						<text x="50%" y="50%" fill="#eceeef" dy=".3em">{{promotionalProduct.name}}</text>
+						<div class="card-body d-flex flex-column justify-content-between">
+							<a class="link-description-product" href="{{ path('product_details', {id:promotionalProduct.id}) }}">
+								<p class="card-text d-flex align-items-start">
+								{{ promotionalProduct.description|length > 77 ? promotionalProduct.description|slice(0, 77) ~ '...' : promotionalProduct.description  }}</p>
+							</a>
+				
+							
+							<div class="d-flex justify-content-between">
+								<div class="btn-group">
+									<a href="{{ path('product_details', {id: promotionalProduct.id}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+									<a href=" {{path('cart_add', {id: promotionalProduct.id})}}" type="button" class="btn btn-sm btn-outline-secondary">Panier</a>
+								</div>
+								<small class="text-muted" >Promo</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+
+
+{% endblock %}

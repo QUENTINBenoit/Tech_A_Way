@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&family=Merriweather:wght@300;400;700&display=swap');
+
+@media (max-width: 576px) { 
+    .mobilefirst{
+        display: none;
+
+    }
+   .container{
+       max-width: 540px;
+   }
+        
+    
+ }
+ @media (max-width: 768px) { 
+    .mobilefirst{
+        display: none;
+
+    }
+   .container{
+       max-width: 720px;
+   }
+        
+    
+ }
+
+ @media (max-width: 992px) { 
+     .mobilefirst{
+         display: none;
+
+     }
+    .container{
+        max-width: 960px;
+    }
+         
+     
+  }
+  @media (max-width: 1200px) { 
+  
+   .container{
+       max-width: 1140px;
+   }
+        
+    
+ }
+
+
+
+
+/* code css for pagination page search*/
+    pagination {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+    }
+
+    pagination li {display: inline;}
+
+    pagination li a {
+      color:#F25528;
+      float: left;
+      padding: 4px 8px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    pagination li a.active {
+      background-color: #F25528;
+      color: white;
+      border-radius: 5px;
+    }
+    pagination li a:hover:not(.active) {background-color:  rgba(57,57,57,0.9192051820728291);}
+
+
+.bkgporduct{
+  background: linear-gradient(39deg, rgba(244,244,249,1) 65%, rgba(242,85,40,1) 100%);
+  color:black ;
+  border-bottom-right-radius: 80px 80px;
+}
+#text{
+  font-size: 1em;
+  font-weight: bold;
+  
+ 
+}
+.bkgcatego{
+  background: linear-gradient(39deg, rgba(242,85,40,1) 0%, rgba(244,244,249,1) 52%);
+  text-align: center;
+  font-weight: bold;
+}
+
+.color{
+         
+     color: #F25528;
+
+}
+.card-header{
+        color:#F25528 ;
+        background-color: #fff;
+      
+}
+.dropdown-toggle { outline: 0; }
+
+.nav-flush .nav-link {
+  border-radius: 0;
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color:#F25528;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  display: inline-flex;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  text-decoration: none;
+}
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: #F25528;
+}
+
+#products{
+
+  height: 10em;
+  margin-right: 0.5em;
+  border: 0.1em solid #ff5722;
+
+}
+

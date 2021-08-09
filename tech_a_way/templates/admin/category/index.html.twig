@@ -1,0 +1,96 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Liste des catégories
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<h1 class="container">Liste des catégories     <span class="fs-4"><a href="{{ path('admin_category_tree_structure') }}">(Voir les catégories par Arborescence)</a></span><div class="fst-italic fs-5 text-danger">(Cliquez sur le nom de la catégorie pour l'éditer)
+		<div class="d-flex justify-content-around">
+			<span class="fs-6"><a href="{{ path('admin_category_create_main') }}">Ajouter une Catégorie principale</a></span>
+			<span class="fs-6"><a href="{{ path('admin_category_create_sub') }}">Ajouter une sous-catégorie</a></span>
+		</div>
+		
+		</div></h1>
+		
+		<div class="container">
+			<table class="table  table-hover">
+				<thead class="table-primary">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Slogan</th>
+						<th scope="col">Image</th>
+						<th scope="col"><div>sa catégorie</div> <div>juste au-dessus</div></th>
+						<th scope="col"><div>sa ou ses sous-</div> <div>catégorie(s) directes</div></th>
+						<th scope="col">Nb produits</th>
+						<th scope="col">Actions</th>
+
+					</tr>
+				</thead>
+					<tbody>
+					{% set i=0 %}
+					{% for category in categories %}
+						<tr>
+							<th scope="row">{{ category.id }}</th>
+							{% if category.getCategory == false %}
+							<td class="fw-bold fs-5"><a href="{{ path('admin_category_update_parent', {id:category.id}) }}">{{ category.name }}</a><div class="fs-6 fw-normal fst-italic">(catégorie principale)</div></td>
+							{% set i = i +1%}
+							{% else %}
+							<td><a href="{{ path('admin_category_update', {id:category.id}) }}">{{ category.name }}</a></td>
+							{% endif %}
+							<td>{{ category.subtitle }}</td>
+							<td>
+							{% if category.picture %}
+							<img width="60px" src="{{ asset('uploads/' ~ category.picture) }}" alt="">
+							{% endif %}
+							</td>
+							{% if category.getCategory %}
+							<td class="">{{ category.getCategory.name}}</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+
+							{% if category.getSubcategories %}
+							<td>
+							<ul>
+							{% for subcategories in category.getSubcategories %}
+							<li>
+							{{ subcategories.name }}
+							</li>
+							{% endfor %}
+							</ul>
+							</td>
+							{% else %}
+							<td></td>
+							{% endif %}
+
+							<td>
+								{{ category.products|length }}
+							</td>
+
+
+						    <td>
+                                <div><a href="{{ path('admin_category_list_products', {id:category.id}) }}">Liste des produits</a></div>
+							{% if (app.user.roles[0] == 'ROLE_ADMIN') or (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+                                <div><a href="{{ path('admin_category_delete', {id:category.id, token:csrf_token('delete-category')}) }}" class="confirmRequestedCategory">Supprimer</a></div>
+							{% else %}
+							<div class="fst-italic">Suppression interdite</div>
+							{% endif %}
+                            </td>
+                            
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Aucunes données trouvées</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+
+</div></main>{% endblock %}

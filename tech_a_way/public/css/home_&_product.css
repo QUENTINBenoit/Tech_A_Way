@@ -1,0 +1,42 @@
+h1, h2, h3 {
+color: #F25528;
+}
+
+
+.card {
+    border-color: #F25528;
+}
+
+.card .img-container {
+    height: 200px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
+
+
+.text{
+    
+    color: #F25528;
+    align-items: center;
+    justify-content: center;
+}
+.card-body {
+    font-weight: bold;
+    color: black;
+}
+.btn {
+    border-color: #F25528;
+    color: black;
+
+}
+

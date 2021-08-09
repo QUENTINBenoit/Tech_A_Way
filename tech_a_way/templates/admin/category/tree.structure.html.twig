@@ -1,0 +1,86 @@
+{% extends 'admin/layout.back.office.html.twig' %}
+
+{% block title %}Arborescence des Catégories
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container-fluid scrollarea table-boot py-5">
+		<a href="{{ path('admin_category_index') }}">Retour</a>
+		<h1 class="container mb-5">Arborescence des Catégories <span class="fs-4"><a href="{{ path('admin_category_index') }}">(voir la liste des catégories classique)</a></span><div class="fst-italic fs-5 text-danger">(Cliquez sur le nom de la catégorie pour l'éditer)</div></h1>
+		<div class="container">
+
+					{% set i = 0 %}
+					{% for indexes1 in mainCategories %}
+				
+
+							<div class="d-sm-flex" ><span class="fs-2 fw-bold"><div class="fs-6 fw-normal fst-italic">Catégorie Principale :</div><a href="{{ path('admin_category_update_parent', {id:indexes1[0].id}) }}">{{ indexes1[0].name }}</a> <i class="fas fa-arrow-circle-right"></i></span>
+							
+							{% set i = 0 %}
+							{% for indexes2 in indexes1 %}
+							<ul>
+							{% if i == 1 %}
+							<li class="tree_structure_li">
+							<span class="fs-3 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant :</div><a href="{{ path('admin_category_update', {id:indexes2[0].id}) }}">{{ indexes2[0].name }}</a> <i class="fas fa-arrow-circle-down"></i></span>
+								{% set i = 0 %}
+								{% for indexes3 in indexes2 %}
+								<ul>
+								{% if i == 1 %}
+								<li class="tree_structure_li">
+								<span class="fs-4 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 2 :</div><a href="{{ path('admin_category_update', {id:indexes3[0].id}) }}">{{ indexes3[0].name }}</a></span>
+									{% set i = 0 %}
+									{% for indexes4 in indexes3 %}
+									<ul>
+									{% if i == 1 %}
+									<li class="tree_structure_li">
+									<span class="fs-5 ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 3 :</div><a href="{{ path('admin_category_update', {id:indexes4[0].id}) }}">{{ indexes4[0].name }}</a></span>
+										{% set i = 0 %}
+										{% for indexes5 in indexes4 %}
+										<ul>
+										{% if i == 1 %}
+										<li class="tree_structure_li">
+										<span class="ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 4 :</div><a href="{{ path('admin_category_update', {id:indexes5[0].id}) }}">{{ indexes5[0].name }}</a></span>
+											{% set i = 0 %}
+											{% for indexes6 in indexes5 %}
+											<ul>
+											{% if i == 1 %}
+											<li class="tree_structure_li">
+											<span class="ms-5"><div class="fs-6 fw-normal fst-italic">Catégorie enfant 5 :</div><a href="{{ path('admin_category_update', {id:indexes6[0].id}) }}">{{ indexes6[0].name }}</a></span>
+											</li>
+											{% endif %}
+											{% set i = 1 %}
+											</ul>
+											{% endfor %}
+										</li>
+										{% endif %}
+										{% set i = 1 %}
+										</ul>
+										{% endfor %}
+
+									</li>
+									{% endif %}
+									{% set i = 1 %}
+									</ul>
+									{% endfor %}
+
+								</li>
+								{% endif %}
+								{% set i = 1 %}
+								</ul>
+								{% endfor %}
+
+							</li>
+							{% endif %}
+							{% set i = 1 %}
+							</ul>
+							{% endfor %}
+
+						</div>
+							{% endfor %}
+
+
+	</section>
+
+
+</div></main>{% endblock %}
