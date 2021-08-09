@@ -1,4 +1,4 @@
--- Adminer 4.7.6 MySQL dump
+-- Adminer 4.8.1 MySQL 8.0.26-0ubuntu0.20.04.2 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -9,15 +9,15 @@ SET NAMES utf8mb4;
 
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `street` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `zipcode` int(11) NOT NULL,
-  `city` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `street` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zipcode` int NOT NULL,
+  `city` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  `delivery` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `delivery` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D4E6F81A76ED395` (`user_id`),
   CONSTRAINT `FK_D4E6F81A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
@@ -29,7 +29,6 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (3,	'Livraison',	'5 rue Marie Currie',	28000,	'Chartres',	'2021-08-03 15:17:01',	'2021-08-03 15:17:01',	6,	NULL),
 (4,	'Facturation',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
 (5,	'Livraison',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	8,	NULL),
-(6,	'Livraison',	'15 rue de Corneille',	72000,	'LE MANS',	'2021-08-05 04:23:46',	'2021-08-05 04:23:46',	2,	NULL),
 (7,	'Facturation',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:34',	'2021-08-05 04:52:34',	3,	NULL),
 (8,	'Livraison',	'25 rue du Sapin',	75020,	'Paris',	'2021-08-05 04:52:54',	'2021-08-05 04:52:54',	3,	NULL),
 (9,	'Facturation',	'2 rue des petits Pres',	78000,	'Versailles',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	9,	NULL),
@@ -37,13 +36,18 @@ INSERT INTO `address` (`id`, `type`, `street`, `zipcode`, `city`, `created_at`, 
 (11,	'Facturation',	'26 rue Jacob',	75020,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
 (12,	'Livraison',	'15 rue Gaston',	75018,	'Paris',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	10,	NULL),
 (13,	'Facturation',	'15 rue titi',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
-(14,	'Livraison',	'15 rue toto',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL);
+(14,	'Livraison',	'15 rue toto',	75015,	'Paris',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	11,	NULL),
+(15,	'Livraison',	'ssddsds',	78120,	'sddsds',	'2021-08-09 07:09:15',	'2021-08-09 07:09:15',	2,	'Relais colis'),
+(16,	'Facturation',	'marielller',	35270,	'breisue',	'2021-08-09 07:54:53',	'2021-08-09 07:54:53',	5,	NULL),
+(17,	'Livraison',	'lqkjdhf',	35080,	'dsdf',	'2021-08-09 07:55:14',	'2021-08-09 07:55:14',	5,	NULL),
+(18,	'Facturation',	'15 RUE JJ',	45700,	'Nantes',	'2021-08-09 08:25:55',	'2021-08-09 08:25:55',	12,	NULL),
+(19,	'Livraison',	'15 RUE JJ',	45700,	'Nantes',	'2021-08-09 08:25:55',	'2021-08-09 08:25:55',	12,	NULL);
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -71,13 +75,13 @@ INSERT INTO `brand` (`id`, `name`, `logo`, `created_at`, `updated_at`) VALUES
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subtitle` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `picture` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subtitle` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picture` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
+  `category_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_64C19C112469DE2` (`category_id`),
   CONSTRAINT `FK_64C19C112469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
@@ -138,11 +142,11 @@ INSERT INTO `category` (`id`, `name`, `subtitle`, `picture`, `created_at`, `upda
 
 DROP TABLE IF EXISTS `doctrine_migration_versions`;
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(191) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
-  `execution_time` int(11) DEFAULT NULL,
+  `execution_time` int DEFAULT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20210721103629',	'2021-07-31 11:59:52',	23),
@@ -173,8 +177,8 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 DROP TABLE IF EXISTS `mode_of_payment`;
 CREATE TABLE `mode_of_payment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -188,19 +192,19 @@ INSERT INTO `mode_of_payment` (`id`, `type`) VALUES
 
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_delivery` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `street_delivery` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `zipcode_delivery` int(11) NOT NULL,
-  `city_delivery` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `street_bill` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `zipcode_bill` int(11) NOT NULL,
-  `city_bill` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `type_delivery` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `street_delivery` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zipcode_delivery` int NOT NULL,
+  `city_delivery` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `street_bill` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zipcode_bill` int NOT NULL,
+  `city_bill` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `status_id` int(11) NOT NULL,
-  `mode_of_payment_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `status_id` int NOT NULL,
+  `mode_of_payment_id` int NOT NULL,
+  `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F52993986BF700BD` (`status_id`),
   KEY `IDX_F5299398C9A9CD82` (`mode_of_payment_id`),
@@ -214,19 +218,21 @@ INSERT INTO `order` (`id`, `type_delivery`, `street_delivery`, `zipcode_delivery
 (1,	'Chronopost',	'15 rue de la Beauce',	45000,	'Orléans',	'15 rue de la Beauce',	45000,	'Orléans',	'2021-08-05 04:36:09',	NULL,	2,	5,	1),
 (2,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:41:35',	NULL,	3,	6,	8),
 (3,	'Chronopost',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:44:37',	NULL,	3,	4,	8),
-(4,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:48:23',	NULL,	2,	3,	8);
+(4,	'Colissimo',	'15 rue de la Courneuve',	78990,	'Elancourt',	'15 rue de la Courneuve',	78990,	'Elancourt',	'2021-08-05 04:48:23',	NULL,	2,	3,	8),
+(5,	'Relais colis',	'ssddsds',	78120,	'sddsds',	'3 rue Montmartre',	75015,	'PARIS',	'2021-08-09 07:09:39',	'2021-08-09 07:09:39',	1,	4,	2),
+(6,	'Colissimo',	'lqkjdhf',	35080,	'dsdf',	'marielller',	35270,	'breisue',	'2021-08-09 07:55:22',	'2021-08-09 07:55:22',	1,	3,	5);
 
 DROP TABLE IF EXISTS `order_line`;
 CREATE TABLE `order_line` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
   `excl_taxes_unit_price` double NOT NULL,
-  `sales_tax` smallint(6) NOT NULL,
+  `sales_tax` smallint NOT NULL,
   `incl_taxes_unit_price` double NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `an_order_id` int(11) NOT NULL,
+  `an_order_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9CE58EE170A5F021` (`an_order_id`),
   CONSTRAINT `FK_9CE58EE170A5F021` FOREIGN KEY (`an_order_id`) REFERENCES `order` (`id`)
@@ -239,15 +245,18 @@ INSERT INTO `order_line` (`id`, `product_name`, `quantity`, `excl_taxes_unit_pri
 (4,	'Caméra de Surveillance WiFi',	2,	39.99,	20,	47.99,	'2021-08-05 04:43:19',	NULL,	2),
 (5,	'JBL LIVE 500BT',	1,	72.5,	20,	87,	'2021-08-05 04:45:23',	NULL,	3),
 (6,	'TP-Link Tapo Ampoule E27 Connectée Wifi',	1,	23.99,	20,	28.79,	'2021-08-05 04:45:56',	NULL,	3),
-(7,	'Epson Expression Home XP 4100',	1,	69.5,	20,	83.4,	'2021-08-05 04:49:12',	NULL,	4);
+(7,	'Epson Expression Home XP 4100',	1,	69.5,	20,	83.4,	'2021-08-05 04:49:12',	NULL,	4),
+(8,	'Toshiba Téléviseur LED 32W',	1,	299.99,	20,	359.99,	'2021-08-09 07:09:39',	'2021-08-09 07:09:39',	5),
+(9,	'Cable HDMI 1 m',	1,	7.99,	20,	9.59,	'2021-08-09 07:55:22',	'2021-08-09 07:55:22',	6),
+(10,	'SMARTPHONE NOKIA 1.4 32GO GRIS - mobile',	1,	99,	20,	118.8,	'2021-08-09 07:55:22',	'2021-08-09 07:55:22',	6);
 
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `product_id` int(11) NOT NULL,
+  `product_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_16DB4F894584665A` (`product_id`),
   CONSTRAINT `FK_16DB4F894584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
@@ -306,20 +315,20 @@ INSERT INTO `picture` (`id`, `name`, `created_at`, `updated_at`, `product_id`) V
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `excl_taxes_price` double NOT NULL,
-  `sales_tax` smallint(6) NOT NULL,
+  `sales_tax` smallint NOT NULL,
   `incl_taxes_price` double NOT NULL,
-  `reference` int(11) NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stock` int(11) NOT NULL,
-  `status_recent` smallint(6) DEFAULT NULL,
-  `status_promotion` smallint(6) DEFAULT NULL,
-  `percentage_promotion` smallint(6) DEFAULT NULL,
+  `reference` int NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `stock` int NOT NULL,
+  `status_recent` smallint DEFAULT NULL,
+  `status_promotion` smallint DEFAULT NULL,
+  `percentage_promotion` smallint DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `brand_id` int(11) DEFAULT NULL,
+  `brand_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D34A04AD44F5D008` (`brand_id`),
   CONSTRAINT `FK_D34A04AD44F5D008` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
@@ -349,8 +358,8 @@ INSERT INTO `product` (`id`, `name`, `excl_taxes_price`, `sales_tax`, `incl_taxe
 
 DROP TABLE IF EXISTS `product_category`;
 CREATE TABLE `product_category` (
-  `product_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `product_id` int NOT NULL,
+  `category_id` int NOT NULL,
   PRIMARY KEY (`product_id`,`category_id`),
   KEY `IDX_CDFC73564584665A` (`product_id`),
   KEY `IDX_CDFC735612469DE2` (`category_id`),
@@ -416,10 +425,10 @@ INSERT INTO `product_category` (`product_id`, `category_id`) VALUES
 
 DROP TABLE IF EXISTS `reset_password_request`;
 CREATE TABLE `reset_password_request` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `selector` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hashed_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `selector` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hashed_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `requested_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `expires_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   PRIMARY KEY (`id`),
@@ -430,8 +439,8 @@ CREATE TABLE `reset_password_request` (
 
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -445,18 +454,18 @@ INSERT INTO `status` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastname` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_number` int(11) NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status_user` smallint(6) NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` int NOT NULL,
+  `email` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_user` smallint NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthdate` date NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
+  `roles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -472,6 +481,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `gender`, `phone_number`, `em
 (8,	'Carmen',	'Dalia',	'Madame',	645785462,	'carmen@hotmail.com',	1,	'$2y$13$o5A9/AN9Op2Is6EvYfEwHen1b.XK.lV13ILyKoQw.h7wVKC2szvOq',	'1990-04-15',	'2021-08-03 15:18:35',	'2021-08-03 15:18:35',	'[]'),
 (9,	'Robert',	'Laval',	'Monsieur',	715426545,	'robert-laval@hotmail.com',	1,	'$2y$13$Sx9HvA2XNn7I0f8ZTUXiwOphM/UUt/zLw0rwXHAt7NDGjnsqnadoS',	'1985-04-15',	'2021-08-05 08:57:44',	'2021-08-05 08:57:44',	'[]'),
 (10,	'Louis',	'Bardi',	'Monsieur',	745241546,	'Louis.bardi@gmail.com',	1,	'$2y$13$Prbs59QDpr/tUXEWkcZmzeQpmRdCI8RuvMUngWW962hYwhvVr/LDm',	'1984-04-15',	'2021-08-05 10:35:44',	'2021-08-05 10:35:44',	'[]'),
-(11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]');
+(11,	'Laurent',	'Michu',	'Monsieur',	674751245,	'laurent.michu@gmail.com',	1,	'$2y$13$7q9Kgb5YS6cLtM7jKTiZcu5EjTznyPOWPHnsOOa27hnYW69WK89Oq',	'1984-04-25',	'2021-08-05 12:16:52',	'2021-08-05 12:16:52',	'[]'),
+(12,	'Frédéric',	'Guillon',	'Monsieur',	845745725,	'frdric.guillon@gmail.com',	1,	'$2y$13$zz1V03nGSWoA8eaKW8VISeMenHtXBAWRE0gh27Xloj6Aglfc93Rwe',	'1984-04-25',	'2021-08-09 08:25:55',	'2021-08-09 08:25:55',	'[]');
 
--- 2021-08-09 10:06:02
+-- 2021-08-09 10:53:30
